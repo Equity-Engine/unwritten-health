@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/logo-mark.png" />
+  <link rel="apple-touch-icon" href="images/logo-mark.png" />
+  <link rel="shortcut icon" href="images/logo-mark.png" />
+  <title>Admin: Scorecard Report Builder | Unwritten Health</title>
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bentham&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+  <script>
+    /* Password gate — client-side only. Stops casual visitors + bots. Not cryptographically secure (source is public).
+       CHANGE THIS PASSWORD before shipping the first time, and any time you want to revoke access. */
+    (function () {
+      var PASSWORD = 'C00kies1978!';   // <-- Ashish: change this and re-deploy to rotate
+      var KEY = 'uh_admin_auth_v1';
+
+      function isAuthed() {
+        try { return sessionStorage.getItem(KEY) === PASSWORD || localStorage.getItem(KEY) === PASSWORD; } catch (e) { return false; }
+      }
+
+      function showGate() {
+        // Hide all existing page content while the gate is shown
+        // (rather than replacing document.documentElement, which breaks inline <script> tags via innerHTML)
+        document.title = 'Admin access | Unwritten Health';
+        var style = document.createElement('style');
+        style.textContent = 'body.pw-locked > *:not(#pw-overlay){display:none !important}' +
+          '#pw-overlay{position:fixed;inset:0;background:#FAF8F5;color:#37373B;font-family:Manrope,system-ui,sans-serif;display:flex;align-items:center;justify-content:center;padding:20px;z-index:2147483647}' +
+          '#pw-overlay .pw-box{max-width:420px;width:100%;background:#fff;border-radius:18px;padding:36px 32px;border:1px solid rgba(91,129,112,0.14);box-shadow:0 12px 40px rgba(63,97,82,0.08);box-sizing:border-box}' +
+          '#pw-overlay h1{font-family:Bentham,Georgia,serif;font-size:1.4rem;color:#37373B;margin:0 0 6px 0;font-weight:400}' +
+          '#pw-overlay p{font-size:0.9rem;color:#5a5a5f;line-height:1.55;margin:0 0 20px 0}' +
+          '#pw-overlay input[type="password"]{width:100%;padding:12px 14px;border:1.5px solid rgba(55,55,59,0.15);border-radius:10px;font-family:inherit;font-size:0.95rem;color:#37373B;background:#FAF8F5;margin-bottom:12px;box-sizing:border-box}' +
+          '#pw-overlay input[type="password"]:focus{outline:none;border-color:#3f6152}' +
+          '#pw-overlay .row{display:flex;gap:10px;align-items:center;margin-bottom:16px}' +
+          '#pw-overlay .row label{font-size:0.82rem;color:#5a5a5f;display:flex;align-items:center;gap:6px;cursor:pointer}' +
+          '#pw-overlay .row input[type="checkbox"]{margin:0}' +
+          '#pw-overlay button{width:100%;padding:12px 20px;border-radius:100px;background:#3f6152;color:#fff;border:none;font-family:inherit;font-weight:700;font-size:0.9rem;cursor:pointer}' +
+          '#pw-overlay button:hover{background:#2e4a3c}' +
+          '#pw-overlay .pw-err{display:none;background:rgba(160,44,26,0.1);color:#a02c1a;padding:10px 14px;border-radius:8px;font-size:0.85rem;margin-bottom:12px}' +
+          '#pw-overlay .pw-err.on{display:block}';
+        document.head.appendChild(style);
+
+        var overlay = document.createElement('div');
+        overlay.id = 'pw-overlay';
+
+        var form = document.createElement('form');
+        form.className = 'pw-box';
+
+        var h1 = document.createElement('h1');
+        h1.textContent = 'Admin access';
+        form.appendChild(h1);
+
+        var p = document.createElement('p');
+        p.textContent = 'Restricted area. Enter the admin password to continue.';
+        form.appendChild(p);
+
+        var err = document.createElement('div');
+        err.className = 'pw-err';
+        err.textContent = 'Incorrect password.';
+        form.appendChild(err);
+
+        var input = document.createElement('input');
+        input.type = 'password';
+        input.placeholder = 'Password';
+        input.required = true;
+        input.autocomplete = 'current-password';
+        form.appendChild(input);
+
+        var row = document.createElement('div');
+        row.className = 'row';
+        var label = document.createElement('label');
+        var check = document.createElement('input');
+        check.type = 'checkbox';
+        label.appendChild(check);
+        label.appendChild(document.createTextNode(' Remember on this device'));
+        row.appendChild(label);
+        form.appendChild(row);
+
+        var btn = document.createElement('button');
+        btn.type = 'submit';
+        btn.textContent = 'Unlock →';
+        form.appendChild(btn);
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (input.value === PASSWORD) {
+            try {
+              (check.checked ? localStorage : sessionStorage).setItem(KEY, PASSWORD);
+            } catch (ignored) {}
+            window.location.reload();
+          } else {
+            err.classList.add('on');
+            input.value = '';
+            input.focus();
+          }
+        });
+
+        overlay.appendChild(form);
+        document.body.classList.add('pw-locked');
+        document.body.appendChild(overlay);
+        setTimeout(function () { input.focus(); }, 0);
+      }
+
+      function init() {
+        if (isAuthed()) return;
+        if (!document.body) { document.addEventListener('DOMContentLoaded', showGate); return; }
+        showGate();
+      }
+      init();
+    })();
+  </script>
+  <style>
+    body { background: var(--cream); }
+    .admin-shell { max-width: 960px; margin: 0 auto; padding: 40px 32px 80px; }
+    .admin-hero { padding: 24px 0 20px; border-bottom: 1px solid rgba(55,55,59,0.08); margin-bottom: 32px; }
+    .admin-hero h1 { font-size: 1.5rem; margin-bottom: 6px; }
+    .admin-hero p { font-size: 0.9rem; color: var(--charcoal-soft); }
+    .admin-hero .warn { display: inline-block; padding: 3px 10px; border-radius: 100px; background: rgba(160,44,26,0.14); color: var(--red); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+
+    .admin-panel { background: var(--white); border-radius: 16px; padding: 28px 30px; border: 1px solid rgba(91,129,112,0.14); margin-bottom: 28px; }
+    .admin-panel h2 { font-size: 1.15rem; margin-bottom: 4px; }
+    .admin-panel .hint { font-size: 0.86rem; color: var(--charcoal-soft); margin-bottom: 16px; }
+    textarea#rawInput { width: 100%; min-height: 260px; padding: 16px; border: 1.5px solid rgba(55,55,59,0.14); border-radius: 12px; background: var(--cream); font-family: 'SF Mono', Consolas, Monaco, monospace; font-size: 0.86rem; line-height: 1.55; color: var(--charcoal); resize: vertical; }
+    textarea#rawInput:focus { outline: none; border-color: var(--green-dark); }
+
+    .admin-row { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; align-items: center; }
+    .admin-row .field { display: flex; flex-direction: column; gap: 4px; }
+    .admin-row label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--charcoal-soft); }
+    .admin-row input[type="text"] { padding: 8px 12px; border: 1.5px solid rgba(55,55,59,0.14); border-radius: 8px; font-family: var(--font-body); font-size: 0.9rem; color: var(--charcoal); min-width: 260px; }
+    .admin-row input[type="text"]:focus { outline: none; border-color: var(--green-dark); }
+    .admin-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+    .admin-btns button { padding: 12px 22px; border-radius: 100px; font-family: var(--font-body); font-weight: 700; font-size: 0.86rem; cursor: pointer; border: none; transition: all 0.2s; }
+    .admin-btns .primary { background: var(--green-dark); color: var(--white); }
+    .admin-btns .primary:hover { background: var(--green-darker); }
+    .admin-btns .secondary { background: var(--white); color: var(--charcoal); border: 1.5px solid rgba(55,55,59,0.2); }
+    .admin-btns .secondary:hover { background: var(--charcoal); color: var(--white); border-color: var(--charcoal); }
+    .admin-msg { margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 0.86rem; display: none; }
+    .admin-msg.ok { display: block; background: var(--green-pale); color: var(--green-darker); }
+    .admin-msg.err { display: block; background: rgba(160,44,26,0.1); color: var(--red); }
+
+    /* PARSED REPORT VIEW — mirrors the style of a customer-facing report */
+    #report { display: none; }
+    #report.visible { display: block; }
+    .rep-actions { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; padding: 14px 20px; background: var(--charcoal); border-radius: 12px; color: var(--white); align-items: center; justify-content: space-between; }
+    .rep-actions .actions-label { font-size: 0.8rem; color: rgba(255,255,255,0.75); font-weight: 500; }
+    .rep-actions .row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .rep-actions button { padding: 9px 16px; border-radius: 100px; background: var(--green); color: var(--white); border: none; font-family: var(--font-body); font-weight: 700; font-size: 0.82rem; cursor: pointer; transition: all 0.2s; }
+    .rep-actions button:hover { background: var(--green-dark); }
+    .rep-actions button.secondary { background: transparent; border: 1.5px solid rgba(255,255,255,0.35); }
+    .rep-actions button.secondary:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+
+    /* Printable report body */
+    .rep { background: var(--white); border-radius: 20px; padding: 48px 52px; border: 1px solid rgba(91,129,112,0.14); }
+    .rep-head { margin-bottom: 30px; padding-bottom: 22px; border-bottom: 1px solid rgba(55,55,59,0.08); }
+    .rep-head .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .rep-head .brand img { height: 24px; }
+    .rep-head h1 { font-family: var(--font-head); font-size: 1.85rem; line-height: 1.2; color: var(--charcoal); margin-bottom: 8px; letter-spacing: -0.01em; }
+    .rep-head .meta { display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.84rem; color: var(--charcoal-soft); margin-top: 8px; }
+    .rep-head .meta strong { color: var(--charcoal); }
+
+    .rep-verdict { padding: 24px 28px; border-radius: 14px; margin-bottom: 30px; color: var(--white); position: relative; overflow: hidden; }
+    .rep-verdict.band-red { background: linear-gradient(135deg, #7a2418, var(--red)); }
+    .rep-verdict.band-amber { background: linear-gradient(135deg, #8a4d0a, var(--amber)); }
+    .rep-verdict.band-green { background: linear-gradient(135deg, var(--green-darker), var(--green-dark)); }
+    .rep-verdict.band-gold { background: linear-gradient(135deg, #7a5f22, var(--gold)); }
+    .rep-verdict .band { display: inline-block; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,0.2); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 12px; }
+    .rep-verdict .score { font-family: var(--font-head); font-size: 2rem; line-height: 1; margin: 4px 0; }
+    .rep-verdict .score small { font-size: 1rem; opacity: 0.75; }
+    .rep-verdict .desc { font-size: 0.94rem; line-height: 1.7; color: rgba(255,255,255,0.9); max-width: 620px; }
+
+    .rep h2 { font-family: var(--font-head); font-size: 1.35rem; color: var(--charcoal); margin: 30px 0 16px; }
+
+    .rep-domain { padding: 16px 0; border-bottom: 1px solid rgba(55,55,59,0.08); display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: baseline; }
+    .rep-domain:last-of-type { border-bottom: none; }
+    .rep-domain .name { font-weight: 700; font-size: 0.98rem; color: var(--charcoal); }
+    .rep-domain .badge { padding: 3px 10px; border-radius: 100px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
+    .rep-domain .badge.red { background: rgba(160,44,26,0.14); color: var(--red); }
+    .rep-domain .badge.amber { background: rgba(183,121,31,0.14); color: var(--amber); }
+    .rep-domain .badge.green { background: rgba(63,97,82,0.14); color: var(--green-darker); }
+    .rep-domain .badge.gold { background: rgba(176,138,60,0.16); color: var(--gold); }
+    .rep-domain .expo { grid-column: 1 / -1; font-size: 0.88rem; color: var(--charcoal-soft); line-height: 1.65; margin-top: 6px; }
+    .rep-domain .fw { grid-column: 1 / -1; margin-top: 6px; display: flex; gap: 5px; flex-wrap: wrap; }
+    .rep-domain .fw span { padding: 2px 8px; border-radius: 4px; background: rgba(63,97,82,0.09); color: var(--green-darker); font-size: 0.7rem; font-weight: 700; }
+
+    .rep-rec { padding: 16px 20px; background: var(--cream); border-radius: 12px; margin-bottom: 10px; display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; }
+    .rep-rec .body h4 { font-family: var(--font-head); font-size: 1.05rem; color: var(--charcoal); margin-bottom: 4px; }
+    .rep-rec .body p { font-size: 0.86rem; color: var(--charcoal-soft); line-height: 1.5; }
+    .rep-rec .body .why { display: block; margin-top: 4px; font-size: 0.76rem; color: var(--green-dark); font-weight: 700; }
+    .rep-rec .link a { font-size: 0.82rem; color: var(--green-dark); text-decoration: underline; font-weight: 700; white-space: nowrap; }
+
+    .rep-cta { margin-top: 32px; padding: 22px 26px; background: var(--green-pale); border-radius: 14px; }
+    .rep-cta h3 { font-family: var(--font-head); font-size: 1.1rem; color: var(--green-darker); margin-bottom: 6px; }
+    .rep-cta p { font-size: 0.9rem; color: var(--charcoal); line-height: 1.6; }
+    .rep-cta a { color: var(--green-dark); text-decoration: underline; font-weight: 700; }
+
+    .rep-sig { margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(55,55,59,0.08); font-size: 0.88rem; color: var(--charcoal); line-height: 1.7; }
+    .rep-sig strong { color: var(--charcoal); }
+    .rep-sig .brand-name { font-family: var(--font-head); color: var(--green-darker); }
+
+    /* Print stylesheet */
+    @media print {
+      body { background: var(--white); }
+      .admin-shell { padding: 0; max-width: none; }
+      .admin-hero, .admin-panel, .rep-actions { display: none !important; }
+      .rep { border: none; border-radius: 0; padding: 20px 0; }
+      #report { display: block !important; }
+    }
+    @media (max-width: 640px) {
+      .rep { padding: 28px 22px; }
+      .rep-domain { grid-template-columns: 1fr; }
+      .rep-rec { grid-template-columns: 1fr; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="admin-shell">
+
+  <div class="admin-hero">
+    <span class="warn">Admin only, not linked</span>
+    <h1>Scorecard Report Builder</h1>
+    <p>Paste the raw notification email (or just the four data lines) below. Renders a branded, printable, one-click-copy report you can email to the customer.</p>
+  </div>
+
+  <div class="admin-panel">
+    <h2>1. Paste the submission</h2>
+    <p class="hint">Copy from the Netlify notification email. It should contain lines like <code>Email:</code>, <code>Score:</code>, <code>Band:</code>, <code>Answers:</code>, and <code>Domains:</code>. Extra whitespace is fine.</p>
+    <textarea id="rawInput" placeholder="Email:
+you@company.com
+
+Score:
+3/60 (5%)
+
+Band:
+RED
+
+Answers:
+[3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+
+Domains:
+{&quot;purpose&quot;:{...},&quot;dataset&quot;:{...},...}"></textarea>
+    <div class="admin-row">
+      <div class="field">
+        <label for="clientName">Recipient name (optional)</label>
+        <input type="text" id="clientName" placeholder="e.g. Jane" />
+      </div>
+      <div class="field">
+        <label for="clientOrg">Recipient organisation (optional)</label>
+        <input type="text" id="clientOrg" placeholder="e.g. Novartis UK" />
+      </div>
+    </div>
+    <div class="admin-btns">
+      <button class="primary" onclick="parseAndRender()">Generate report →</button>
+      <button class="secondary" onclick="loadExample()">Load example</button>
+      <button class="secondary" onclick="clearAll()">Clear</button>
+    </div>
+    <div id="parseMsg" class="admin-msg"></div>
+  </div>
+
+  <div id="report">
+    <div class="rep-actions">
+      <span class="actions-label">Report ready. Choose how to send it.</span>
+      <div class="row">
+        <button onclick="copyReport()">Copy as HTML for email</button>
+        <button onclick="copyPlainText()" class="secondary">Copy as plain text</button>
+        <button onclick="window.print()" class="secondary">Print / save PDF</button>
+      </div>
+    </div>
+
+    <div class="rep" id="repBody">
+      <!-- rendered content injected here -->
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ============ Report Builder ============ */
+
+const DOMAIN_META = {
+  purpose:    { name: 'Intended purpose',            frameworks: ['JCA','NICE ESF'] },
+  dataset:    { name: 'Dataset representativeness',  frameworks: ['NICE ESF','MHRA IDP'] },
+  subgroup:   { name: 'Subgroup evidence',           frameworks: ['JCA','NICE ESF','PMCF'] },
+  usability:  { name: 'Usability & access',          frameworks: ['NHS DTAC','NICE ESF Std 4'] },
+  pms:        { name: 'Post-market monitoring',      frameworks: ['UK PMS 2025','MDR Annex XIV','PMCF'] },
+  governance: { name: 'Governance',                  frameworks: ['NIHR INCLUDE','MHRA IDP'] }
+};
+
+const EXPOSURE = {
+  purpose: {
+    red: 'Your intended purpose is not audit-ready. Under JCA and NICE ESF you cannot make defensible subgroup claims yet.',
+    amber: 'Your intended-purpose scoping is partially documented. Expect challenge on subgroup coverage in HTA review.',
+    green: 'Intended purpose is scoped clearly. Regulator questions will be manageable.',
+    gold: 'Intended purpose is fully documented and validated. This is the state HTA and JCA reviewers reward.'
+  },
+  dataset: {
+    red: 'You cannot produce a dataset-diversity statement to a NICE Standard 4 or MHRA IDP reviewer today. This is now a first-pass gate.',
+    amber: 'You have partial dataset-diversity documentation. Expect a request for the missing metadata during review.',
+    green: 'You could produce a dataset-diversity statement now.',
+    gold: 'Your dataset representativeness is fully documented and SDoH-profiled. This is a competitive strength.'
+  },
+  subgroup: {
+    red: 'No pre-specified subgroup analysis, no lived-experience evidence. In JCA this loses scope-defining PICOs.',
+    amber: 'Some subgroup evidence exists but not across all clinically relevant subgroups. Expect specific challenges in the 100-day JCA window.',
+    green: 'Subgroup analysis is in place for the key endpoints. JCA-ready with some remediation.',
+    gold: 'Subgroup evidence, including lived-experience narrative, is submission-ready.'
+  },
+  usability: {
+    red: 'NHS DTAC and NICE ESF Standard 4 usability requirements are not evidenced. Expect deferral in procurement review.',
+    amber: 'Usability testing is documented but does not span literacy, language or digital-access dimensions.',
+    green: 'Usability meets DTAC baseline. Room to strengthen the equity dimensions.',
+    gold: 'Full usability and access evidence, defensible under DTAC and ESF Standard 4.'
+  },
+  pms: {
+    red: 'Your PMS is not aligned to UK PMS 2025 or MDR Annex XIV. Passive AE reporting alone is now insufficient.',
+    amber: 'PMCF plan exists but does not actively look for subgroup performance issues. Expect flag on next MHRA audit.',
+    green: 'Active PMS is in place. Some tightening needed for equity-specific audit trail.',
+    gold: 'Post-market equity monitoring is active, auditable, and MHRA-defensible.'
+  },
+  governance: {
+    red: 'No formal patient-input function. NIHR INCLUDE, JCA patient-input files and MHRA IDP all now expect this.',
+    amber: 'Ad-hoc patient input exists but is not repeatable or auditable. Grant and HTA reviewers will ask.',
+    green: 'A repeatable patient-input function is in place, though community-partner governance can be strengthened.',
+    gold: 'Independent, community-partnered governance with documented audit trail. This is the state everyone else is trying to reach.'
+  }
+};
+
+const REC = {
+  purpose:    { title: 'Patient Council as a Service',           short: 'Standing, auditable patient-input mechanism for medical affairs.', link: 'https://unwritten.health/solutions-patient-council' },
+  dataset:    { title: 'SaMD Population Performance Red-Team',   short: 'Independent stress-test against under-represented populations.',  link: 'https://unwritten.health/solutions-samd' },
+  subgroup:   { title: 'JCA-Ready Evidence Package',             short: 'PICO subgroup file for the 100-day JCA dossier window.',           link: 'https://unwritten.health/solutions-jca' },
+  usability:  { title: 'ESF/DTAC Evidence Pack',                 short: 'Closes accessibility, inclusion and diversity gaps for NHS procurement.', link: 'https://unwritten.health/solutions-esf-dtac' },
+  pms:        { title: 'PMCF Equity Gap Assessment',             short: 'Scored PMCF gap map aligned to UK PMS 2025 and MDR Annex XIV.',    link: 'https://unwritten.health/solutions-pmcf' },
+  governance: { title: 'NIHR PPI Package',                       short: 'Costed PPI partnership with community-partner MOUs in place.',     link: 'https://unwritten.health/solutions-nihr-ppi' }
+};
+
+const BAND_META = {
+  red: { title: 'High exposure', desc: 'Your evidence file has serious gaps in three or more of the six domains. Not survivable at first-pass under multiple frameworks.' },
+  amber: { title: 'Moderate exposure', desc: 'Your evidence file has known gaps in two or more domains. Fix them at the cheapest point, before submission, not after.' },
+  green: { title: 'Low exposure', desc: 'Your evidence file is largely defensible. A small number of targeted engagements will bring you to audit-ready.' },
+  gold: { title: 'Audit-ready', desc: 'Your evidence file is audit-ready across all six domains. This is the state HTA reviewers reward.' }
+};
+
+function bandFor(pct) {
+  if (pct < 34) return 'red';
+  if (pct < 67) return 'amber';
+  if (pct < 90) return 'green';
+  return 'gold';
+}
+
+function parseInput(raw) {
+  const out = { email: '', score: '', band: '', total: null, pct: null, answers: null, domains: null };
+  if (!raw || !raw.trim()) throw new Error('Paste the submission first.');
+
+  const emailM = raw.match(/Email:\s*([^\s\n]+)/i);
+  if (emailM) out.email = emailM[1].trim();
+
+  const scoreM = raw.match(/Score:\s*([^\n]+)/i);
+  if (scoreM) {
+    out.score = scoreM[1].trim();
+    const nm = scoreM[1].match(/(\d+)\s*\/\s*60/);
+    if (nm) out.total = parseInt(nm[1], 10);
+    const pm = scoreM[1].match(/\((\d+)%\)/);
+    if (pm) out.pct = parseInt(pm[1], 10);
+  }
+
+  const bandM = raw.match(/Band:\s*([A-Za-z]+)/i);
+  if (bandM) out.band = bandM[1].trim().toLowerCase();
+
+  const ansM = raw.match(/Answers:\s*(\[[^\]]+\])/i);
+  if (ansM) {
+    try { out.answers = JSON.parse(ansM[1]); } catch (e) { throw new Error('Answers array is malformed. Should look like [3,0,0,...].'); }
+  }
+
+  const domM = raw.match(/Domains:\s*(\{[\s\S]+?\})\s*(?:\n\n|Submitted|$)/i);
+  if (domM) {
+    try { out.domains = JSON.parse(domM[1]); } catch (e) { throw new Error('Domains JSON is malformed. Copy the full { ... } block from the email.'); }
+  }
+
+  if (!out.email) throw new Error('Could not find Email address in the pasted data.');
+  if (!out.domains) throw new Error('Could not find Domains JSON in the pasted data.');
+
+  if (!out.pct && out.total !== null) out.pct = Math.round((out.total / 60) * 100);
+  if (!out.band && out.pct !== null) out.band = bandFor(out.pct);
+  return out;
+}
+
+function renderReport(data) {
+  const nameEl = document.getElementById('clientName');
+  const orgEl = document.getElementById('clientOrg');
+  const name = (nameEl.value || '').trim();
+  const org = (orgEl.value || '').trim();
+  const greetTo = name ? name : (data.email.split('@')[0].split('.')[0].charAt(0).toUpperCase() + data.email.split('@')[0].split('.')[0].slice(1));
+  const forOrg = org ? ' at ' + org : '';
+
+  const bandInfo = BAND_META[data.band] || BAND_META.amber;
+  const today = new Date();
+  const dateStr = today.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+  // Build domain rows, sorted red -> amber -> green -> gold
+  const bandOrder = { red: 0, amber: 1, green: 2, gold: 3 };
+  const domainKeys = Object.keys(DOMAIN_META).sort(function (a, b) {
+    return (bandOrder[data.domains[a].band] || 9) - (bandOrder[data.domains[b].band] || 9);
+  });
+
+  const domainRows = domainKeys.map(function (k) {
+    const meta = DOMAIN_META[k];
+    const d = data.domains[k];
+    const b = d.band;
+    const expo = EXPOSURE[k][b] || '';
+    const fwHtml = meta.frameworks.map(function (f) { return '<span>' + f + '</span>'; }).join('');
+    return '<div class="rep-domain">' +
+      '<div class="name">' + meta.name + '</div>' +
+      '<div class="badge ' + b + '">' + b.toUpperCase() + ' · ' + d.pct + '% · ' + d.total + '/' + d.max + '</div>' +
+      '<div class="expo">' + expo + '</div>' +
+      '<div class="fw">' + fwHtml + '</div>' +
+    '</div>';
+  }).join('');
+
+  // Recommended engagements: only for red/amber domains, ordered by exposure
+  const openDomains = domainKeys.filter(function (k) { return data.domains[k].band === 'red' || data.domains[k].band === 'amber'; });
+  const recHtml = openDomains.map(function (k) {
+    const rec = REC[k];
+    const d = data.domains[k];
+    return '<div class="rep-rec">' +
+      '<div class="body">' +
+        '<h4>' + rec.title + '</h4>' +
+        '<p>' + rec.short + '</p>' +
+        '<span class="why">Closes: ' + DOMAIN_META[k].name + ' (' + d.band.toUpperCase() + ')</span>' +
+      '</div>' +
+      '<div class="link"><a href="' + rec.link + '">See page →</a></div>' +
+    '</div>';
+  }).join('');
+
+  const recSection = openDomains.length
+    ? '<h2>The engagements that close these gaps</h2>' +
+      '<p style="font-size:0.9rem;color:var(--charcoal-soft);margin-bottom:16px;">Ordered by the gap that costs you most to leave open. Fixed scope, fixed duration.</p>' +
+      recHtml
+    : '<h2>You have no open gaps</h2>' +
+      '<p style="font-size:0.94rem;color:var(--charcoal);line-height:1.7;">Your evidence file passes first-pass review across all six domains. If you would like an independent audit for board or investor sign-off, book a call.</p>';
+
+  const html =
+    '<div class="rep-head">' +
+      '<div class="brand"><img src="images/logo-horizontal.svg" alt="Unwritten Health" /></div>' +
+      '<h1>Your Regulatory Readiness Scorecard report</h1>' +
+      '<p style="font-size:1rem;color:var(--charcoal);line-height:1.65;">Prepared for <strong>' + greetTo + '</strong>' + forOrg + '. Built from your 20 answers, mapped to the specific regulatory clauses you are currently exposed under, and paired with the fixed-scope engagement that closes each gap.</p>' +
+      '<div class="meta">' +
+        '<span><strong>Prepared:</strong> ' + dateStr + '</span>' +
+        '<span><strong>By:</strong> Ashish Rishi, Unwritten Health</span>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="rep-verdict band-' + data.band + '">' +
+      '<div class="band">' + data.band.toUpperCase() + '</div>' +
+      '<div style="font-family:var(--font-head);font-size:1.3rem;margin-bottom:6px;">' + bandInfo.title + '</div>' +
+      '<div class="score">' + (data.total !== null ? data.total : '?') + '<small>/60' + (data.pct !== null ? ' · ' + data.pct + '%' : '') + '</small></div>' +
+      '<div class="desc">' + bandInfo.desc + '</div>' +
+    '</div>' +
+
+    '<h2>Your score, by domain</h2>' +
+    domainRows +
+
+    recSection +
+
+    '<div class="rep-cta">' +
+      '<h3>Next step</h3>' +
+      '<p>Reply to my email with a couple of times that work, or book a 20-minute call directly at <a href="https://unwritten.health/contact">unwritten.health/contact</a>. I will walk you through which engagement to sequence first based on your therapy area, submission timeline, and budget.</p>' +
+    '</div>' +
+
+    '<div class="rep-sig">' +
+      '<strong>Ashish Rishi</strong><br>' +
+      'Founder, <span class="brand-name">Unwritten Health</span><br>' +
+      '<a href="https://unwritten.health" style="color:var(--green-dark);text-decoration:underline;">unwritten.health</a>' +
+    '</div>';
+
+  document.getElementById('repBody').innerHTML = html;
+  document.getElementById('report').classList.add('visible');
+  document.getElementById('report').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function parseAndRender() {
+  const raw = document.getElementById('rawInput').value;
+  const msg = document.getElementById('parseMsg');
+  msg.className = 'admin-msg';
+  msg.textContent = '';
+  try {
+    const data = parseInput(raw);
+    renderReport(data);
+    msg.className = 'admin-msg ok';
+    msg.textContent = 'Parsed cleanly. Report rendered below.';
+  } catch (err) {
+    msg.className = 'admin-msg err';
+    msg.textContent = 'Could not parse: ' + err.message;
+    document.getElementById('report').classList.remove('visible');
+  }
+}
+
+function copyReport() {
+  const rep = document.getElementById('repBody');
+  if (!rep.innerHTML.trim()) return;
+  // Copy the rendered HTML so it can be pasted into a rich email (Gmail, Outlook)
+  const range = document.createRange();
+  range.selectNode(rep);
+  const sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+  try {
+    document.execCommand('copy');
+    flashActionMsg('HTML copied. Paste into your email compose window.');
+  } catch (e) {
+    flashActionMsg('Copy failed. Select the report manually and copy.');
+  }
+  sel.removeAllRanges();
+}
+
+function copyPlainText() {
+  const rep = document.getElementById('repBody');
+  if (!rep.innerHTML.trim()) return;
+  const text = rep.innerText;
+  navigator.clipboard.writeText(text).then(function () {
+    flashActionMsg('Plain text copied.');
+  }).catch(function () {
+    flashActionMsg('Copy failed. Select the report manually and copy.');
+  });
+}
+
+function flashActionMsg(text) {
+  const el = document.querySelector('.rep-actions .actions-label');
+  const orig = el.textContent;
+  el.textContent = text;
+  setTimeout(function () { el.textContent = orig; }, 2400);
+}
+
+function loadExample() {
+  document.getElementById('rawInput').value = `Email:
+ashish@unwritten.health
+
+Score:
+3/60 (5%)
+
+Band:
+RED
+
+Answers:
+[3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+
+Domains:
+{"purpose":{"total":3,"max":9,"pct":33,"band":"red"},"dataset":{"total":0,"max":12,"pct":0,"band":"red"},"subgroup":{"total":0,"max":12,"pct":0,"band":"red"},"usability":{"total":0,"max":9,"pct":0,"band":"red"},"pms":{"total":0,"max":9,"pct":0,"band":"red"},"governance":{"total":0,"max":9,"pct":0,"band":"red"}}
+
+Submitted At:
+2026-07-25T17:54:34.230Z`;
+  document.getElementById('clientName').value = '';
+  document.getElementById('clientOrg').value = '';
+  parseAndRender();
+}
+
+function clearAll() {
+  document.getElementById('rawInput').value = '';
+  document.getElementById('clientName').value = '';
+  document.getElementById('clientOrg').value = '';
+  document.getElementById('report').classList.remove('visible');
+  document.getElementById('parseMsg').className = 'admin-msg';
+  document.getElementById('parseMsg').textContent = '';
+}
+</script>
+</body>
+</html>

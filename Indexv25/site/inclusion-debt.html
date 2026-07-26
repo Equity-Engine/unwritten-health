@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/logo-mark.png" />
+  <link rel="apple-touch-icon" href="images/logo-mark.png" />
+  <link rel="shortcut icon" href="images/logo-mark.png" />
+  <title>Inclusion Debt | The Compounding Cost of Skipping Patient Experience Data | Unwritten Health</title>
+  <meta name="description" content="Inclusion debt is the compounding cost of designing clinical development without lived-experience input. Protocol amendments (£353k–£535k each), HTA queries, DTAC deferrals, JCA scope-defining PICO loss, MHRA post-market failures. How to pay it down before submission, not after." />
+  <meta name="keywords" content="inclusion debt, cost of protocol amendments, JCA PICO loss, HTA delay cost, health equity risk, clinical trial inclusion cost, prevention vs remediation clinical development" />
+  <meta property="og:title" content="Inclusion Debt | The Real Cost of Skipping Patient Experience Data | Unwritten Health" />
+  <meta property="og:description" content="Protocol amendments (£353k–£535k each), HTA queries, DTAC deferrals, PICO loss. How pharma, medtech and NIHR teams pay down inclusion debt before submission." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://unwritten.health/inclusion-debt" />
+  <meta property="og:site_name" content="Unwritten Health" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Inclusion Debt | Unwritten Health" />
+  <meta name="twitter:description" content="The compounding cost of designing clinical development without lived-experience input, and how to pay it down." />
+  <link rel="canonical" href="https://unwritten.health/inclusion-debt" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bentham&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+  <style>
+    .site-nav .nav-logo img, .footer-logo img { height: 28px; width: auto; display: block; }
+    .footer-logo img { filter: brightness(0) invert(1); opacity: 0.9; }
+
+    #id-hero { padding: 104px 0 40px; background:
+      radial-gradient(900px 500px at 88% 0%, rgba(91,129,112,0.14), transparent 70%),
+      var(--cream); }
+    #id-hero .eyebrow { color: var(--green-darker); }
+    #id-hero h1 { font-size: clamp(2.6rem, 5vw, 4rem); line-height: 1.05; letter-spacing: -0.015em; max-width: 900px; }
+    #id-hero h1 em { font-style: normal; color: var(--green-dark); }
+    .id-def { margin-top: 1.8rem; padding: 26px 30px; background: var(--white); border-left: 4px solid var(--green-dark); border-radius: 4px 14px 14px 4px; max-width: 820px; font-size: 1.06rem; color: var(--charcoal); line-height: 1.8; }
+    .id-def strong { color: var(--green-darker); font-weight: 700; }
+
+    #id-first { padding: 72px 0; background: var(--white); }
+    .id-container { max-width: 900px; margin: 0 auto; padding: 0 48px; }
+    .id-lede { font-family: var(--font-head); font-size: clamp(1.4rem, 2.4vw, 1.9rem); color: var(--green-darker); line-height: 1.4; margin-bottom: 2rem; }
+    #id-first p { font-size: 1.02rem; color: var(--charcoal); line-height: 1.85; margin-bottom: 1.2rem; }
+    #id-first p strong { color: var(--green-darker); font-weight: 700; }
+
+    #id-repayments { padding: 72px 0; background: var(--cream); }
+    #id-repayments h2 { max-width: 720px; margin-bottom: 2rem; font-size: clamp(1.8rem, 2.8vw, 2.4rem); }
+    #id-repayments .intro { max-width: 780px; font-size: 1rem; color: var(--charcoal-soft); line-height: 1.8; margin-bottom: 3rem; }
+    .id-repay-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .id-repay-card { background: var(--white); border-radius: 16px; padding: 26px 24px; border: 1px solid rgba(91,129,112,0.14); }
+    .id-repay-card .num { font-family: var(--font-head); font-size: 1.4rem; color: var(--green-dark); line-height: 1; margin-bottom: 12px; }
+    .id-repay-card h3 { font-family: var(--font-head); font-size: 1.1rem; color: var(--charcoal); margin-bottom: 8px; line-height: 1.3; }
+    .id-repay-card p { font-size: 0.9rem; color: var(--charcoal-soft); line-height: 1.7; }
+    .id-repay-card p strong { color: var(--charcoal); }
+
+    #id-counters { padding: 72px 0; background: var(--charcoal); color: var(--white); position: relative; overflow: hidden; }
+    #id-counters::before { content: ""; position: absolute; top: -30%; left: -10%; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(91,129,112,0.2), transparent 70%); }
+    #id-counters .container { position: relative; z-index: 1; }
+    #id-counters .section-label { color: #b8d0c6; }
+    #id-counters h2 { color: var(--white); max-width: 760px; margin-bottom: 2.4rem; font-size: clamp(1.8rem, 3vw, 2.4rem); }
+    .id-counter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .id-counter { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; padding: 30px 26px; }
+    .id-counter .who { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #b8d0c6; margin-bottom: 12px; }
+    .id-counter .n { font-family: var(--font-head); font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white); line-height: 1.1; margin-bottom: 10px; }
+    .id-counter p { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.65; margin-bottom: 10px; }
+    .id-counter .src { font-size: 0.76rem; color: rgba(255,255,255,0.42); font-style: italic; }
+
+    #id-fix { padding: 72px 0; background: var(--white); }
+    #id-fix h2 { max-width: 780px; margin-bottom: 1rem; }
+    #id-fix .intro { max-width: 780px; font-size: 1rem; color: var(--charcoal-soft); line-height: 1.8; margin-bottom: 3rem; }
+    .id-curve { max-width: 900px; margin: 0 auto; padding: 32px 36px; background: var(--cream); border-radius: 20px; border: 1px solid rgba(91,129,112,0.14); }
+    .id-curve-item { display: grid; grid-template-columns: 130px 1fr auto; gap: 24px; align-items: center; padding: 18px 0; border-bottom: 1px dashed rgba(55,55,59,0.14); }
+    .id-curve-item:last-child { border-bottom: none; }
+    .id-curve-phase { font-family: var(--font-head); font-size: 1.1rem; color: var(--green-darker); }
+    .id-curve-phase small { display: block; font-family: var(--font-body); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--charcoal-soft); margin-top: 2px; }
+    .id-curve-body { font-size: 0.94rem; color: var(--charcoal); line-height: 1.65; }
+    .id-curve-body strong { color: var(--green-darker); }
+    .id-curve-cost { text-align: right; font-family: var(--font-head); color: var(--green-dark); font-size: 1.05rem; white-space: nowrap; }
+    .id-curve-cost small { display: block; font-family: var(--font-body); font-size: 0.72rem; color: var(--charcoal-soft); font-weight: 500; margin-top: 2px; }
+
+    #id-vs { padding: 72px 0; background: var(--cream); }
+    #id-vs h2 { max-width: 780px; margin-bottom: 1rem; font-size: clamp(1.6rem, 2.6vw, 2.2rem); }
+    #id-vs .intro { max-width: 720px; margin-bottom: 2.4rem; color: var(--charcoal-soft); line-height: 1.75; }
+    .id-vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .id-vs-item { padding: 30px 28px; border-radius: 18px; background: var(--white); border: 1px solid rgba(91,129,112,0.14); }
+    .id-vs-item h3 { font-family: var(--font-head); font-size: 1.25rem; color: var(--charcoal); margin-bottom: 12px; }
+    .id-vs-item p { font-size: 0.94rem; color: var(--charcoal-soft); line-height: 1.7; margin-bottom: 8px; }
+
+    #id-cta { padding: 72px 0 96px; background: var(--charcoal); color: var(--white); text-align: center; }
+    #id-cta h2 { color: var(--white); font-size: clamp(2rem, 3.4vw, 2.6rem); margin-bottom: 1rem; letter-spacing: -0.01em; }
+    #id-cta p { color: rgba(255,255,255,0.75); font-size: 1.02rem; line-height: 1.75; margin-bottom: 2rem; max-width: 640px; margin-left: auto; margin-right: auto; }
+    #id-cta .row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    @media (max-width: 900px) {
+      #id-hero { padding: 64px 0 48; }
+      .id-container { padding: 0 24px; }
+      .id-repay-grid { grid-template-columns: 1fr; }
+      .id-counter-grid { grid-template-columns: 1fr; }
+      .id-vs-grid { grid-template-columns: 1fr; }
+      .id-curve-item { grid-template-columns: 1fr; row-gap: 6px; padding: 14px 0; }
+      .id-curve-cost { text-align: left; }
+      .id-curve { padding: 22px; }
+    }
+  </style>
+  <script defer src="analytics.js"></script>
+</head>
+<body class="has-sticky-cta">
+
+<nav class="site-nav" id="mainNav">
+  <a href="index.html" class="nav-logo"><img src="images/logo-horizontal.svg" alt="Unwritten Health" /></a>
+  <div class="nav-links">
+    <div class="has-dd"><a href="about.html">About</a>
+      <div class="nav-dropdown">
+        <a href="about.html">About us</a>
+        <a href="trust-ethics.html">Trust &amp; ethics</a>
+        <a href="press.html">Press</a>
+        <a href="contact.html">Contact us</a>
+      </div>
+    </div>
+    <a href="equity-engine.html">Platform</a>
+    <a href="inclusion-debt.html">Inclusion debt</a>
+    <div class="has-dd"><a href="solutions.html">Solutions</a>
+      <div class="nav-dropdown">
+        <span class="dd-lab">Pharma &amp; biotech</span>
+        <a href="solutions-jca.html">JCA-Ready Evidence</a>
+        <a href="solutions-patient-council.html">Patient Council as a Service</a>
+        <span class="dd-sep"></span>
+        <span class="dd-lab">Medtech &amp; digital health</span>
+        <a href="solutions-samd.html">SaMD Red-Team</a>
+        <a href="solutions-esf-dtac.html">ESF/DTAC Evidence Pack</a>
+        <a href="solutions-pmcf.html">PMCF Equity Gap</a>
+        <span class="dd-sep"></span>
+        <span class="dd-lab">Academic, NIHR &amp; non-profit</span>
+        <a href="solutions-nihr-ppi.html">NIHR PPI Package</a>
+      </div>
+    </div>
+    <div class="has-dd"><a href="case-studies.html">Resources</a>
+      <div class="nav-dropdown">
+        <a href="case-studies.html">Case studies</a>
+        <a href="blog.html">Blog</a>
+        <a href="resources.html">Resources hub</a>
+        <a href="toolkits.html">Toolkits (self-serve)</a>
+      </div>
+    </div>
+    <a href="scorecard.html">Scorecard</a>
+  </div>
+  <a href="scorecard.html" class="nav-cta">Take the Scorecard</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="about.html">About</a>
+  <a href="equity-engine.html">Platform</a>
+  <a href="solutions.html">Solutions</a>
+  <a href="case-studies.html">Case studies</a>
+  <a href="inclusion-debt.html">Inclusion debt</a>
+  <a href="trust-ethics.html">Trust &amp; ethics</a>
+  <a href="press.html">Press</a>
+  <a href="blog.html">Blog</a>
+  <a href="resources.html">Resources</a>
+  <a href="toolkits.html">Toolkits</a>
+  <a href="scorecard.html" class="cta">Take the Scorecard</a>
+  <a href="contact.html">Contact us</a>
+</div>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+<main id="main">
+
+<section id="id-hero">
+  <div class="container">
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Category term</div>
+    <h1>Inclusion debt. <em>The compounding cost of designing clinical development without lived-experience input.</em></h1>
+    <div class="id-def">
+      <strong>Definition.</strong> Inclusion debt is the compounding cost of designing clinical development without lived-experience input. Amendments, screen-fails, HTA queries, label limitations, DTAC deferrals, and post-market failures are all repayments of it. It behaves like technical debt: cheap to prevent, expensive to service, and worst when it is discovered late.
+    </div>
+  </div>
+</section>
+
+<section id="id-first">
+  <div class="id-container">
+    <p class="id-lede">Every phase of development that ships without adequate subgroup evidence adds cost and risk to the next.</p>
+    <p>Inclusion debt does not present as a moral problem. It presents as a <strong>cash-flow and timeline problem</strong>: an unexpected protocol amendment, a JCA PICO the file cannot answer, a subgroup performance question a notified body cannot let past, a Trust that will not procure without an accessibility statement, a post-market signal that surfaces two years after launch and forces a label restriction.</p>
+    <p>Each of those events looks, in the moment, like an operational hiccup. Together, over the lifetime of a programme, they are the interest payments on a debt taken out at protocol design.</p>
+    <p>The framing matters because it changes who owns the problem inside a sponsor. If inclusion is a moral obligation, it sits with the DE&amp;I officer, the medical affairs patient partnership lead, or the head of PPI. If inclusion debt is a cash-flow risk, it sits with the CFO, the head of regulatory affairs, the head of market access, and the programme lead. Those are the people who can authorise the fixed-scope engagements that pay the debt down early.</p>
+  </div>
+</section>
+
+<section id="id-repayments">
+  <div class="container">
+    <div class="section-label">The six ways inclusion debt gets repaid</div>
+    <h2>Every one of these is an interest payment on inclusion debt taken out earlier in the programme.</h2>
+    <p class="intro">Once you see the pattern, it is hard to unsee. These are not six different problems. They are six different presentations of the same problem, at six different points in the development timeline.</p>
+    <div class="id-repay-grid">
+      <div class="id-repay-card">
+        <div class="num">01</div>
+        <h3>Protocol amendments driven by recruitment failure</h3>
+        <p>The trial cannot enrol the population the protocol requires, so eligibility criteria are widened, or sites are added, or endpoints are softened. <strong>£353,000 to £535,000</strong> per major amendment. 3 to 6 months of delay per amendment.</p>
+      </div>
+      <div class="id-repay-card">
+        <div class="num">02</div>
+        <h3>Screen-fails in specific subgroups</h3>
+        <p>Recruited participants disproportionately fail screening in the very subgroups the protocol under-planned for. The sponsor pays for the screening in full and does not get the enrolment.</p>
+      </div>
+      <div class="id-repay-card">
+        <div class="num">03</div>
+        <h3>HTA queries that stop the clock</h3>
+        <p>EU JCA, NICE and G-BA reviewers now ask, explicitly, where the subgroup evidence is. A file that does not have it either loses PICOs or triggers extension requests. Every day of delay after regulatory approval costs a sponsor around <strong>$800,000</strong> in unrealised prescription-drug sales.</p>
+      </div>
+      <div class="id-repay-card">
+        <div class="num">04</div>
+        <h3>Label limitations</h3>
+        <p>Regulators approve the product but restrict the label to the population actually studied. The addressable market shrinks, sometimes materially, and every future expansion requires a new trial in the missing population.</p>
+      </div>
+      <div class="id-repay-card">
+        <div class="num">05</div>
+        <h3>NHS DTAC deferrals and NICE ESF deferrals</h3>
+        <p>Digital-health and SaMD files that cannot answer the inequality-consideration and dataset-diversity questions are deferred by NHS procurement or NICE reviewers. Deferral is not rejection, but it is a 3 to 12 month reset with no revenue.</p>
+      </div>
+      <div class="id-repay-card">
+        <div class="num">06</div>
+        <h3>Post-market failures</h3>
+        <p>Under UK PMS 2025 and EU MDR Annex XIV, manufacturers must now actively look for the subgroup issue their pivotal file did not catch. If the regulator finds it first, it becomes an enforcement matter, not a routine PMS finding.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="id-counters">
+  <div class="container">
+    <div class="section-label">The three counters buyers should watch</div>
+    <h2>Inclusion debt shows up on three different counters, depending on who you are.</h2>
+    <div class="id-counter-grid">
+      <div class="id-counter">
+        <div class="who">Pharma sponsors</div>
+        <div class="n">$800,000 a day</div>
+        <p>in unrealised prescription-drug sales for every day of HTA delay after regulatory approval. $24 million a month, $144 million for a six-month slip.</p>
+        <div class="src">Tufts CSDD Day-of-Delay Analysis, updated 2024.</div>
+      </div>
+      <div class="id-counter">
+        <div class="who">Medtech &amp; digital health</div>
+        <div class="n">£353k to £535k</div>
+        <p>the average cost of a single major protocol amendment driven by recruitment failure. Every one an inclusion-debt event caught downstream instead of upstream. Delays of 3 to 6 months follow.</p>
+        <div class="src">Tufts CSDD Impact Report, 2024.</div>
+      </div>
+      <div class="id-counter">
+        <div class="who">Public health &amp; NHS</div>
+        <div class="n">£4.8bn + £31bn</div>
+        <p>the annual cost of health inequality in England: £4.8bn in avoidable treatment and £31bn in lost productivity. The counter the NHS itself pays.</p>
+        <div class="src">British Medical Association, 2026.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="id-fix">
+  <div class="container">
+    <div class="section-label">The cost curve</div>
+    <h2>The earlier inclusion debt is paid down, the smaller the payment.</h2>
+    <p class="intro">The same intervention costs roughly one order of magnitude more at each subsequent stage of the development timeline. This is the single most important reason to move inclusion evidence upstream.</p>
+    <div class="id-curve">
+      <div class="id-curve-item">
+        <div class="id-curve-phase">Protocol design<small>Cheapest</small></div>
+        <div class="id-curve-body"><strong>Fix at protocol.</strong> Community-partner PPI, patient-council review, and lived-experience narrative before endpoints and eligibility are locked. Costed line-item, not blocker.</div>
+        <div class="id-curve-cost">Grant-aligned<small>NIHR PPI Package</small></div>
+      </div>
+      <div class="id-curve-item">
+        <div class="id-curve-phase">Pre-submission<small>Second cheapest</small></div>
+        <div class="id-curve-body"><strong>Fix before dossier lock.</strong> Subgroup analysis, PICO patient-input files, dataset-diversity statement produced ahead of the JCA or ESF window.</div>
+        <div class="id-curve-cost">Fixed scope<small>JCA-Ready Evidence Package</small></div>
+      </div>
+      <div class="id-curve-item">
+        <div class="id-curve-phase">Post-market<small>Expensive</small></div>
+        <div class="id-curve-body"><strong>Fix after approval.</strong> PMCF equity gap assessment against UK PMS 2025 and EU MDR Annex XIV. Structured remediation before the regulator's next audit.</div>
+        <div class="id-curve-cost">Fixed scope<small>PMCF Equity Gap Assessment</small></div>
+      </div>
+      <div class="id-curve-item">
+        <div class="id-curve-phase">Enforcement<small>Most expensive</small></div>
+        <div class="id-curve-body"><strong>Fix under external pressure.</strong> Regulator has found the subgroup issue first. Now the fix is not scoped, it is imposed, and the timeline is not yours.</div>
+        <div class="id-curve-cost">Variable<small>Legal + reputational + sales</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="id-vs">
+  <div class="container">
+    <div class="section-label">Category framing</div>
+    <h2>Inclusion debt is not the same as technical debt, but it behaves like it.</h2>
+    <p class="intro">The mental model is transferable. If you have worked with technical debt in a software organisation, you already understand inclusion debt in a clinical-development organisation.</p>
+    <div class="id-vs-grid">
+      <div class="id-vs-item">
+        <h3>Technical debt</h3>
+        <p>Every shortcut in code, every skipped test, every "we will refactor this later", accrues. Interest is paid in slower feature velocity, more bugs in production, and eventually a rewrite.</p>
+        <p>Fix at design time: cheap. Fix at production: expensive. Fix at customer complaint: most expensive.</p>
+      </div>
+      <div class="id-vs-item">
+        <h3>Inclusion debt</h3>
+        <p>Every population not consulted, every subgroup not analysed, every "we will address this in Phase III", accrues. Interest is paid in protocol amendments, HTA queries, DTAC deferrals, and post-market signals.</p>
+        <p>Fix at protocol design: cheap. Fix at HTA: expensive. Fix at MHRA enforcement: most expensive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="id-magnets" style="padding: 64px 0; background: var(--cream);">
+  <div class="container">
+    <div class="section-label" style="text-align:center;">Read further</div>
+    <h2 style="text-align:center; max-width: 720px; margin: 0 auto 2.4rem;">Free deep-dives on inclusion debt in specific frameworks.</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 1080px; margin: 0 auto;">
+
+      <a href="https://download.unwritten.health/uk-inclusion-diversity-plan-guide" target="_blank" rel="noopener" style="display:block; padding: 28px 26px; background: var(--white); border: 1px solid rgba(91,129,112,0.14); border-radius: 18px; transition: all 0.2s;">
+        <div style="display:inline-block; padding: 4px 12px; border-radius: 100px; background: var(--green-pale); color: var(--green-darker); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px;">Guide · UK</div>
+        <h3 style="font-family: var(--font-head); font-size: 1.2rem; color: var(--charcoal); margin-bottom: 10px; line-height: 1.3;">UK Inclusion &amp; Diversity Plan Guide</h3>
+        <p style="font-size: 0.9rem; color: var(--charcoal-soft); line-height: 1.65; margin-bottom: 14px;">What the MHRA Inclusion and Diversity Plan asks for in practice, section by section, with worked examples for how to answer each requirement.</p>
+        <span style="font-size: 0.84rem; color: var(--green-dark); font-weight: 700;">Download the guide →</span>
+      </a>
+
+      <a href="https://download.unwritten.health/germany-patient-evidence-guide-unwritten-health" target="_blank" rel="noopener" style="display:block; padding: 28px 26px; background: var(--white); border: 1px solid rgba(91,129,112,0.14); border-radius: 18px; transition: all 0.2s;">
+        <div style="display:inline-block; padding: 4px 12px; border-radius: 100px; background: var(--green-pale); color: var(--green-darker); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px;">Guide · Germany</div>
+        <h3 style="font-family: var(--font-head); font-size: 1.2rem; color: var(--charcoal); margin-bottom: 10px; line-height: 1.3;">Germany Patient Evidence Guide</h3>
+        <p style="font-size: 0.9rem; color: var(--charcoal-soft); line-height: 1.65; margin-bottom: 14px;">Patient-evidence expectations for G-BA reappraisals and the German JCA pathway, with the specific PICO patient-input dimensions German assessors ask about.</p>
+        <span style="font-size: 0.84rem; color: var(--green-dark); font-weight: 700;">Download the guide →</span>
+      </a>
+
+      <a href="https://thefrequencyofexclusion.netlify.app/" target="_blank" rel="noopener" style="display:block; padding: 28px 26px; background: var(--white); border: 1px solid rgba(91,129,112,0.14); border-radius: 18px; transition: all 0.2s;">
+        <div style="display:inline-block; padding: 4px 12px; border-radius: 100px; background: var(--green-pale); color: var(--green-darker); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px;">Report · Panel insights</div>
+        <h3 style="font-family: var(--font-head); font-size: 1.2rem; color: var(--charcoal); margin-bottom: 10px; line-height: 1.3;">The Frequency of Exclusion</h3>
+        <p style="font-size: 0.9rem; color: var(--charcoal-soft); line-height: 1.65; margin-bottom: 14px;">Insights direct from our UK panel on where healthcare exclusion actually shows up, and how often. An interactive report built from Equity Engine data.</p>
+        <span style="font-size: 0.84rem; color: var(--green-dark); font-weight: 700;">Explore the report →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section id="id-cta">
+  <div class="container">
+    <div class="eyebrow" style="justify-content:center;color:#b8d0c6;"><span class="eyebrow-dot"></span>Pay it down at the cheapest point</div>
+    <h2>Take the Regulatory Readiness Scorecard.</h2>
+    <p>Twenty questions, six domains. A plain-English diagnosis of the inclusion debt your programme is carrying, and the specific fixed-scope engagement that pays it down at the cheapest point.</p>
+    <div class="row">
+      <a href="scorecard.html" class="btn btn-white">Take the Scorecard →</a>
+      <a href="solutions.html" class="btn btn-outline-white">Browse the six engagements</a>
+    </div>
+  </div>
+</section>
+
+<div class="sticky-mobile-cta"><a href="scorecard.html">Take the Scorecard →</a></div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="images/logo-horizontal.svg" alt="Unwritten Health" /></div>
+        <div class="footer-tagline">Regulated healthcare's patient experience data company</div>
+        <p class="footer-desc">The UK patient experience data platform for regulated healthcare.</p>
+      </div>
+      <div class="footer-col"><div class="footer-col-title">Platform</div><ul><li><a href="equity-engine.html">Equity Engine</a></li><li><a href="scorecard.html">Scorecard</a></li><li><a href="inclusion-debt.html">Inclusion debt</a></li><li><a href="trust-ethics.html">Trust &amp; ethics</a></li><li><a href="case-studies.html">Case studies</a></li></ul></div>
+      <div class="footer-col"><div class="footer-col-title">Solutions</div><ul><li><a href="solutions-jca.html">JCA-Ready Evidence</a></li><li><a href="solutions-pmcf.html">PMCF Equity Gap</a></li><li><a href="solutions-esf-dtac.html">ESF/DTAC Pack</a></li><li><a href="solutions-samd.html">SaMD Red-Team</a></li><li><a href="solutions-patient-council.html">Patient Council</a></li><li><a href="solutions-nihr-ppi.html">NIHR PPI</a></li></ul></div>
+      <div class="footer-col"><div class="footer-col-title">Company</div><ul><li><a href="about.html">About us</a></li><li><a href="press.html">Press</a></li><li><a href="blog.html">Blog</a></li><li><a href="resources.html">Resources</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Unwritten Health. Company no. 16561594.</div>
+      <div class="footer-links-bottom"><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms of use</a><a href="refund-policy.html">Refund policy</a><a href="accessibility.html">Accessibility</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>function toggleMenu(){var m=document.getElementById("mobileMenu");if(m)m.classList.toggle("open");}document.body.classList.add("js-ready");</script>
+</body>
+</html>

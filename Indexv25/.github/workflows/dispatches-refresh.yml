@@ -1,0 +1,46 @@
+name: Refresh Unwritten Dispatches on blog
+
+on:
+  # Every Monday at 10:00 UTC (11:00 UK during BST, 10:00 during GMT)
+  schedule:
+    - cron: '0 10 * * 1'
+  # Manual trigger: GitHub → Actions → this workflow → "Run workflow" button
+  workflow_dispatch:
+
+# Grant write permission so the bot can commit back to the repo
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          # Fetch enough history to allow a push back
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run refresh script
+        run: node scripts/refresh-dispatches.mjs
+        env:
+          # Override the feed URL here if it ever changes
+          # FEED_URL: https://dispatches.unwritten.health/feed
+          MAX_POSTS: '6'
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name  "unwritten-dispatches-bot"
+          git config user.email "bot@unwritten.health"
+          if [[ -z $(git status --porcelain) ]]; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git add site/blog.html
+          git commit -m "Refresh Unwritten Dispatches ($(date -u +'%Y-%m-%d'))"
+          git push

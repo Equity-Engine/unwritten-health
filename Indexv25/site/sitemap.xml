@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://unwritten.health/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://unwritten.health/equity-engine</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/scorecard</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/solutions</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/solutions-jca</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/solutions-pmcf</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/solutions-esf-dtac</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/solutions-samd</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/solutions-patient-council</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/solutions-nihr-ppi</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/inclusion-debt</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/regulatory-alignment</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/about</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/trust-ethics</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/case-studies</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/case-study-phase-ii-biotech</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/toolkits</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/resources</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://unwritten.health/blog</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://unwritten.health/blog-1-inclusion-infrastructure</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/blog-2-lived-experience-data</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/blog-3-portfolio-inclusion</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/blog-4-mhra-2026-regulatory-revolution</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/blog-5-frequency-of-exclusion</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/press</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/press-equity-engine-mvp-2</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/equity-engine-mvp-2-feature-catalog</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://unwritten.health/contact</loc><priority>0.7</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://unwritten.health/privacy</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://unwritten.health/terms</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://unwritten.health/refund-policy</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://unwritten.health/accessibility</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
+</urlset>

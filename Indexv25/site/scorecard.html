@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/logo-mark.png" />
+  <link rel="apple-touch-icon" href="images/logo-mark.png" />
+  <link rel="shortcut icon" href="images/logo-mark.png" />
+  <title>Regulatory Readiness Scorecard | Free 15-Minute Evidence Assessment for JCA, NICE ESF, DTAC, MHRA IDP | Unwritten Health</title>
+  <meta name="description" content="Free 15-minute self-assessment across six domains. Tells you which regulatory clauses your evidence file is exposed under (JCA, NICE ESF Std 4, NHS DTAC, MHRA IDP, EU MDR PMCF, UK PMS 2025, NIHR INCLUDE) and the specific engagement that closes each gap." />
+  <meta name="keywords" content="regulatory readiness scorecard, evidence file assessment, JCA readiness, NICE ESF readiness, NHS DTAC readiness, MHRA IDP compliance, PMCF gap analysis, patient input assessment" />
+  <meta property="og:title" content="Regulatory Readiness Scorecard | Free 15-Minute Evidence Assessment | Unwritten Health" />
+  <meta property="og:description" content="20 questions, 6 domains, a red/amber/green/gold score and named regulatory exposure across JCA, NICE ESF, DTAC, MHRA IDP, PMCF and NIHR INCLUDE. No sales call unless you ask." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://unwritten.health/scorecard" />
+  <meta property="og:site_name" content="Unwritten Health" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Regulatory Readiness Scorecard | Unwritten Health" />
+  <meta name="twitter:description" content="Free 15-minute assessment. 20 questions, 6 domains, named regulatory exposure and the fixed-scope engagement that closes each gap." />
+  <link rel="canonical" href="https://unwritten.health/scorecard" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bentham&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+  <style>
+    body { background: linear-gradient(180deg, var(--cream) 0%, #f2ede4 100%); min-height: 100vh; }
+    .sc-shell { max-width: 940px; margin: 0 auto; padding: 128px 32px 80px; }
+
+    .sc-intro { padding: 20px 0; }
+    .sc-intro .eyebrow { justify-content: flex-start; }
+    .sc-intro h1 { font-size: clamp(2.2rem, 4vw, 3.4rem); line-height: 1.1; margin-bottom: 1.4rem; letter-spacing: -0.01em; }
+    .sc-intro h1 em { font-style: normal; color: var(--green-dark); }
+    .sc-intro .lead { font-size: 1.1rem; color: var(--charcoal-soft); line-height: 1.75; margin-bottom: 2rem; max-width: 720px; }
+    .sc-intro .lead strong { color: var(--charcoal); font-weight: 600; }
+    .sc-what { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 3rem 0; }
+    .sc-what-card { padding: 28px 26px; border-radius: 18px; background: var(--white); border: 1px solid rgba(91,129,112,0.14); }
+    .sc-what-card h3 { font-family: var(--font-head); font-size: 1.2rem; color: var(--green-darker); margin-bottom: 12px; line-height: 1.3; }
+    .sc-what-card p { font-size: 0.94rem; color: var(--charcoal-soft); line-height: 1.7; }
+    .sc-domains-preview { margin: 2rem 0; padding: 24px 28px; background: var(--green-pale); border-radius: 16px; }
+    .sc-domains-preview strong { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green-darker); margin-bottom: 12px; }
+    .sc-domains-preview .list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .sc-domains-preview .list span { padding: 6px 14px; border-radius: 100px; background: rgba(255,255,255,0.6); font-size: 0.84rem; font-weight: 600; color: var(--green-darker); }
+    .sc-start-btn { display: inline-flex; align-items: center; gap: 10px; padding: 18px 36px; border-radius: 100px; background: var(--green-dark); color: var(--white); font-size: 1rem; font-weight: 700; letter-spacing: 0.03em; border: none; cursor: pointer; transition: all 0.3s; }
+    .sc-start-btn:hover { background: var(--green-darker); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(63,97,82,0.35); }
+    .sc-intro-note { margin-top: 1rem; font-size: 0.86rem; color: var(--charcoal-soft); }
+    .sc-resume { margin-top: 1rem; font-size: 0.88rem; }
+    .sc-resume a { color: var(--green-dark); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* QUESTIONS VIEW */
+    .sc-quiz { display: none; }
+    .sc-quiz.active { display: block; }
+    .sc-progress-wrap { position: sticky; top: 72px; background: var(--cream); padding: 16px 0 20px; z-index: 10; margin-bottom: 32px; }
+    .sc-progress-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--charcoal-soft); margin-bottom: 10px; }
+    .sc-progress-meta strong { color: var(--charcoal); font-weight: 700; }
+    .sc-progress-bar { height: 6px; background: rgba(91,129,112,0.15); border-radius: 100px; overflow: hidden; }
+    .sc-progress-fill { height: 100%; background: linear-gradient(90deg, var(--green) 0%, var(--green-dark) 100%); border-radius: 100px; transition: width 0.4s var(--ease); width: 0%; }
+    .sc-domain-label { display: inline-block; padding: 4px 12px; border-radius: 100px; background: var(--green-pale); color: var(--green-darker); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px; }
+    .sc-q-card { background: var(--white); border-radius: 22px; padding: 44px 40px; border: 1px solid rgba(91,129,112,0.14); box-shadow: 0 4px 24px rgba(63,97,82,0.06); }
+    .sc-q-text { font-family: var(--font-head); font-size: clamp(1.4rem, 2.4vw, 1.8rem); color: var(--charcoal); line-height: 1.35; margin-bottom: 12px; }
+    .sc-q-hint { font-size: 0.9rem; color: var(--charcoal-soft); line-height: 1.7; margin-bottom: 28px; font-style: italic; }
+    .sc-options { display: flex; flex-direction: column; gap: 12px; }
+    .sc-option { display: flex; align-items: flex-start; gap: 14px; padding: 18px 22px; border-radius: 14px; background: var(--cream); border: 2px solid transparent; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); font-size: 0.98rem; color: var(--charcoal); text-align: left; width: 100%; }
+    .sc-option:hover { background: var(--green-pale); border-color: rgba(91,129,112,0.3); }
+    .sc-option.selected { background: var(--green-pale); border-color: var(--green-dark); }
+    .sc-option-dot { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgba(55,55,59,0.3); background: var(--white); transition: all 0.2s; margin-top: 1px; position: relative; }
+    .sc-option.selected .sc-option-dot { border-color: var(--green-dark); background: var(--green-dark); }
+    .sc-option.selected .sc-option-dot::after { content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 8px; height: 8px; border-radius: 50%; background: var(--white); }
+    .sc-option-text { flex: 1; line-height: 1.5; }
+    .sc-option-text strong { display: block; color: var(--charcoal); font-weight: 700; margin-bottom: 2px; font-size: 0.96rem; }
+    .sc-option-text .desc { font-size: 0.86rem; color: var(--charcoal-soft); font-weight: 400; }
+    .sc-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; }
+    .sc-btn { padding: 12px 24px; border-radius: 100px; font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; cursor: pointer; border: none; transition: all 0.2s; }
+    .sc-btn-prev { background: transparent; color: var(--charcoal-soft); border: 1.5px solid rgba(55,55,59,0.2); }
+    .sc-btn-prev:hover:not(:disabled) { background: var(--charcoal); color: var(--white); border-color: var(--charcoal); }
+    .sc-btn-prev:disabled { opacity: 0.4; cursor: not-allowed; }
+    .sc-btn-next { background: var(--green-dark); color: var(--white); padding: 14px 32px; font-weight: 700; }
+    .sc-btn-next:hover:not(:disabled) { background: var(--green-darker); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(63,97,82,0.25); }
+    .sc-btn-next:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+    .sc-save-hint { text-align: center; margin-top: 20px; font-size: 0.82rem; color: var(--charcoal-soft); }
+
+    /* RESULTS VIEW */
+    .sc-results { display: none; }
+    .sc-results.active { display: block; }
+    .sc-verdict { text-align: center; padding: 48px 32px; border-radius: 26px; margin-bottom: 40px; position: relative; overflow: hidden; }
+    .sc-verdict::before { content: ""; position: absolute; top: -100px; right: -100px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.14), transparent 70%); }
+    .sc-verdict > * { position: relative; z-index: 1; }
+    .sc-verdict-band { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; border-radius: 100px; background: rgba(255,255,255,0.18); color: var(--white); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 20px; }
+    .sc-verdict-band-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--white); }
+    .sc-verdict h2 { font-family: var(--font-head); color: var(--white); font-size: clamp(2rem, 3.6vw, 3rem); line-height: 1.15; margin-bottom: 1rem; letter-spacing: -0.01em; }
+    .sc-verdict p { color: rgba(255,255,255,0.85); font-size: 1.02rem; line-height: 1.75; max-width: 620px; margin: 0 auto; }
+    .sc-verdict-score { display: inline-block; font-family: var(--font-head); font-size: 4rem; color: var(--white); line-height: 1; margin: 20px 0 8px; }
+    .sc-verdict-score small { font-size: 1.4rem; opacity: 0.7; }
+    /* Band colors */
+    .sc-verdict.band-red { background: linear-gradient(135deg, #7a2418 0%, var(--red) 100%); }
+    .sc-verdict.band-amber { background: linear-gradient(135deg, #8a4d0a 0%, var(--amber) 100%); }
+    .sc-verdict.band-green { background: linear-gradient(135deg, var(--green-darker) 0%, var(--green-dark) 100%); }
+    .sc-verdict.band-gold { background: linear-gradient(135deg, #7a5f22 0%, var(--gold) 100%); }
+
+    /* Per-domain grid */
+    .sc-domains-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
+    .sc-domain-row { background: var(--white); border-radius: 16px; padding: 22px 24px; border: 1px solid rgba(91,129,112,0.14); }
+    .sc-domain-row .head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .sc-domain-row .head h4 { font-family: var(--font-body); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--charcoal); }
+    .sc-domain-badge { padding: 3px 10px; border-radius: 100px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+    .sc-domain-badge.red { background: rgba(160,44,26,0.14); color: var(--red); }
+    .sc-domain-badge.amber { background: rgba(183,121,31,0.14); color: var(--amber); }
+    .sc-domain-badge.green { background: rgba(63,97,82,0.14); color: var(--green-darker); }
+    .sc-domain-badge.gold { background: rgba(176,138,60,0.16); color: var(--gold); }
+    .sc-domain-bar { height: 5px; background: rgba(55,55,59,0.08); border-radius: 100px; overflow: hidden; margin-bottom: 10px; }
+    .sc-domain-bar-fill { height: 100%; border-radius: 100px; transition: width 0.6s var(--ease); }
+    .sc-domain-bar-fill.red { background: var(--red); }
+    .sc-domain-bar-fill.amber { background: var(--amber); }
+    .sc-domain-bar-fill.green { background: var(--green-dark); }
+    .sc-domain-bar-fill.gold { background: var(--gold); }
+    .sc-domain-row p { font-size: 0.86rem; color: var(--charcoal-soft); line-height: 1.6; margin-top: 8px; }
+    .sc-domain-row p strong { color: var(--charcoal); }
+    .sc-frameworks { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px; }
+    .sc-fw-chip { padding: 2px 8px; border-radius: 4px; background: rgba(63,97,82,0.09); color: var(--green-darker); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.02em; }
+
+    /* Exposure section */
+    .sc-exposure { background: var(--charcoal); color: var(--white); border-radius: 22px; padding: 40px; margin-bottom: 40px; }
+    .sc-exposure h3 { font-family: var(--font-head); color: var(--white); font-size: 1.6rem; margin-bottom: 20px; }
+    .sc-exposure-list li { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.96rem; line-height: 1.7; color: rgba(255,255,255,0.85); }
+    .sc-exposure-list li:last-child { border-bottom: none; }
+    .sc-exposure-list li strong { color: var(--white); font-weight: 700; }
+    .sc-exposure-empty { color: rgba(255,255,255,0.7); font-style: italic; }
+
+    /* Recommendations */
+    .sc-recs { margin-bottom: 40px; }
+    .sc-recs h3 { font-family: var(--font-head); font-size: 1.8rem; color: var(--charcoal); margin-bottom: 8px; }
+    .sc-recs > p { font-size: 0.98rem; color: var(--charcoal-soft); margin-bottom: 24px; }
+    .sc-rec-card { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; background: var(--white); border-radius: 18px; padding: 26px 28px; border: 1px solid rgba(91,129,112,0.14); margin-bottom: 14px; }
+    .sc-rec-card .body h4 { font-family: var(--font-head); font-size: 1.15rem; color: var(--charcoal); margin-bottom: 6px; }
+    .sc-rec-card .body p { font-size: 0.9rem; color: var(--charcoal-soft); line-height: 1.6; }
+    .sc-rec-card .body .why { display: block; margin-top: 6px; font-size: 0.8rem; color: var(--green-dark); font-weight: 600; }
+    .sc-rec-card .price { text-align: right; }
+    .sc-rec-card .price .amount { display: block; font-family: var(--font-head); font-size: 1.4rem; color: var(--green-dark); line-height: 1; }
+    .sc-rec-card .price a { display: inline-block; margin-top: 10px; padding: 8px 16px; border-radius: 100px; background: var(--charcoal); color: var(--white); font-size: 0.78rem; font-weight: 700; }
+    .sc-rec-card .price a:hover { background: var(--green-darker); }
+
+    /* Email capture */
+    .sc-email { background: var(--green-pale); border-radius: 22px; padding: 40px; text-align: center; margin-bottom: 40px; }
+    .sc-email h3 { font-family: var(--font-head); font-size: 1.6rem; color: var(--green-darker); margin-bottom: 10px; }
+    .sc-email > p { font-size: 0.96rem; color: var(--charcoal); line-height: 1.7; margin-bottom: 24px; max-width: 540px; margin-left: auto; margin-right: auto; }
+    .sc-email-form { display: flex; gap: 10px; max-width: 520px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+    .sc-email-form input { flex: 1; min-width: 220px; padding: 14px 18px; border-radius: 100px; border: 1.5px solid rgba(55,55,59,0.15); background: var(--white); font-family: var(--font-body); font-size: 0.94rem; color: var(--charcoal); }
+    .sc-email-form input:focus { outline: none; border-color: var(--green-dark); }
+    .sc-email-form button { padding: 14px 26px; border-radius: 100px; background: var(--green-dark); color: var(--white); font-family: var(--font-body); font-weight: 700; font-size: 0.9rem; border: none; cursor: pointer; transition: all 0.2s; }
+    .sc-email-form button:hover { background: var(--green-darker); }
+    .sc-email-note { display: block; margin-top: 14px; font-size: 0.8rem; color: var(--charcoal-soft); }
+    .sc-email-success { display: none; padding: 18px 22px; background: var(--white); border-radius: 12px; color: var(--green-darker); font-weight: 600; font-size: 0.94rem; margin-top: 16px; }
+    .sc-email.done .sc-email-form { display: none; }
+    .sc-email.done .sc-email-note { display: none; }
+    .sc-email.done .sc-email-success { display: block; }
+    .sc-email.error .sc-email-error { display: block !important; }
+    .sc-email-form button:disabled { opacity: 0.6; cursor: wait; }
+
+    /* Actions */
+    .sc-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 32px; }
+    .sc-actions .btn { text-decoration: none; }
+    .sc-actions .btn-outline { color: var(--charcoal); }
+
+    @media (max-width: 700px) {
+      .sc-shell { padding: 96px 20px 60px; }
+      .sc-what { grid-template-columns: 1fr; }
+      .sc-domains-grid { grid-template-columns: 1fr; }
+      .sc-q-card { padding: 28px 22px; border-radius: 18px; }
+      .sc-rec-card { grid-template-columns: 1fr; gap: 14px; }
+      .sc-rec-card .price { text-align: left; }
+    }
+  </style>
+  <script defer src="analytics.js"></script>
+</head>
+<body>
+
+<!-- Netlify Forms detection: the real form is inside the results view (initially hidden), so Netlify's build bot needs this static copy to register the form's field names. Not user-visible. Positioned off-screen instead of using the `hidden` attribute (Netlify's crawler skips `hidden` elements). -->
+<div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+  <form name="scorecard-report" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="scorecard-report" />
+    <input type="text" name="bot-field" />
+    <input type="email" name="email" />
+    <input type="text" name="score" />
+    <input type="text" name="band" />
+    <input type="text" name="answers" />
+    <input type="text" name="domains" />
+    <input type="text" name="submitted_at" />
+  </form>
+</div>
+
+
+<nav class="site-nav" id="mainNav">
+  <a href="index.html" class="nav-logo" aria-label="Unwritten Health home"><img src="images/logo-horizontal.svg" alt="Unwritten Health" style="height:28px;width:auto;display:block;" /></a>
+  <div class="nav-links">
+    <div class="has-dd"><a href="about.html">About</a>
+      <div class="nav-dropdown">
+        <a href="about.html">About us</a>
+        <a href="trust-ethics.html">Trust &amp; ethics</a>
+        <a href="press.html">Press</a>
+        <a href="contact.html">Contact us</a>
+      </div>
+    </div>
+    <a href="equity-engine.html">Platform</a>
+    <a href="inclusion-debt.html">Inclusion debt</a>
+    <div class="has-dd"><a href="solutions.html">Solutions</a>
+      <div class="nav-dropdown">
+        <span class="dd-lab">Pharma &amp; biotech</span>
+        <a href="solutions-jca.html">JCA-Ready Evidence</a>
+        <a href="solutions-patient-council.html">Patient Council as a Service</a>
+        <span class="dd-sep"></span>
+        <span class="dd-lab">Medtech &amp; digital health</span>
+        <a href="solutions-samd.html">SaMD Red-Team</a>
+        <a href="solutions-esf-dtac.html">ESF/DTAC Evidence Pack</a>
+        <a href="solutions-pmcf.html">PMCF Equity Gap</a>
+        <span class="dd-sep"></span>
+        <span class="dd-lab">Academic, NIHR &amp; non-profit</span>
+        <a href="solutions-nihr-ppi.html">NIHR PPI Package</a>
+      </div>
+    </div>
+    <div class="has-dd"><a href="case-studies.html">Resources</a>
+      <div class="nav-dropdown">
+        <a href="case-studies.html">Case studies</a>
+        <a href="regulatory-alignment.html">Regulatory alignment</a>
+        <a href="blog.html">Blog</a>
+        <a href="resources.html">Resources hub</a>
+        <a href="toolkits.html">Toolkits (self-serve)</a>
+      </div>
+    </div>
+    <a href="scorecard.html">Scorecard</a>
+  </div>
+  <a href="scorecard.html" class="nav-cta">Take the Scorecard</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<script>function toggleMenu(){var m=document.getElementById("mobileMenu");if(m)m.classList.toggle("open");}</script>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+<main id="main">
+
+<div class="sc-shell">
+
+  <!-- INTRO VIEW -->
+  <div class="sc-intro" id="scIntro">
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Regulatory Readiness Scorecard</div>
+    <h1>How exposed is your evidence file? <em>Find out in 15 minutes.</em></h1>
+    <p class="lead">
+      Twenty questions, six domains, one score. The Regulatory Readiness Scorecard tells you which regulatory clauses you are exposed under and the <strong>fixed-price engagement</strong> that closes each gap. No sales call unless you ask for one.
+    </p>
+    <div class="sc-what">
+      <div class="sc-what-card">
+        <h3>What you answer</h3>
+        <p>20 short questions across six domains, one at a time. Multiple choice, 4 options each, no free text. Answers save to your browser so you can leave and come back.</p>
+      </div>
+      <div class="sc-what-card">
+        <h3>What you get</h3>
+        <p>A red / amber / green / gold score, a per-domain breakdown showing your exposure under JCA, ESF, DTAC, PMS and INCLUDE, and the specific fixed-price engagement that closes each gap you carry.</p>
+      </div>
+    </div>
+    <div class="sc-domains-preview">
+      <strong>The six domains</strong>
+      <div class="list">
+        <span>1. Intended purpose</span>
+        <span>2. Dataset representativeness</span>
+        <span>3. Subgroup evidence</span>
+        <span>4. Usability &amp; access</span>
+        <span>5. Post-market monitoring</span>
+        <span>6. Governance</span>
+      </div>
+    </div>
+    <button class="sc-start-btn" onclick="startScorecard()">Start the Scorecard →</button>
+    <div class="sc-intro-note">Free. No login. Answers stored in your browser only until you choose to share them.</div>
+    <div class="sc-resume" id="scResume" style="display:none;">
+      You have a Scorecard in progress. <a href="#" onclick="resumeScorecard();return false;">Resume where you left off →</a>
+      &nbsp;·&nbsp; <a href="#" onclick="clearScorecard();return false;">Start over</a>
+    </div>
+  </div>
+
+  <!-- QUIZ VIEW -->
+  <div class="sc-quiz" id="scQuiz">
+    <div class="sc-progress-wrap">
+      <div class="sc-progress-meta">
+        <div><strong id="scStep">Question 1 of 20</strong></div>
+        <div id="scDomainMeta">Domain 1 of 6, Intended purpose</div>
+      </div>
+      <div class="sc-progress-bar"><div class="sc-progress-fill" id="scProgressFill"></div></div>
+    </div>
+    <div class="sc-q-card">
+      <span class="sc-domain-label" id="scDomainLabel">Intended purpose</span>
+      <div class="sc-q-text" id="scQText"></div>
+      <div class="sc-q-hint" id="scQHint"></div>
+      <div class="sc-options" id="scOptions"></div>
+    </div>
+    <div class="sc-nav">
+      <button class="sc-btn sc-btn-prev" id="scBtnPrev" onclick="prevQuestion()">← Previous</button>
+      <button class="sc-btn sc-btn-next" id="scBtnNext" onclick="nextQuestion()" disabled>Next →</button>
+    </div>
+    <div class="sc-save-hint">Your answers save automatically. Close the tab and come back any time.</div>
+  </div>
+
+  <!-- RESULTS VIEW -->
+  <div class="sc-results" id="scResults">
+    <div class="sc-verdict" id="scVerdict">
+      <div class="sc-verdict-band"><span class="sc-verdict-band-dot"></span><span id="scBandLabel">Amber</span></div>
+      <h2 id="scVerdictTitle">Moderate exposure</h2>
+      <div class="sc-verdict-score"><span id="scScoreNum">0</span><small>/60</small></div>
+      <p id="scVerdictBody">Your evidence file has known gaps under two or more of the frameworks below.</p>
+    </div>
+
+    <h3 style="font-family:var(--font-head);font-size:1.6rem;color:var(--charcoal);margin-bottom:18px;">Your score, by domain</h3>
+    <div class="sc-domains-grid" id="scDomainsGrid"></div>
+
+    <div class="sc-exposure">
+      <h3>Regulatory exposure, in plain English</h3>
+      <ul class="sc-exposure-list" id="scExposureList"></ul>
+    </div>
+
+    <div class="sc-recs">
+      <h3>The engagements that close these gaps</h3>
+      <p>Fixed scope. Fixed price. Fixed duration. Ordered by the gap that costs you most to leave open.</p>
+      <div id="scRecList"></div>
+    </div>
+
+    <div class="sc-email" id="scEmailBlock">
+      <h3>Send your result to us for a written report</h3>
+      <p>Enter your work email and click send. We will reply with a <strong>written report</strong> covering your score, per-question breakdown, and the regulatory clauses each gap is graded under. Useful for board packs, budget requests, and reg-affairs handovers. Typical turnaround: 2 working days.</p>
+      <form class="sc-email-form" id="scEmailForm" name="scorecard-report" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="submitEmail(event);return false;">
+        <input type="hidden" name="form-name" value="scorecard-report" />
+        <p style="display:none;"><label>Do not fill this field: <input name="bot-field" /></label></p>
+        <input type="email" name="email" placeholder="your.name@company.com" required aria-label="Your work email" />
+        <input type="hidden" name="score" id="scHiddenScore" />
+        <input type="hidden" name="band" id="scHiddenBand" />
+        <input type="hidden" name="answers" id="scHiddenAnswers" />
+        <input type="hidden" name="domains" id="scHiddenDomains" />
+        <input type="hidden" name="submitted_at" id="scHiddenTs" />
+        <button type="submit">Send my report request →</button>
+      </form>
+      <span class="sc-email-note">Delivered to our team at chat@unwritten.health. We reply from the same address. Read our <a href="privacy.html" style="color:var(--green-dark);text-decoration:underline;">privacy policy</a>.</span>
+      <div class="sc-email-success">✓ Request received. We will reply with your written report within 2 working days.</div>
+      <div class="sc-email-error" style="display:none; padding: 18px 22px; background: rgba(160,44,26,0.08); border: 1px solid rgba(160,44,26,0.25); border-radius: 12px; color: var(--red); font-size: 0.9rem; margin-top: 16px; line-height:1.6;">
+        Submission failed. Please email <a href="mailto:chat@unwritten.health?subject=Scorecard%20result" style="color:var(--red);text-decoration:underline;font-weight:700;">chat@unwritten.health</a> directly, or click <a href="#" id="scRetryMailto" style="color:var(--red);text-decoration:underline;font-weight:700;">here to open your email client</a> with your result pre-filled.
+      </div>
+    </div>
+
+    <div class="sc-actions">
+      <a href="contact.html" class="btn btn-primary">Book a 20-minute call →</a>
+      <a href="#" onclick="clearScorecard();return false;" class="btn btn-outline">Retake the Scorecard</a>
+      <a href="solutions.html" class="btn btn-outline">Browse all Solutions</a>
+    </div>
+  </div>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="images/logo-horizontal.svg" alt="Unwritten Health" style="height:26px;width:auto;display:block;filter:brightness(0) invert(1);opacity:0.9;" /></div>
+        <div class="footer-tagline">The Regulatory Readiness Scorecard</div>
+        <p class="footer-desc">Twenty questions, six domains. Named regulatory exposure, and the fixed-price engagement that closes each gap.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Explore</div>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="equity-engine.html">Equity Engine</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="case-studies.html">Case studies</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Company</div>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="trust-ethics.html">Trust &amp; ethics</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="terms.html">Terms of use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Unwritten Health. Company no. 16561594.</div>
+      <div class="footer-links-bottom">
+        <a href="refund-policy.html">Refund policy</a>
+        <a href="#cookie-settings" onclick="if(window.openCookieSettings){window.openCookieSettings();}return false;">Cookie settings</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============ Regulatory Readiness Scorecard ============ */
+const DOMAINS = [
+  { key: 'purpose', name: 'Intended purpose', frameworks: ['JCA','NICE ESF'] },
+  { key: 'dataset', name: 'Dataset representativeness', frameworks: ['NICE ESF','MHRA IDP','EU MDR'] },
+  { key: 'subgroup', name: 'Subgroup evidence', frameworks: ['JCA','NICE ESF','PMCF','MHRA IDP'] },
+  { key: 'usability', name: 'Usability & access', frameworks: ['NHS DTAC','NICE ESF Std 4'] },
+  { key: 'pms', name: 'Post-market monitoring', frameworks: ['UK PMS 2025','MDR Annex XIV','PMCF'] },
+  { key: 'governance', name: 'Governance', frameworks: ['NIHR INCLUDE','MHRA IDP'] }
+];
+
+const QUESTIONS = [
+  // Domain 1: Intended purpose (3)
+  { d: 'purpose', q: 'Is your intended patient population documented and signed off by regulatory before you began development?', hint: 'Regulators grade every subsequent subgroup claim against the population you originally scoped.' },
+  { d: 'purpose', q: 'Does your intended-use description reference specific demographic subgroups (age, ethnicity, disability, comorbidities)?', hint: 'Generic "adult patients" language creates ambiguity that HTA reviewers now question.' },
+  { d: 'purpose', q: 'Have you validated your intended-purpose statement with lay users from the populations you name?', hint: 'PPI or patient-council validation of intended purpose is now expected in NIHR INCLUDE and JCA patient-input files.' },
+
+  // Domain 2: Dataset representativeness (4)
+  { d: 'dataset', q: 'Does your training / pivotal-trial dataset reflect UK or EU population diversity across ethnicity?', hint: 'NICE Standard 4 and MHRA IDP both require an explicit statement of dataset diversity.' },
+  { d: 'dataset', q: 'Do you have documented Social Determinants of Health (SDoH) metadata on your dataset, at minimum: age, ethnicity, first language, income, geography, disability?', hint: 'SDoH profiling is the mechanism that lets you produce subgroup evidence at all.' },
+  { d: 'dataset', q: 'Have you formally mapped which demographic subgroups are under-represented in your dataset?', hint: 'MHRA IDP expects an explicit under-representation analysis, not just headcount by group.' },
+  { d: 'dataset', q: 'Could you produce a dataset-diversity statement, formatted for the regulator, in the next 4 weeks?', hint: 'This is what a NICE ESF or NHS DTAC reviewer expects at first pass.' },
+
+  // Domain 3: Subgroup evidence (4)
+  { d: 'subgroup', q: 'Have you conducted, and documented, subgroup analyses for your primary and key secondary endpoints?', hint: 'Absence of pre-specified subgroup analysis is now flagged automatically in JCA and HTA review.' },
+  { d: 'subgroup', q: 'Do you have PICO patient-input files ready for EU Joint Clinical Assessment (JCA) submission?', hint: 'A single JCA can face up to 67 PICOs across 16 sub-populations in a 100-day dossier window.' },
+  { d: 'subgroup', q: 'Where clinically relevant (e.g. pulse oximetry, dermatology AI, cardiac monitoring), have you tested product performance across ethnic subgroups?', hint: 'Post the 2024 UK Equity in Medical Devices review, notified bodies read every SaMD file through this lens.' },
+  { d: 'subgroup', q: 'Do you have lived-experience evidence, from patients who are members of the subgroups your product is intended to serve?', hint: 'Lived-experience narrative is what NICE, JCA and NIHR INCLUDE now describe as "the layer clinical data alone cannot capture."' },
+
+  // Domain 4: Usability & access (3)
+  { d: 'usability', q: 'Has your product been tested with users across different health-literacy levels?', hint: 'NICE ESF and NHS DTAC both require documented usability testing that spans literacy levels.' },
+  { d: 'usability', q: 'Is your product usable, and its supporting materials available, in languages other than English?', hint: 'DTAC accessibility criteria include language access.' },
+  { d: 'usability', q: 'Have you assessed digital-access barriers (device, broadband, digital confidence) for your target users?', hint: 'NHS DTAC digital-inclusion criteria require this evidence explicitly.' },
+
+  // Domain 5: Post-market monitoring (3)
+  { d: 'pms', q: 'Do you have an active PMCF plan aligned to EU MDR Annex XIV and UK PMS 2025?', hint: 'UK PMS obligations under Statutory Instrument 2024/1368 came into force on 16 June 2025.' },
+  { d: 'pms', q: 'Does your post-market surveillance actively look for subgroup performance gaps (as opposed to passive AE reporting)?', hint: 'Passive AE reporting is no longer sufficient. MHRA now expects active look-back for subgroup issues.' },
+  { d: 'pms', q: 'Is your PMS / PMCF process auditable to raw signal level within 30 days of a regulator request?', hint: 'This is the level notified bodies are now asking about at PMS audit.' },
+
+  // Domain 6: Governance (3)
+  { d: 'governance', q: 'Do you have a formal patient advisory function (patient council, standing PPI panel, or equivalent) embedded in your organisation?', hint: 'JCA and NIHR INCLUDE increasingly expect a repeatable, auditable patient-input function, not one-off consultation.' },
+  { d: 'governance', q: 'Is patient consent, for research use of experience data, audited by an independent ethics body or review?', hint: 'Community-partnered governance is the differentiator both HTA and grant reviewers now look for.' },
+  { d: 'governance', q: 'Do you have documented data-sharing agreements with community organisations for the populations you research?', hint: 'NIHR INCLUDE, and increasingly HTA reviewers, want evidence that community partners have consented to and can review outputs.' }
+];
+
+const OPTIONS = [
+  { label: 'No, or not yet', desc: 'We have not started this or do not have documentation.', score: 0 },
+  { label: 'In progress', desc: 'Work is under way but not complete or audit-ready.', score: 1 },
+  { label: 'Yes, partial', desc: 'Documented in one area but gaps remain elsewhere.', score: 2 },
+  { label: 'Yes, fully audit-ready', desc: 'Documented, current, and defensible under regulator scrutiny.', score: 3 }
+];
+
+const REC_MAP = {
+  purpose: { title: 'Patient Council as a Service', link: 'solutions-patient-council.html', why: 'Gives your medical-affairs function a standing, auditable patient-input mechanism.' },
+  dataset: { title: 'SaMD Population Performance Red-Team', link: 'solutions-samd.html', why: 'Independent stress-test against the populations your dataset under-represents.' },
+  subgroup: { title: 'JCA-Ready Evidence Package', link: 'solutions-jca.html', why: 'Delivers the PICO subgroup file the 100-day JCA window requires, from a pre-existing UK panel.' },
+  usability: { title: 'ESF/DTAC Evidence Pack', link: 'solutions-esf-dtac.html', why: 'Closes the accessibility, inclusion and dataset-diversity gaps NHS reviewers ask about first.' },
+  pms: { title: 'PMCF Equity Gap Assessment', link: 'solutions-pmcf.html', why: 'A written PMCF gap map, aligned to UK PMS 2025 and MDR Annex XIV, delivered in 4 to 6 weeks.' },
+  governance: { title: 'NIHR PPI Package', link: 'solutions-nihr-ppi.html', why: 'A fully-costed patient-and-public-involvement partnership with community organisations already in the panel.' }
+};
+
+const EXPOSURE_TEXT = {
+  purpose: {
+    red: 'Your intended purpose is not audit-ready. Under JCA and NICE ESF you cannot make defensible subgroup claims yet.',
+    amber: 'Your intended-purpose scoping is partially documented. Expect challenge on subgroup coverage in HTA review.',
+    green: 'Intended purpose is scoped clearly. Regulator questions will be manageable.',
+    gold: 'Intended purpose is fully documented and validated. This is the state HTA and JCA reviewers reward.'
+  },
+  dataset: {
+    red: 'You cannot produce a dataset-diversity statement to a NICE Standard 4 or MHRA IDP reviewer today. This is now a first-pass gate.',
+    amber: 'You have partial dataset-diversity documentation. Expect a request for the missing metadata during review.',
+    green: 'You could produce a dataset-diversity statement now.',
+    gold: 'Your dataset representativeness is fully documented and SDoH-profiled. This is a competitive strength.'
+  },
+  subgroup: {
+    red: 'No pre-specified subgroup analysis, no lived-experience evidence. In JCA this loses scope-defining PICOs. In NICE ESF review this is grounds for deferral.',
+    amber: 'Some subgroup evidence exists but not across all clinically relevant subgroups. Expect specific challenges in the 100-day JCA window.',
+    green: 'Subgroup analysis is in place for the key endpoints. JCA-ready with some remediation.',
+    gold: 'Subgroup evidence, including lived-experience narrative, is submission-ready.'
+  },
+  usability: {
+    red: 'NHS DTAC and NICE ESF Standard 4 usability requirements are not evidenced. Expect deferral in procurement review.',
+    amber: 'Usability testing is documented but does not span literacy, language or digital-access dimensions.',
+    green: 'Usability meets DTAC baseline. Room to strengthen the equity dimensions.',
+    gold: 'Full usability and access evidence, defensible under DTAC and ESF Standard 4.'
+  },
+  pms: {
+    red: 'Your PMS is not aligned to UK PMS 2025 or MDR Annex XIV. Passive AE reporting alone is now insufficient.',
+    amber: 'PMCF plan exists but does not actively look for subgroup performance issues. Expect flag on next MHRA audit.',
+    green: 'Active PMS is in place. Some tightening needed for equity-specific audit trail.',
+    gold: 'Post-market equity monitoring is active, auditable, and MHRA-defensible.'
+  },
+  governance: {
+    red: 'No formal patient-input function. NIHR INCLUDE, JCA patient-input files and MHRA IDP all now expect this.',
+    amber: 'Ad-hoc patient input exists but is not repeatable or auditable. Grant and HTA reviewers will ask.',
+    green: 'A repeatable patient-input function is in place, though community-partner governance can be strengthened.',
+    gold: 'Independent, community-partnered governance with documented audit trail. This is the state everyone else is trying to reach.'
+  }
+};
+
+const STORAGE_KEY = 'uh_scorecard_v21';
+
+let state = {
+  answers: new Array(20).fill(null),
+  current: 0,
+  view: 'intro'
+};
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return false;
+    const parsed = JSON.parse(raw);
+    if (parsed && Array.isArray(parsed.answers) && parsed.answers.length === 20) {
+      state = Object.assign(state, parsed);
+      return true;
+    }
+  } catch(e) {}
+  return false;
+}
+function saveState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+}
+function clearScorecard() {
+  try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+  state = { answers: new Array(20).fill(null), current: 0, view: 'intro' };
+  showView('intro');
+  document.getElementById('scResume').style.display = 'none';
+}
+function startScorecard() {
+  state.current = 0;
+  state.view = 'quiz';
+  saveState();
+  showView('quiz');
+  renderQuestion();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function resumeScorecard() {
+  state.view = 'quiz';
+  showView('quiz');
+  renderQuestion();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function showView(v) {
+  document.getElementById('scIntro').style.display = (v === 'intro') ? 'block' : 'none';
+  document.getElementById('scQuiz').classList.toggle('active', v === 'quiz');
+  document.getElementById('scResults').classList.toggle('active', v === 'results');
+}
+
+function renderQuestion() {
+  const i = state.current;
+  const q = QUESTIONS[i];
+  const domain = DOMAINS.find(d => d.key === q.d);
+  const domainIdx = DOMAINS.findIndex(d => d.key === q.d);
+
+  document.getElementById('scStep').textContent = 'Question ' + (i+1) + ' of 20';
+  document.getElementById('scDomainMeta').textContent = 'Domain ' + (domainIdx+1) + ' of 6, ' + domain.name;
+  document.getElementById('scDomainLabel').textContent = domain.name;
+  document.getElementById('scQText').textContent = q.q;
+  document.getElementById('scQHint').textContent = q.hint;
+  document.getElementById('scProgressFill').style.width = ((i / 20) * 100) + '%';
+
+  const opts = document.getElementById('scOptions');
+  opts.innerHTML = '';
+  OPTIONS.forEach((opt, oi) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'sc-option' + (state.answers[i] === oi ? ' selected' : '');
+    btn.innerHTML = '<span class="sc-option-dot"></span><span class="sc-option-text"><strong>' + opt.label + '</strong><span class="desc">' + opt.desc + '</span></span>';
+    btn.onclick = function() { selectOption(oi); };
+    opts.appendChild(btn);
+  });
+
+  document.getElementById('scBtnPrev').disabled = (i === 0);
+  document.getElementById('scBtnNext').disabled = (state.answers[i] === null);
+  document.getElementById('scBtnNext').textContent = (i === 19) ? 'See my score →' : 'Next →';
+}
+
+function selectOption(oi) {
+  state.answers[state.current] = oi;
+  saveState();
+  document.querySelectorAll('.sc-option').forEach(function(el, idx){
+    el.classList.toggle('selected', idx === oi);
+  });
+  document.getElementById('scBtnNext').disabled = false;
+}
+function prevQuestion() {
+  if (state.current > 0) {
+    state.current--;
+    saveState();
+    renderQuestion();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+function nextQuestion() {
+  if (state.answers[state.current] === null) return;
+  if (state.current < 19) {
+    state.current++;
+    saveState();
+    renderQuestion();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    computeAndShowResults();
+  }
+}
+
+function computeDomainScores() {
+  const scores = {};
+  DOMAINS.forEach(d => { scores[d.key] = { total: 0, max: 0 }; });
+  QUESTIONS.forEach((q, i) => {
+    const ans = state.answers[i];
+    if (ans !== null) scores[q.d].total += OPTIONS[ans].score;
+    scores[q.d].max += 3;
+  });
+  DOMAINS.forEach(d => {
+    const s = scores[d.key];
+    s.pct = s.max > 0 ? Math.round((s.total / s.max) * 100) : 0;
+    s.band = bandFor(s.pct);
+  });
+  return scores;
+}
+function bandFor(pct) {
+  if (pct < 34) return 'red';
+  if (pct < 67) return 'amber';
+  if (pct < 90) return 'green';
+  return 'gold';
+}
+function overallScore() {
+  let total = 0;
+  QUESTIONS.forEach((q, i) => {
+    const ans = state.answers[i];
+    if (ans !== null) total += OPTIONS[ans].score;
+  });
+  return total; // out of 60
+}
+
+function computeAndShowResults() {
+  state.view = 'results';
+  saveState();
+  showView('results');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const scores = computeDomainScores();
+  const total = overallScore();
+  const pct = Math.round((total / 60) * 100);
+  const overallBand = bandFor(pct);
+
+  // Verdict panel
+  const verdict = document.getElementById('scVerdict');
+  verdict.className = 'sc-verdict band-' + overallBand;
+  document.getElementById('scBandLabel').textContent = overallBand.charAt(0).toUpperCase() + overallBand.slice(1);
+  document.getElementById('scScoreNum').textContent = total;
+
+  const verdictTitle = {
+    red: 'High exposure',
+    amber: 'Moderate exposure',
+    green: 'Low exposure',
+    gold: 'Audit-ready'
+  }[overallBand];
+  const verdictBody = {
+    red: 'Your evidence file has serious gaps under three or more of the frameworks below. The specific engagements that close each gap are named on this page.',
+    amber: 'Your evidence file has known gaps under two or more of the frameworks below. Fix them at the cheapest point, before submission, not after.',
+    green: 'Your evidence file is largely defensible. A small number of targeted engagements will bring you to audit-ready.',
+    gold: 'Your evidence file is audit-ready across all six domains. This is the state HTA and JCA reviewers reward.'
+  }[overallBand];
+  document.getElementById('scVerdictTitle').textContent = verdictTitle;
+  document.getElementById('scVerdictBody').textContent = verdictBody;
+
+  // Domains grid
+  const grid = document.getElementById('scDomainsGrid');
+  grid.innerHTML = '';
+  DOMAINS.forEach(d => {
+    const s = scores[d.key];
+    const el = document.createElement('div');
+    el.className = 'sc-domain-row';
+    el.innerHTML =
+      '<div class="head">' +
+        '<h4>' + d.name + '</h4>' +
+        '<span class="sc-domain-badge ' + s.band + '">' + s.band.toUpperCase() + ' · ' + s.pct + '%</span>' +
+      '</div>' +
+      '<div class="sc-domain-bar"><div class="sc-domain-bar-fill ' + s.band + '" style="width:' + s.pct + '%"></div></div>' +
+      '<p>' + EXPOSURE_TEXT[d.key][s.band] + '</p>' +
+      '<div class="sc-frameworks">' + d.frameworks.map(f => '<span class="sc-fw-chip">' + f + '</span>').join('') + '</div>';
+    grid.appendChild(el);
+  });
+
+  // Exposure list (frameworks with red/amber flags)
+  const exposure = document.getElementById('scExposureList');
+  exposure.innerHTML = '';
+  const flaggedDomains = DOMAINS.filter(d => scores[d.key].band === 'red' || scores[d.key].band === 'amber');
+  if (flaggedDomains.length === 0) {
+    exposure.innerHTML = '<li class="sc-exposure-empty">No high-exposure domains flagged. Your evidence file passes first-pass review under all six frameworks.</li>';
+  } else {
+    flaggedDomains.forEach(d => {
+      const s = scores[d.key];
+      const li = document.createElement('li');
+      li.innerHTML = '<strong>' + d.name + '</strong> (' + s.band.toUpperCase() + '), you are exposed under: ' + d.frameworks.join(', ') + '.';
+      exposure.appendChild(li);
+    });
+  }
+
+  // Recommendations
+  const recs = document.getElementById('scRecList');
+  recs.innerHTML = '';
+  // Sort domains: red (0) then amber (1). Ignore green/gold.
+  const bandOrder = { red: 0, amber: 1, green: 2, gold: 3 };
+  const sortedDomains = DOMAINS.slice().sort((a, b) => bandOrder[scores[a.key].band] - bandOrder[scores[b.key].band]);
+  const openDomains = sortedDomains.filter(d => scores[d.key].band === 'red' || scores[d.key].band === 'amber');
+  if (openDomains.length === 0) {
+    recs.innerHTML = '<p style="padding:24px;background:var(--green-pale);border-radius:14px;color:var(--green-darker);">You have no open gaps. If you would like an independent audit of your evidence file for board or investor sign-off, book a call.</p>';
+  } else {
+    openDomains.forEach(d => {
+      const rec = REC_MAP[d.key];
+      const s = scores[d.key];
+      const card = document.createElement('div');
+      card.className = 'sc-rec-card';
+      card.innerHTML =
+        '<div class="body">' +
+          '<h4>' + rec.title + '</h4>' +
+          '<p>' + rec.why + '</p>' +
+          '<span class="why">Closes: ' + d.name + ' (' + s.band.toUpperCase() + ')</span>' +
+        '</div>' +
+        '<div class="price"><a href="' + rec.link + '">See details →</a></div>';
+      recs.appendChild(card);
+    });
+  }
+}
+
+function buildMailtoFallback(email, total, band, answersJson, domainsJson) {
+  const body = 'Regulatory Readiness Scorecard result\n\n' +
+    'Email: ' + email + '\n' +
+    'Score: ' + total + '/60\n' +
+    'Band: ' + band + '\n\n' +
+    'Per-domain scores: ' + domainsJson + '\n\n' +
+    'Answer indices (0=No, 1=In progress, 2=Yes partial, 3=Yes audit-ready): ' + answersJson + '\n\n' +
+    'Please reply with my written report.';
+  return 'mailto:chat@unwritten.health?subject=' + encodeURIComponent('Scorecard result, please send my written report') + '&body=' + encodeURIComponent(body);
+}
+
+function submitEmail(e) {
+  e.preventDefault();
+  const form = document.getElementById('scEmailForm');
+  const emailInput = form.querySelector('input[name="email"]');
+  const email = emailInput.value.trim();
+  if (!email) return false;
+
+  const scores = computeDomainScores();
+  const total = overallScore();
+  const pct = Math.round((total / 60) * 100);
+  const overallBand = bandFor(pct);
+  const answersJson = JSON.stringify(state.answers);
+  const domainsJson = JSON.stringify(scores);
+
+  // Populate hidden fields so Netlify Forms captures everything
+  document.getElementById('scHiddenScore').value = total + '/60 (' + pct + '%)';
+  document.getElementById('scHiddenBand').value = overallBand.toUpperCase();
+  document.getElementById('scHiddenAnswers').value = answersJson;
+  document.getElementById('scHiddenDomains').value = domainsJson;
+  document.getElementById('scHiddenTs').value = new Date().toISOString();
+
+  // Local backup so nothing is ever lost if the network fails
+  try {
+    localStorage.setItem(STORAGE_KEY + '_email', JSON.stringify({
+      email: email, answers: state.answers, scores: scores, total: total, band: overallBand,
+      ts: new Date().toISOString()
+    }));
+  } catch(err) {}
+
+  // Wire up the mailto retry link inside the error block
+  const retry = document.getElementById('scRetryMailto');
+  if (retry) {
+    retry.href = buildMailtoFallback(email, total, overallBand.toUpperCase(), answersJson, domainsJson);
+    retry.target = '_blank';
+  }
+
+  const submitBtn = form.querySelector('button[type="submit"]');
+  if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+
+  // POST to Netlify Forms via URL-encoded body (Netlify's documented AJAX pattern)
+  const formData = new FormData(form);
+  const params = new URLSearchParams();
+  formData.forEach(function(value, key) { params.append(key, value); });
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: params.toString()
+  }).then(function(response) {
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    document.getElementById('scEmailBlock').classList.add('done');
+    document.getElementById('scEmailBlock').classList.remove('error');
+  }).catch(function(err) {
+    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send my report request →'; }
+    document.getElementById('scEmailBlock').classList.add('error');
+    console.error('Scorecard form submission failed:', err);
+  });
+
+  return false;
+}
+
+// Init
+(function init(){
+  const restored = loadState();
+  if (restored && state.view === 'results' && state.answers.every(a => a !== null)) {
+    showView('results');
+    computeAndShowResults();
+  } else if (restored && state.answers.some(a => a !== null)) {
+    document.getElementById('scResume').style.display = 'block';
+    showView('intro');
+  } else {
+    showView('intro');
+  }
+  document.body.classList.add('js-ready');
+})();
+</script>
+</body>
+</html>

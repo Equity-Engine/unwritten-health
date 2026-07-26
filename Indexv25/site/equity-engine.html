@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/logo-mark.png" />
+  <link rel="apple-touch-icon" href="images/logo-mark.png" />
+  <link rel="shortcut icon" href="images/logo-mark.png" />
+  <title>The Equity Engine | UK Patient Experience Data Platform | Unwritten Health</title>
+  <meta name="description" content="The UK patient experience data platform for regulated healthcare. 6,000 community-partner-recruited participants, SDoH-profiled at sign-up. Submission-ready evidence for JCA, NICE ESF, NHS DTAC, MHRA IDP, EU MDR PMCF, UK PMS 2025 and NIHR INCLUDE." />
+  <meta name="keywords" content="Equity Engine, patient experience data platform UK, SDoH data platform, community-recruited clinical trial panel UK, subgroup evidence, lived-experience evidence, JCA, NICE ESF, NHS DTAC, MHRA IDP, PMCF, NIHR INCLUDE" />
+  <meta property="og:title" content="The Equity Engine | UK Patient Experience Data Platform" />
+  <meta property="og:description" content="6,000 UK adults, SDoH-profiled at sign-up, community-partner recruited. One product, one dataset, six fixed-scope engagements for pharma, medtech, SaMD, digital health, and NIHR-funded academic teams." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://unwritten.health/equity-engine" />
+  <meta property="og:site_name" content="Unwritten Health" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Equity Engine | UK Patient Experience Data Platform" />
+  <meta name="twitter:description" content="6,000 UK adults, SDoH-profiled at sign-up. Six fixed-scope engagements for regulated healthcare." />
+  <link rel="canonical" href="https://unwritten.health/equity-engine" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bentham&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+  <style>
+    #ee-hero { padding: 144px 0 72px; background:
+      radial-gradient(900px 500px at 90% 0%, rgba(91,129,112,0.16), transparent 70%),
+      radial-gradient(700px 400px at 0% 100%, rgba(91,129,112,0.1), transparent 70%),
+      var(--cream); }
+    #ee-hero h1 { font-size: clamp(2.6rem, 5vw, 4.2rem); line-height: 1.05; letter-spacing: -0.01em; max-width: 900px; }
+    .ee-lede { font-family: var(--font-head); font-size: clamp(1.3rem, 2.2vw, 1.7rem); color: var(--green-darker); line-height: 1.4; margin-top: 1.6rem; max-width: 780px; }
+    .ee-model { display: inline-flex; align-items: center; gap: 12px; margin-top: 2rem; padding: 10px 22px; border-radius: 100px; background: rgba(63,97,82,0.1); font-size: 0.95rem; color: var(--green-darker); font-weight: 600; }
+    .ee-hero-strip { margin-top: 3rem; display: flex; gap: 40px; flex-wrap: wrap; }
+    .ee-hero-stat { display: flex; flex-direction: column; }
+    .ee-hero-stat .n { font-family: var(--font-head); font-size: 2rem; color: var(--green-dark); line-height: 1; }
+    .ee-hero-stat .l { font-size: 0.82rem; color: var(--charcoal-soft); margin-top: 6px; max-width: 200px; }
+
+    #ee-what { padding: 64px 0; background: var(--white); }
+    .ee-what-box { max-width: 940px; margin: 0 auto; padding: 42px 44px; background: var(--cream); border-radius: 22px; border-left: 4px solid var(--green-dark); }
+    .ee-what-box p { font-size: 1.06rem; color: var(--charcoal); line-height: 1.85; }
+    .ee-what-box p strong { color: var(--green-darker); font-weight: 700; }
+    .ee-what-negation { margin-top: 1.4rem; font-family: var(--font-head); font-size: 1.4rem; color: var(--charcoal); }
+    .ee-what-negation em { font-style: normal; color: var(--green-dark); }
+
+    #ee-diagram-section { padding: 64px 0; background: var(--cream); }
+    #ee-diagram-section h2 { text-align: center; margin-bottom: 2.4rem; max-width: 720px; margin-left: auto; margin-right: auto; }
+    .ee-diagram-big { max-width: 1040px; margin: 0 auto; background: var(--white); border-radius: 26px; padding: 52px 44px; border: 1px solid rgba(91,129,112,0.14); box-shadow: 0 6px 32px rgba(63,97,82,0.06); }
+    .ee-layer-big { display: grid; grid-template-columns: 180px 1fr; gap: 32px; padding: 32px 0; border-bottom: 1px dashed rgba(55,55,59,0.14); align-items: start; }
+    .ee-layer-big:last-of-type { border-bottom: none; }
+    .ee-layer-big .side { display: flex; flex-direction: column; }
+    .ee-layer-big .side .num { font-family: var(--font-head); font-size: 3.4rem; color: var(--green-dark); line-height: 1; margin-bottom: 4px; }
+    .ee-layer-big .side .lab { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--charcoal-soft); }
+    .ee-layer-big .main .name { font-family: var(--font-head); font-size: 1.75rem; color: var(--charcoal); line-height: 1.2; margin-bottom: 8px; }
+    .ee-layer-big .main .desc { font-size: 0.98rem; color: var(--charcoal-soft); line-height: 1.75; margin-bottom: 18px; max-width: 620px; }
+    .ee-layer-big .main .facts { display: flex; flex-wrap: wrap; gap: 8px; }
+    .ee-layer-big .main .facts span { padding: 5px 12px; border-radius: 6px; background: var(--green-pale); color: var(--green-darker); font-size: 0.8rem; font-weight: 600; }
+    .ee-arrow { text-align: center; padding: 26px 0; font-size: 1.4rem; color: var(--green); }
+    .ee-outputs-bottom { text-align: center; padding-top: 22px; border-top: 2px solid var(--green-pale); }
+    .ee-outputs-bottom .label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--charcoal-soft); margin-bottom: 14px; }
+    .ee-outputs-bottom .grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+    .ee-outputs-bottom .grid a { padding: 12px 8px; border-radius: 10px; background: var(--green-pale); color: var(--green-darker); text-align: center; font-size: 0.86rem; font-weight: 700; transition: all 0.2s; }
+    .ee-outputs-bottom .grid a:hover { background: var(--green-dark); color: var(--white); }
+
+    #ee-compare { padding: 64px 0; background: var(--white); }
+    #ee-compare h2 { max-width: 780px; margin-bottom: 1rem; }
+    #ee-compare .lede { font-size: 1rem; color: var(--charcoal-soft); max-width: 720px; margin-bottom: 3rem; line-height: 1.75; }
+    .ee-table-wrap { overflow-x: auto; position: relative; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+    .ee-table-wrap::-webkit-scrollbar { height: 8px; }
+    .ee-table-wrap::-webkit-scrollbar-thumb { background: var(--green); border-radius: 4px; }
+    /* Right-edge fade always on when overflowing */
+    .ee-table-scroll { position: relative; }
+    .ee-table-scroll::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 40px; background: linear-gradient(to right, transparent, var(--white) 90%); pointer-events: none; opacity: 0; transition: opacity 0.2s; }
+    .ee-table-scroll.can-scroll::after { opacity: 1; }
+    /* Permanent, unmissable mobile hint banner above the table */
+    .ee-table-mobile-hint { display: none; }
+    @media (max-width: 900px) {
+      .ee-table-mobile-hint {
+        display: flex; align-items: center; justify-content: center; gap: 8px;
+        padding: 10px 14px; margin-bottom: 12px;
+        background: var(--green-pale); color: var(--green-darker);
+        border-radius: 10px; font-size: 0.84rem; font-weight: 700;
+      }
+      .ee-table-mobile-hint::before { content: "👉"; }
+      .ee-table-mobile-hint::after { content: "swipe →"; opacity: 0.7; font-weight: 500; }
+    }
+    .ee-table-hint { display: none; font-size: 0.78rem; color: var(--green-dark); font-weight: 600; margin-top: 8px; text-align: right; }
+    @media (max-width: 900px) { .ee-table-hint { display: block; } }
+    .ee-table { width: 100%; min-width: 780px; border-collapse: separate; border-spacing: 0; }
+    .ee-table th, .ee-table td { padding: 18px 20px; text-align: left; vertical-align: top; font-size: 0.9rem; line-height: 1.5; }
+    .ee-table thead th { font-family: var(--font-head); font-size: 1rem; color: var(--charcoal); background: var(--cream); font-weight: 400; border-top: 1px solid rgba(55,55,59,0.1); border-bottom: 2px solid rgba(55,55,59,0.1); }
+    .ee-table thead th.us { background: var(--green-dark); color: var(--white); border-bottom-color: var(--green-dark); }
+    .ee-table tbody tr:nth-child(even) td { background: rgba(250,248,245,0.5); }
+    .ee-table tbody td { border-bottom: 1px solid rgba(55,55,59,0.06); color: var(--charcoal-soft); }
+    .ee-table tbody td.row-h { font-weight: 700; color: var(--charcoal); background: var(--cream); }
+    .ee-table tbody td.us { color: var(--green-darker); font-weight: 700; background: var(--green-pale) !important; }
+
+    #ee-tiers { padding: 64px 0; background: var(--cream); }
+    #ee-tiers h2 { text-align: center; max-width: 720px; margin: 0 auto 3rem; }
+    .ee-tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .ee-tier { background: var(--white); border-radius: 22px; padding: 36px 30px; border: 1px solid rgba(91,129,112,0.14); display: flex; flex-direction: column; }
+    .ee-tier .lab { display: inline-block; padding: 4px 12px; border-radius: 100px; background: var(--green-pale); color: var(--green-darker); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; align-self: flex-start; }
+    .ee-tier h3 { font-family: var(--font-head); font-size: 1.5rem; color: var(--charcoal); margin-bottom: 12px; line-height: 1.25; }
+    .ee-tier .who { font-size: 0.9rem; color: var(--charcoal-soft); line-height: 1.7; margin-bottom: 22px; }
+    .ee-tier ul { margin-top: auto; display: flex; flex-direction: column; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(55,55,59,0.08); }
+    .ee-tier li a { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 10px; background: var(--cream); color: var(--charcoal); font-size: 0.88rem; font-weight: 600; transition: all 0.2s; }
+    .ee-tier li a:hover { background: var(--charcoal); color: var(--white); }
+    .ee-tier li a .p { font-family: var(--font-head); color: var(--green-dark); font-size: 0.98rem; white-space: nowrap; }
+    .ee-tier li a:hover .p { color: #b8d0c6; }
+
+    #ee-trust { padding: 64px 0; background: var(--white); }
+    #ee-trust h2 { max-width: 720px; margin-bottom: 2.4rem; }
+    .ee-trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .ee-trust-item { padding: 26px 22px; border-radius: 16px; background: var(--cream); border: 1px solid rgba(91,129,112,0.14); }
+    .ee-trust-item h4 { font-family: var(--font-head); font-size: 1.1rem; color: var(--green-darker); margin-bottom: 10px; line-height: 1.3; }
+    .ee-trust-item p { font-size: 0.88rem; color: var(--charcoal-soft); line-height: 1.7; }
+
+    #ee-cta { padding: 72px 0 96px; background: var(--charcoal); color: var(--white); }
+    #ee-cta .container { text-align: center; max-width: 780px; }
+    #ee-cta h2 { color: var(--white); font-size: clamp(2rem, 3.4vw, 2.8rem); margin-bottom: 1rem; letter-spacing: -0.01em; }
+    #ee-cta p { color: rgba(255,255,255,0.75); font-size: 1.02rem; line-height: 1.75; margin-bottom: 2rem; }
+    #ee-cta .row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    @media (max-width: 900px) {
+      #ee-hero { padding: 112px 0 48px; }
+      .ee-what-box { padding: 32px 26px; }
+      .ee-layer-big { grid-template-columns: 1fr; gap: 12px; padding: 26px 0; }
+      .ee-layer-big .side { flex-direction: row; align-items: baseline; gap: 12px; }
+      .ee-layer-big .side .num { font-size: 2.4rem; }
+      .ee-diagram-big { padding: 30px 22px; }
+      .ee-outputs-bottom .grid { grid-template-columns: repeat(3, 1fr); }
+      .ee-tier-grid { grid-template-columns: 1fr; }
+      .ee-trust-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .ee-outputs-bottom .grid { grid-template-columns: 1fr 1fr; }
+      .ee-trust-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <script defer src="analytics.js"></script>
+</head>
+<body class="has-sticky-cta">
+
+<nav class="site-nav" id="mainNav">
+  <a href="index.html" class="nav-logo" aria-label="Unwritten Health home"><span class="logo-svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1276.76 191.66"><defs><style>.cls-1{fill:#37373b;}.cls-2{fill:#5b8170;}</style></defs><path class="cls-1" d="M1209.72,140.03V50.33h14.5v28.99c0,3.11-.26,10.48-.41,13.98h.14c3.36-11.65,11.65-18.25,26.66-18.25,16.19,0,26.15,9.19,26.15,24.98v40h-14.5v-36.76c0-10.1-5.69-15.79-17.22-15.79-12.8,0-20.82,7.9-20.82,22.26v30.29h-14.5Z"/><path class="cls-1" d="M1185.61,140.81c-17.48,0-24.35-9.45-24.35-23.56v-29.38h-10.09v-11.78h8.14c2.47,0,3.39-1.29,3.77-4.92l.65-9.58h12.03v14.5h22v11.78h-22v28.61c0,8.28,3.1,12.43,11.91,12.43,3.63,0,7.76-.65,9.58-1.17v11.52c-1.94.65-6.34,1.55-11.65,1.55Z"/><path class="cls-1" d="M1127.54,140.03V50.33h14.5v89.7h-14.5Z"/><path class="cls-1" d="M1075.48,141.07c-14.62,0-24.33-6.99-24.33-19.42,0-9.71,6.87-17.34,23.94-17.34h23.68v-4.53c0-9.58-5.55-13.85-16.81-13.85-9.85,0-15.42,3.76-15.42,10.87,0,.39,0,1.42.14,2.46h-13.35c-.12-.91-.24-2.59-.24-3.75,0-12.81,11.12-20.45,29.37-20.45,19.43,0,30.81,9.19,30.81,26.02v38.96h-14.5c.26-3.11.65-8.93.65-14.11h-.12c-2.07,9.45-9.7,15.15-23.82,15.15ZM1078.46,130.2c12.56,0,20.32-6.08,20.32-15.92v-1.16h-22.38c-8.28,0-11.91,2.85-11.91,7.9,0,5.83,5.19,9.19,13.98,9.19Z"/><path class="cls-1" d="M1040.35,105.73v5.18h-47.88c.77,12.3,7.64,18.9,18.51,18.9,9.32,0,15.66-4.14,16.31-11.65h13.06c-.5,14.24-12.18,22.91-29.63,22.91-20.2,0-32.87-12.43-32.87-32.49s12.68-33.52,32.87-33.52c18.11,0,29.63,10.74,29.63,30.68ZM1027.29,102.11v-.91c0-9.58-5.96-14.89-16.45-14.89s-16.31,5.18-17.99,15.79h34.44Z"/><path class="cls-1" d="M887.91,140.03V54.86h15.51v34.82h45.31v-34.82h15.39v85.17h-15.39v-37.93h-45.31v37.93h-15.51Z"/><path class="cls-1" d="M776.27,140.03v-63.94h14.48l-.5,17.09h.12c3.51-11.52,11.79-18.12,26.66-18.12,16.19,0,26.15,9.19,26.15,24.98v40h-14.48v-36.76c0-10.1-5.72-15.79-17.22-15.79-12.7,0-20.72,7.64-20.72,21.62v30.94h-14.48Z"/><path class="cls-1" d="M763.64,105.73v5.18h-47.88c.77,12.3,7.64,18.9,18.51,18.9,9.32,0,15.66-4.14,16.31-11.65h13.06c-.5,14.24-12.15,22.91-29.63,22.91-20.2,0-32.87-12.43-32.87-32.49s12.68-33.52,32.87-33.52c18.13,0,29.63,10.74,29.63,30.68ZM750.58,102.11v-.91c0-9.58-5.96-14.89-16.45-14.89s-16.31,5.18-17.99,15.79h34.44Z"/><path class="cls-1" d="M681.87,140.81c-17.48,0-24.33-9.45-24.33-23.56v-29.38h-10.11v-11.78h8.16c2.45,0,3.36-1.29,3.75-4.92l.65-9.58h12.03v14.5h22.02v11.78h-22.02v28.61c0,8.28,3.12,12.43,11.91,12.43,3.63,0,7.78-.65,9.58-1.17v11.52c-1.94.65-6.34,1.55-11.65,1.55Z"/><path class="cls-1" d="M629.4,140.81c-17.46,0-24.33-9.45-24.33-23.56v-29.38h-10.09v-11.78h8.14c2.47,0,3.36-1.29,3.75-4.92l.65-9.58h12.05v14.5h22v11.78h-22v28.61c0,8.28,3.1,12.43,11.91,12.43,3.63,0,7.76-.65,9.56-1.17v11.52c-1.92.65-6.34,1.55-11.65,1.55Z"/><path class="cls-1" d="M571.12,68.58v-14.24h14.89v14.24h-14.89ZM571.24,140.03v-63.94h14.5v63.94h-14.5Z"/><path class="cls-1" d="M499.94,140.03v-63.94h14.48l-.5,18.38h.12c2.98-11.52,9.58-19.42,22.79-19.42,13.86,0,21.49,9.06,21.49,24.98,0,4.01-.41,9.19-.65,11.91h-13.21c.26-2.46.5-5.7.5-8.67,0-10.74-4.13-15.79-12.68-15.79-11,0-17.87,9.32-17.87,24.59v27.96h-14.48Z"/><path class="cls-1" d="M407.73,140.03l-18.51-63.94h15.42l13.06,49.45h.26l15.27-49.45h14.36l14.89,49.45h.26l13.47-49.45h13.71l-18.51,63.94h-17.87l-13.86-46.99h-.38l-14.36,46.99h-17.22Z"/><path class="cls-1" d="M315.76,140.03v-63.94h14.5l-.52,17.09h.13c3.5-11.52,11.77-18.12,26.66-18.12,16.19,0,26.15,9.19,26.15,24.98v40h-14.5v-36.76c0-10.1-5.69-15.79-17.22-15.79-12.68,0-20.7,7.64-20.7,21.62v30.94h-14.5Z"/><path class="cls-1" d="M263.44,141.33c-23.04,0-37.54-12.94-37.54-33.4v-53.07h15.4v52.81c0,12.94,8.93,20.32,22.78,20.32s22.78-7.38,22.78-20.32v-52.81h13.85v53.07c0,20.45-14.37,33.4-37.28,33.4Z"/><path class="cls-2" d="M181.13,67.75c28.2-32.46-5.95-81.66-47.28-64.05-7.92,3.37-27.57,22.26-33.01,29.29,9.68,3.09,19.55,1.74,28.03-3.73,3.93-2.53,7.13-6.17,11.44-8.26,20.26-9.88,41.33,12.19,29.4,31.87-2.22,3.65-14.15,15.07-17.88,17.09-10.41,5.63-21.61,1.6-30.05-5.45-8.9-7.43-17.43-17.09-25.93-26.12-9.04-9.62-18.57-19.76-28.11-28.05C35.29-17.88-13.91,16.28,3.7,57.6c3.37,7.92,22.26,27.57,29.29,33.01,3.09-9.68,1.74-19.55-3.73-28.03-2.53-3.93-6.17-7.13-8.26-11.44-9.88-20.27,12.19-41.33,31.87-29.41,3.65,2.22,15.07,14.15,17.09,17.88,5.63,10.41,1.6,21.61-5.45,30.05-7.49,8.97-45.64,44.42-54.17,54.24-28.2,32.46,5.95,81.66,47.28,64.05,7.92-3.37,27.57-22.27,33.01-29.29-9.68-3.09-19.55-1.74-28.03,3.73-3.93,2.53-7.13,6.17-11.44,8.27-20.27,9.88-41.33-12.2-29.41-31.87,2.22-3.65,14.15-15.07,17.88-17.09,10.41-5.64,21.61-1.6,30.05,5.45,10.49,8.76,44.49,45.88,54.04,54.17,32.46,28.2,81.66-5.95,64.05-47.28-3.37-7.92-22.26-27.58-29.29-33.01-3.09,9.68-1.74,19.55,3.73,28.03,2.53,3.93,6.17,7.13,8.26,11.44,9.88,20.26-12.19,41.33-31.87,29.4-3.65-2.22-15.07-14.15-17.09-17.88-5.64-10.41-1.6-21.61,5.45-30.05,7.49-8.97,45.64-44.42,54.17-54.24ZM74.63,42.24c7.4,6.72,15.25,14.98,18.98,18.52,4.92,4.51,14.44,15.49,20.57,20,12.93,9.49,27.55.82,35.04-6.13-6.72,7.4-31.8,32.05-35.34,35.77-.89,1.01-1.75,2.05-2.59,3.12-.17.27-.37.56-.6.87-9.49,12.92-.82,27.55,6.13,35.04-7.4-6.72-15.69-15.19-19.41-18.73-4.92-4.51-14.01-15.28-20.14-19.79-12.93-9.49-27.55-.82-35.04,6.13,6.72-7.4,31.8-32.05,35.34-35.77.88-1.01,1.75-2.05,2.59-3.12.17-.27.37-.56.6-.86,9.49-12.93.82-27.55-6.13-35.04Z"/><circle class="cls-2" cx="149.37" cy="41.29" r="15.8"/><circle class="cls-2" cx="41.28" cy="41.29" r="15.8"/><circle class="cls-2" cx="149.37" cy="150.21" r="15.8"/><circle class="cls-2" cx="41.28" cy="150.21" r="15.8"/></svg></span></a>
+  <div class="nav-links">
+    <div class="has-dd"><a href="about.html">About</a>
+      <div class="nav-dropdown">
+        <a href="about.html">About us</a>
+        <a href="trust-ethics.html">Trust &amp; ethics</a>
+        <a href="press.html">Press</a>
+        <a href="contact.html">Contact us</a>
+      </div>
+    </div>
+    <a href="equity-engine.html">Platform</a>
+    <a href="inclusion-debt.html">Inclusion debt</a>
+    <div class="has-dd"><a href="solutions.html">Solutions</a>
+      <div class="nav-dropdown">
+        <span class="dd-lab">Pharma &amp; biotech</span>
+        <a href="solutions-jca.html">JCA-Ready Evidence</a>
+        <a href="solutions-patient-council.html">Patient Council as a Service</a>
+        <span class="dd-sep"></span>
+        <span class="dd-lab">Medtech &amp; digital health</span>
+        <a href="solutions-samd.html">SaMD Red-Team</a>
+        <a href="solutions-esf-dtac.html">ESF/DTAC Evidence Pack</a>
+        <a href="solutions-pmcf.html">PMCF Equity Gap</a>
+        <span class="dd-sep"></span>
+        <span class="dd-lab">Academic, NIHR &amp; non-profit</span>
+        <a href="solutions-nihr-ppi.html">NIHR PPI Package</a>
+      </div>
+    </div>
+    <div class="has-dd"><a href="case-studies.html">Resources</a>
+      <div class="nav-dropdown">
+        <a href="case-studies.html">Case studies</a>
+        <a href="blog.html">Blog</a>
+        <a href="resources.html">Resources hub</a>
+        <a href="toolkits.html">Toolkits (self-serve)</a>
+      </div>
+    </div>
+    <a href="scorecard.html">Scorecard</a>
+  </div>
+  <a href="scorecard.html" class="nav-cta">Take the Scorecard</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="about.html">About</a>
+  <a href="equity-engine.html">Platform</a>
+  <a href="solutions.html">Solutions</a>
+  <a href="case-studies.html">Case studies</a>
+  <a href="inclusion-debt.html">Inclusion debt</a>
+  <a href="trust-ethics.html">Trust &amp; ethics</a>
+  <a href="press.html">Press</a>
+  <a href="blog.html">Blog</a>
+  <a href="resources.html">Resources</a>
+  <a href="toolkits.html">Toolkits</a>
+  <a href="scorecard.html" class="cta">Take the Scorecard</a>
+  <a href="contact.html">Contact us</a>
+</div>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+<main id="main">
+
+<section id="ee-hero">
+  <div class="container">
+    <div class="eyebrow"><span class="eyebrow-dot"></span>The platform</div>
+    <h1>The Equity Engine.</h1>
+    <p class="ee-lede">The UK patient experience data platform for regulated healthcare.</p>
+    <div class="ee-model">One product. One dataset. Three layers. Six ways to buy it.</div>
+    <div class="ee-hero-strip">
+      <div class="ee-hero-stat"><div class="n">6,000</div><div class="l">UK participants <span style="opacity:0.7;">(as of July 2026)</span></div></div>
+      <div class="ee-hero-stat"><div class="n">8</div><div class="l">Social factors profiled at sign-up</div></div>
+      <div class="ee-hero-stat"><div class="n">6</div><div class="l">Regulatory frameworks the outputs are formatted for</div></div>
+      <div class="ee-hero-stat"><div class="n">Fixed</div><div class="l">Scope, duration and deliverables. No open-ended discovery.</div></div>
+      <div class="ee-hero-stat"><div class="n">UK</div><div class="l">Panel live in the UK. Launching in France, Germany, Spain and Italy in 2027.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="ee-what">
+  <div class="container">
+    <div class="ee-what-box">
+      <p>The Equity Engine captures <strong>how people actually live with a condition, use a device, or receive a treatment</strong>, from a 6,000-strong UK panel recruited through community partners, and turns that data into the specific evidence artefact a regulator, HTA body, NHS procurement team, or NIHR grant reviewer is now asking for.</p>
+      <div class="ee-what-negation">It is <em>not</em> a survey tool, a recruitment platform, or a consultancy. It is a <em>dataset</em> that produces a defined set of submission-ready deliverables.</div>
+    </div>
+  </div>
+</section>
+
+<section id="ee-diagram-section">
+  <div class="container">
+    <div class="section-label" style="text-align:center;">The three layers</div>
+    <h2>Participants, community partners, and the analytical platform that turns the data into a submission-ready file.</h2>
+    <div class="ee-diagram-big">
+      <div class="ee-layer-big">
+        <div class="side"><div class="num">01</div><div class="lab">Participant layer</div></div>
+        <div class="main">
+          <div class="name">6,000 UK adults and carers</div>
+          <p class="desc">Every participant is recruited through a UK community partner and completes a Social Determinants of Health profile at sign-up. Every downstream output can therefore be stratified by the subgroups regulators, HTA bodies and NHS procurement now ask about.</p>
+          <div class="facts">
+            <span>Age</span><span>Ethnicity</span><span>First language</span><span>Income</span><span>Geography</span><span>Disability</span><span>Caring responsibilities</span><span>Health literacy</span>
+          </div>
+        </div>
+      </div>
+      <div class="ee-arrow">↓</div>
+      <div class="ee-layer-big">
+        <div class="side"><div class="num">02</div><div class="lab">Community layer</div></div>
+        <div class="main">
+          <div class="name">Long-term, trust-based relationships with community partners</div>
+          <p class="desc">Charities, faith organisations, disease-specific groups and health-innovation networks who co-design outputs and stay engaged across projects. Not drop-in, drop-out recruitment. Every partner signs a memorandum of understanding, receives a share of sponsor engagement fees, and holds veto power on any output that identifies their community. This is why our sample over-indexes on the exact populations pivotal trials systematically miss.</p>
+          <div class="facts">
+            <span>Ongoing partnerships</span><span>Signed MOUs</span><span>Fee share</span><span>Output veto</span>
+          </div>
+        </div>
+      </div>
+      <div class="ee-arrow">↓</div>
+      <div class="ee-layer-big">
+        <div class="side"><div class="num">03</div><div class="lab">Platform layer</div></div>
+        <div class="main">
+          <div class="name">Multimodal capture, AI-analysed and synthesised</div>
+          <p class="desc">Traditional research designs miss most of what people actually experience. We capture across modalities: video diaries, voice notes, longitudinal surveys, focus groups, patient councils and lived-experience narratives. Every modality is analysed and synthesised by our AI pipeline into evidence files pre-formatted for the specific framework you are submitting to. No re-formatting, no bespoke deliverables, no scope creep.</p>
+          <div class="facts">
+            <span>Video diaries</span><span>Voice notes</span><span>Surveys</span><span>Focus groups</span><span>Patient councils</span><span>Narratives</span><span>AI synthesis</span>
+          </div>
+        </div>
+      </div>
+      <div class="ee-outputs-bottom">
+        <div class="label">Outputs, pre-formatted for</div>
+        <div class="grid">
+          <a href="solutions-jca.html">JCA</a>
+          <a href="solutions-esf-dtac.html">NICE ESF</a>
+          <a href="solutions-esf-dtac.html">NHS DTAC</a>
+          <a href="solutions-pmcf.html">MHRA PMS</a>
+          <a href="solutions-nihr-ppi.html">NIHR INCLUDE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ee-compare">
+  <div class="container">
+    <div class="section-label">What makes it different</div>
+    <h2>Not a digital panel. Not a CRO. Not an eCOA platform.</h2>
+    <p class="lede">You can hire a digital-first panel provider to send you people. You can hire a CRO to enrol them at sites. You can hire an eCOA vendor to collect data on them. None of them produce the subgroup and lived-experience evidence a regulator, HTA body or NHS procurement team now asks about first.</p>
+    <div class="ee-table-mobile-hint" aria-hidden="true">Table scrolls sideways</div>
+    <div class="ee-table-scroll" id="eeTableScroll">
+    <div class="ee-table-wrap" id="eeTableWrap">
+      <table class="ee-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Digital panel providers</th>
+            <th>Traditional recruitment CROs</th>
+            <th>eCOA / ePRO platforms</th>
+            <th class="us">The Equity Engine</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-h">Sampling frame</td>
+            <td>Digital-first panel aggregation</td>
+            <td>Site-based, opportunistic</td>
+            <td>Sponsor-provided</td>
+            <td class="us">Community-partner MOUs; over-indexed on populations pivotal trials miss</td>
+          </tr>
+          <tr>
+            <td class="row-h">Subgroup evidence</td>
+            <td>Not produced</td>
+            <td>Not produced</td>
+            <td>Not produced</td>
+            <td class="us">Produced by default, stratified by 8 social factors</td>
+          </tr>
+          <tr>
+            <td class="row-h">Submission-ready outputs</td>
+            <td>No</td>
+            <td>No</td>
+            <td>Data only</td>
+            <td class="us">Pre-formatted for JCA, ESF, DTAC, PMS, INCLUDE</td>
+          </tr>
+          <tr>
+            <td class="row-h">Pricing</td>
+            <td>Per-recruit variable</td>
+            <td>Time-and-materials</td>
+            <td>Per-trial licence</td>
+            <td class="us">Fixed scope, fixed price, fixed duration</td>
+          </tr>
+          <tr>
+            <td class="row-h">Community accountability</td>
+            <td>None</td>
+            <td>None</td>
+            <td>None</td>
+            <td class="us">Community-partner veto on output release; revenue share</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ee-table-hint" aria-hidden="true">← scroll to see the Equity Engine column →</div>
+    </div>
+    <script>
+      (function () {
+        var wrap = document.getElementById('eeTableWrap');
+        var scroll = document.getElementById('eeTableScroll');
+        if (!wrap || !scroll) return;
+        function update() {
+          var canScrollRight = wrap.scrollLeft + wrap.clientWidth < wrap.scrollWidth - 2;
+          scroll.classList.toggle('can-scroll', canScrollRight);
+        }
+        wrap.addEventListener('scroll', update);
+        window.addEventListener('resize', update);
+        update();
+      })();
+    </script>
+  </div>
+</section>
+
+<section id="ee-tiers">
+  <div class="container">
+    <div class="section-label" style="text-align:center;">Six ways to buy it</div>
+    <h2>One platform, three buyers, six fixed-price engagements.</h2>
+    <div class="ee-tier-grid">
+      <div class="ee-tier">
+        <span class="lab">Tier 1</span>
+        <h3>Pharma &amp; biotech</h3>
+        <p class="who">For pharma medical-affairs, market-access and HEOR teams running a JCA or NICE submission, planning a PMCF, or standing up a patient council.</p>
+        <ul>
+          <li><a href="solutions-jca.html">JCA-Ready Evidence Package</a></li>
+          <li><a href="solutions-patient-council.html">Patient Council as a Service</a></li>
+        </ul>
+      </div>
+      <div class="ee-tier">
+        <span class="lab">Tier 2</span>
+        <h3>Medical devices &amp; digital health</h3>
+        <p class="who">For SaMD, digital-health and medical-device manufacturers preparing for NHS procurement, NICE ESF, DTAC or defending a live approval.</p>
+        <ul>
+          <li><a href="solutions-samd.html">SaMD Population Performance Red-Team</a></li>
+          <li><a href="solutions-esf-dtac.html">ESF/DTAC Evidence Pack</a></li>
+          <li><a href="solutions-pmcf.html">PMCF Equity Gap Assessment</a></li>
+        </ul>
+      </div>
+      <div class="ee-tier">
+        <span class="lab">Tier 3</span>
+        <h3>Academic, NIHR &amp; non-profit</h3>
+        <p class="who">For academic Principal Investigators writing grants or running NIHR-funded studies that must satisfy INCLUDE. Non-profit access is free by application.</p>
+        <ul>
+          <li><a href="solutions-nihr-ppi.html">NIHR PPI Package</a></li>
+          <li><a href="solutions.html?buyer=academic">Dataset access, at cost</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ee-trust">
+  <div class="container">
+    <div class="section-label">Trust &amp; governance</div>
+    <h2>The layer regulators, buyers and community partners all inspect first.</h2>
+    <div class="ee-trust-grid">
+      <div class="ee-trust-item">
+        <h4>Consented at every stage</h4>
+        <p>Every participant re-consents on a use-case-specific schema, at NIHR guide rates.</p>
+      </div>
+      <div class="ee-trust-item">
+        <h4>Community-partnered</h4>
+        <p>Recruited through named community organisations under signed MOU. Not through a digital panel aggregator.</p>
+      </div>
+      <div class="ee-trust-item">
+        <h4>Independently governed</h4>
+        <p>Trust &amp; Ethics Board: lay chair, clinical ethicist, DPO, two community-partner representatives with veto over any identifying output.</p>
+      </div>
+      <div class="ee-trust-item">
+        <h4>UK-anchored</h4>
+        <p>Data stays in UK jurisdiction. Every output auditable to raw response level.</p>
+      </div>
+    </div>
+    <div style="margin-top:2rem;text-align:center;"><a href="trust-ethics.html" class="btn btn-outline">Read the Trust &amp; Ethics page →</a></div>
+  </div>
+</section>
+
+<section id="ee-cta">
+  <div class="container">
+    <h2>Not sure which engagement you need?</h2>
+    <p>Take the Regulatory Readiness Scorecard. Twenty questions, six domains, a plain-English diagnosis of the regulatory clauses you are exposed under, and the specific fixed-price engagement that closes each gap.</p>
+    <div class="row">
+      <a href="scorecard.html" class="btn btn-white">Take the Scorecard →</a>
+      <a href="contact.html" class="btn btn-outline-white">Book a 20-minute call</a>
+    </div>
+  </div>
+</section>
+
+<div class="sticky-mobile-cta"><a href="scorecard.html">Take the Scorecard →</a></div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="images/logo-horizontal.svg" alt="Unwritten Health" style="height:26px;width:auto;display:block;filter:brightness(0) invert(1);opacity:0.9;" /></div>
+        <div class="footer-tagline">Regulated healthcare's patient experience data company</div>
+        <p class="footer-desc">The UK patient experience data platform for regulated healthcare. Community-recruited, SDoH-profiled, submission-ready evidence at fixed price.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Platform</div>
+        <ul>
+          <li><a href="equity-engine.html">Equity Engine</a></li>
+          <li><a href="scorecard.html">Scorecard</a></li>
+          <li><a href="trust-ethics.html">Trust &amp; ethics</a></li>
+          <li><a href="case-studies.html">Case studies</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Solutions</div>
+        <ul>
+          <li><a href="solutions-jca.html">JCA-Ready Evidence</a></li>
+          <li><a href="solutions-pmcf.html">PMCF Equity Gap</a></li>
+          <li><a href="solutions-esf-dtac.html">ESF/DTAC Pack</a></li>
+          <li><a href="solutions-samd.html">SaMD Red-Team</a></li>
+          <li><a href="solutions-patient-council.html">Patient Council</a></li>
+          <li><a href="solutions-nihr-ppi.html">NIHR PPI</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Company</div>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="press.html">Press</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Unwritten Health. Company no. 16561594.</div>
+      <div class="footer-links-bottom">
+        <a href="privacy.html">Privacy policy</a>
+        <a href="terms.html">Terms of use</a>
+        <a href="refund-policy.html">Refund policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu(){var m=document.getElementById("mobileMenu");if(m)m.classList.toggle("open");}
+  document.body.classList.add("js-ready");
+</script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/logo-mark.png" />
+  <link rel="apple-touch-icon" href="images/logo-mark.png" />
+  <link rel="shortcut icon" href="images/logo-mark.png" />
+  <title>Regulatory Alignment | Clause-by-Clause Mapping for JCA, NICE ESF, NHS DTAC, MHRA IDP, PMCF & NIHR INCLUDE | Unwritten Health</title>
+  <meta name="description" content="Framework-by-framework map of Equity Engine outputs to the specific clauses of EU JCA (Regulation 2021/2282), NICE ESF Standard 4, NHS DTAC, MHRA IDP, EU MDR Annex XIV PMCF, UK PMS 2025 (SI 2024/1368), FDA DAP and NIHR INCLUDE. Built for regulatory-affairs vendor forms and procurement due diligence." />
+  <meta name="keywords" content="regulatory alignment, JCA clause mapping, NICE ESF Standard 4 clauses, NHS DTAC criteria, MHRA IDP clauses, EU MDR Annex XIV PMCF, UK PMS 2025 SI 2024/1368, FDA DAP, NIHR INCLUDE, regulatory affairs vendor form" />
+  <meta property="og:title" content="Regulatory Alignment | Clause-by-Clause Mapping for 8 Frameworks | Unwritten Health" />
+  <meta property="og:description" content="Which Equity Engine output satisfies which regulatory clause across JCA, NICE ESF, NHS DTAC, MHRA IDP, EU MDR PMCF, UK PMS 2025, FDA DAP and NIHR INCLUDE. For regulatory-affairs review and vendor forms." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://unwritten.health/regulatory-alignment" />
+  <meta property="og:site_name" content="Unwritten Health" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Regulatory Alignment | Unwritten Health" />
+  <meta name="twitter:description" content="Clause-by-clause mapping of Equity Engine outputs to 8 regulatory frameworks. For regulatory-affairs review." />
+  <link rel="canonical" href="https://unwritten.health/regulatory-alignment" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bentham&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+  <style>
+    .site-nav .nav-logo img, .footer-logo img { height: 28px; width: auto; display: block; }
+    .footer-logo img { filter: brightness(0) invert(1); opacity: 0.9; }
+    #ra-hero { padding: 104px 0 40px; background: radial-gradient(900px 500px at 88% 0%, rgba(91,129,112,0.14), transparent 70%), var(--cream); }
+    #ra-hero h1 { font-size: clamp(2.2rem, 4.2vw, 3.4rem); line-height: 1.1; max-width: 900px; letter-spacing: -0.01em; margin-bottom: 14px; }
+    #ra-hero .lede { font-size: 1.02rem; color: var(--charcoal-soft); line-height: 1.75; max-width: 65ch; }
+    #ra-hero .use { margin-top: 22px; padding: 18px 22px; background: var(--white); border-left: 3px solid var(--green-dark); border-radius: 4px 12px 12px 4px; max-width: 780px; font-size: 0.94rem; color: var(--charcoal); line-height: 1.7; }
+    #ra-hero .use strong { color: var(--green-darker); }
+    #ra-toc { padding: 32px 0; background: var(--white); border-bottom: 1px solid rgba(55,55,59,0.08); }
+    .ra-toc-list { display: flex; flex-wrap: wrap; gap: 8px; max-width: 940px; }
+    .ra-toc-list a { padding: 6px 14px; border-radius: 100px; background: var(--cream); color: var(--charcoal); font-size: 0.84rem; font-weight: 600; border: 1px solid rgba(91,129,112,0.14); }
+    .ra-toc-list a:hover { background: var(--green-pale); color: var(--green-darker); border-color: var(--green); }
+    #ra-map { padding: 56px 0 96px; background: var(--white); }
+    .ra-fw { max-width: 1080px; margin: 0 auto 40px; padding: 32px; background: var(--cream); border-radius: 20px; border: 1px solid rgba(91,129,112,0.14); }
+    .ra-fw h2 { font-family: var(--font-head); font-size: 1.7rem; color: var(--charcoal); margin-bottom: 6px; line-height: 1.25; letter-spacing: -0.01em; }
+    .ra-fw .sub { display: flex; gap: 18px; flex-wrap: wrap; font-size: 0.82rem; color: var(--charcoal-soft); margin-bottom: 22px; }
+    .ra-fw .sub span::before { content: "· "; color: var(--green); font-weight: 700; }
+    .ra-fw .sub span:first-child::before { content: none; }
+    .ra-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 12px; overflow-x: auto; display: block; }
+    .ra-table table { width: 100%; min-width: 720px; border-collapse: separate; border-spacing: 0; }
+    .ra-table th, .ra-table td { padding: 14px 16px; text-align: left; vertical-align: top; font-size: 0.9rem; line-height: 1.55; }
+    .ra-table thead th { font-family: var(--font-head); font-size: 0.94rem; color: var(--charcoal); background: rgba(63,97,82,0.08); font-weight: 400; border-top: 1px solid rgba(63,97,82,0.2); border-bottom: 2px solid rgba(63,97,82,0.2); }
+    .ra-table tbody tr:nth-child(even) td { background: rgba(255,255,255,0.5); }
+    .ra-table tbody td { border-bottom: 1px solid rgba(55,55,59,0.06); color: var(--charcoal); }
+    .ra-table tbody td.cl { font-family: var(--font-body); font-weight: 700; color: var(--green-darker); font-size: 0.86rem; }
+    .ra-table tbody td.out { color: var(--charcoal); }
+    .ra-table tbody td.sku a { color: var(--green-dark); text-decoration: underline; text-underline-offset: 3px; font-weight: 600; font-size: 0.86rem; }
+    .ra-table tbody td.sku a:hover { color: var(--green-darker); }
+    #ra-cta { padding: 72px 0; background: var(--charcoal); color: var(--white); text-align: center; }
+    #ra-cta h2 { color: var(--white); font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 1rem; }
+    #ra-cta p { color: rgba(255,255,255,0.75); font-size: 1rem; line-height: 1.75; margin-bottom: 1.8rem; max-width: 640px; margin-left: auto; margin-right: auto; }
+    #ra-cta .row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    @media (max-width: 900px) {
+      #ra-hero { padding: 96px 0 32px; }
+      .ra-fw { padding: 22px; }
+    }
+  </style>
+  <script defer src="analytics.js"></script>
+</head>
+<body class="has-sticky-cta">
+
+<nav class="site-nav" id="mainNav">
+  <a href="index.html" class="nav-logo"><img src="images/logo-horizontal.svg" alt="Unwritten Health" /></a>
+  <div class="nav-links">
+    <div class="has-dd"><a href="about.html">About</a>
+      <div class="nav-dropdown">
+        <a href="about.html">About us</a>
+        <a href="trust-ethics.html">Trust &amp; ethics</a>
+        <a href="press.html">Press</a>
+        <a href="contact.html">Contact us</a>
+      </div>
+    </div>
+    <a href="equity-engine.html">Platform</a>
+    <a href="inclusion-debt.html">Inclusion debt</a>
+    <div class="has-dd"><a href="solutions.html">Solutions</a>
+      <div class="nav-dropdown">
+        <span class="dd-lab">Pharma &amp; biotech</span>
+        <a href="solutions-jca.html">JCA-Ready Evidence</a>
+        <a href="solutions-patient-council.html">Patient Council as a Service</a>
+        <span class="dd-sep"></span>
+        <span class="dd-lab">Medtech &amp; digital health</span>
+        <a href="solutions-samd.html">SaMD Red-Team</a>
+        <a href="solutions-esf-dtac.html">ESF/DTAC Evidence Pack</a>
+        <a href="solutions-pmcf.html">PMCF Equity Gap</a>
+        <span class="dd-sep"></span>
+        <span class="dd-lab">Academic, NIHR &amp; non-profit</span>
+        <a href="solutions-nihr-ppi.html">NIHR PPI Package</a>
+      </div>
+    </div>
+    <div class="has-dd"><a href="case-studies.html">Resources</a>
+      <div class="nav-dropdown">
+        <a href="case-studies.html">Case studies</a>
+        <a href="regulatory-alignment.html">Regulatory alignment</a>
+        <a href="blog.html">Blog</a>
+        <a href="resources.html">Resources hub</a>
+        <a href="toolkits.html">Toolkits (self-serve)</a>
+      </div>
+    </div>
+    <a href="scorecard.html">Scorecard</a>
+  </div>
+  <a href="scorecard.html" class="nav-cta">Take the Scorecard</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="about.html">About</a>
+  <a href="equity-engine.html">Platform</a>
+  <a href="solutions.html">Solutions</a>
+  <a href="case-studies.html">Case studies</a>
+  <a href="inclusion-debt.html">Inclusion debt</a>
+  <a href="regulatory-alignment.html">Regulatory alignment</a>
+  <a href="trust-ethics.html">Trust &amp; ethics</a>
+  <a href="press.html">Press</a>
+  <a href="blog.html">Blog</a>
+  <a href="resources.html">Resources</a>
+  <a href="toolkits.html">Toolkits</a>
+  <a href="scorecard.html" class="cta">Take the Scorecard</a>
+  <a href="contact.html">Contact us</a>
+</div>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+<main id="main">
+
+<section id="ra-hero">
+  <div class="container">
+    <div class="eyebrow"><span class="eyebrow-dot"></span>For regulatory affairs and procurement</div>
+    <h1>Regulatory alignment. Which Equity Engine output satisfies which clause.</h1>
+    <p class="lede">A framework-by-framework map from the specific regulatory clause you are graded against to the specific Equity Engine output that satisfies it. Built for vendor forms, procurement due diligence, and NICE / MHRA submissions.</p>
+    <div class="use">
+      <strong>How to use this page.</strong> Skip to the framework you care about via the table of contents below. Each row shows the clause reference, the output we produce against it, and the engagement it lives inside. Every claim on this page cross-references the specific solution page it comes from.
+    </div>
+  </div>
+</section>
+
+<section id="ra-toc">
+  <div class="container">
+    <div class="ra-toc-list">
+      <a href="#jca">EU JCA</a>
+      <a href="#nice-esf">NICE ESF</a>
+      <a href="#nhs-dtac">NHS DTAC</a>
+      <a href="#fda-dap">FDA DAP</a>
+      <a href="#mhra-pms">UK PMS 2025 &amp; MHRA IDP</a>
+      <a href="#eu-mdr">EU MDR PMCF</a>
+      <a href="#nihr-include">NIHR INCLUDE</a>
+    </div>
+  </div>
+</section>
+
+<section id="ra-map">
+  <div class="container">
+
+    <div class="ra-fw" id="jca">
+      <h2>EU Joint Clinical Assessment (JCA)</h2>
+      <div class="sub"><span>Regulation (EU) 2021/2282</span><span>Applicable 12 January 2025</span><span>100-day dossier window</span><span>Up to 67 PICOs, 16 sub-populations</span></div>
+      <div class="ra-table"><table>
+        <thead><tr><th>Clause / expectation</th><th>Equity Engine output</th><th>Engagement</th></tr></thead>
+        <tbody>
+          <tr><td class="cl">Mandatory patient input into the joint assessment</td><td class="out">PICO patient-input datasets formatted to the EUnetHTA 21 template</td><td class="sku"><a href="solutions-jca.html">JCA-Ready Evidence Package</a></td></tr>
+          <tr><td class="cl">Subgroup analysis across relevant sub-populations</td><td class="out">Full subgroup analysis across the 8 social factors profiled at panel sign-up</td><td class="sku"><a href="solutions-jca.html">JCA-Ready Evidence Package</a></td></tr>
+          <tr><td class="cl">Dual formatting for NICE reference case and G-BA reappraisal</td><td class="out">Dual-format deliverable file, ready for both bodies without re-work</td><td class="sku"><a href="solutions-jca.html">JCA-Ready Evidence Package</a></td></tr>
+          <tr><td class="cl">Lived-experience evidence to support scope-defining PICOs</td><td class="out">Structured lived-experience narrative artefacts, tied to specific PICOs</td><td class="sku"><a href="solutions-jca.html">JCA-Ready Evidence Package</a></td></tr>
+          <tr><td class="cl">Ongoing patient-input function for label reviews and amendments</td><td class="out">Quarterly-to-monthly Patient Council with written decision record</td><td class="sku"><a href="solutions-patient-council.html">Patient Council as a Service</a></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="ra-fw" id="nice-esf">
+      <h2>NICE Evidence Standards Framework (ESF)</h2>
+      <div class="sub"><span>Section C, Standard 4</span><span>Health-inequalities consideration</span><span>Dataset-diversity disclosure</span></div>
+      <div class="ra-table"><table>
+        <thead><tr><th>Clause / expectation</th><th>Equity Engine output</th><th>Engagement</th></tr></thead>
+        <tbody>
+          <tr><td class="cl">Documented consideration of health inequalities</td><td class="out">Health-inequalities evidence pack, stratified by 8 social factors</td><td class="sku"><a href="solutions-esf-dtac.html">ESF/DTAC Evidence Pack</a></td></tr>
+          <tr><td class="cl">Disclosure of dataset diversity</td><td class="out">Dataset-diversity statement in NICE ESF Section C format</td><td class="sku"><a href="solutions-esf-dtac.html">ESF/DTAC Evidence Pack</a></td></tr>
+          <tr><td class="cl">Sub-population performance evidence</td><td class="out">SaMD subgroup performance dossier, if algorithm-based</td><td class="sku"><a href="solutions-samd.html">SaMD Red-Team</a></td></tr>
+          <tr><td class="cl">Ongoing evidence generation post-approval</td><td class="out">PMCF equity gap map, alignment to UK PMS 2025</td><td class="sku"><a href="solutions-pmcf.html">PMCF Equity Gap Assessment</a></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="ra-fw" id="nhs-dtac">
+      <h2>NHS Digital Technology Assessment Criteria (DTAC)</h2>
+      <div class="sub"><span>Accessibility and inclusion</span><span>Usability</span><span>Digital-access barriers</span><span>Data protection</span></div>
+      <div class="ra-table"><table>
+        <thead><tr><th>Clause / expectation</th><th>Equity Engine output</th><th>Engagement</th></tr></thead>
+        <tbody>
+          <tr><td class="cl">Accessibility and inclusion evidence for procurement</td><td class="out">Accessibility &amp; inclusion assessment, sized to NHS Digital's template</td><td class="sku"><a href="solutions-esf-dtac.html">ESF/DTAC Evidence Pack</a></td></tr>
+          <tr><td class="cl">Usability testing across literacy levels</td><td class="out">Population-fit usability evidence, spanning literacy and language</td><td class="sku"><a href="solutions-esf-dtac.html">ESF/DTAC Evidence Pack</a></td></tr>
+          <tr><td class="cl">Digital-inclusion barriers evidence</td><td class="out">Digital-access barrier study across community-partner-recruited users</td><td class="sku"><a href="solutions-esf-dtac.html">ESF/DTAC Evidence Pack</a></td></tr>
+          <tr><td class="cl">NHS-procurement-simulation confidence check</td><td class="out">Simulation session with an ex-procurement reviewer on our team</td><td class="sku"><a href="solutions-esf-dtac.html">ESF/DTAC Evidence Pack</a></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="ra-fw" id="fda-dap">
+      <h2>FDA Diversity Action Plans (DAP)</h2>
+      <div class="sub"><span>Guidance under FDORA</span><span>Phase 3 / pivotal-trial disaggregation</span><span>Race, ethnicity, sex, age</span></div>
+      <div class="ra-table"><table>
+        <thead><tr><th>Clause / expectation</th><th>Equity Engine output</th><th>Engagement</th></tr></thead>
+        <tbody>
+          <tr><td class="cl">Enrollment disaggregation by race, ethnicity, sex, age</td><td class="out">Population-fit performance dossier stratified across the 8 social factors</td><td class="sku"><a href="solutions-samd.html">SaMD Red-Team</a></td></tr>
+          <tr><td class="cl">Subgroup performance evidence for AI/algorithm devices</td><td class="out">Adversarial subgroup performance breakdown with confidence intervals</td><td class="sku"><a href="solutions-samd.html">SaMD Red-Team</a></td></tr>
+          <tr><td class="cl">Independent-review letter for defence of live approval</td><td class="out">Signed independent-review letter by an ex-notified-body reviewer</td><td class="sku"><a href="solutions-samd.html">SaMD Red-Team</a></td></tr>
+          <tr><td class="cl">Diversity narrative for the DAP itself</td><td class="out">Written diversity narrative tied to pre-existing UK panel evidence</td><td class="sku"><a href="solutions-jca.html">JCA-Ready Evidence Package</a></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="ra-fw" id="mhra-pms">
+      <h2>UK Post-Market Surveillance 2025 &amp; MHRA Inclusion and Diversity Plan</h2>
+      <div class="sub"><span>Statutory Instrument 2024/1368</span><span>In force 16 June 2025</span><span>Active look-back for subgroup issues</span></div>
+      <div class="ra-table"><table>
+        <thead><tr><th>Clause / expectation</th><th>Equity Engine output</th><th>Engagement</th></tr></thead>
+        <tbody>
+          <tr><td class="cl">Active (not passive) subgroup surveillance</td><td class="out">Structured PMCF gap map with active-surveillance remediation plan</td><td class="sku"><a href="solutions-pmcf.html">PMCF Equity Gap Assessment</a></td></tr>
+          <tr><td class="cl">Auditable-to-raw-signal PMS process</td><td class="out">Editable working file with audit trail, referenceable in tech docs</td><td class="sku"><a href="solutions-pmcf.html">PMCF Equity Gap Assessment</a></td></tr>
+          <tr><td class="cl">Notified-body simulation before real review</td><td class="out">One notified-body simulation session as part of the engagement</td><td class="sku"><a href="solutions-pmcf.html">PMCF Equity Gap Assessment</a></td></tr>
+          <tr><td class="cl">Inclusion and Diversity Plan patient-input dimension</td><td class="out">Standing patient-input function via Patient Council</td><td class="sku"><a href="solutions-patient-council.html">Patient Council as a Service</a></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="ra-fw" id="eu-mdr">
+      <h2>EU MDR Post-Market Clinical Follow-Up (PMCF)</h2>
+      <div class="sub"><span>Annex XIV, Part B</span><span>Ongoing device performance evidence</span></div>
+      <div class="ra-table"><table>
+        <thead><tr><th>Clause / expectation</th><th>Equity Engine output</th><th>Engagement</th></tr></thead>
+        <tbody>
+          <tr><td class="cl">Ongoing confirmation of safety and performance in intended population</td><td class="out">PMCF gap map cross-referenced against Annex XIV</td><td class="sku"><a href="solutions-pmcf.html">PMCF Equity Gap Assessment</a></td></tr>
+          <tr><td class="cl">Justification for post-market surveillance sampling frame</td><td class="out">Community-partner sampling frame with signed MOUs, over-indexed on under-represented populations</td><td class="sku"><a href="solutions-pmcf.html">PMCF Equity Gap Assessment</a></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="ra-fw" id="nihr-include">
+      <h2>NIHR INCLUDE</h2>
+      <div class="sub"><span>Under-served-groups framework</span><span>PPI expectation for NIHR funding</span></div>
+      <div class="ra-table"><table>
+        <thead><tr><th>Clause / expectation</th><th>Equity Engine output</th><th>Engagement</th></tr></thead>
+        <tbody>
+          <tr><td class="cl">Costed, INCLUDE-aligned PPI plan for grant application</td><td class="out">Drop-in PPI plan formatted to NIHR expectations</td><td class="sku"><a href="solutions-nihr-ppi.html">NIHR PPI Package</a></td></tr>
+          <tr><td class="cl">Community partnerships in place at submission (not aspirational)</td><td class="out">Signed community-partner MOUs before grant submission</td><td class="sku"><a href="solutions-nihr-ppi.html">NIHR PPI Package</a></td></tr>
+          <tr><td class="cl">Payment to participants at NIHR guide rates</td><td class="out">Participant payments budgeted transparently at NIHR rates</td><td class="sku"><a href="solutions-nihr-ppi.html">NIHR PPI Package</a></td></tr>
+          <tr><td class="cl">End-of-grant PPI reporting</td><td class="out">End-of-grant PPI report for NIHR return</td><td class="sku"><a href="solutions-nihr-ppi.html">NIHR PPI Package</a></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+  </div>
+</section>
+
+<section id="ra-cta">
+  <div class="container">
+    <h2>Not sure which clauses you are exposed under?</h2>
+    <p>Take the Regulatory Readiness Scorecard. Twenty questions map you to your regulatory exposure across all seven frameworks above.</p>
+    <div class="row">
+      <a href="scorecard.html" class="btn btn-white">Take the Scorecard →</a>
+      <a href="contact.html" class="btn btn-outline-white">Book a 20-minute call</a>
+    </div>
+  </div>
+</section>
+
+<div class="sticky-mobile-cta"><a href="scorecard.html">Take the Scorecard →</a></div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="images/logo-horizontal.svg" alt="Unwritten Health" /></div>
+        <div class="footer-tagline">Regulated healthcare's patient experience data company</div>
+        <p class="footer-desc">The UK patient experience data platform for regulated healthcare.</p>
+      </div>
+      <div class="footer-col"><div class="footer-col-title">Platform</div><ul><li><a href="equity-engine.html">Equity Engine</a></li><li><a href="scorecard.html">Scorecard</a></li><li><a href="inclusion-debt.html">Inclusion debt</a></li><li><a href="regulatory-alignment.html">Regulatory alignment</a></li><li><a href="trust-ethics.html">Trust &amp; ethics</a></li></ul></div>
+      <div class="footer-col"><div class="footer-col-title">Solutions</div><ul><li><a href="solutions-jca.html">JCA-Ready Evidence</a></li><li><a href="solutions-pmcf.html">PMCF Equity Gap</a></li><li><a href="solutions-esf-dtac.html">ESF/DTAC Pack</a></li><li><a href="solutions-samd.html">SaMD Red-Team</a></li><li><a href="solutions-patient-council.html">Patient Council</a></li><li><a href="solutions-nihr-ppi.html">NIHR PPI</a></li></ul></div>
+      <div class="footer-col"><div class="footer-col-title">Company</div><ul><li><a href="about.html">About us</a></li><li><a href="press.html">Press</a></li><li><a href="blog.html">Blog</a></li><li><a href="resources.html">Resources</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Unwritten Health. Company no. 16561594.</div>
+      <div class="footer-links-bottom"><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms of use</a><a href="refund-policy.html">Refund policy</a><a href="accessibility.html">Accessibility</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>function toggleMenu(){var m=document.getElementById("mobileMenu");if(m)m.classList.toggle("open");}document.body.classList.add("js-ready");</script>
+</body>
+</html>

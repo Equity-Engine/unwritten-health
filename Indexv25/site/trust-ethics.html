@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/logo-mark.png" />
+  <link rel="apple-touch-icon" href="images/logo-mark.png" />
+  <link rel="shortcut icon" href="images/logo-mark.png" />
+  <title>Trust &amp; Ethics | Consented, Community-Partnered, UK-Anchored Data | Unwritten Health</title>
+  <meta name="description" content="How the Equity Engine is governed. Every participant re-consents on a use-case-specific schema at NIHR guide rates. Recruited through community partners under signed MOU. Independently governed by a Trust &amp; Ethics Board with community-partner veto. UK-anchored data, auditable to raw response level." />
+  <meta name="keywords" content="Trust and Ethics Board, consented patient data UK, community-partnered research, NIHR guide rates, UK GDPR patient research, ethics governance clinical trial data" />
+  <meta property="og:title" content="Trust &amp; Ethics | UK-Anchored Governance | Unwritten Health" />
+  <meta property="og:description" content="Consented, community-partnered, independently governed, UK-anchored. How Unwritten Health governs the Equity Engine dataset." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://unwritten.health/trust-ethics" />
+  <meta property="og:site_name" content="Unwritten Health" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Trust &amp; Ethics | Unwritten Health" />
+  <meta name="twitter:description" content="Consented, community-partnered, independently governed, UK-anchored." />
+  <link rel="canonical" href="https://unwritten.health/trust-ethics" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bentham&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+  <style>
+    .site-nav .nav-logo img, .footer-logo img { height: 28px; width: auto; display: block; }
+    .footer-logo img { filter: brightness(0) invert(1); opacity: 0.9; }
+
+    #te-hero { padding: 144px 0 72px; background: radial-gradient(900px 500px at 88% 0%, rgba(91,129,112,0.14), transparent 70%), var(--cream); }
+    #te-hero h1 { font-size: clamp(2.4rem, 4.6vw, 3.6rem); line-height: 1.1; max-width: 880px; letter-spacing: -0.01em; }
+    .te-lede { font-family: var(--font-head); font-size: clamp(1.3rem, 2.2vw, 1.7rem); color: var(--green-darker); line-height: 1.45; margin-top: 1.4rem; max-width: 800px; }
+
+    .te-pillars { padding: 64px 0; background: var(--white); }
+    .te-pillars .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1080px; margin: 0 auto; }
+    .te-pillar { background: var(--cream); border-radius: 22px; padding: 40px 36px; border: 1px solid rgba(91,129,112,0.14); }
+    .te-pillar .num { display: inline-block; font-family: var(--font-head); color: var(--green-dark); font-size: 1.8rem; line-height: 1; margin-bottom: 12px; }
+    .te-pillar h3 { font-family: var(--font-head); font-size: 1.6rem; color: var(--charcoal); line-height: 1.25; margin-bottom: 14px; }
+    .te-pillar p { font-size: 0.98rem; color: var(--charcoal-soft); line-height: 1.8; margin-bottom: 1rem; }
+    .te-pillar p strong { color: var(--charcoal); font-weight: 700; }
+    .te-pillar ul { margin-top: 14px; }
+    .te-pillar li { padding: 6px 0 6px 22px; position: relative; font-size: 0.92rem; color: var(--charcoal); line-height: 1.6; }
+    .te-pillar li::before { content: "✓"; position: absolute; left: 0; color: var(--green-dark); font-weight: 700; }
+
+    .te-wheel { padding: 64px 0; background: var(--cream); }
+    .te-wheel-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1100px; margin: 0 auto; align-items: center; }
+    .te-wheel h2 { font-size: clamp(1.8rem, 2.8vw, 2.4rem); margin-bottom: 1.2rem; }
+    .te-wheel p { font-size: 1rem; color: var(--charcoal-soft); line-height: 1.85; margin-bottom: 1rem; }
+    .te-wheel p strong { color: var(--charcoal); font-weight: 700; }
+    .te-wheel-svg { display: flex; justify-content: center; }
+    .te-wheel-svg svg { max-width: 100%; height: auto; }
+    .factor-item text { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 12px; fill: var(--charcoal); }
+    .factor-item circle { fill: var(--white); stroke: var(--green-dark); stroke-width: 1.5; transition: all 0.3s; }
+    .factor-item:hover circle { fill: var(--green-pale); }
+
+    .te-board { padding: 64px 0; background: var(--white); }
+    .te-board h2 { max-width: 720px; margin-bottom: 1rem; font-size: clamp(1.8rem, 2.8vw, 2.4rem); }
+    .te-board .lede { max-width: 780px; margin-bottom: 3rem; color: var(--charcoal-soft); font-size: 1.02rem; line-height: 1.75; }
+    .te-board-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .te-board-card { background: var(--cream); border-radius: 16px; padding: 26px 22px; border-top: 3px solid var(--green-dark); }
+    .te-board-card h4 { font-family: var(--font-head); font-size: 1.05rem; color: var(--charcoal); margin-bottom: 10px; line-height: 1.3; }
+    .te-board-card p { font-size: 0.88rem; color: var(--charcoal-soft); line-height: 1.65; }
+    .te-board-card .veto { display: inline-block; margin-top: 12px; padding: 4px 10px; border-radius: 100px; background: rgba(160,44,26,0.14); color: var(--red); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    .te-policies { padding: 64px 0; background: var(--cream); }
+    .te-policies h2 { max-width: 720px; margin-bottom: 3rem; }
+    .te-policy-list { display: flex; flex-direction: column; gap: 14px; max-width: 940px; }
+    .te-policy { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; padding: 22px 26px; background: var(--white); border-radius: 14px; border: 1px solid rgba(91,129,112,0.14); }
+    .te-policy .body h4 { font-family: var(--font-head); font-size: 1.15rem; color: var(--charcoal); margin-bottom: 6px; }
+    .te-policy .body p { font-size: 0.9rem; color: var(--charcoal-soft); line-height: 1.6; }
+    .te-policy .action a { padding: 8px 16px; border-radius: 100px; background: var(--charcoal); color: var(--white); font-size: 0.78rem; font-weight: 700; }
+    .te-policy .action a:hover { background: var(--green-darker); }
+
+    .te-cta { padding: 72px 0 96px; background: var(--charcoal); color: var(--white); text-align: center; }
+    .te-cta h2 { color: var(--white); font-size: clamp(2rem, 3.4vw, 2.6rem); margin-bottom: 1rem; }
+    .te-cta p { color: rgba(255,255,255,0.75); font-size: 1rem; line-height: 1.75; margin-bottom: 2rem; max-width: 640px; margin-left: auto; margin-right: auto; }
+
+    @media (max-width: 900px) {
+      .te-pillars .grid { grid-template-columns: 1fr; }
+      .te-wheel-inner { grid-template-columns: 1fr; gap: 32px; }
+      .te-board-grid { grid-template-columns: 1fr 1fr; }
+      .te-policy { grid-template-columns: 1fr; gap: 14px; }
+    }
+    @media (max-width: 560px) {
+      .te-board-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <script defer src="analytics.js"></script>
+</head>
+<body class="has-sticky-cta">
+
+<nav class="site-nav" id="mainNav">
+  <a href="index.html" class="nav-logo"><img src="images/logo-horizontal.svg" alt="Unwritten Health" /></a>
+  <div class="nav-links">
+    <div class="has-dd"><a href="about.html">About</a>
+      <div class="nav-dropdown">
+        <a href="about.html">About us</a>
+        <a href="trust-ethics.html">Trust &amp; ethics</a>
+        <a href="press.html">Press</a>
+        <a href="contact.html">Contact us</a>
+      </div>
+    </div>
+    <a href="equity-engine.html">Platform</a>
+    <a href="inclusion-debt.html">Inclusion debt</a>
+    <div class="has-dd"><a href="solutions.html">Solutions</a>
+      <div class="nav-dropdown">
+        <span class="dd-lab">Pharma &amp; biotech</span>
+        <a href="solutions-jca.html">JCA-Ready Evidence</a>
+        <a href="solutions-patient-council.html">Patient Council as a Service</a>
+        <span class="dd-sep"></span>
+        <span class="dd-lab">Medtech &amp; digital health</span>
+        <a href="solutions-samd.html">SaMD Red-Team</a>
+        <a href="solutions-esf-dtac.html">ESF/DTAC Evidence Pack</a>
+        <a href="solutions-pmcf.html">PMCF Equity Gap</a>
+        <span class="dd-sep"></span>
+        <span class="dd-lab">Academic, NIHR &amp; non-profit</span>
+        <a href="solutions-nihr-ppi.html">NIHR PPI Package</a>
+      </div>
+    </div>
+    <div class="has-dd"><a href="case-studies.html">Resources</a>
+      <div class="nav-dropdown">
+        <a href="case-studies.html">Case studies</a>
+        <a href="blog.html">Blog</a>
+        <a href="resources.html">Resources hub</a>
+        <a href="toolkits.html">Toolkits (self-serve)</a>
+      </div>
+    </div>
+    <a href="scorecard.html">Scorecard</a>
+  </div>
+  <a href="scorecard.html" class="nav-cta">Take the Scorecard</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="about.html">About</a>
+  <a href="equity-engine.html">Platform</a>
+  <a href="solutions.html">Solutions</a>
+  <a href="case-studies.html">Case studies</a>
+  <a href="inclusion-debt.html">Inclusion debt</a>
+  <a href="trust-ethics.html">Trust &amp; ethics</a>
+  <a href="press.html">Press</a>
+  <a href="blog.html">Blog</a>
+  <a href="resources.html">Resources</a>
+  <a href="toolkits.html">Toolkits</a>
+  <a href="scorecard.html" class="cta">Take the Scorecard</a>
+  <a href="contact.html">Contact us</a>
+</div>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+<main id="main">
+
+<section id="te-hero">
+  <div class="container">
+    <div class="eyebrow"><span class="eyebrow-dot"></span>Trust &amp; ethics</div>
+    <h1>Trust is not optional in a data business. It belongs on the homepage. And on this one.</h1>
+    <p class="te-lede">The Equity Engine is governed by consent, community-partnership, an independent Trust &amp; Ethics Board with veto power, and UK data anchoring.</p>
+  </div>
+</section>
+
+<section class="te-pillars">
+  <div class="container">
+    <div class="section-label" style="text-align:center;">The four pillars</div>
+    <div class="grid">
+      <div class="te-pillar">
+        <div class="num">01</div>
+        <h3>Consented at every stage.</h3>
+        <p>Every participant re-consents on a use-case-specific schema, at NIHR guide rates. Consent is not a one-time sign-up event, it is per-use.</p>
+        <ul>
+          <li>Sign-up consent covers panel membership and SDoH profiling</li>
+          <li>Every study, survey or council use requires a fresh, specific consent</li>
+          <li>Consent language is co-developed with community partners</li>
+          <li>Participants can withdraw specific consents without leaving the panel</li>
+          <li>All consent records are auditable</li>
+        </ul>
+      </div>
+      <div class="te-pillar">
+        <div class="num">02</div>
+        <h3>Community-partnered.</h3>
+        <p>Every participant is recruited through a named community organisation under a signed memorandum of understanding, <strong>not</strong> through a digital panel aggregator.</p>
+        <ul>
+          <li>Community partners share in sponsor engagement fees</li>
+          <li>Community partners hold veto power on any output that identifies their community</li>
+          <li>Panel refresh cycles are agreed with community partners, not imposed</li>
+          <li>Community partners are named in the Trust &amp; Ethics Board</li>
+        </ul>
+      </div>
+      <div class="te-pillar">
+        <div class="num">03</div>
+        <h3>Independently governed.</h3>
+        <p>Our Trust &amp; Ethics Board sits outside operational decision-making. It reviews all outputs before release and holds veto power over any output that would identify a community.</p>
+        <ul>
+          <li>Lay chair, not the founder, not the CEO</li>
+          <li>Clinical ethicist with regulated healthcare experience</li>
+          <li>Data-protection officer with UK GDPR expertise</li>
+          <li>Two community-partner representatives with output veto</li>
+          <li>Quarterly review of all major outputs</li>
+        </ul>
+      </div>
+      <div class="te-pillar">
+        <div class="num">04</div>
+        <h3>UK-anchored.</h3>
+        <p>Data stays in UK jurisdiction. Every output is <strong>auditable to raw response level</strong>. Sub-processors are UK-only unless the participant has explicitly consented to specific overseas processing.</p>
+        <ul>
+          <li>UK-based hosting, UK-based analytical processing</li>
+          <li>UK GDPR Article 30 record of processing activities maintained</li>
+          <li>Raw response-level audit trail on every dataset</li>
+          <li>Sub-processor list is published and updated</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="te-wheel">
+  <div class="container">
+    <div class="te-wheel-inner">
+      <div>
+        <div class="section-label">Sign-up profile</div>
+        <h2>Every participant is profiled on eight social factors at sign-up.</h2>
+        <p>That is the mechanism that lets us produce subgroup evidence at all. The eight factors below are aligned to <strong>MHRA IDP, NIHR INCLUDE and EMA regulatory expectations</strong> and cover the dimensions regulators, HTA bodies and NHS procurement now ask about first.</p>
+        <p>None of these factors are inferred. All eight are consented and self-reported at panel sign-up, and can be updated by the participant at any time.</p>
+      </div>
+      <div class="te-wheel-svg">
+        <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Eight social factors profiled at sign-up">
+          <circle cx="180" cy="180" r="128" fill="none" stroke="rgba(63,97,82,0.18)" stroke-width="1" stroke-dasharray="4 4"/>
+          <circle cx="180" cy="180" r="80" fill="#e4ece8" stroke="#5B8170" stroke-width="1.5"/>
+          <text x="180" y="176" text-anchor="middle" font-family="Bentham, Georgia, serif" font-size="20" fill="#2e4a3c">Every</text>
+          <text x="180" y="196" text-anchor="middle" font-family="Bentham, Georgia, serif" font-size="20" fill="#2e4a3c">participant</text>
+
+          <!-- 8 factors -->
+          <g class="factor-item"><circle cx="180" cy="40" r="38"/><text x="180" y="44" text-anchor="middle">Age</text></g>
+          <g class="factor-item"><circle cx="278" cy="82" r="38"/><text x="278" y="82" text-anchor="middle">Ethnicity</text></g>
+          <g class="factor-item"><circle cx="322" cy="180" r="38"/><text x="322" y="176" text-anchor="middle">First</text><text x="322" y="192" text-anchor="middle">language</text></g>
+          <g class="factor-item"><circle cx="278" cy="278" r="38"/><text x="278" y="282" text-anchor="middle">Income</text></g>
+          <g class="factor-item"><circle cx="180" cy="322" r="38"/><text x="180" y="326" text-anchor="middle">Geography</text></g>
+          <g class="factor-item"><circle cx="82" cy="278" r="38"/><text x="82" y="282" text-anchor="middle">Disability</text></g>
+          <g class="factor-item"><circle cx="38" cy="180" r="38"/><text x="38" y="176" text-anchor="middle">Caring</text><text x="38" y="192" text-anchor="middle">roles</text></g>
+          <g class="factor-item"><circle cx="82" cy="82" r="38"/><text x="82" y="78" text-anchor="middle">Health</text><text x="82" y="94" text-anchor="middle">literacy</text></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="te-board">
+  <div class="container">
+    <div class="section-label">Governance</div>
+    <h2>The Trust &amp; Ethics Board.</h2>
+    <p class="lede">Independent of operations. Reviews all major outputs before release. <strong>Output veto</strong> means the Board can require an output to be reworked or withheld if it would identify an individual community, breach consent scope, or create a risk to a participant, before the output ever leaves the platform.</p>
+    <div style="margin: -12px 0 32px; max-width: 780px; padding: 14px 20px; background: rgba(63,97,82,0.08); border-left: 3px solid var(--green-dark); border-radius: 4px 12px 12px 4px;">
+      <p style="font-size: 0.92rem; color: var(--charcoal); line-height: 1.7; margin: 0;"><strong style="color: var(--green-darker);">Board being established.</strong> The seat descriptions below define the roles we are recruiting for. The Board is expected to be seated in Q4 2026. Until then, an interim advisory group performs equivalent review functions. Board composition and member biographies will be published on this page.</p>
+    </div>
+    <div class="te-board-grid">
+      <div class="te-board-card">
+        <h4>Lay chair</h4>
+        <p>Not the founder, not the CEO. Provides the outside-in review that HTA bodies and NHS procurement now expect.</p>
+      </div>
+      <div class="te-board-card">
+        <h4>Clinical ethicist</h4>
+        <p>Regulated-healthcare research ethics background. Reviews study design and consent language.</p>
+      </div>
+      <div class="te-board-card">
+        <h4>Data-protection officer</h4>
+        <p>UK GDPR expertise. Reviews data handling, sub-processors and audit trails.</p>
+      </div>
+      <div class="te-board-card">
+        <h4>Community-partner representatives (×2)</h4>
+        <p>Rotating community-partner voices, with formal power to require an output to be reworked or withheld. <span class="veto">Output veto</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="te-policies">
+  <div class="container">
+    <div class="section-label">Documentation</div>
+    <h2>Policies, statements and records you can inspect.</h2>
+    <div class="te-policy-list">
+      <div class="te-policy">
+        <div class="body"><h4>Privacy policy</h4><p>How Unwritten Health handles personal data. UK GDPR compliant.</p></div>
+        <div class="action"><a href="privacy.html">Read →</a></div>
+      </div>
+      <div class="te-policy">
+        <div class="body"><h4>Terms of use</h4><p>Terms and conditions for site use, engagement contracts, and dataset access.</p></div>
+        <div class="action"><a href="terms.html">Read →</a></div>
+      </div>
+      <div class="te-policy">
+        <div class="body"><h4>Refund policy</h4><p>Refund terms for toolkits and fixed-price engagements. Digital-goods provisions under UK Consumer Contracts Regulations 2013.</p></div>
+        <div class="action"><a href="refund-policy.html">Read →</a></div>
+      </div>
+      <div class="te-policy">
+        <div class="body"><h4>Trust &amp; Ethics Board charter</h4><p>The board's composition, powers, and veto scope. Available on request.</p></div>
+        <div class="action"><a href="mailto:chat@unwritten.health?subject=Trust%20%26%20Ethics%20Board%20charter">Request →</a></div>
+      </div>
+      <div class="te-policy">
+        <div class="body"><h4>Community partner list</h4><p>The named organisations under signed MOUs with Unwritten Health. Available on request under NDA.</p></div>
+        <div class="action"><a href="mailto:chat@unwritten.health?subject=Community%20partner%20list">Request →</a></div>
+      </div>
+      <div class="te-policy">
+        <div class="body"><h4>Sub-processor list</h4><p>Every third-party processor handling Equity Engine data. Reviewed quarterly.</p></div>
+        <div class="action"><a href="mailto:chat@unwritten.health?subject=Sub-processor%20list">Request →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="te-cta">
+  <div class="container">
+    <h2>Have a governance question?</h2>
+    <p>Trust and ethics are not a one-way conversation. If you have a question about the Board, the consent model, community-partner arrangements, or data handling, write to us directly.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="mailto:chat@unwritten.health" class="btn btn-white">Email the Trust &amp; Ethics team →</a>
+      <a href="contact.html" class="btn btn-outline-white">Book a call</a>
+    </div>
+  </div>
+</section>
+
+<div class="sticky-mobile-cta"><a href="scorecard.html">Take the Scorecard →</a></div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="images/logo-horizontal.svg" alt="Unwritten Health" /></div>
+        <div class="footer-tagline">Regulated healthcare's patient experience data company</div>
+        <p class="footer-desc">The UK patient experience data platform for regulated healthcare.</p>
+      </div>
+      <div class="footer-col"><div class="footer-col-title">Platform</div><ul><li><a href="equity-engine.html">Equity Engine</a></li><li><a href="scorecard.html">Scorecard</a></li><li><a href="trust-ethics.html">Trust &amp; ethics</a></li><li><a href="case-studies.html">Case studies</a></li></ul></div>
+      <div class="footer-col"><div class="footer-col-title">Solutions</div><ul><li><a href="solutions-jca.html">JCA-Ready Evidence</a></li><li><a href="solutions-pmcf.html">PMCF Equity Gap</a></li><li><a href="solutions-esf-dtac.html">ESF/DTAC Pack</a></li><li><a href="solutions-samd.html">SaMD Red-Team</a></li><li><a href="solutions-patient-council.html">Patient Council</a></li><li><a href="solutions-nihr-ppi.html">NIHR PPI</a></li></ul></div>
+      <div class="footer-col"><div class="footer-col-title">Company</div><ul><li><a href="about.html">About us</a></li><li><a href="press.html">Press</a></li><li><a href="blog.html">Blog</a></li><li><a href="resources.html">Resources</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Unwritten Health. Company no. 16561594.</div>
+      <div class="footer-links-bottom"><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms of use</a><a href="refund-policy.html">Refund policy</a><a href="accessibility.html">Accessibility</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>function toggleMenu(){var m=document.getElementById("mobileMenu");if(m)m.classList.toggle("open");}document.body.classList.add("js-ready");</script>
+</body>
+</html>

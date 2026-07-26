@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/logo-mark.png" />
+  <link rel="apple-touch-icon" href="images/logo-mark.png" />
+  <link rel="shortcut icon" href="images/logo-mark.png" />
+  <title>Equity Engine MVP 2.0 launches in private beta | Press release | Unwritten Health</title>
+  <meta name="description" content="Unwritten Health announces the production launch of Equity Engine MVP 2.0, a UK health-equity research platform with bank-grade verification, automated reward fulfilment, and plain-English communications. Now in private beta with 3,500+ users." />
+  <meta property="og:title" content="Equity Engine MVP 2.0 launches in private beta, Unwritten Health" />
+  <meta property="og:description" content="A UK health-equity research platform with bank-grade verification, automated rewards, and plain-English everywhere. Live in private beta with 3,500+ users." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="images/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Equity Engine MVP 2.0 launches in private beta, Unwritten Health" />
+  <meta name="twitter:description" content="A UK health-equity research platform with bank-grade verification, automated rewards, and plain-English everywhere. Live in private beta with 3,500+ users." />
+  <link href="https://fonts.googleapis.com/css2?family=Bentham&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #FAF8F5; --green: #5B8170; --green-dark: #3f6152; --green-darker: #2e4a3c;
+      --green-pale: #e4ece8; --charcoal: #37373B; --charcoal-soft: #5a5a5f;
+      --white: #ffffff; --font-head: 'Bentham', Georgia, serif; --font-body: 'Manrope', sans-serif;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { background: var(--cream); color: var(--charcoal); font-family: var(--font-body); line-height: 1.7; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    .logo-wrap svg { height: 28px; width: auto; display: block; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 48px; height: 72px; display: flex; align-items: center; justify-content: space-between; background: rgba(250,248,245,0.97); backdrop-filter: blur(16px); box-shadow: 0 1px 0 rgba(55,55,59,0.08); }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-back { font-size: 0.83rem; font-weight: 500; color: var(--charcoal-soft); transition: color 0.2s; }
+    .nav-back:hover { color: var(--green-dark); }
+    .btn-nav { display: inline-flex; align-items: center; padding: 10px 22px; border-radius: 100px; font-family: var(--font-body); font-weight: 600; font-size: 0.82rem; background: var(--green-dark); color: var(--white); transition: all 0.3s; }
+    .btn-nav:hover { background: var(--green-darker); transform: translateY(-1px); }
+
+    .pr-hero { padding: 120px 0 40px; border-bottom: 1px solid rgba(55,55,59,0.08); }
+    .pr-hero-inner { max-width: 860px; margin: 0 auto; padding: 0 48px; }
+    .pr-eyebrow { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 1rem; }
+    .pr-hero h1 { font-family: var(--font-head); font-size: clamp(1.9rem, 3.2vw, 2.8rem); font-weight: 400; color: var(--charcoal); margin-bottom: 1.1rem; line-height: 1.18; letter-spacing: -0.005em; }
+    .pr-meta { display: flex; gap: 22px; flex-wrap: wrap; font-size: 0.82rem; color: var(--charcoal-soft); }
+    .pr-meta span { display: flex; align-items: center; gap: 6px; }
+
+    .pr-stats { max-width: 1060px; margin: 0 auto; padding: 36px 48px 0; }
+    .pr-stats-inner { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+    .pr-stat { background: var(--white); border: 1px solid rgba(91,129,112,0.16); border-radius: 14px; padding: 18px 20px; }
+    .pr-stat-num { font-family: var(--font-head); font-size: 1.7rem; font-weight: 400; color: var(--green-darker); line-height: 1.1; margin-bottom: 4px; }
+    .pr-stat-lab { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--charcoal-soft); }
+
+    .pr-body { max-width: 760px; margin: 0 auto; padding: 56px 48px 32px; }
+    .pr-lede { font-size: 1.08rem; line-height: 1.85; color: var(--charcoal); margin-bottom: 2rem; }
+    .pr-lede strong { font-weight: 700; color: var(--charcoal); }
+    .pr-body h2 { font-family: var(--font-head); font-size: 1.35rem; font-weight: 400; color: var(--charcoal); margin: 2.2rem 0 0.9rem; line-height: 1.3; }
+    .pr-body p { font-size: 0.97rem; color: var(--charcoal-soft); line-height: 1.85; margin-bottom: 1.1rem; }
+    .pr-body a { color: var(--green-dark); text-decoration: underline; text-decoration-color: rgba(63,97,82,0.3); }
+
+    .pr-quote { background: var(--green-pale); border-radius: 18px; padding: 32px 36px; margin: 2.4rem 0; border-left: 4px solid var(--green-dark); }
+    .pr-quote p { font-family: var(--font-head); font-size: 1.18rem; font-weight: 400; color: var(--charcoal); line-height: 1.55; margin: 0 0 14px; font-style: italic; }
+    .pr-quote .pr-quote-attrib { font-size: 0.85rem; font-weight: 600; color: var(--green-darker); font-style: normal; }
+
+    .pr-catalog-link { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; background: var(--charcoal); border-radius: 18px; padding: 26px 32px; margin: 2.4rem 0; }
+    .pr-catalog-link-text { flex: 1 1 260px; }
+    .pr-catalog-link-label { display: block; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #b8d0c6; margin-bottom: 6px; }
+    .pr-catalog-link-title { font-family: var(--font-head); font-size: 1.05rem; font-weight: 400; color: var(--white); line-height: 1.4; margin: 0; }
+    .pr-catalog-link a { display: inline-flex; align-items: center; padding: 12px 24px; border-radius: 100px; background: var(--white); color: var(--green-darker); font-weight: 700; font-size: 0.85rem; text-decoration: none; white-space: nowrap; }
+
+    .pr-boilerplate { margin-top: 2.6rem; padding-top: 1.6rem; border-top: 1px solid rgba(55,55,59,0.12); }
+    .pr-boilerplate h3 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 0.7rem; }
+    .pr-boilerplate p { font-size: 0.9rem; color: var(--charcoal-soft); line-height: 1.75; margin-bottom: 0.9rem; }
+
+    .pr-contact { background: var(--white); border: 1px solid rgba(91,129,112,0.16); border-radius: 14px; padding: 22px 24px; margin-top: 1.4rem; }
+    .pr-contact h3 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 0.6rem; }
+    .pr-contact p { font-size: 0.9rem; color: var(--charcoal); margin: 0.15rem 0; line-height: 1.6; }
+    .pr-contact a { color: var(--green-dark); }
+
+    footer { background: var(--charcoal); padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo svg { height: 22px; width: auto; display: block; filter: brightness(0) invert(1); opacity: 0.7; }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.45); transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.9); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-right { gap: 14px; }
+      .pr-hero-inner, .pr-stats, .pr-body { padding-left: 20px; padding-right: 20px; }
+      .pr-body { padding-top: 40px; }
+      .pr-quote { padding: 24px 22px; }
+      .pr-quote p { font-size: 1.05rem; }
+      .pr-catalog-link { padding: 22px 22px; }
+      footer { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
+    }
+    /* MOBILE-NAV-PATCH-V23 */
+
+     (max-width: 640px) {
+
+      nav { padding: 0 14px !important; gap: 10px; }
+
+      .nav-logo img, .nav-logo svg, .logo-wrap svg, .logo-svg-wrap svg { max-width: 110px !important; height: auto !important; }
+
+      .nav-right { gap: 10px !important; }
+
+      .nav-back { font-size: 0.78rem; white-space: nowrap; }
+
+      .nav-right .nav-back ~ .nav-back { display: none; }
+
+      .btn-nav { padding: 8px 14px !important; font-size: 0.76rem !important; white-space: nowrap; }
+
+    }
+
+     (max-width: 400px) {
+
+      .nav-logo img, .nav-logo svg, .logo-wrap svg, .logo-svg-wrap svg { max-width: 90px !important; }
+
+      .nav-right .nav-back { display: none; }
+
+      .btn-nav { padding: 7px 12px !important; font-size: 0.72rem !important; }
+
+    }
+
+  </style>
+  <link rel="canonical" href="https://unwritten.health/press/equity-engine-mvp-2" />
+  <meta name="keywords" content="Equity Engine, Equity Engine MVP 2.0, health equity research platform UK, Unwritten Health press release, community health research, ICO registered" />
+  <meta name="robots" content="index, follow" />
+  <script defer src="analytics.js"></script>
+</head>
+<body>
+
+  <nav class="site-nav" id="mainNav">
+  <a href="index.html" class="nav-logo" aria-label="Unwritten Health home"><img src="images/logo-horizontal.svg" alt="Unwritten Health" style="height:28px;width:auto;display:block;" /></a>
+  <div class="nav-links">
+    <div class="has-dd"><a href="about.html">About</a>
+      <div class="nav-dropdown">
+        <a href="about.html">About us</a>
+        <a href="trust-ethics.html">Trust &amp; ethics</a>
+        <a href="press.html">Press</a>
+        <a href="contact.html">Contact us</a>
+      </div>
+    </div>
+    <a href="equity-engine.html">Platform</a>
+    <a href="inclusion-debt.html">Inclusion debt</a>
+    <div class="has-dd"><a href="solutions.html">Solutions</a>
+      <div class="nav-dropdown">
+        <span class="dd-lab">Pharma &amp; biotech</span>
+        <a href="solutions-jca.html">JCA-Ready Evidence</a>
+        <a href="solutions-patient-council.html">Patient Council as a Service</a>
+        <span class="dd-sep"></span>
+        <span class="dd-lab">Medtech &amp; digital health</span>
+        <a href="solutions-samd.html">SaMD Red-Team</a>
+        <a href="solutions-esf-dtac.html">ESF/DTAC Evidence Pack</a>
+        <a href="solutions-pmcf.html">PMCF Equity Gap</a>
+        <span class="dd-sep"></span>
+        <span class="dd-lab">Academic, NIHR &amp; non-profit</span>
+        <a href="solutions-nihr-ppi.html">NIHR PPI Package</a>
+      </div>
+    </div>
+    <div class="has-dd"><a href="case-studies.html">Resources</a>
+      <div class="nav-dropdown">
+        <a href="case-studies.html">Case studies</a>
+        <a href="regulatory-alignment.html">Regulatory alignment</a>
+        <a href="blog.html">Blog</a>
+        <a href="resources.html">Resources hub</a>
+        <a href="toolkits.html">Toolkits (self-serve)</a>
+      </div>
+    </div>
+    <a href="scorecard.html">Scorecard</a>
+  </div>
+  <a href="scorecard.html" class="nav-cta">Take the Scorecard</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<script>function toggleMenu(){var m=document.getElementById("mobileMenu");if(m)m.classList.toggle("open");}</script>
+
+  <div class="pr-hero">
+    <div class="pr-hero-inner">
+      <span class="pr-eyebrow">Press release · Manchester, UK</span>
+      <h1>Unwritten Health launches Equity Engine MVP 2.0, a UK health-equity research platform now in private beta with 3,500+ users</h1>
+      <div class="pr-meta">
+        <span>For immediate release</span>
+        <span>Manchester, UK</span>
+        <span>Unwritten Health · Company No. 16561594</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pr-stats">
+    <div class="pr-stats-inner">
+      <div class="pr-stat"><div class="pr-stat-num">3,500+</div><div class="pr-stat-lab">Users on the platform</div></div>
+      <div class="pr-stat"><div class="pr-stat-num">14</div><div class="pr-stat-lab">UI languages</div></div>
+      <div class="pr-stat"><div class="pr-stat-num">10</div><div class="pr-stat-lab">Verification layers</div></div>
+      <div class="pr-stat"><div class="pr-stat-num">130+</div><div class="pr-stat-lab">Features shipped</div></div>
+    </div>
+  </div>
+
+  <div class="pr-body">
+
+    <p class="pr-lede">Unwritten Health today announced the production launch of <strong>Equity Engine MVP 2.0</strong>, a UK health-equity research platform that turns community-reported health experiences into evidence that health organisations can act on. The platform is in private beta with more than 3,500 users already on board, and brings bank-grade verification, automated reward fulfilment, and plain-English communications to community-led health research.</p>
+
+    <h2>Built for the communities health research usually misses</h2>
+    <p>Equity Engine is designed to be the safest, simplest place for under-represented voices in the UK to be heard and properly counted in the evidence that shapes health policy. MVP 2.0 moves the platform from working prototype to production-ready: live in private beta, EU-resident hosting, custom domain, full TLS.</p>
+
+    <h2>A ten-layer verification stack at the front door</h2>
+    <p>Every new account is now screened by an industry-grade fraud-defence stack. Bot defence, IP-based fraud-risk intelligence, two-stage email deliverability checks, privacy-respecting device fingerprinting, optional step-up phone verification (where numbers are stored only as one-way hashes), and academic credential checks for university researchers all run at signup. The platform applies the right level of friction based on signal, not by default, protecting partners and participants without making honest users jump hoops.</p>
+
+    <h2>Automated reward fulfilment, in seconds</h2>
+    <p>Participants who earn points by contributing to surveys can redeem for e-gift vouchers and receive them within seconds. The voucher inventory is encrypted at rest, with built-in safeguards against reward farming and step-up gates on first redemptions from higher-risk acquisition sources.</p>
+
+    <h2>Plain-English everywhere</h2>
+    <p>The Privacy Policy, the Terms of use, every transactional email and every page have been rewritten to a reading age of 12–13, with UK GDPR concepts explained in plain words. This matters most for the communities Equity Engine exists to serve.</p>
+
+    <h2>ICO-registered and legally ready</h2>
+    <p>Unwritten Health is registered with the UK Information Commissioner's Office (ZC109542). The Privacy Policy and Terms reflect the platform and the company as they are today.</p>
+
+    <div class="pr-quote">
+      <p>"Health research has too often spoken <em>about</em> communities, not <em>with</em> them. Equity Engine MVP 2.0 is built to change that, with the same level of verification, security and clarity you'd expect from a banking app, because the communities we serve deserve nothing less. We're proud to be at the point where NHS bodies, charities, and academic partners can rely on what comes out of the platform."</p>
+      <span class="pr-quote-attrib">,  Ashish Rishi, Founder, Unwritten Health</span>
+    </div>
+
+    <div class="pr-catalog-link">
+      <div class="pr-catalog-link-text">
+        <span class="pr-catalog-link-label">Supporting material</span>
+        <p class="pr-catalog-link-title">A full inventory of the 130+ shipped features, participant, partner, admin, AI, email, security, is available as the complete feature catalog.</p>
+      </div>
+      <a href="equity-engine-mvp-2-feature-catalog.html">Read the feature catalog →</a>
+    </div>
+
+    <div class="pr-boilerplate">
+      <h3>About Unwritten Health</h3>
+      <p>Unwritten Health is a UK-based health-equity technology company building Equity Engine, a research platform that closes the equity data gap by amplifying the voices of populations regulators ask about. Registered in England and Wales (Company No. 16561594); ICO registration ZC109542. Based at Swan Buildings, 20 Swan Street, Manchester, M4 5JW.</p>
+    </div>
+
+    <div class="pr-contact">
+      <h3>Press contact</h3>
+      <p><strong>Ashish Rishi</strong>, Founder, Unwritten Health</p>
+      <p><a href="mailto:chat@unwritten.health">chat@unwritten.health</a> · <a href="tel:+441615248800">+44 (0) 161 524 8800</a></p>
+      <p><a href="https://equityengine.health" target="_blank" rel="noopener">equityengine.health</a> · <a href="index.html">unwritten.health</a></p>
+    </div>
+
+  </div>
+
+  <footer>
+    <a href="index.html" class="footer-logo"><?xml version="1.0" encoding="UTF-8"?>
+<svg id="_Шар_1" data-name="Шар 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1276.76 191.66">
+  <defs>
+    <style>
+      .cls-1 { fill: #37373b; }
+      .cls-2 { fill: #5b8170; }
+    </style>
+  </defs>
+  <path class="cls-1" d="M1209.72,140.03V50.33h14.5v28.99c0,3.11-.26,10.48-.41,13.98h.14c3.36-11.65,11.65-18.25,26.66-18.25,16.19,0,26.15,9.19,26.15,24.98v40h-14.5v-36.76c0-10.1-5.69-15.79-17.22-15.79-12.8,0-20.82,7.9-20.82,22.26v30.29h-14.5Z"/>
+  <path class="cls-1" d="M1185.61,140.81c-17.48,0-24.35-9.45-24.35-23.56v-29.38h-10.09v-11.78h8.14c2.47,0,3.39-1.29,3.77-4.92l.65-9.58h12.03v14.5h22v11.78h-22v28.61c0,8.28,3.1,12.43,11.91,12.43,3.63,0,7.76-.65,9.58-1.17v11.52c-1.94.65-6.34,1.55-11.65,1.55Z"/>
+  <path class="cls-1" d="M1127.54,140.03V50.33h14.5v89.7h-14.5Z"/>
+  <path class="cls-1" d="M1075.48,141.07c-14.62,0-24.33-6.99-24.33-19.42,0-9.71,6.87-17.34,23.94-17.34h23.68v-4.53c0-9.58-5.55-13.85-16.81-13.85-9.85,0-15.42,3.76-15.42,10.87,0,.39,0,1.42.14,2.46h-13.35c-.12-.91-.24-2.59-.24-3.75,0-12.81,11.12-20.45,29.37-20.45,19.43,0,30.81,9.19,30.81,26.02v38.96h-14.5c.26-3.11.65-8.93.65-14.11h-.12c-2.07,9.45-9.7,15.15-23.82,15.15ZM1078.46,130.2c12.56,0,20.32-6.08,20.32-15.92v-1.16h-22.38c-8.28,0-11.91,2.85-11.91,7.9,0,5.83,5.19,9.19,13.98,9.19Z"/>
+  <path class="cls-1" d="M1040.35,105.73v5.18h-47.88c.77,12.3,7.64,18.9,18.51,18.9,9.32,0,15.66-4.14,16.31-11.65h13.06c-.5,14.24-12.18,22.91-29.63,22.91-20.2,0-32.87-12.43-32.87-32.49s12.68-33.52,32.87-33.52c18.11,0,29.63,10.74,29.63,30.68ZM1027.29,102.11v-.91c0-9.58-5.96-14.89-16.45-14.89s-16.31,5.18-17.99,15.79h34.44Z"/>
+  <path class="cls-1" d="M887.91,140.03V54.86h15.51v34.82h45.31v-34.82h15.39v85.17h-15.39v-37.93h-45.31v37.93h-15.51Z"/>
+  <path class="cls-1" d="M776.27,140.03v-63.94h14.48l-.5,17.09h.12c3.51-11.52,11.79-18.12,26.66-18.12,16.19,0,26.15,9.19,26.15,24.98v40h-14.48v-36.76c0-10.1-5.72-15.79-17.22-15.79-12.7,0-20.72,7.64-20.72,21.62v30.94h-14.48Z"/>
+  <path class="cls-1" d="M763.64,105.73v5.18h-47.88c.77,12.3,7.64,18.9,18.51,18.9,9.32,0,15.66-4.14,16.31-11.65h13.06c-.5,14.24-12.15,22.91-29.63,22.91-20.2,0-32.87-12.43-32.87-32.49s12.68-33.52,32.87-33.52c18.13,0,29.63,10.74,29.63,30.68ZM750.58,102.11v-.91c0-9.58-5.96-14.89-16.45-14.89s-16.31,5.18-17.99,15.79h34.44Z"/>
+  <path class="cls-1" d="M681.87,140.81c-17.48,0-24.33-9.45-24.33-23.56v-29.38h-10.11v-11.78h8.16c2.45,0,3.36-1.29,3.75-4.92l.65-9.58h12.03v14.5h22.02v11.78h-22.02v28.61c0,8.28,3.12,12.43,11.91,12.43,3.63,0,7.78-.65,9.58-1.17v11.52c-1.94.65-6.34,1.55-11.65,1.55Z"/>
+  <path class="cls-1" d="M629.4,140.81c-17.46,0-24.33-9.45-24.33-23.56v-29.38h-10.09v-11.78h8.14c2.47,0,3.36-1.29,3.75-4.92l.65-9.58h12.05v14.5h22v11.78h-22v28.61c0,8.28,3.1,12.43,11.91,12.43,3.63,0,7.76-.65,9.56-1.17v11.52c-1.92.65-6.34,1.55-11.65,1.55Z"/>
+  <path class="cls-1" d="M571.12,68.58v-14.24h14.89v14.24h-14.89ZM571.24,140.03v-63.94h14.5v63.94h-14.5Z"/>
+  <path class="cls-1" d="M499.94,140.03v-63.94h14.48l-.5,18.38h.12c2.98-11.52,9.58-19.42,22.79-19.42,13.86,0,21.49,9.06,21.49,24.98,0,4.01-.41,9.19-.65,11.91h-13.21c.26-2.46.5-5.7.5-8.67,0-10.74-4.13-15.79-12.68-15.79-11,0-17.87,9.32-17.87,24.59v27.96h-14.48Z"/>
+  <path class="cls-1" d="M407.73,140.03l-18.51-63.94h15.42l13.06,49.45h.26l15.27-49.45h14.36l14.89,49.45h.26l13.47-49.45h13.71l-18.51,63.94h-17.87l-13.86-46.99h-.38l-14.36,46.99h-17.22Z"/>
+  <path class="cls-1" d="M315.76,140.03v-63.94h14.5l-.52,17.09h.13c3.5-11.52,11.77-18.12,26.66-18.12,16.19,0,26.15,9.19,26.15,24.98v40h-14.5v-36.76c0-10.1-5.69-15.79-17.22-15.79-12.68,0-20.7,7.64-20.7,21.62v30.94h-14.5Z"/>
+  <path class="cls-1" d="M263.44,141.33c-23.04,0-37.54-12.94-37.54-33.4v-53.07h15.4v52.81c0,12.94,8.93,20.32,22.78,20.32s22.78-7.38,22.78-20.32v-52.81h13.85v53.07c0,20.45-14.37,33.4-37.28,33.4Z"/>
+  <path class="cls-2" d="M181.13,67.75c28.2-32.46-5.95-81.66-47.28-64.05-7.92,3.37-27.57,22.26-33.01,29.29,9.68,3.09,19.55,1.74,28.03-3.73,3.93-2.53,7.13-6.17,11.44-8.26,20.26-9.88,41.33,12.19,29.4,31.87-2.22,3.65-14.15,15.07-17.88,17.09-10.41,5.63-21.61,1.6-30.05-5.45-8.9-7.43-17.43-17.09-25.93-26.12-9.04-9.62-18.57-19.76-28.11-28.05C35.29-17.88-13.91,16.28,3.7,57.6c3.37,7.92,22.26,27.57,29.29,33.01,3.09-9.68,1.74-19.55-3.73-28.03-2.53-3.93-6.17-7.13-8.26-11.44-9.88-20.27,12.19-41.33,31.87-29.41,3.65,2.22,15.07,14.15,17.09,17.88,5.63,10.41,1.6,21.61-5.45,30.05-7.49,8.97-45.64,44.42-54.17,54.24-28.2,32.46,5.95,81.66,47.28,64.05,7.92-3.37,27.57-22.27,33.01-29.29-9.68-3.09-19.55-1.74-28.03,3.73-3.93,2.53-7.13,6.17-11.44,8.27-20.27,9.88-41.33-12.2-29.41-31.87,2.22-3.65,14.15-15.07,17.88-17.09,10.41-5.64,21.61-1.6,30.05,5.45,10.49,8.76,44.49,45.88,54.04,54.17,32.46,28.2,81.66-5.95,64.05-47.28-3.37-7.92-22.26-27.58-29.29-33.01-3.09,9.68-1.74,19.55,3.73,28.03,2.53,3.93,6.17,7.13,8.26,11.44,9.88,20.26-12.19,41.33-31.87,29.4-3.65-2.22-15.07-14.15-17.09-17.88-5.64-10.41-1.6-21.61,5.45-30.05,7.49-8.97,45.64-44.42,54.17-54.24ZM74.63,42.24c7.4,6.72,15.25,14.98,18.98,18.52,4.92,4.51,14.44,15.49,20.57,20,12.93,9.49,27.55.82,35.04-6.13-6.72,7.4-31.8,32.05-35.34,35.77-.89,1.01-1.75,2.05-2.59,3.12-.17.27-.37.56-.6.87-9.49,12.92-.82,27.55,6.13,35.04-7.4-6.72-15.69-15.19-19.41-18.73-4.92-4.51-14.01-15.28-20.14-19.79-12.93-9.49-27.55-.82-35.04,6.13,6.72-7.4,31.8-32.05,35.34-35.77.88-1.01,1.75-2.05,2.59-3.12.17-.27.37-.56.6-.86,9.49-12.93.82-27.55-6.13-35.04Z"/>
+  <circle class="cls-2" cx="149.37" cy="41.29" r="15.8"/>
+  <circle class="cls-2" cx="41.28" cy="41.29" r="15.8"/>
+  <circle class="cls-2" cx="149.37" cy="150.21" r="15.8"/>
+  <circle class="cls-2" cx="41.28" cy="150.21" r="15.8"/>
+</svg></a>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="case-studies.html">Case studies</a>
+      <a href="resources.html">Resources</a>
+      <a href="toolkits.html">Toolkits</a>
+      <a href="press.html">Press</a>
+      <a href="blog.html">Blog</a>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="terms.html">Terms of use</a>
+      <a href="refund-policy.html">Refund policy</a>
+      <a href="#cookie-settings" onclick="if(window.openCookieSettings){window.openCookieSettings();}return false;">Cookie settings</a>
+    </div>
+  </footer>
+
+</body>
+</html>

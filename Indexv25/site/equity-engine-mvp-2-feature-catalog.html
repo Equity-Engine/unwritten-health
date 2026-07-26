@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/logo-mark.png" />
+  <link rel="apple-touch-icon" href="images/logo-mark.png" />
+  <link rel="shortcut icon" href="images/logo-mark.png" />
+<title>Equity Engine MVP 2.0 Feature Catalog | Bank-Grade Verification &amp; NIHR-Rate Payments | Unwritten Health</title>
+<meta name="description" content="Complete feature catalog for Equity Engine MVP 2.0: bank-grade participant verification, automated NIHR-guide-rate payments, plain-English community communications, SDoH profiling at sign-up. UK patient experience data platform for pharma, medtech, SaMD, digital health and NIHR-funded academic teams." />
+<meta name="keywords" content="Equity Engine features, Equity Engine MVP 2.0, patient panel verification, NIHR guide rate payments, SDoH profiling, community-partnered research platform, health equity technology UK" />
+<meta property="og:title" content="Equity Engine MVP 2.0 Feature Catalog | Unwritten Health" />
+<meta property="og:description" content="Bank-grade verification, automated NIHR-rate payments, community-partnered onboarding. Full feature catalog for the UK patient experience data platform." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://unwritten.health/equity-engine-mvp-2-feature-catalog" />
+<meta property="og:site_name" content="Unwritten Health" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Equity Engine MVP 2.0 Feature Catalog | Unwritten Health" />
+<meta name="twitter:description" content="Bank-grade participant verification, NIHR-rate payments, community-partnered onboarding. UK patient experience data platform." />
+<link rel="canonical" href="https://unwritten.health/equity-engine-mvp-2-feature-catalog" />
+<style>
+  :root {
+    --green-950: #01362f;
+    --green-900: #045044;
+    --green-700: #0a7a68;
+    --green-50:  #e8f3f1;
+    --orange:    #EA7235;
+    --orange-soft: #fff3eb;
+    --ink:       #0d1f1c;
+    --slate:     #4a5856;
+    --line:      #d9e3e1;
+    --bg:        #f6f8f7;
+    --card:      #ffffff;
+    --good:      #15805e;
+    --warn:      #b8730d;
+    --planned:   #6b7280;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--green-700); }
+  code { font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace; font-size: 0.86em; background: #eef3f1; padding: 1px 6px; border-radius: 4px; color: var(--green-900); }
+
+  /* Hero */
+  .hero {
+    background:
+      radial-gradient(1200px 400px at 90% -10%, rgba(234,114,53,0.18), transparent 55%),
+      radial-gradient(800px 300px at 10% 110%, rgba(10,122,104,0.45), transparent 55%),
+      var(--green-950);
+    color: white;
+    padding: 56px 32px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 22px 22px;
+    pointer-events: none;
+    opacity: 0.55;
+  }
+  .hero-inner { max-width: 1180px; margin: 0 auto; position: relative; z-index: 1; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--orange);
+    padding: 5px 10px;
+    background: rgba(234,114,53,0.15);
+    border: 1px solid rgba(234,114,53,0.4);
+    border-radius: 999px;
+  }
+  .eyebrow::before { content: ""; width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+  h1.title { font-size: clamp(34px, 5vw, 56px); line-height: 1.05; font-weight: 700; margin: 18px 0 14px; max-width: 880px; letter-spacing: -0.02em; }
+  .lede { font-size: 18px; max-width: 720px; color: rgba(255,255,255,0.86); }
+  .stat-strip {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 14px;
+    margin-top: 38px;
+  }
+  .stat {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(6px);
+    border-radius: 14px;
+    padding: 16px 18px;
+  }
+  .stat .num { font-size: 32px; font-weight: 700; line-height: 1; color: white; }
+  .stat .lbl { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); margin-top: 6px; }
+
+  /* Nav */
+  .nav-wrap {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(246,248,247,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { max-width: 1180px; margin: 0 auto; padding: 12px 24px; display: flex; gap: 18px; overflow-x: auto; }
+  .nav a {
+    flex: 0 0 auto;
+    text-decoration: none;
+    color: var(--slate);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+  .nav a:hover { color: var(--green-900); background: var(--green-50); }
+
+  /* Content */
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 48px 24px 96px; }
+  section { margin-top: 56px; }
+  section:first-of-type { margin-top: 24px; }
+  h2.section-title {
+    font-size: 26px; font-weight: 700;
+    color: var(--green-900);
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+    display: flex; align-items: center; gap: 12px;
+  }
+  h2.section-title .num-pill {
+    font-size: 13px; font-weight: 700;
+    background: var(--green-900); color: white;
+    padding: 4px 10px; border-radius: 999px;
+  }
+  .section-blurb { color: var(--slate); max-width: 720px; margin: 0 0 24px; }
+
+  /* Cards */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex; flex-direction: column;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .card:hover { border-color: var(--green-700); box-shadow: 0 6px 20px -10px rgba(10,122,104,0.35); }
+  .card h3 {
+    font-size: 15px; font-weight: 700;
+    margin: 0 0 8px;
+    color: var(--ink);
+    display: flex; align-items: flex-start; gap: 8px;
+    line-height: 1.3;
+  }
+  .card p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--slate);
+    flex: 1;
+  }
+  .meta-row {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line);
+  }
+  .chip {
+    font-size: 11px; font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: var(--green-50);
+    color: var(--green-900);
+    letter-spacing: 0.02em;
+  }
+  .chip.path { font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace; background: #eef3f1; color: var(--green-700); font-weight: 500; }
+  .status {
+    margin-left: auto;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 3px 7px; border-radius: 5px;
+    flex-shrink: 0;
+  }
+  .status.live { background: #defaf0; color: var(--good); }
+  .status.beta { background: #fff4e0; color: var(--warn); }
+  .status.planned { background: #e8eaed; color: var(--planned); }
+  .status.new {
+    background: var(--orange);
+    color: white;
+    font-weight: 800;
+    box-shadow: 0 1px 3px rgba(234,114,53,0.4);
+  }
+
+  /* Whats-new highlight section */
+  .whats-new {
+    background: linear-gradient(135deg, rgba(234,114,53,0.08), rgba(234,114,53,0.02));
+    border: 1px solid rgba(234,114,53,0.25);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin: 32px 0 48px;
+  }
+  .whats-new h2 {
+    margin: 0 0 6px;
+    color: var(--green-900);
+    border: none;
+    padding-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .whats-new .whats-new-badge {
+    background: var(--orange);
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+  }
+  .whats-new .blurb {
+    color: var(--slate);
+    margin: 0 0 20px;
+    font-size: 15px;
+    max-width: 720px;
+  }
+  .whats-new-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .whats-new-item {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    border-left: 3px solid var(--orange);
+  }
+  .whats-new-item strong { color: var(--green-900); display: block; margin-bottom: 4px; font-size: 14px; }
+  .whats-new-item span { color: var(--slate); font-size: 13px; line-height: 1.4; }
+
+  /* Personas table */
+  .personas {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .personas table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .personas th { text-align: left; background: var(--green-50); color: var(--green-900); padding: 12px 16px; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .personas td { padding: 14px 16px; border-top: 1px solid var(--line); vertical-align: top; }
+  .personas td strong { color: var(--green-900); }
+  .personas td.persona-name { font-weight: 600; color: var(--ink); white-space: nowrap; }
+
+  /* Tech stack pills */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+  }
+  .stack-pill {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .stack-pill strong { color: var(--green-900); font-size: 13px; }
+  .stack-pill span { color: var(--slate); font-size: 12px; }
+
+  /* Visual tour gallery */
+  .tour {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 20px;
+  }
+  .tour figure {
+    margin: 0;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .tour figure:hover { transform: translateY(-2px); box-shadow: 0 12px 28px -16px rgba(10,122,104,0.4); }
+  .tour figure img {
+    display: block;
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    object-position: top center;
+    background: var(--green-50);
+    border-bottom: 1px solid var(--line);
+  }
+  .tour figcaption {
+    padding: 12px 16px 14px;
+  }
+  .tour .cap-title {
+    font-size: 14px; font-weight: 700;
+    color: var(--ink);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .tour .cap-meta {
+    font-size: 12px;
+    color: var(--slate);
+    margin-top: 3px;
+  }
+  .tour .role-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 2px 7px; border-radius: 4px;
+    margin-left: auto;
+  }
+  .role-tag.public      { background: #eef3f1; color: var(--green-900); }
+  .role-tag.participant { background: #fff3eb; color: var(--orange); }
+  .role-tag.provider    { background: #e8f3f1; color: var(--green-700); }
+  .role-tag.admin       { background: var(--green-900); color: white; }
+
+  /* Footer */
+  footer {
+    max-width: 1180px; margin: 80px auto 0; padding: 32px 24px 64px;
+    border-top: 1px solid var(--line);
+    color: var(--slate);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  footer strong { color: var(--green-900); }
+
+  @media print {
+    .nav-wrap { display: none; }
+    body { background: white; }
+    .card { break-inside: avoid; }
+    section { break-inside: avoid-page; }
+    .hero { padding: 32px 32px 40px; }
+    a { color: var(--green-900); }
+  }
+</style>
+  <script defer src="analytics.js"></script>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">MVP 2.0 · Production-ready · Private beta · June 2026</span>
+    <h1 class="title">Equity Engine, ready for the people health research usually misses.</h1>
+    <p class="lede">
+      Equity Engine is a UK health-equity research platform run by Unwritten Health.
+      It turns community-reported health experiences into evidence health organisations can act on.
+      <strong style="color: white;">MVP 2.0 is production-ready and in private beta</strong> ,  verified email delivery, full anti-fraud stack, automated voucher fulfilment, plain-English everywhere.
+    </p>
+    <div class="stat-strip">
+      <div class="stat"><div class="num">3,500+</div><div class="lbl">Users on the platform</div></div>
+      <div class="stat"><div class="num">130+</div><div class="lbl">Features shipped</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">Personas served</div></div>
+      <div class="stat"><div class="num">10</div><div class="lbl">Verification layers</div></div>
+      <div class="stat"><div class="num">14</div><div class="lbl">UI languages</div></div>
+    </div>
+  </div>
+</header>
+
+<nav class="site-nav" id="mainNav">
+  <a href="index.html" class="nav-logo" aria-label="Unwritten Health home"><img src="images/logo-horizontal.svg" alt="Unwritten Health" style="height:28px;width:auto;display:block;" /></a>
+  <div class="nav-links">
+    <div class="has-dd"><a href="about.html">About</a>
+      <div class="nav-dropdown">
+        <a href="about.html">About us</a>
+        <a href="trust-ethics.html">Trust &amp; ethics</a>
+        <a href="press.html">Press</a>
+        <a href="contact.html">Contact us</a>
+      </div>
+    </div>
+    <a href="equity-engine.html">Platform</a>
+    <a href="inclusion-debt.html">Inclusion debt</a>
+    <div class="has-dd"><a href="solutions.html">Solutions</a>
+      <div class="nav-dropdown">
+        <span class="dd-lab">Pharma &amp; biotech</span>
+        <a href="solutions-jca.html">JCA-Ready Evidence</a>
+        <a href="solutions-patient-council.html">Patient Council as a Service</a>
+        <span class="dd-sep"></span>
+        <span class="dd-lab">Medtech &amp; digital health</span>
+        <a href="solutions-samd.html">SaMD Red-Team</a>
+        <a href="solutions-esf-dtac.html">ESF/DTAC Evidence Pack</a>
+        <a href="solutions-pmcf.html">PMCF Equity Gap</a>
+        <span class="dd-sep"></span>
+        <span class="dd-lab">Academic, NIHR &amp; non-profit</span>
+        <a href="solutions-nihr-ppi.html">NIHR PPI Package</a>
+      </div>
+    </div>
+    <div class="has-dd"><a href="case-studies.html">Resources</a>
+      <div class="nav-dropdown">
+        <a href="case-studies.html">Case studies</a>
+        <a href="regulatory-alignment.html">Regulatory alignment</a>
+        <a href="blog.html">Blog</a>
+        <a href="resources.html">Resources hub</a>
+        <a href="toolkits.html">Toolkits (self-serve)</a>
+      </div>
+    </div>
+    <a href="scorecard.html">Scorecard</a>
+  </div>
+  <a href="scorecard.html" class="nav-cta">Take the Scorecard</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="about.html">About</a>
+  <a href="equity-engine.html">Platform</a>
+  <a href="solutions.html">Solutions</a>
+  <a href="case-studies.html">Case studies</a>
+  <a href="inclusion-debt.html">Inclusion debt</a>
+  <a href="regulatory-alignment.html">Regulatory alignment</a>
+  <a href="trust-ethics.html">Trust &amp; ethics</a>
+  <a href="press.html">Press</a>
+  <a href="blog.html">Blog</a>
+  <a href="resources.html">Resources</a>
+  <a href="toolkits.html">Toolkits</a>
+  <a href="scorecard.html" class="cta">Take the Scorecard</a>
+  <a href="contact.html">Contact us</a>
+</div>
+<script>function toggleMenu(){var m=document.getElementById("mobileMenu");if(m)m.classList.toggle("open");}</script>
+
+<div class="wrap">
+
+<!-- =================================================================== -->
+<section id="whats-new" class="whats-new">
+  <h2>What's new in MVP 2.0 <span class="whats-new-badge">10 major additions</span></h2>
+  <p class="blurb">
+    Between version 1 and 2.0, Equity Engine moved from a working prototype to a live production platform with bank-grade verification, automated rewards, and inclusive language ,  built for the communities health research usually misses.
+  </p>
+  <div class="whats-new-grid">
+
+    <div class="whats-new-item">
+      <strong>🚀 Live &amp; growing</strong>
+      <span>Production-ready, in private beta, with over 3,500 users already on board. UK-grounded, EU-resident hosting, custom domains, full TLS ,  built for scale from day one.</span>
+    </div>
+
+    <div class="whats-new-item">
+      <strong>🛡️ Multi-layer verification stack</strong>
+      <span>Industry-grade fraud defence across every signup ,  bot defence, fraud-risk intelligence, email deliverability checks, device-level uniqueness, optional phone verification, academic credential checks. Designed to protect participants and partners alike.</span>
+    </div>
+
+    <div class="whats-new-item">
+      <strong>🎁 Automated reward fulfilment</strong>
+      <span>Participants who earn points can redeem for e-gift vouchers and receive them in seconds. End-to-end automated, with encrypted inventory and built-in safeguards against reward farming.</span>
+    </div>
+
+    <div class="whats-new-item">
+      <strong>📞 Smart step-up verification</strong>
+      <span>Selectively asks for extra checks only when signals warrant it ,  protects the platform without making honest participants jump hoops.</span>
+    </div>
+
+    <div class="whats-new-item">
+      <strong>📈 Source-aware participant journeys</strong>
+      <span>Every account&apos;s provenance is tracked from signup through every interaction. Lets us apply the right trust gates and report cohort quality back to partners.</span>
+    </div>
+
+    <div class="whats-new-item">
+      <strong>🎓 Academic partnership tier</strong>
+      <span>Free credited access for researchers in exchange for citing Equity Engine in published work. Verified academic identity at signup. Built-in citation tools.</span>
+    </div>
+
+    <div class="whats-new-item">
+      <strong>💬 Plain-English everywhere</strong>
+      <span>Privacy Policy, Terms, every email, every page written to reading age 12&ndash;13. UK GDPR concepts explained in plain words. Critical for the populations regulators ask about we exist to serve.</span>
+    </div>
+
+    <div class="whats-new-item">
+      <strong>📱 Fully mobile-responsive</strong>
+      <span>Every surface ,  participant, partner, admin ,  works on a phone. Admin can triage approvals and fulfil rewards from anywhere.</span>
+    </div>
+
+    <div class="whats-new-item">
+      <strong>📧 Production-grade email infrastructure</strong>
+      <span>Authenticated sender domain, DMARC active, ten brand-styled templates. The deliverability setup that keeps confirmation emails out of spam folders.</span>
+    </div>
+
+    <div class="whats-new-item">
+      <strong>⚖️ ICO-registered &amp; legally ready</strong>
+      <span>Registered with the UK Information Commissioner&apos;s Office (ZC109542). Plain-English Privacy Policy and Terms reflect the real platform and real company.</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- =================================================================== -->
+<section id="personas">
+  <h2 class="section-title"><span class="num-pill">0</span>Who the platform serves</h2>
+  <p class="section-blurb">Four user types, each with their own surface, permissions and data slice.</p>
+  <div class="personas">
+    <table>
+      <thead>
+        <tr><th>Persona</th><th>What they do</th><th>Where they live</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="persona-name">Participant</td>
+          <td>Members of the public who share their health experiences via surveys, earn points, redeem rewards, and see how their community compares.</td>
+          <td><code>/</code>, <code>/community</code>, <code>/community/:slug</code>, <code>/profile</code></td>
+        </tr>
+        <tr>
+          <td class="persona-name">Client / Provider</td>
+          <td>Health charities, NHS bodies, public-interest organisations. Get a scoped dashboard filtered to the disease areas they care about, with PDF export.</td>
+          <td><code>/</code> (provider variant), drill-down modals</td>
+        </tr>
+        <tr>
+          <td class="persona-name">Academic partner</td>
+          <td>Free credited access in exchange for citing Equity Engine. Same provider dashboard plus citation card with BibTeX.</td>
+          <td><code>/academic-access</code> apply, then <code>/</code></td>
+        </tr>
+        <tr>
+          <td class="persona-name">Admin (Unwritten Health)</td>
+          <td>Approves signups, configures organisations and surveys, edits the demographic schema, runs analytics, fulfils reward redemptions.</td>
+          <td><code>/admin/*</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- =================================================================== -->
+
+<!-- =================================================================== -->
+<section id="signup">
+  <h2 class="section-title"><span class="num-pill">1</span>Sign-up, onboarding &amp; anti-spam</h2>
+  <p class="section-blurb">From a public visitor to an approved, profiled participant, with multiple defensive layers against fake signups.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Self-registration <span class="status live">live</span></h3>
+      <p>Public <code>/register</code> page in brand standard. Invitation-request flow: no password chosen at signup, set after admin approval.</p>
+      <div class="meta-row"><span class="chip path">/register</span><span class="chip">Public</span></div>
+    </div>
+    <div class="card">
+      <h3>Cloudflare Turnstile <span class="status live">live</span></h3>
+      <p>Invisible CAPTCHA token verified server-side on every registration submit. Blocks scripted abuse without user friction.</p>
+      <div class="meta-row"><span class="chip">Spam defence</span></div>
+    </div>
+    <div class="card">
+      <h3>Honeypot + timing + rate-limit <span class="status live">live</span></h3>
+      <p>Hidden field, minimum-time-on-form check, per-IP rate limit. Catches the bulk of low-effort bots before Turnstile even matters.</p>
+      <div class="meta-row"><span class="chip">Spam defence</span></div>
+    </div>
+    <div class="card">
+      <h3>Disposable email blocklist <span class="status live">live</span></h3>
+      <p>Server checks the email domain against a maintained blocklist of throwaway providers. Blocked with a friendly message.</p>
+      <div class="meta-row"><span class="chip">Spam defence</span></div>
+    </div>
+    <div class="card">
+      <h3>Email confirmation step <span class="status live">live</span></h3>
+      <p>Confirmation link emailed before the admin queue. Idempotent, refresh the page or click the link twice, same result.</p>
+      <div class="meta-row"><span class="chip path">/confirm-registration</span></div>
+    </div>
+    <div class="card">
+      <h3>Hybrid auto-approval <span class="status live">live</span></h3>
+      <p>Clean signups auto-approved at confirm-time and emailed an invitation immediately. Flagged signups (IP cluster, country mismatch, fast confirm) drop into the admin review queue.</p>
+      <div class="meta-row"><span class="chip">Approval flow</span></div>
+    </div>
+    <div class="card">
+      <h3>Risk-signal flagging <span class="status live">live</span></h3>
+      <p>Soft signals on the admin pending row: IP cluster count, country mismatch with declared, fast-confirm time, disposable domain, registration source.</p>
+      <div class="meta-row"><span class="chip">Spam defence</span></div>
+    </div>
+    <div class="card">
+      <h3>IP-based fraud scoring <span class="status new">new in 2.0</span></h3>
+      <p>Every signup is checked against a real-time IP intelligence service. Suspicious networks (VPNs, anonymisers, known abuse sources) are flagged for review. Declared region is cross-checked for honesty.</p>
+      <div class="meta-row"><span class="chip">Verification engine</span></div>
+    </div>
+    <div class="card">
+      <h3>Email deliverability validation <span class="status new">new in 2.0</span></h3>
+      <p>Two-stage check ensures the address really exists and accepts mail. Catches typo&apos;d addresses, made-up domains, and dead mailboxes before any email is sent.</p>
+      <div class="meta-row"><span class="chip">Verification engine</span></div>
+    </div>
+    <div class="card">
+      <h3>Device-level uniqueness <span class="status new">new in 2.0</span></h3>
+      <p>Privacy-respecting device fingerprint catches "fifty accounts from one laptop" patterns. First-party; not used for tracking; never sold.</p>
+      <div class="meta-row"><span class="chip">Device fingerprint</span></div>
+    </div>
+    <div class="card">
+      <h3>Step-up phone verification <span class="status new">new in 2.0</span></h3>
+      <p>Higher-trust actions trigger an optional one-time SMS code. Phone numbers stored only as one-way hashes after verification ,  we never keep the raw number.</p>
+      <div class="meta-row"><span class="chip">Verification engine</span></div>
+    </div>
+    <div class="card">
+      <h3>Bulk-submission pattern detection <span class="status new">new in 2.0</span></h3>
+      <p>Spots scripted form submissions: repetitive patterns, low-effort field completion, velocity clusters. Surfaces them for human review without auto-rejecting.</p>
+      <div class="meta-row"><span class="chip">Pattern detection</span></div>
+    </div>
+    <div class="card">
+      <h3>Real-time public-form ingest <span class="status new">new in 2.0</span></h3>
+      <p>The signup form on equityengine.health is scored live the moment it&apos;s submitted ,  no email-forward queue, no batch processing.</p>
+      <div class="meta-row"><span class="chip">Public form ingest</span></div>
+    </div>
+    <div class="card">
+      <h3>Source-aware account journeys <span class="status new">new in 2.0</span></h3>
+      <p>Every account remembers how it arrived (organic web, ad campaign, marketing form, academic application, bulk invite). Lets us apply the right trust gates to the right cohorts.</p>
+      <div class="meta-row"><span class="chip">Source tracking</span></div>
+    </div>
+    <div class="card">
+      <h3>"On the waitlist" email <span class="status live">live</span></h3>
+      <p>Auto-sent after email confirmation when a signup hits the admin queue. Keeps the human in the loop while admin reviews.</p>
+      <div class="meta-row"><span class="chip">Email template</span></div>
+    </div>
+    <div class="card">
+      <h3>Invitation email + set-password flow <span class="status live">live</span></h3>
+      <p>Approved users get an email with a one-click link to set their password. Token-gated <code>/invitation</code> page styled to brand standard.</p>
+      <div class="meta-row"><span class="chip path">/invitation</span></div>
+    </div>
+    <div class="card">
+      <h3>24-field demographic form <span class="status live">live</span></h3>
+      <p>Three-step stepper for age, condition areas, region, ethnicity, etc. Form is fully data-driven from the <code>DemographicField</code> collection.</p>
+      <div class="meta-row"><span class="chip path">/onboarding</span></div>
+    </div>
+    <div class="card">
+      <h3>Snooze-instead-of-skip onboarding <span class="status live">live</span></h3>
+      <p>Three soft snoozes allowed before the form becomes mandatory. Keeps low-friction without abandoning data quality.</p>
+      <div class="meta-row"><span class="chip">UX polish</span></div>
+    </div>
+    <div class="card">
+      <h3>Profile-completeness banner <span class="status live">live</span></h3>
+      <p>Persistent sitewide banner on participant pages while profile is &lt;90% complete. One-click deep-link into the right step.</p>
+      <div class="meta-row"><span class="chip">Sitewide</span></div>
+    </div>
+    <div class="card">
+      <h3>Sitewide language switcher <span class="status live">live</span></h3>
+      <p>14 languages available in a dropdown in the header. Preserved across pages via local storage.</p>
+      <div class="meta-row"><span class="chip">All surfaces</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================== -->
+<section id="participant">
+  <h2 class="section-title"><span class="num-pill">2</span>Participant experience</h2>
+  <p class="section-blurb">Mission-first, low-friction. Designed to feel like meaningful contribution, not paid microtasks.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Personalised home dashboard <span class="status live">live</span></h3>
+      <p>Smart copy adapts to state: first visit gets a 3-card welcome (profile · how it works · icebreaker), returning users see live surveys + earnings.</p>
+      <div class="meta-row"><span class="chip path">/</span></div>
+    </div>
+    <div class="card">
+      <h3>Icebreaker survey on day one <span class="status live">live</span></h3>
+      <p>3-question, 10-point starter survey auto-assigned at approval so every new participant has something to do immediately.</p>
+      <div class="meta-row"><span class="chip">Auto-assigned</span></div>
+    </div>
+    <div class="card">
+      <h3>Survey-matching engine <span class="status live">live</span></h3>
+      <p>Published surveys automatically assigned to matching participants based on declared disease areas / regions / age groups / ethnicities. Backfills on approval.</p>
+      <div class="meta-row"><span class="chip">Survey matching</span></div>
+    </div>
+    <div class="card">
+      <h3>Survey participation flow <span class="status live">live</span></h3>
+      <p>Question-by-question survey UI with progress bar, skip-back, autosave per response. Read-only view post-completion.</p>
+      <div class="meta-row"><span class="chip path">/survey-response/:id</span></div>
+    </div>
+    <div class="card">
+      <h3>Points + rewards <span class="status live">live</span></h3>
+      <p>Each survey carries a point value. Running total visible on home. Four redemption tiers: £5, £10, £25, £50.</p>
+      <div class="meta-row"><span class="chip">Rewards widget</span></div>
+    </div>
+    <div class="card">
+      <h3>Reward redemption flow <span class="status live">live</span></h3>
+      <p>Inline confirmation, server creates pending <code>Redemption</code>, admin queue fulfils with a voucher code. Participant history disclosure.</p>
+      <div class="meta-row"><span class="chip">Rewards</span></div>
+    </div>
+    <div class="card">
+      <h3>Automated voucher fulfilment <span class="status new">new in 2.0</span></h3>
+      <p>Encrypted gift-card inventory with industry-standard at-rest security. Redemptions auto-fulfil within seconds. Low-stock alerts so the team never runs out.</p>
+      <div class="meta-row"><span class="chip">Voucher fulfilment</span></div>
+    </div>
+    <div class="card">
+      <h3>Step-up gate on ad-imported redemptions <span class="status new">new in 2.0</span></h3>
+      <p>Users who arrived via ad campaigns must verify a phone before their first reward redemption. Kills reward-farming spam without friction for organic users.</p>
+      <div class="meta-row"><span class="chip">Redemption flow</span></div>
+    </div>
+    <div class="card">
+      <h3>"Your community" page <span class="status live">live</span></h3>
+      <p>Per-participant view of the community formed by people with the same condition. Tier ladder visualisation across thresholds 50/250/1000 unlocks more insight as community grows.</p>
+      <div class="meta-row"><span class="chip path">/community</span></div>
+    </div>
+    <div class="card">
+      <h3>Per-disease-area community pages <span class="status live">live</span></h3>
+      <p>Explore any condition's community at <code>/community/:slug</code>. Same tier-gated insight unlock model regardless of whether you're a member.</p>
+      <div class="meta-row"><span class="chip">Community</span></div>
+    </div>
+    <div class="card">
+      <h3>Profile editing <span class="status live">live</span></h3>
+      <p>Edit demographic answers any time. Polished page with clear sections, sign-out, language switcher.</p>
+      <div class="meta-row"><span class="chip path">/profile</span></div>
+    </div>
+    <div class="card">
+      <h3>Accessible navigation <span class="status live">live</span></h3>
+      <p>WCAG 2.1 AA: skip links, visible focus rings, <code>aria-required</code> / <code>aria-invalid</code> / <code>aria-describedby</code>, <code>role='alert'</code> on errors, <code>role='status'</code> on confirmations.</p>
+      <div class="meta-row"><span class="chip">A11y</span></div>
+    </div>
+    <div class="card">
+      <h3>Mobile-responsive across all surfaces <span class="status new">new in 2.0</span></h3>
+      <p>Participant, provider AND admin surfaces all verified at 375px iPhone SE width: no horizontal page overflow, tap targets ≥44px, text readable, tables horizontal-scroll inside cards. Admin can triage approvals from a phone.</p>
+      <div class="meta-row"><span class="chip">Mobile polish</span></div>
+    </div>
+    <div class="card">
+      <h3>Skeleton loading states <span class="status live">live</span></h3>
+      <p>Replaced full-screen blocking loaders with content-shaped skeletons. App feels instant even on cold cache.</p>
+      <div class="meta-row"><span class="chip">UX polish</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================== -->
+<section id="provider">
+  <h2 class="section-title"><span class="num-pill">3</span>Provider / client experience</h2>
+  <p class="section-blurb">A premium dashboard a client can confidently share with their executive team. Designed to look like an award-winning research product.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Premium dashboard layout <span class="status live">live</span></h3>
+      <p>Bento grid with refined gradient hero (multi-stop radial on #03332B + SVG dot pattern), glass-morphism stat card, orange accent line under eyebrow.</p>
+      <div class="meta-row"><span class="chip">Hero design</span></div>
+    </div>
+    <div class="card">
+      <h3>KPI strip with micro-viz <span class="status live">live</span></h3>
+      <p>Top-line metrics with embedded sparklines, RadialBarChart gauges, coverage rings, ThemeStack bars.</p>
+      <div class="meta-row"><span class="chip">Recharts</span></div>
+    </div>
+    <div class="card">
+      <h3>Sentiment trend chart <span class="status live">live</span></h3>
+      <p>AreaChart showing community sentiment over time on a -1 to +1 scale, gradient fill, hover tooltip with date + score.</p>
+      <div class="meta-row"><span class="chip">Sentiment over time</span></div>
+    </div>
+    <div class="card">
+      <h3>Sentiment by disease area <span class="status live">live</span></h3>
+      <p>Bipolar bar chart per condition, your provider's area highlighted in brand orange. Instant relative comparison.</p>
+      <div class="meta-row"><span class="chip">By disease area</span></div>
+    </div>
+    <div class="card">
+      <h3>NHS trust radial <span class="status live">live</span></h3>
+      <p>RadialBarChart showing average trust scores (1–5 scale) by organisation type, GP, hospital, charity, etc.</p>
+      <div class="meta-row"><span class="chip">Trust gauge</span></div>
+    </div>
+    <div class="card">
+      <h3>Ethnicity donut <span class="status live">live</span></h3>
+      <p>Conic-gradient donut (hand-built, not Recharts) for fine design control. Legend + percentages alongside.</p>
+      <div class="meta-row"><span class="chip">Ethnicity chart</span></div>
+    </div>
+    <div class="card">
+      <h3>Themes list <span class="status live">live</span></h3>
+      <p>Top themes ranked by mention count. Each row clickable, opens drill-down modal.</p>
+      <div class="meta-row"><span class="chip">Themes ranked</span></div>
+    </div>
+    <div class="card">
+      <h3>Theme drill-down: Quotes <span class="status live">live</span></h3>
+      <p>Modal "Quotes" tab shows real anonymised participant quotes that contributed to the theme.</p>
+      <div class="meta-row"><span class="chip">Drill-down modal</span></div>
+    </div>
+    <div class="card">
+      <h3>Theme drill-down: Who is saying this? <span class="status live">live</span></h3>
+      <p>Three ranked breakdowns, region, ethnicity, condition. Quick read on which segments are over-represented in the theme.</p>
+      <div class="meta-row"><span class="chip">Drill-down</span></div>
+    </div>
+    <div class="card">
+      <h3>"People like me" comparison <span class="status live">live</span></h3>
+      <p>National vs local sentiment for the provider's disease area. Calls out where the area diverges from the UK average.</p>
+      <div class="meta-row"><span class="chip">Provider overview</span></div>
+    </div>
+    <div class="card">
+      <h3>Methodology card <span class="status live">live</span></h3>
+      <p>Plain-English explanation of how scores are calculated. Includes <code>SentimentScaleLegend</code> and <code>TrustScaleLegend</code> visualising the scales.</p>
+      <div class="meta-row"><span class="chip">Methodology</span></div>
+    </div>
+    <div class="card">
+      <h3>Metric tooltips <span class="status live">live</span></h3>
+      <p>Every metric gets an (i) icon → Popover with explanation. Library covers sentiment, matching, comparison, trust, themes, regions, ethnicity, sentiment-by-disease.</p>
+      <div class="meta-row"><span class="chip">Tooltips</span></div>
+    </div>
+    <div class="card">
+      <h3>PDF export <span class="status live">live</span></h3>
+      <p>One-click download of dashboard as branded PDF. Backend renders via puppeteer-core with the org's auth token, returns a blob, frontend triggers the download.</p>
+      <div class="meta-row"><span class="chip">Export</span><span class="chip">Export bar</span></div>
+    </div>
+    <div class="card">
+      <h3>Citation card (academic partners) <span class="status live">live</span></h3>
+      <p>Appears only when <code>org.isAcademic</code>. Includes formatted citation + BibTeX with copy-to-clipboard buttons.</p>
+      <div class="meta-row"><span class="chip">Academic tier</span></div>
+    </div>
+    <div class="card">
+      <h3>Per-organisation data scoping <span class="status live">live</span></h3>
+      <p>Each client only sees participants matching the disease areas configured on their organisation record. Filter applied server-side at every endpoint.</p>
+      <div class="meta-row"><span class="chip">Security boundary</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================== -->
+<section id="admin">
+  <h2 class="section-title"><span class="num-pill">4</span>Admin &amp; operations</h2>
+  <p class="section-blurb">The Unwritten Health team's surface for running the platform end-to-end.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>User management <span class="status live">live</span></h3>
+      <p>Searchable table of all users with role, approval status, organisation, last activity. CRUD via <code>/admin/user/:id</code>.</p>
+      <div class="meta-row"><span class="chip path">/admin</span></div>
+    </div>
+    <div class="card">
+      <h3>Pending approval queue <span class="status live">live</span></h3>
+      <p>Confirmed-but-not-yet-approved signups with soft risk signals visible per row. Approve / reject with one click, triggers invitation email.</p>
+      <div class="meta-row"><span class="chip">Trust signals</span></div>
+    </div>
+    <div class="card">
+      <h3>Bulk invite <span class="status live">live</span></h3>
+      <p>Paste a CSV/TSV list of emails; preview parses + dedupes; one click sends invitations in batch.</p>
+      <div class="meta-row"><span class="chip">Bulk invite</span></div>
+    </div>
+    <div class="card">
+      <h3>Organisation management <span class="status live">live</span></h3>
+      <p>Create/edit client orgs. Configure disease areas (drives data scoping), description, master-data-steward flag, academic partner toggle.</p>
+      <div class="meta-row"><span class="chip path">/admin/organisation</span></div>
+    </div>
+    <div class="card">
+      <h3>Demographic schema editor <span class="status live">live</span></h3>
+      <p>Editable list of demographic fields stored in MongoDB. Drives the participant onboarding form dynamically, change a field, the form updates everywhere.</p>
+      <div class="meta-row"><span class="chip path">/admin/demographics</span></div>
+    </div>
+    <div class="card">
+      <h3>Survey management <span class="status live">live</span></h3>
+      <p>Create, edit, publish, archive surveys. Draft/published gate enforced on backend. Targeting fields (disease areas, regions, age groups, ethnicities) drive auto-assignment.</p>
+      <div class="meta-row"><span class="chip path">/admin/survey</span></div>
+    </div>
+    <div class="card">
+      <h3>Manual re-match survey <span class="status live">live</span></h3>
+      <p>Admin endpoint to re-run targeting for a specific survey if criteria changed after publication.</p>
+      <div class="meta-row"><span class="chip">Manual re-match</span></div>
+    </div>
+    <div class="card">
+      <h3>Admin analytics page <span class="status live">live</span></h3>
+      <p>Premium-grade dashboard mirroring provider aesthetic: hero, KPI strip, region cards, top themes grid, embedded Metabase iframe with friendly empty / loading / error states.</p>
+      <div class="meta-row"><span class="chip path">/admin/analytics</span></div>
+    </div>
+    <div class="card">
+      <h3>UK regional heatmap <span class="status live">live</span></h3>
+      <p>Interactive UK map. Toggle between 5 metrics: response volume, "research designed for me", avg NHS trust, avg sentiment, % with long-term condition.</p>
+      <div class="meta-row"><span class="chip">Regional analysis</span></div>
+    </div>
+    <div class="card">
+      <h3>Region highlight cards <span class="status live">live</span></h3>
+      <p>Most-positive and most-negative regions surfaced as gradient cards (green/red), with delta vs national average.</p>
+      <div class="meta-row"><span class="chip">Highlight cards</span></div>
+    </div>
+    <div class="card">
+      <h3>Top themes grid (clickable) <span class="status live">live</span></h3>
+      <p>Cross-platform themes with mention count, sample quote, and click-to-drill-down into full breakdown modal.</p>
+      <div class="meta-row"><span class="chip">Themes grid</span></div>
+    </div>
+    <div class="card">
+      <h3>Redemptions queue <span class="status live">live</span></h3>
+      <p>Pending reward redemptions listed for fulfilment. Admin enters voucher code or cancels with reason; participant is notified.</p>
+      <div class="meta-row"><span class="chip">Redemption fulfilment</span></div>
+    </div>
+    <div class="card">
+      <h3>Academic application review <span class="status live">live</span></h3>
+      <p>Academic-tier applications submitted via <code>/academic-access</code> appear as pending Organisations marked <code>isAcademic</code>. Admin approves the org + the contact in one flow.</p>
+      <div class="meta-row"><span class="chip">Academic tier</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================== -->
+<section id="data">
+  <h2 class="section-title"><span class="num-pill">5</span>Data &amp; analytics</h2>
+  <p class="section-blurb">What's actually in the database, and how it surfaces.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Founder cohort dataset <span class="status live">live</span></h3>
+      <p>1,204 anonymised UK community survey responses imported under HRA-style consent practice as the founder cohort to validate the dashboards. No raw PII stored, source files destroyed post-import.</p>
+      <div class="meta-row"><span class="chip">Seed dataset</span></div>
+    </div>
+    <div class="card">
+      <h3>AI sentiment + theme extraction <span class="status live">live</span></h3>
+      <p>Free-text answers run through our AI sentiment engine for sentiment scoring and theme mining. Idempotent re-runs supported. PII stripped before any analysis call.</p>
+      <div class="meta-row"><span class="chip">Batch processing</span></div>
+    </div>
+    <div class="card">
+      <h3>5-metric UK regional heatmap <span class="status live">live</span></h3>
+      <p>Response volume, "research designed for me" agreement, avg NHS trust, avg sentiment, long-term condition prevalence, all by region.</p>
+      <div class="meta-row"><span class="chip">Regional analysis</span></div>
+    </div>
+    <div class="card">
+      <h3>Theme aggregation <span class="status live">live</span></h3>
+      <p>Themes mined from free-text answers, mention count rolled up across all responses. Drives ThemesList and TopThemesGrid.</p>
+      <div class="meta-row"><span class="chip">Theme drill-down</span></div>
+    </div>
+    <div class="card">
+      <h3>Per-segment breakdowns <span class="status live">live</span></h3>
+      <p>Sentiment, trust, and themes broken down by region, ethnicity, disease area, organisation type. Drives the "who is saying this?" view.</p>
+      <div class="meta-row"><span class="chip">Internal helper</span></div>
+    </div>
+    <div class="card">
+      <h3>Real participant quotes <span class="status live">live</span></h3>
+      <p>Sampled per theme, anonymised, surfaced in drill-down modal. Includes the contributing question and demographic tags (e.g. "Female, 35–44, North West").</p>
+      <div class="meta-row"><span class="chip">Theme drill-down</span></div>
+    </div>
+    <div class="card">
+      <h3>Embedded Metabase <span class="status live">live</span></h3>
+      <p>Local Metabase on port 3000 connected to Managed database (EU/UK region). Embed-token endpoint signs dashboards into provider/admin iframes. Starter native queries documented.</p>
+      <div class="meta-row"><span class="chip">/admin/analytics</span></div>
+    </div>
+    <div class="card">
+      <h3>Deterministic question IDs <span class="status live">live</span></h3>
+      <p>Question IDs are stable across re-imports so saved Metabase queries and charts don't break when the dataset refreshes.</p>
+      <div class="meta-row"><span class="chip">Data import</span></div>
+    </div>
+    <div class="card">
+      <h3>Aggregation endpoints <span class="status live">live</span></h3>
+      <p>Backend exposes <code>platform-overview</code>, <code>provider-overview</code>, <code>community-overview</code>, <code>disease-area-overview</code>, <code>region-stats</code>, <code>theme-detail</code>, all PII-free.</p>
+      <div class="meta-row"><span class="chip">Server-side</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================== -->
+<section id="ai">
+  <h2 class="section-title"><span class="num-pill">6</span>AI &amp; sentiment</h2>
+  <p class="section-blurb">A best-in-class AI engine reads what participants write and finds the patterns ,  so partners get real qualitative insight, not just numbers.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Free-text sentiment analysis <span class="status live">live</span></h3>
+      <p>Every long-form answer is analysed for emotional sentiment, then surfaced alongside the structured data so partners can read mood at a glance.</p>
+      <div class="meta-row"><span class="chip">AI sentiment</span></div>
+    </div>
+    <div class="card">
+      <h3>Theme extraction <span class="status live">live</span></h3>
+      <p>Themes mined from open-ended answers, normalised across the dataset so &quot;long GP wait times&quot; said five different ways still cluster together.</p>
+      <div class="meta-row"><span class="chip">AI themes</span></div>
+    </div>
+    <div class="card">
+      <h3>Strict PII boundary at AI step <span class="status live">live</span></h3>
+      <p>Names, emails, and any identifying details are stripped from text before it ever reaches the AI engine. Special-category data never flows out of our own infrastructure unless explicitly necessary.</p>
+      <div class="meta-row"><span class="chip">Privacy by design</span></div>
+    </div>
+    <div class="card">
+      <h3>Resumable analysis <span class="status live">live</span></h3>
+      <p>Long-running analysis jobs are safe to interrupt and resume. Already-scored responses are skipped on re-runs, so we never double-bill the AI provider or re-process unchanged data.</p>
+      <div class="meta-row"><span class="chip">Batch processing</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================== -->
+<section id="email">
+  <h2 class="section-title"><span class="num-pill">7</span>Email &amp; communications</h2>
+  <p class="section-blurb">Mailjet for transactional delivery. All templates restyled to brand standard.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Registration confirmation <span class="status live">live</span></h3>
+      <p>Sent immediately after public signup. Single-click confirm link with token.</p>
+      <div class="meta-row"><span class="chip">Mailjet</span></div>
+    </div>
+    <div class="card">
+      <h3>Waitlist email <span class="status live">live</span></h3>
+      <p>"You're on the waitlist" sent after email confirmation for signups that hit admin review.</p>
+      <div class="meta-row"><span class="chip">Conversion</span></div>
+    </div>
+    <div class="card">
+      <h3>Admin approval request <span class="status live">live</span></h3>
+      <p>Internal email to admin team when a confirmed signup needs human review.</p>
+      <div class="meta-row"><span class="chip">Internal</span></div>
+    </div>
+    <div class="card">
+      <h3>Invitation (set password) <span class="status live">live</span></h3>
+      <p>Sent on approval. Token-gated link to <code>/invitation</code> for password setup.</p>
+      <div class="meta-row"><span class="chip">Brand standard</span></div>
+    </div>
+    <div class="card">
+      <h3>Password reset <span class="status live">live</span></h3>
+      <p>Standard request-reset flow with anti-enumeration (same success response whether email exists or not).</p>
+      <div class="meta-row"><span class="chip path">/request-reset</span></div>
+    </div>
+    <div class="card">
+      <h3>Survey invite <span class="status live">live</span></h3>
+      <p>Optional email to participant when a new survey targets their profile. Currently triggered by survey-matching engine.</p>
+      <div class="meta-row"><span class="chip">Matching</span></div>
+    </div>
+    <div class="card">
+      <h3>Community digest <span class="status live">live</span></h3>
+      <p>Monthly per-condition digest email summarising new responses, top themes, sentiment shifts. Manual sender via <code>scripts/send-community-digest.mjs</code> with <code>--to</code> and <code>--dry</code> flags.</p>
+      <div class="meta-row"><span class="chip">Digest</span></div>
+    </div>
+    <div class="card">
+      <h3>Notification email <span class="status live">live</span></h3>
+      <p>Generic transactional template (e.g. reward fulfilled, profile change required). Same brand container.</p>
+      <div class="meta-row"><span class="chip">Reusable</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================== -->
+<section id="security">
+  <h2 class="section-title"><span class="num-pill">8</span>Security &amp; privacy</h2>
+  <p class="section-blurb">Designed so participants stay anonymous and clients only see aggregates that can't be reverse-engineered.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Industry-standard authentication <span class="status live">live</span></h3>
+      <p>Short-lived access tokens with secure refresh rotation. Industry best-practice for session security.</p>
+      <div class="meta-row"><span class="chip">Authentication</span></div>
+    </div>
+    <div class="card">
+      <h3>One-way password hashing <span class="status live">live</span></h3>
+      <p>Passwords stored as per-user salted one-way hashes. No plaintext or reversible storage anywhere ,  we couldn&apos;t tell you your password if we wanted to.</p>
+      <div class="meta-row"><span class="chip">User record</span></div>
+    </div>
+    <div class="card">
+      <h3>Per-partner data scoping <span class="status live">live</span></h3>
+      <p>Each partner organisation only sees responses relevant to their configured disease areas. Filters enforced at the data layer, not just the UI ,  can&apos;t be bypassed.</p>
+      <div class="meta-row"><span class="chip">Server-side</span></div>
+    </div>
+    <div class="card">
+      <h3>Anti-enumeration on reset <span class="status live">live</span></h3>
+      <p>Password-reset returns the same response whether the email exists or not. No leak of who&apos;s on the platform.</p>
+      <div class="meta-row"><span class="chip">Password reset</span></div>
+    </div>
+    <div class="card">
+      <h3>Anonymised imports <span class="status live">live</span></h3>
+      <p>Any imported data strips identifying details. Source files destroyed post-import. Email kept only as a hash where uniqueness matters.</p>
+      <div class="meta-row"><span class="chip">GDPR posture</span></div>
+    </div>
+    <div class="card">
+      <h3>Aggregates only on partner surfaces <span class="status live">live</span></h3>
+      <p>Partner dashboards return aggregations (counts, means, sampled quotes) ,  never individual identifiable records. PII boundary enforced at the data-serving layer.</p>
+      <div class="meta-row"><span class="chip">API contract</span></div>
+    </div>
+    <div class="card">
+      <h3>Routine secret rotation <span class="status live">live</span></h3>
+      <p>All sensitive credentials rotated post-launch, on a recurring schedule going forward. Secrets never live in source control.</p>
+      <div class="meta-row"><span class="chip">Security hygiene</span></div>
+    </div>
+    <div class="card">
+      <h3>Resilient error handling <span class="status live">live</span></h3>
+      <p>Every page wrapped in defensive error boundaries so a transient failure never strands a user with a blank screen.</p>
+      <div class="meta-row"><span class="chip">A11y + reliability</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================== -->
+
+<!-- =================================================================== -->
+
+<!-- =================================================================== -->
+<section id="contact" style="margin-top: 72px;">
+  <div style="background: linear-gradient(135deg, var(--green-950), var(--green-900)); color: white; border-radius: 20px; padding: 48px 40px; text-align: center; box-shadow: 0 10px 40px -16px rgba(1,54,47,0.6);">
+    <p style="display: inline-block; margin: 0 0 18px; padding: 5px 12px; background: rgba(234,114,53,0.18); border: 1px solid rgba(234,114,53,0.4); color: var(--orange); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; border-radius: 999px;">Get in touch</p>
+    <h2 style="margin: 0 0 12px; color: white; border: none; padding-top: 0; font-size: 30px; letter-spacing: -0.01em;">Interested in Equity Engine?</h2>
+    <p style="margin: 0 auto 30px; max-width: 560px; color: rgba(255,255,255,0.85); font-size: 16px; line-height: 1.6;">
+      Whether you're an NHS body, charity, academic researcher or potential partner ,  we'd love to talk about how Equity Engine can help your work hear the voices that get missed.
+    </p>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;">
+      <a href="mailto:chat@equityengine.health" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; background: var(--orange); color: var(--green-950); text-decoration: none; font-weight: 700; border-radius: 12px; font-size: 15px;">
+        ✉  chat@equityengine.health
+      </a>
+      <a href="tel:+441615248800" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; background: rgba(255,255,255,0.1); color: white; text-decoration: none; font-weight: 700; border-radius: 12px; font-size: 15px; border: 1px solid rgba(255,255,255,0.25);">
+        ☎  +44 (0) 161 524 8800
+      </a>
+      <a href="https://equityengine.health" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; background: rgba(255,255,255,0.1); color: white; text-decoration: none; font-weight: 700; border-radius: 12px; font-size: 15px; border: 1px solid rgba(255,255,255,0.25);">
+        🌐  equityengine.health
+      </a>
+    </div>
+    <p style="margin: 28px 0 0; font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6;">
+      Swan Buildings, 20 Swan Street, Manchester, M4 5JW, United Kingdom
+    </p>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <strong>Equity Engine MVP 2.0</strong>, Built and operated by <strong>Unwritten Health</strong>,
+  registered in England and Wales. Company No. <strong>16561594</strong>. ICO registration <strong>ZC109542</strong>.<br>
+  © 2026 Unwritten Health. All rights reserved.
+</footer>
+
+</body>
+</html>
