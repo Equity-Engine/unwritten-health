@@ -25,7 +25,8 @@ const END = '<!-- DISPATCHES-END -->';
 
 const FEED_URLS = [
   process.env.FEED_URL,
-  'https://dispatches.unwritten.health/feed',
+  'https://rss.beehiiv.com/feeds/ODHOyDScDq.xml',   // Unwritten Dispatches (canonical Beehiiv RSS)
+  'https://dispatches.unwritten.health/feed',        // fallback if custom-domain RSS gets enabled later
   'https://dispatches.unwritten.health/feed.xml',
   'https://dispatches.unwritten.health/rss'
 ].filter(Boolean);
