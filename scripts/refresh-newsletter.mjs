@@ -198,5 +198,7 @@ async function main() {
 
 main().catch(err => {
   console.error('refresh-newsletter failed:', err.message);
+  // Surface the reason as a GitHub Actions annotation, visible on the run page without opening the logs
+  if (process.env.GITHUB_ACTIONS) console.log(`::error title=Newsletter refresh failed::${err.message.replace(/\n/g, '%0A')}`);
   process.exitCode = 1;
 });
