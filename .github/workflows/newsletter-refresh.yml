@@ -1,4 +1,4 @@
-name: Refresh Unwritten Dispatches on blog
+name: Refresh Exclusion Debt on blog
 
 on:
   # Every Monday at 10:00 UTC (11:00 UK during BST, 10:00 during GMT)
@@ -6,6 +6,12 @@ on:
     - cron: '0 10 * * 1'
   # Manual trigger: GitHub → Actions → this workflow → "Run workflow" button
   workflow_dispatch:
+  # Re-run straight away whenever the refresher itself changes
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/refresh-newsletter.mjs'
+      - '.github/workflows/newsletter-refresh.yml'
 
 # Grant write permission so the bot can commit back to the repo
 permissions:
@@ -27,20 +33,20 @@ jobs:
           node-version: '20'
 
       - name: Run refresh script
-        run: node scripts/refresh-dispatches.mjs
+        run: node scripts/refresh-newsletter.mjs
         env:
-          # Override the feed URL here if it ever changes
-          # FEED_URL: https://dispatches.unwritten.health/feed
+          # Override the feed URL here if it ever changes (e.g. a Substack custom domain)
+          # FEED_URL: https://exclusiondebt.substack.com/feed
           MAX_POSTS: '6'
 
       - name: Commit and push if changed
         run: |
-          git config user.name  "unwritten-dispatches-bot"
+          git config user.name  "unwritten-newsletter-bot"
           git config user.email "bot@unwritten.health"
           if [[ -z $(git status --porcelain) ]]; then
             echo "No changes to commit."
             exit 0
           fi
           git add site/blog.html
-          git commit -m "Refresh Unwritten Dispatches ($(date -u +'%Y-%m-%d'))"
+          git commit -m "Refresh Exclusion Debt ($(date -u +'%Y-%m-%d'))"
           git push

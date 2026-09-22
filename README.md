@@ -11,22 +11,23 @@ https://github.com/Equity-Engine/unwritten-health
 ```
 .
 ├── .github/workflows/
-│   └── dispatches-refresh.yml   # Weekly cron: pull Beehiiv Dispatches into blog.html
+│   └── newsletter-refresh.yml   # Weekly cron: pull Exclusion Debt (Substack) into blog.html
 ├── scripts/
-│   └── refresh-dispatches.mjs   # Node script the workflow runs
+│   └── refresh-newsletter.mjs   # Node script the workflow runs
 ├── netlify.toml                 # Netlify config (publish dir + functions dir)
 ├── netlify/functions/
 │   └── submission-created.mjs   # Scorecard auto-reply (Resend)
 └── site/                        # The actual website — this is what gets published
     ├── index.html
-    ├── blog.html                # Has DISPATCHES-START/END markers
+    ├── blog.html                # Has NEWSLETTER-START/END markers
     └── ...
 ```
 
 ## Automations already running
 
 - **Scorecard auto-reply** — every submission of the Regulatory Readiness Scorecard triggers `netlify/functions/submission-created.mjs`, which sends a personalised email via Resend (needs `RESEND_API_KEY` env var set in Netlify).
-- **Weekly Dispatches refresh** — every Monday at 10:00 UTC (11:00 UK BST) GitHub Actions fetches the latest issues from `dispatches.unwritten.health/feed`, updates `site/blog.html`, and pushes. Netlify auto-deploys the change. Also runnable on demand from GitHub → Actions → "Refresh Unwritten Dispatches on blog" → Run workflow.
+- **Weekly newsletter refresh** — every Monday at 10:00 UTC (11:00 UK BST) GitHub Actions fetches the latest Exclusion Debt issues from `exclusiondebt.substack.com/feed`, updates `site/blog.html`, and pushes (only when there is a new issue). Netlify auto-deploys the change. Also runnable on demand from GitHub → Actions → "Refresh Exclusion Debt on blog" → Run workflow, and it re-runs automatically whenever the script or workflow file changes.
+- **Newsletter history** — Unwritten Dispatches (Beehiiv) ran Jan to Aug 2026 and was retired in Sep 2026. Its archive is no longer on the site; `site/_redirects` sends old `dispatches.unwritten.health` links to `/blog` once that subdomain points at Netlify.
 
 ## First-time setup
 
@@ -61,32 +62,31 @@ Your repo now has the full site.
 ### 3. Verify the automation
 
 1. Go to https://github.com/Equity-Engine/unwritten-health/actions
-2. Click **Refresh Unwritten Dispatches on blog** in the left sidebar
+2. Click **Refresh Exclusion Debt on blog** in the left sidebar
 3. Click **Run workflow → Run workflow** (green button on the right)
 4. Wait ~30 seconds. If it succeeds, `blog.html` gets updated and Netlify redeploys automatically.
-5. Visit `https://unwritten.health/blog` → the "From Unwritten Dispatches" section should show your latest 6 issues.
+5. Visit `https://unwritten.health/blog` → the "Latest from Exclusion Debt" section should show your latest 6 issues (or a "first issue is on its way" card until you publish).
 
 ## Going forward
 
 - **Edit files locally** in the GitHub Desktop clone → commit → push → Netlify auto-deploys within a minute.
 - **Never drag-and-drop deploy again** — every deploy comes from a Git commit, so nothing gets lost.
-- **Weekly Dispatches refresh** happens hands-off every Monday.
+- **Weekly Exclusion Debt refresh** happens hands-off every Monday.
 - **Manual refresh** any time via the "Run workflow" button above.
 
 ## Env vars in Netlify (already set, listed here for reference)
 
 - `RESEND_API_KEY` — for the Scorecard auto-reply function
 
-## Overriding the Dispatches feed URL
+## Overriding the newsletter feed URL
 
-If Beehiiv changes the RSS URL or you move to a different platform, edit `scripts/refresh-dispatches.mjs` at the top:
+If you add a Substack custom domain or move to a different platform, edit `scripts/refresh-newsletter.mjs` at the top:
 
 ```js
+const NEWSLETTER_URL = 'https://exclusiondebt.substack.com';   // ← change this
 const FEED_URLS = [
   process.env.FEED_URL,
-  'https://dispatches.unwritten.health/feed',   // ← primary
-  'https://dispatches.unwritten.health/feed.xml',
-  'https://dispatches.unwritten.health/rss'
+  `${NEWSLETTER_URL}/feed`
 ].filter(Boolean);
 ```
 
@@ -94,6 +94,6 @@ Or set a `FEED_URL` environment variable in the workflow YAML.
 
 ## Troubleshooting
 
-- **Workflow says "All feed URLs failed"** → Beehiiv changed the RSS path, or your custom-domain DNS isn't serving `/feed`. Try `curl -I https://dispatches.unwritten.health/feed` locally to confirm.
+- **Workflow says "All feed URLs failed"** → Substack is down or blocking the request, or the feed URL changed. Try `curl -I https://exclusiondebt.substack.com/feed` locally to confirm.
 - **Netlify deploy fails after Git integration** → check the deploy log for `netlify.toml` errors. Publish should be `site`, functions `netlify/functions`.
 - **Scorecard email stopped working** → check `RESEND_API_KEY` is still set in Netlify env vars, and Resend hasn't rate-limited or suspended the domain.

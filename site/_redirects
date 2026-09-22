@@ -5,3 +5,13 @@
 # Legacy localised privacy URL from an earlier version of the site.
 # Discovered in Google Search Console 404 report (11 Aug 2026).
 /english-privacy-policy    /privacy    301
+
+# "Inclusion debt" was renamed "Exclusion debt" across the site (22 Sep 2026).
+/inclusion-debt         /exclusion-debt    301
+/inclusion-debt.html    /exclusion-debt    301
+
+# The Unwritten Dispatches newsletter (Beehiiv) was retired in Sep 2026 in favour
+# of the Exclusion Debt Substack. Old issue links land on the blog instead.
+# Only takes effect once dispatches.unwritten.health is added as a domain alias
+# in Netlify and its DNS record points at Netlify.
+https://dispatches.unwritten.health/*    https://unwritten.health/blog    301!
