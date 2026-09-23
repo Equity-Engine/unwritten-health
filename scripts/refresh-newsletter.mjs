@@ -10,6 +10,9 @@
   on-demand via the "Run workflow" button in the GitHub Actions UI, and
   whenever this script or the workflow file changes.
 
+  Substack returns HTTP 403 to GitHub Actions runners, so the script falls back to
+  Substack's JSON archive and then to the rss2json.com relay (see SOURCES below).
+
   Environment:
     FEED_URL (optional) - RSS URL. Defaults to the Exclusion Debt Substack feed.
     MAX_POSTS (optional) - How many posts to show. Defaults to 6.
@@ -28,10 +31,7 @@ const NEWSLETTER_NAME = 'Exclusion Debt';
 const NEWSLETTER_URL = 'https://exclusiondebt.substack.com';
 const SUBSCRIBE_URL = `${NEWSLETTER_URL}/subscribe`;
 
-const FEED_URLS = [
-  process.env.FEED_URL,
-  `${NEWSLETTER_URL}/feed`   // Exclusion Debt (Substack)
-].filter(Boolean);
+const FEED_URL = process.env.FEED_URL || `${NEWSLETTER_URL}/feed`;
 
 const MAX_POSTS = Number(process.env.MAX_POSTS || 6);
 
@@ -139,37 +139,83 @@ ${imgTag}        <div style="padding:22px 24px;display:flex;flex-direction:colum
 
 // --- main --------------------------------------------------------------------
 
-async function fetchFirstWorking(urls) {
-  const errors = [];
-  for (const url of urls) {
-    try {
-      console.log(`Trying feed: ${url}`);
-      const res = await fetch(url, {
-        headers: {
-          'user-agent': 'Mozilla/5.0 (compatible; unwritten-health-newsletter-refresh/2.0; +https://unwritten.health)',
-          'accept': 'application/rss+xml, application/xml;q=0.9, */*;q=0.8'
-        },
-        redirect: 'follow'
-      });
-      if (!res.ok) { errors.push(`${url}: HTTP ${res.status}`); continue; }
-      const text = await res.text();
+const BROWSER_HEADERS = {
+  'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',
+  'accept-language': 'en-GB,en;q=0.9'
+};
+
+// Substack blocks some cloud IP ranges (including GitHub Actions runners) with HTTP 403,
+// so try the feed directly first, then Substack's JSON archive, then a public RSS-to-JSON relay.
+const SOURCES = [
+  {
+    name: 'Substack RSS',
+    url: FEED_URL,
+    accept: 'application/rss+xml, application/xml;q=0.9, */*;q=0.8',
+    parse(text) {
       // A brand-new publication has a valid feed with no <item> yet, so accept any RSS channel.
-      if (text && /<rss[\s>]/i.test(text) && /<channel[\s>]/i.test(text)) {
-        console.log(`  ✓ Got RSS from ${url} (${text.length} bytes)`);
-        return { url, text };
-      }
-      errors.push(`${url}: response is not an RSS feed`);
-    } catch (err) {
-      errors.push(`${url}: ${err.message}`);
+      if (!/<rss[\s>]/i.test(text) || !/<channel[\s>]/i.test(text)) throw new Error('response is not an RSS feed');
+      return parseFeed(text);
+    }
+  },
+  {
+    name: 'Substack JSON archive',
+    url: `${NEWSLETTER_URL}/api/v1/archive?sort=new&limit=${MAX_POSTS}`,
+    accept: 'application/json',
+    parse(text) {
+      const data = JSON.parse(text);
+      if (!Array.isArray(data)) throw new Error('unexpected JSON shape');
+      return data.map(p => ({
+        title: p.title,
+        link: p.canonical_url,
+        pubDate: p.post_date,
+        description: p.subtitle || p.description || '',
+        image: p.cover_image || ''
+      }));
+    }
+  },
+  {
+    name: 'rss2json relay',
+    url: `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(FEED_URL)}`,
+    accept: 'application/json',
+    parse(text) {
+      const data = JSON.parse(text);
+      if (data.status !== 'ok' || !Array.isArray(data.items)) throw new Error(data.message || 'relay returned an error');
+      return data.items.map(p => ({
+        title: p.title,
+        link: p.link,
+        pubDate: p.pubDate && p.pubDate.replace(' ', 'T') + 'Z',
+        description: p.description || '',
+        image: (p.enclosure && p.enclosure.link) || p.thumbnail || ''
+      }));
     }
   }
-  throw new Error(`All feed URLs failed:\n  ${errors.join('\n  ')}`);
+];
+
+async function fetchPosts() {
+  const errors = [];
+  for (const src of SOURCES) {
+    try {
+      console.log(`Trying ${src.name}: ${src.url}`);
+      const res = await fetch(src.url, { headers: { ...BROWSER_HEADERS, accept: src.accept }, redirect: 'follow' });
+      if (!res.ok) { errors.push(`${src.name}: HTTP ${res.status}`); continue; }
+      const posts = src.parse(await res.text());
+      console.log(`  ✓ ${src.name} returned ${posts.length} post(s)`);
+      return { source: src.name, posts };
+    } catch (err) {
+      errors.push(`${src.name}: ${err.message}`);
+    }
+  }
+  throw new Error(`All newsletter sources failed:\n  ${errors.join('\n  ')}`);
 }
 
 async function main() {
-  const { url, text } = await fetchFirstWorking(FEED_URLS);
-  const posts = parseFeed(text).slice(0, MAX_POSTS);
-  console.log(`Parsed ${posts.length} post(s) from ${url}`);
+  const { source, posts: all } = await fetchPosts();
+  const posts = all
+    .filter(p => p.title && p.link)
+    .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
+    .slice(0, MAX_POSTS);
+  console.log(`Using ${posts.length} post(s) from ${source}`);
+  if (process.env.GITHUB_ACTIONS) console.log(`::notice title=Newsletter source::${source} (${posts.length} post(s))`);
   posts.forEach((p, i) => console.log(`  ${i + 1}. ${p.title || '(no title)'} - ${p.pubDate || '(no date)'}`));
 
   const html = renderCards(posts);
