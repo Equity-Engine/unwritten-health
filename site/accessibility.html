@@ -37,65 +37,16 @@
     .status-pill { display: inline-block; padding: 4px 12px; border-radius: 100px; background: var(--green-pale); color: var(--green-darker); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; }
   </style>
   <script defer src="analytics.js"></script>
+  <link rel="stylesheet" href="/chrome.css" />
+  <script defer src="/chrome.js"></script>
 </head>
 <body class="has-sticky-cta">
 
-<nav class="site-nav" id="mainNav">
-  <a href="index.html" class="nav-logo"><img src="images/logo-horizontal.svg" alt="Unwritten Health" /></a>
-  <div class="nav-links">
-    <div class="has-dd"><a href="about.html">About</a>
-      <div class="nav-dropdown">
-        <a href="about.html">About us</a>
-        <a href="trust-ethics.html">Trust &amp; ethics</a>
-        <a href="press.html">Press</a>
-        <a href="contact.html">Contact us</a>
-      </div>
-    </div>
-    <a href="equity-engine.html">Platform</a>
-    <a href="exclusion-debt.html">Exclusion debt</a>
-    <div class="has-dd"><a href="solutions.html">Solutions</a>
-      <div class="nav-dropdown">
-        <span class="dd-lab">Pharma &amp; biotech</span>
-        <a href="solutions-jca.html">JCA-Ready Evidence</a>
-        <a href="solutions-patient-council.html">Patient Council as a Service</a>
-        <span class="dd-sep"></span>
-        <span class="dd-lab">Medtech &amp; digital health</span>
-        <a href="solutions-samd.html">SaMD Red-Team</a>
-        <a href="solutions-esf-dtac.html">ESF/DTAC Evidence Pack</a>
-        <a href="solutions-pmcf.html">PMCF Equity Gap</a>
-        <span class="dd-sep"></span>
-        <span class="dd-lab">Academic, NIHR &amp; non-profit</span>
-        <a href="solutions-nihr-ppi.html">NIHR PPI Package</a>
-      </div>
-    </div>
-    <div class="has-dd"><a href="case-studies.html">Resources</a>
-      <div class="nav-dropdown">
-        <a href="case-studies.html">Case studies</a>
-        <a href="blog.html">Blog</a>
-        <a href="resources.html">Resources hub</a>
-        <a href="toolkits.html">Toolkits (self-serve)</a>
-      </div>
-    </div>
-    <a href="scorecard.html">Scorecard</a>
-  </div>
-  <a href="scorecard.html" class="nav-cta">Take the Scorecard</a>
-  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
-</nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="about.html">About</a>
-  <a href="equity-engine.html">Platform</a>
-  <a href="solutions.html">Solutions</a>
-  <a href="case-studies.html">Case studies</a>
-  <a href="exclusion-debt.html">Exclusion debt</a>
-  <a href="trust-ethics.html">Trust &amp; ethics</a>
-  <a href="press.html">Press</a>
-  <a href="blog.html">Blog</a>
-  <a href="resources.html">Resources</a>
-  <a href="toolkits.html">Toolkits</a>
-  <a href="scorecard.html" class="cta">Take the Scorecard</a>
-  <a href="contact.html">Contact us</a>
-</div>
-
+<!-- UH:HEADER -->
+<a class="uh-skip" href="#main">Skip to content</a>
+<header class="uh-header"><div class="uh-header-inner"><a class="uh-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="160" height="28"></a><div class="uh-nav" role="navigation" aria-label="Main"><a href="/how-it-works">How it works</a><a href="/patient-panel">The panel</a><a href="/patient-involvement-report">The report</a><div class="uh-dd"><a href="/who-its-for">Who it's for</a><button class="uh-dd-toggle" type="button" aria-expanded="false" aria-controls="uh-dd-who" aria-label="Show pages for each kind of work"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="m6 9 6 6 6-6" /></svg></button><div class="uh-dd-menu" id="uh-dd-who"><a href="/pharma">Pharma</a><a href="/biotech">Biotech</a><a href="/medtech">Medtech</a><a href="/digital-health">Digital health</a><a href="/nhs">NHS</a><a href="/suppliers">Suppliers to the NHS</a><a href="/researchers">Researchers</a><a class="uh-dd-all" href="/who-its-for">All seven kinds of work</a></div></div><a href="/pricing">Pricing</a><a href="/trust">Trust</a><a href="/about">About</a><a href="https://substack.com/@exclusiondebt" target="_blank" rel="noopener">Blog<svg aria-hidden="true" focusable="false" class="uh-ext" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg><span class="uh-sr"> (opens in a new tab)</span></a></div><a class="uh-btn-nav" href="/panel-check">Free panel check</a><button class="uh-burger" type="button" aria-expanded="false" aria-controls="uh-mobile" aria-label="Open menu"><span></span><span></span><span></span></button></div></header>
+<div class="uh-mobile" id="uh-mobile" role="navigation" aria-label="Mobile"><a href="/how-it-works">How it works</a><a href="/patient-panel">The panel</a><a href="/patient-involvement-report">The report</a><a href="/who-its-for">Who it's for</a><div class="uh-mobile-sub"><a href="/pharma">Pharma</a><a href="/biotech">Biotech</a><a href="/medtech">Medtech</a><a href="/digital-health">Digital health</a><a href="/nhs">NHS</a><a href="/suppliers">Suppliers to the NHS</a><a href="/researchers">Researchers</a></div><a href="/pricing">Pricing</a><a href="/trust">Trust</a><a href="/about">About</a><a href="https://substack.com/@exclusiondebt" target="_blank" rel="noopener">Blog<svg aria-hidden="true" focusable="false" class="uh-ext" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg><span class="uh-sr"> (opens in a new tab)</span></a><a class="uh-btn-nav" href="/panel-check">Free panel check</a><a class="uh-mobile-book" href="https://meetings-eu1.hubspot.com/ashish-rishi?uuid=b7b6b6ed-3b13-4c64-aa8d-d759c67698db" target="_blank" rel="noopener">Book 30 minutes with Ashish<span class="uh-sr"> (opens in a new tab)</span></a></div>
+<!-- /UH:HEADER -->
 <a href="#main" class="skip-link">Skip to main content</a>
 <main id="main">
 
@@ -176,28 +127,13 @@
   </div>
 </section>
 
-<div class="sticky-mobile-cta"><a href="scorecard.html">Take the Scorecard →</a></div>
-
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-logo"><img src="images/logo-horizontal.svg" alt="Unwritten Health" /></div>
-        <div class="footer-tagline">Regulated healthcare's patient experience data company</div>
-        <p class="footer-desc">The UK patient experience data platform for regulated healthcare.</p>
-      </div>
-      <div class="footer-col"><div class="footer-col-title">Platform</div><ul><li><a href="equity-engine.html">Equity Engine</a></li><li><a href="scorecard.html">Scorecard</a></li><li><a href="exclusion-debt.html">Exclusion debt</a></li><li><a href="trust-ethics.html">Trust &amp; ethics</a></li></ul></div>
-      <div class="footer-col"><div class="footer-col-title">Solutions</div><ul><li><a href="solutions-jca.html">JCA-Ready Evidence</a></li><li><a href="solutions-pmcf.html">PMCF Equity Gap</a></li><li><a href="solutions-esf-dtac.html">ESF/DTAC Pack</a></li><li><a href="solutions-samd.html">SaMD Red-Team</a></li><li><a href="solutions-patient-council.html">Patient Council</a></li><li><a href="solutions-nihr-ppi.html">NIHR PPI</a></li></ul></div>
-      <div class="footer-col"><div class="footer-col-title">Company</div><ul><li><a href="about.html">About us</a></li><li><a href="press.html">Press</a></li><li><a href="blog.html">Blog</a></li><li><a href="resources.html">Resources</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">&copy; 2026 Unwritten Health. Company no. 16561594.</div>
-      <div class="footer-links-bottom"><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms of use</a><a href="refund-policy.html">Refund policy</a><a href="accessibility.html">Accessibility</a></div>
-    </div>
-  </div>
-</footer>
+<!-- UH:FOOTER -->
+<section class="uh-cta" aria-labelledby="uh-cta-title"><div class="uh-cta-inner"><div><h2 id="uh-cta-title">Free panel check.</h2><p>Tell us who your clinical trial or product is for. We'll tell you, the same day, how many people like that we hold and how they break down.</p></div><div class="uh-cta-actions"><a class="uh-btn-light" href="/panel-check">Check the panel</a><a class="uh-cta-link" href="https://meetings-eu1.hubspot.com/ashish-rishi?uuid=b7b6b6ed-3b13-4c64-aa8d-d759c67698db" target="_blank" rel="noopener">Book 30 minutes with Ashish<span class="uh-sr"> (opens in a new tab)</span></a></div></div></section>
+<div class="uh-footer" role="contentinfo"><div class="uh-footer-inner"><div class="uh-footer-top"><div><a class="uh-footer-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="150" height="26"></a><p class="uh-footer-tag">Unwritten Health. Patient involvement, matched to the people who have the condition.</p><p class="uh-footer-note">UK company. All prices plus VAT.</p></div><div class="uh-footer-links"><a href="/how-it-works">How it works</a><a href="/patient-panel">The panel</a><a href="/patient-involvement-report">The report</a><a href="/sample-report">Sample report</a><a href="/who-its-for">Who it's for</a><a href="/pricing">Pricing</a><a href="/trust">Trust</a><a href="/about">About</a><a href="/questions">Questions</a><a href="https://substack.com/@exclusiondebt" target="_blank" rel="noopener">Blog<span class="uh-sr"> (opens in a new tab)</span></a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/contact">Contact</a></div></div><div class="uh-footer-legal"><span>Unwritten Health · Company number 16561594 · First Floor, Swan Buildings, 20 Swan Street, Manchester, England, M4 5JW</span><a href="#cookie-settings" onclick="if(window.openCookieSettings){window.openCookieSettings();}return false;">Cookie settings</a></div></div></div>
+<a class="uh-sticky" href="/panel-check">Check the panel</a>
+<!-- /UH:FOOTER -->
 
 <script>function toggleMenu(){var m=document.getElementById("mobileMenu");if(m)m.classList.toggle("open");}document.body.classList.add("js-ready");</script>
 </body>

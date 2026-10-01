@@ -15,3 +15,24 @@
 # Only takes effect once dispatches.unwritten.health is added as a domain alias
 # in Netlify and its DNS record points at Netlify.
 https://dispatches.unwritten.health/*    https://unwritten.health/blog    301!
+
+# BEGIN build_site.py: pages retired in the October 2026 rebuild (edit RETIRED in scripts/build_site.py)
+/solutions    /who-its-for    301
+/solutions.html    /who-its-for    301
+/solutions-jca    /pharma    301
+/solutions-jca.html    /pharma    301
+/solutions-patient-council    /pharma    301
+/solutions-patient-council.html    /pharma    301
+/solutions-samd    /medtech    301
+/solutions-samd.html    /medtech    301
+/solutions-pmcf    /medtech    301
+/solutions-pmcf.html    /medtech    301
+/solutions-esf-dtac    /digital-health    301
+/solutions-esf-dtac.html    /digital-health    301
+/solutions-nihr-ppi    /researchers    301
+/solutions-nihr-ppi.html    /researchers    301
+/regulatory-alignment    /patient-involvement-report    301
+/regulatory-alignment.html    /patient-involvement-report    301
+/trust-ethics    /trust    301
+/trust-ethics.html    /trust    301
+# END build_site.py

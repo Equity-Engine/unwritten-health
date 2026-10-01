@@ -1,6 +1,14 @@
 # unwritten.health
 
-Marketing site for Unwritten Health. Static HTML deployed to Netlify. Version 25.
+Marketing site for Unwritten Health. Static HTML deployed to Netlify.
+
+October 2026 rebuild (copy v5): most pages are now **generated**. Edit the copy in `src/pages/*.html`, then run:
+
+```
+python3 scripts/build_site.py
+```
+
+and commit the changed files in `site/`. Don't hand-edit the generated pages in `site/` (they are overwritten on the next build). The script also puts the shared header, footer and "Free panel check" band on the older pages that are kept but not in the menu (list: `KEPT_PAGES` in the script), and rewrites `site/sitemap.xml` and the managed block of `site/_redirects` (retired pages: `RETIRED` in the script).
 
 ## Repo
 
@@ -13,18 +21,26 @@ https://github.com/Equity-Engine/unwritten-health
 ├── .github/workflows/
 │   └── newsletter-refresh.yml   # Weekly cron: pull Exclusion Debt (Substack) into blog.html
 ├── scripts/
+│   ├── build_site.py            # Builds site/ pages from src/ (run locally, then commit)
 │   └── refresh-newsletter.mjs   # Node script the workflow runs
+├── src/
+│   ├── pages/                   # Page copy for the generated pages (one file per page)
+│   └── icons/                   # Lucide icons (ISC licence) used by the build
 ├── netlify.toml                 # Netlify config (publish dir + functions dir)
 ├── netlify/functions/
 │   └── submission-created.mjs   # Scorecard auto-reply (Resend)
 └── site/                        # The actual website — this is what gets published
-    ├── index.html
-    ├── blog.html                # Has NEWSLETTER-START/END markers
+    ├── index.html, how-it-works.html, pricing.html, ...   # generated from src/pages
+    ├── chrome.css / chrome.js   # Shared header, menu, call-to-action band, footer
+    ├── styles.css               # Styles for the generated pages
+    ├── site.css                 # Styles for the older kept pages
+    ├── blog.html                # Kept page; has NEWSLETTER-START/END markers
     └── ...
 ```
 
 ## Automations already running
 
+- **Free panel check form** — `site/panel-check.html` posts to Netlify Forms (form name `panel-check`). Make sure Netlify form notifications cover it (Forms → Form notifications → "Any form" or `panel-check`).
 - **Scorecard auto-reply** — every submission of the Regulatory Readiness Scorecard triggers `netlify/functions/submission-created.mjs`, which sends a personalised email via Resend (needs `RESEND_API_KEY` env var set in Netlify).
 - **Weekly newsletter refresh** — every Monday at 10:00 UTC (11:00 UK BST) GitHub Actions fetches the latest Exclusion Debt issues from `exclusiondebt.substack.com/feed`, updates `site/blog.html`, and pushes (only when there is a new issue). Netlify auto-deploys the change. Also runnable on demand from GitHub → Actions → "Refresh Exclusion Debt on blog" → Run workflow, and it re-runs automatically whenever the script or workflow file changes.
 - **Newsletter history** — Unwritten Dispatches (Beehiiv) ran Jan to Aug 2026 and was retired in Sep 2026. Its archive is no longer on the site; `site/_redirects` sends old `dispatches.unwritten.health` links to `/blog` once that subdomain points at Netlify.

@@ -1,265 +1,84 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="images/logo-mark.png" />
-  <link rel="apple-touch-icon" href="images/logo-mark.png" />
-  <link rel="shortcut icon" href="images/logo-mark.png" />
-  <title>About Unwritten Health | UK Patient Experience Data Company | Manchester</title>
-  <meta name="description" content="Unwritten Health builds the Equity Engine, the UK patient experience data platform for regulated healthcare. Founded in Manchester. Serving pharma medical affairs, medical-device and SaMD manufacturers, digital-health developers, and NIHR-funded academic teams. IHI READI Scientific Advisory Board." />
-  <meta name="keywords" content="Unwritten Health, Ashish Rishi, IHI READI, patient experience data company UK, Equity Engine, Manchester health tech, regulated healthcare, WE ARE COUCH" />
-  <meta property="og:title" content="About Unwritten Health | UK Patient Experience Data Company" />
-  <meta property="og:description" content="UK patient experience data platform for pharma, medtech, SaMD, digital health and NIHR-funded academic teams. Founded in Manchester. Ashish Rishi, IHI READI Scientific Advisory Board." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://unwritten.health/about" />
-  <meta property="og:site_name" content="Unwritten Health" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="About Unwritten Health" />
-  <meta name="twitter:description" content="Regulated healthcare's patient experience data company. Manchester, UK. IHI READI." />
-  <link rel="canonical" href="https://unwritten.health/about" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bentham&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="site.css" />
-  <style>
-    .site-nav .nav-logo img, .footer-logo img { height: 28px; width: auto; display: block; }
-    .footer-logo img { filter: brightness(0) invert(1); opacity: 0.9; }
-
-    #ab-hero { padding: 144px 0 72px; background: radial-gradient(900px 500px at 88% 0%, rgba(91,129,112,0.14), transparent 70%), var(--cream); }
-    #ab-hero h1 { font-size: clamp(2.4rem, 4.6vw, 3.6rem); line-height: 1.1; max-width: 880px; letter-spacing: -0.01em; }
-    .ab-lede { font-family: var(--font-head); font-size: clamp(1.3rem, 2.2vw, 1.7rem); color: var(--green-darker); line-height: 1.45; margin-top: 1.4rem; max-width: 800px; }
-    .ab-story { padding: 64px 0; background: var(--white); }
-    .ab-story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1100px; margin: 0 auto; align-items: start; }
-    .ab-story h2 { font-size: clamp(1.8rem, 2.8vw, 2.4rem); margin-bottom: 1.4rem; }
-    .ab-story p { font-size: 1rem; color: var(--charcoal-soft); line-height: 1.85; margin-bottom: 1rem; }
-    .ab-story p strong { color: var(--charcoal); font-weight: 700; }
-    .ab-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .ab-stat { background: var(--cream); border-radius: 16px; padding: 24px 22px; border: 1px solid rgba(91,129,112,0.14); }
-    .ab-stat .n { font-family: var(--font-head); font-size: 2.2rem; color: var(--green-dark); line-height: 1; }
-    .ab-stat .l { font-size: 0.86rem; color: var(--charcoal-soft); margin-top: 8px; line-height: 1.55; }
-
-    .ab-founder { padding: 64px 0; background: var(--cream); }
-    .ab-founder-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 320px 1fr; gap: 60px; align-items: start; }
-    .ab-founder-photo { position: relative; }
-    .ab-founder-photo img { border-radius: 22px; box-shadow: 0 12px 44px rgba(63,97,82,0.14); }
-    .ab-founder-photo .lab { position: absolute; bottom: -18px; left: -18px; padding: 8px 16px; border-radius: 100px; background: var(--charcoal); color: var(--white); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
-    .ab-founder h2 { font-size: clamp(1.8rem, 2.8vw, 2.4rem); margin-bottom: 1rem; letter-spacing: -0.01em; }
-    .ab-founder .role { display: inline-block; padding: 4px 12px; border-radius: 100px; background: var(--green-pale); color: var(--green-darker); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
-    .ab-founder p { font-size: 1rem; color: var(--charcoal); line-height: 1.85; margin-bottom: 1.2rem; }
-    .ab-founder p strong { color: var(--green-darker); font-weight: 700; }
-    .ab-founder-creds { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.6rem; }
-    .ab-founder-creds span { padding: 6px 14px; border-radius: 100px; background: var(--white); color: var(--charcoal); border: 1px solid rgba(91,129,112,0.25); font-size: 0.82rem; font-weight: 600; }
-
-    .ab-model { padding: 64px 0; background: var(--white); }
-    .ab-model h2 { max-width: 720px; margin-bottom: 3rem; font-size: clamp(1.8rem, 2.8vw, 2.4rem); }
-    .ab-model-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .ab-model-card { padding: 32px 28px; border-radius: 20px; background: var(--cream); border: 1px solid rgba(91,129,112,0.14); }
-    .ab-model-card .num { font-family: var(--font-head); font-size: 2rem; color: var(--green-dark); line-height: 1; margin-bottom: 12px; }
-    .ab-model-card h3 { font-family: var(--font-head); font-size: 1.25rem; color: var(--charcoal); margin-bottom: 10px; line-height: 1.3; }
-    .ab-model-card p { font-size: 0.94rem; color: var(--charcoal-soft); line-height: 1.75; }
-
-    .ab-partners { padding: 64px 0; background: var(--cream); }
-    .ab-partners h2 { text-align: center; margin-bottom: 1rem; }
-    .ab-partners .lede { text-align: center; max-width: 720px; margin: 0 auto 3rem; color: var(--charcoal-soft); font-size: 1rem; line-height: 1.75; }
-    .ab-partner-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 940px; margin: 0 auto; }
-    .ab-partner { background: var(--white); border-radius: 14px; padding: 22px; border: 1px solid rgba(91,129,112,0.14); text-align: center; }
-    .ab-partner .n { font-family: var(--font-head); color: var(--charcoal); font-size: 1.05rem; margin-bottom: 6px; line-height: 1.3; }
-    .ab-partner .s { font-size: 0.76rem; color: var(--charcoal-soft); }
-
-    .ab-cta { padding: 72px 0 96px; background: var(--charcoal); color: var(--white); text-align: center; }
-    .ab-cta h2 { color: var(--white); font-size: clamp(2rem, 3.4vw, 2.6rem); margin-bottom: 1rem; }
-    .ab-cta p { color: rgba(255,255,255,0.75); font-size: 1.02rem; line-height: 1.75; margin-bottom: 2rem; max-width: 640px; margin-left: auto; margin-right: auto; }
-    .ab-cta .row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-
-    @media (max-width: 900px) {
-      .ab-story-grid { grid-template-columns: 1fr; gap: 40px; }
-      .ab-stats { grid-template-columns: 1fr 1fr; }
-      .ab-founder-inner { grid-template-columns: 1fr; gap: 32px; }
-      .ab-founder-photo { max-width: 260px; }
-      .ab-model-grid { grid-template-columns: 1fr; }
-      .ab-partner-grid { grid-template-columns: 1fr 1fr; }
-    }
-  </style>
-  <script defer src="analytics.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Unwritten Health and Ashish Rishi | Unwritten Health</title>
+<meta name="description" content="Unwritten Health is a UK company building a patient panel matched to who has each condition, founded by Ashish Rishi, formerly of Couch Health.">
+<link rel="canonical" href="https://unwritten.health/about">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Unwritten Health">
+<meta property="og:title" content="About Unwritten Health and Ashish Rishi | Unwritten Health">
+<meta property="og:description" content="Unwritten Health is a UK company building a patient panel matched to who has each condition, founded by Ashish Rishi, formerly of Couch Health.">
+<meta property="og:url" content="https://unwritten.health/about">
+<meta property="og:image" content="https://unwritten.health/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About Unwritten Health and Ashish Rishi | Unwritten Health">
+<meta name="twitter:description" content="Unwritten Health is a UK company building a patient panel matched to who has each condition, founded by Ashish Rishi, formerly of Couch Health.">
+<meta name="twitter:image" content="https://unwritten.health/images/og-image.jpg">
+<link rel="icon" type="image/png" href="/images/logo-mark.png">
+<link rel="apple-touch-icon" href="/images/logo-mark.png">
+<meta name="theme-color" content="#FAF8F5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bentham&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/chrome.css">
+<link rel="stylesheet" href="/styles.css">
+<script defer src="/analytics.js"></script>
+<script defer src="/chrome.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://unwritten.health/#organization", "name": "Unwritten Health", "url": "https://unwritten.health/", "logo": "https://unwritten.health/images/logo-mark.png", "description": "Patient involvement, matched to the people who have the condition.", "identifier": {"@type": "PropertyValue", "propertyID": "Companies House company number", "value": "16561594"}, "address": {"@type": "PostalAddress", "streetAddress": "First Floor, Swan Buildings, 20 Swan Street", "addressLocality": "Manchester", "postalCode": "M4 5JW", "addressCountry": "GB"}, "founder": {"@type": "Person", "name": "Ashish Rishi"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Ashish Rishi", "jobTitle": "Founder", "worksFor": {"@id": "https://unwritten.health/#organization"}, "image": "https://unwritten.health/images/ashish-rishi.jpg"}</script>
 </head>
-<body class="has-sticky-cta">
-
-<nav class="site-nav" id="mainNav">
-  <a href="index.html" class="nav-logo"><img src="images/logo-horizontal.svg" alt="Unwritten Health" /></a>
-  <div class="nav-links">
-    <div class="has-dd"><a href="about.html">About</a>
-      <div class="nav-dropdown">
-        <a href="about.html">About us</a>
-        <a href="trust-ethics.html">Trust &amp; ethics</a>
-        <a href="press.html">Press</a>
-        <a href="contact.html">Contact us</a>
-      </div>
-    </div>
-    <a href="equity-engine.html">Platform</a>
-    <a href="exclusion-debt.html">Exclusion debt</a>
-    <div class="has-dd"><a href="solutions.html">Solutions</a>
-      <div class="nav-dropdown">
-        <span class="dd-lab">Pharma &amp; biotech</span>
-        <a href="solutions-jca.html">JCA-Ready Evidence</a>
-        <a href="solutions-patient-council.html">Patient Council as a Service</a>
-        <span class="dd-sep"></span>
-        <span class="dd-lab">Medtech &amp; digital health</span>
-        <a href="solutions-samd.html">SaMD Red-Team</a>
-        <a href="solutions-esf-dtac.html">ESF/DTAC Evidence Pack</a>
-        <a href="solutions-pmcf.html">PMCF Equity Gap</a>
-        <span class="dd-sep"></span>
-        <span class="dd-lab">Academic, NIHR &amp; non-profit</span>
-        <a href="solutions-nihr-ppi.html">NIHR PPI Package</a>
-      </div>
-    </div>
-    <div class="has-dd"><a href="case-studies.html">Resources</a>
-      <div class="nav-dropdown">
-        <a href="case-studies.html">Case studies</a>
-        <a href="blog.html">Blog</a>
-        <a href="resources.html">Resources hub</a>
-        <a href="toolkits.html">Toolkits (self-serve)</a>
-      </div>
-    </div>
-    <a href="scorecard.html">Scorecard</a>
-  </div>
-  <a href="scorecard.html" class="nav-cta">Take the Scorecard</a>
-  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
-</nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="about.html">About</a>
-  <a href="equity-engine.html">Platform</a>
-  <a href="solutions.html">Solutions</a>
-  <a href="case-studies.html">Case studies</a>
-  <a href="exclusion-debt.html">Exclusion debt</a>
-  <a href="trust-ethics.html">Trust &amp; ethics</a>
-  <a href="press.html">Press</a>
-  <a href="blog.html">Blog</a>
-  <a href="resources.html">Resources</a>
-  <a href="toolkits.html">Toolkits</a>
-  <a href="scorecard.html" class="cta">Take the Scorecard</a>
-  <a href="contact.html">Contact us</a>
-</div>
-
-<a href="#main" class="skip-link">Skip to main content</a>
+<body>
+<a class="uh-skip" href="#main">Skip to content</a>
+<header class="uh-header"><div class="uh-header-inner"><a class="uh-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="160" height="28"></a><div class="uh-nav" role="navigation" aria-label="Main"><a href="/how-it-works">How it works</a><a href="/patient-panel">The panel</a><a href="/patient-involvement-report">The report</a><div class="uh-dd"><a href="/who-its-for">Who it's for</a><button class="uh-dd-toggle" type="button" aria-expanded="false" aria-controls="uh-dd-who" aria-label="Show pages for each kind of work"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="m6 9 6 6 6-6" /></svg></button><div class="uh-dd-menu" id="uh-dd-who"><a href="/pharma">Pharma</a><a href="/biotech">Biotech</a><a href="/medtech">Medtech</a><a href="/digital-health">Digital health</a><a href="/nhs">NHS</a><a href="/suppliers">Suppliers to the NHS</a><a href="/researchers">Researchers</a><a class="uh-dd-all" href="/who-its-for">All seven kinds of work</a></div></div><a href="/pricing">Pricing</a><a href="/trust">Trust</a><a href="/about" aria-current="page">About</a><a href="https://substack.com/@exclusiondebt" target="_blank" rel="noopener">Blog<svg aria-hidden="true" focusable="false" class="uh-ext" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg><span class="uh-sr"> (opens in a new tab)</span></a></div><a class="uh-btn-nav" href="/panel-check">Free panel check</a><button class="uh-burger" type="button" aria-expanded="false" aria-controls="uh-mobile" aria-label="Open menu"><span></span><span></span><span></span></button></div></header>
+<div class="uh-mobile" id="uh-mobile" role="navigation" aria-label="Mobile"><a href="/how-it-works">How it works</a><a href="/patient-panel">The panel</a><a href="/patient-involvement-report">The report</a><a href="/who-its-for">Who it's for</a><div class="uh-mobile-sub"><a href="/pharma">Pharma</a><a href="/biotech">Biotech</a><a href="/medtech">Medtech</a><a href="/digital-health">Digital health</a><a href="/nhs">NHS</a><a href="/suppliers">Suppliers to the NHS</a><a href="/researchers">Researchers</a></div><a href="/pricing">Pricing</a><a href="/trust">Trust</a><a href="/about">About</a><a href="https://substack.com/@exclusiondebt" target="_blank" rel="noopener">Blog<svg aria-hidden="true" focusable="false" class="uh-ext" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg><span class="uh-sr"> (opens in a new tab)</span></a><a class="uh-btn-nav" href="/panel-check">Free panel check</a><a class="uh-mobile-book" href="https://meetings-eu1.hubspot.com/ashish-rishi?uuid=b7b6b6ed-3b13-4c64-aa8d-d759c67698db" target="_blank" rel="noopener">Book 30 minutes with Ashish<span class="uh-sr"> (opens in a new tab)</span></a></div>
 <main id="main">
-
-<section id="ab-hero">
-  <div class="container">
-    <div class="eyebrow"><span class="eyebrow-dot"></span>About</div>
-    <h1>We are regulated healthcare's patient experience data company.</h1>
-    <p class="ab-lede">Founded in the UK. Manchester operating model. Building the Equity Engine, the platform that closes the gap between clinical-trial populations and the populations who actually use the products.</p>
-  </div>
-</section>
-
-<section class="ab-story">
-  <div class="container">
-    <div class="ab-story-grid">
-      <div>
-        <div class="section-label">Why we exist</div>
-        <h2>Regulated healthcare has a population coverage problem.</h2>
-        <p>The evidence that supports approvals, HTA decisions, procurement and post-market surveillance is drawn from populations that do not match the populations the products are used on. Regulators, payers and procurement bodies have converged on this issue and are writing it into their rules faster than sponsors and developers can respond.</p>
-        <p>Unwritten Health builds the <strong>Equity Engine</strong>, a patient experience data platform for regulated healthcare. One product. One dataset. One data asset, served through three concentric access tiers so each buyer pays at the value they receive, not at a discounted list price.</p>
-        <p>The Equity Engine is anchored by a growing panel of consented UK participants recruited through community partners, patient charities, faith-based organisations, disease-specific groups and health-innovation networks, rather than through advertising or panel aggregation. Every participant completes a Social Determinants of Health profile at sign-up, so every downstream output can be stratified by the subgroups that regulators, HTA bodies and NHS procurement ask about.</p>
-        <p>Sponsors, Software as a Medical Device manufacturers, medical-device manufacturers, digital-health developers, and NIHR-funded academic teams use the Equity Engine to produce submission-ready evidence for EU JCA, NICE ESF, NHS DTAC, EU MDR PMCF and UK PMS 2025.</p>
-        <p><strong>Fixed scope. Fixed price. Fixed duration.</strong> Regulatory-grade output the first time.</p>
-      </div>
-      <div>
-        <div class="ab-stats">
-          <div class="ab-stat"><div class="n">6,000</div><div class="l">UK participants recruited through community partners <span style="opacity:0.7;">(as of July 2026)</span></div></div>
-          <div class="ab-stat"><div class="n">8</div><div class="l">Social factors profiled on every participant at sign-up</div></div>
-          <div class="ab-stat"><div class="n">6</div><div class="l">Regulatory frameworks the outputs are pre-formatted for</div></div>
-          <div class="ab-stat"><div class="n">UK</div><div class="l">Data stays in UK jurisdiction, auditable to raw response level</div></div>
-        </div>
-      </div>
+<section class="hero">
+  <div class="wrap split">
+    <div>
+      <span class="kicker">About</span>
+      <h1>Built by someone who's spent a career on who gets left out.</h1>
+      <p class="lede">Unwritten Health was founded by Ashish Rishi. For nearly ten years he ran Couch Health, a clinical trial recruitment company, which he sold in 2024. He sits on the scientific advisory board of IHI READI, a Horizon Europe project on representative clinical research.</p>
     </div>
+    <div><img src="/images/ashish-rishi.jpg" alt="Ashish Rishi, founder of Unwritten Health" style="border-radius:24px;width:100%;max-width:440px;margin-left:auto;aspect-ratio:4/5;object-fit:cover" width="440" height="550"></div>
   </div>
 </section>
 
-<section class="ab-founder">
-  <div class="container">
-    <div class="ab-founder-inner">
-      <div class="ab-founder-photo">
-        <img src="images/ashish-rishi.jpg" alt="Ashish Rishi, Founder and CEO, Unwritten Health" />
-        <span class="lab">Founder</span>
-      </div>
-      <div>
-        <span class="role">Founder &amp; CEO</span>
-        <h2>Ashish Rishi</h2>
-        <p>Ashish is the founder and CEO of Unwritten Health. He built and exited <strong>WE ARE COUCH LTD</strong>, a patient-engagement agency, to approximately £3m ARR over nine years, bootstrapped. That business worked on the demand-side of pharma. Unwritten Health works on the supply-side of evidence.</p>
-        <p>Ashish serves on the <strong>Scientific Advisory Board for IHI READI</strong>, a Horizon Europe initiative on health equity and research infrastructure, and on the executive advisory board of a ~€66m European clinical-trials inclusion consortium.</p>
-        <p>His framing of healthcare inclusion is practical, not moral: it is an evidence and design problem. The right question is not "who deserves to be included?" It is <strong>"who is not in the data, and what does that cost us?"</strong></p>
-        <p>Ashish is based in London. Unwritten Health runs a Manchester operating model.</p>
-        <div class="ab-founder-creds">
-          <span>IHI READI Scientific Advisory Board</span>
-          <span>Founder, WE ARE COUCH (exited)</span>
-          <span>London-based</span>
-          <span>Manchester operating model</span>
-        </div>
-      </div>
-    </div>
+<section class="section section--paper" aria-labelledby="story">
+  <div class="wrap prose">
+    <h2 id="story">My story</h2>
+    <p>Most people know me as the founder of a patient recruitment company here in the UK. I built it with diversity and inclusion at its core, long before it became fashionable. I've spent my career inside healthcare agencies, across research and development, brand launches, market access, medical affairs and commercial strategy. I've seen what works, what doesn't, and who gets left behind.</p>
+    <p>Why I keep going runs deeper than work. I'm the son of immigrants. My dad came to the UK in the early 70s and my mum in the late 70s. They had an arranged marriage; the first time she saw him was their wedding day. They didn't have much, but they had grit. My mum worked in factories, making ice cream and testing vinyl records, before moving into a clerical job. My dad became a TV engineer. He always said he'd had the choice between TVs and computers, and he thought TVs were the future. They worked twelve-hour shifts, overtime and weekends, and skipped holidays, so I could have a better shot than they had.</p>
+    <p>That hard work came at a cost. My dad was diagnosed with prostate cancer at 52. My mum was diagnosed with thyroid cancer at 48. Both too young, and both let down by the system. My dad knew something was wrong and pushed for answers for over a year. By the time anyone listened, it was terminal.</p>
+    <p>I was 17, sitting in a hospital room, when the consultant told me and my mum he had six months to live. He handed us a leaflet and said we'd get a follow-up. No pathway, no options. We had family and friends, but no advocates. We didn't know what questions to ask. We didn't know what we didn't know.</p>
+    <p>My dad held on for six more years. He knew he wouldn't see me marry, so he wanted to see me graduate. He died six months before I did, and that will always sit heavy with me. My mum didn't spot her own cancer and didn't know how to ask for help. She just kept going, like so many working-class people do, until her body made her stop.</p>
+    <p>That's why I do this. Not because I read a regulation, and not because someone hired me to, but because I've lived what happens when people are unseen, unheard and uncared for. Every keynote, every campaign, every late night has been about representation. I've built things, burnt out and rebuilt. I'm still here, and I'm still building.</p>
+    <p style="font-family:var(--uh-head);font-size:1.35rem;line-height:1.4;color:var(--uh-sage-deep);margin-top:1.4em">Ash. Son of immigrants. Built from graft, fuelled by grief, powered by purpose.</p>
+    <p>If this connects with you, I'd love to hear your story too.</p>
+    <div class="actions"><a class="btn btn--primary" href="https://meetings-eu1.hubspot.com/ashish-rishi?uuid=b7b6b6ed-3b13-4c64-aa8d-d759c67698db" target="_blank" rel="noopener">Book 30 minutes with Ashish<span class="uh-sr"> (opens in a new tab)</span></a></div>
   </div>
 </section>
 
-<section class="ab-model">
-  <div class="container">
-    <div class="section-label">The commercial model</div>
-    <h2>One dataset. Three concentric access tiers. Mission and margin protected together.</h2>
-    <div class="ab-model-grid">
-      <div class="ab-model-card">
-        <div class="num">01</div>
-        <h3>Pharma &amp; biotech</h3>
-        <p>Sponsor-commercial engagements at fixed price, funded from medical-affairs and market-access budgets. This is the commercial engine that keeps the dataset sustainable and the panel growing.</p>
-      </div>
-      <div class="ab-model-card">
-        <div class="num">02</div>
-        <h3>Medtech &amp; digital health</h3>
-        <p>Regulated-buyer value, scoped against notified-body and NHS-procurement risk. From the PMCF Equity Gap to the SaMD Population Performance Red-Team, each engagement targets a specific regulatory gate.</p>
-      </div>
-      <div class="ab-model-card">
-        <div class="num">03</div>
-        <h3>Academic, NIHR &amp; non-profit</h3>
-        <p>Public-good access. NIHR PPI packages at cost, dataset access at cost for academic secondary analysis, and free access by application for non-profits. Community partners co-design outputs and share sponsor engagement fees.</p>
-      </div>
-    </div>
+<section class="section" aria-labelledby="believe">
+  <div class="wrap prose">
+    <h2 id="believe">What we believe</h2>
+    <p class="lede">Anything developed for a patient should be shaped by patients before it goes out, and the people shaping it should look like the people who'll use it. Not a handful of people, however good. Not whoever signed up. Enough people, matched to who has the condition, to show who said what.</p>
   </div>
 </section>
 
-<section class="ab-cta">
-  <div class="container">
-    <h2>Work with us</h2>
-    <p>Take the Scorecard for a plain-English diagnosis of your evidence exposure, book a 20-minute call, or write to us directly. Every commercial engagement starts with the Scorecard.</p>
-    <div class="row">
-      <a href="scorecard.html" class="btn btn-white">Take the Scorecard →</a>
-      <a href="contact.html" class="btn btn-outline-white">Book a call</a>
-      <a href="mailto:ashish@unwritten.health" class="btn btn-outline-white">Email Ashish directly</a>
-    </div>
+<section class="section section--sand" aria-labelledby="name">
+  <div class="wrap prose">
+    <h2 id="name">The name</h2>
+    <p class="lede">Most of what's made for patients is written without them. That's the unwritten part.</p>
   </div>
 </section>
-
-<div class="sticky-mobile-cta"><a href="scorecard.html">Take the Scorecard →</a></div>
-
 </main>
-
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-logo"><img src="images/logo-horizontal.svg" alt="Unwritten Health" /></div>
-        <div class="footer-tagline">Regulated healthcare's patient experience data company</div>
-        <p class="footer-desc">The UK patient experience data platform for regulated healthcare.</p>
-      </div>
-      <div class="footer-col"><div class="footer-col-title">Platform</div><ul><li><a href="equity-engine.html">Equity Engine</a></li><li><a href="scorecard.html">Scorecard</a></li><li><a href="trust-ethics.html">Trust &amp; ethics</a></li><li><a href="case-studies.html">Case studies</a></li></ul></div>
-      <div class="footer-col"><div class="footer-col-title">Solutions</div><ul><li><a href="solutions-jca.html">JCA-Ready Evidence</a></li><li><a href="solutions-pmcf.html">PMCF Equity Gap</a></li><li><a href="solutions-esf-dtac.html">ESF/DTAC Pack</a></li><li><a href="solutions-samd.html">SaMD Red-Team</a></li><li><a href="solutions-patient-council.html">Patient Council</a></li><li><a href="solutions-nihr-ppi.html">NIHR PPI</a></li></ul></div>
-      <div class="footer-col"><div class="footer-col-title">Company</div><ul><li><a href="about.html">About us</a></li><li><a href="press.html">Press</a></li><li><a href="blog.html">Blog</a></li><li><a href="resources.html">Resources</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">&copy; 2026 Unwritten Health. Company no. 16561594.</div>
-      <div class="footer-links-bottom"><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms of use</a><a href="refund-policy.html">Refund policy</a><a href="accessibility.html">Accessibility</a></div>
-    </div>
-  </div>
-</footer>
-
-<script>function toggleMenu(){var m=document.getElementById("mobileMenu");if(m)m.classList.toggle("open");}document.body.classList.add("js-ready");</script>
+<section class="uh-cta" aria-labelledby="uh-cta-title"><div class="uh-cta-inner"><div><h2 id="uh-cta-title">Free panel check.</h2><p>Tell us who your clinical trial or product is for. We'll tell you, the same day, how many people like that we hold and how they break down.</p></div><div class="uh-cta-actions"><a class="uh-btn-light" href="/panel-check">Check the panel</a><a class="uh-cta-link" href="https://meetings-eu1.hubspot.com/ashish-rishi?uuid=b7b6b6ed-3b13-4c64-aa8d-d759c67698db" target="_blank" rel="noopener">Book 30 minutes with Ashish<span class="uh-sr"> (opens in a new tab)</span></a></div></div></section>
+<div class="uh-footer" role="contentinfo"><div class="uh-footer-inner"><div class="uh-footer-top"><div><a class="uh-footer-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="150" height="26"></a><p class="uh-footer-tag">Unwritten Health. Patient involvement, matched to the people who have the condition.</p><p class="uh-footer-note">UK company. All prices plus VAT.</p></div><div class="uh-footer-links"><a href="/how-it-works">How it works</a><a href="/patient-panel">The panel</a><a href="/patient-involvement-report">The report</a><a href="/sample-report">Sample report</a><a href="/who-its-for">Who it's for</a><a href="/pricing">Pricing</a><a href="/trust">Trust</a><a href="/about">About</a><a href="/questions">Questions</a><a href="https://substack.com/@exclusiondebt" target="_blank" rel="noopener">Blog<span class="uh-sr"> (opens in a new tab)</span></a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/contact">Contact</a></div></div><div class="uh-footer-legal"><span>Unwritten Health · Company number 16561594 · First Floor, Swan Buildings, 20 Swan Street, Manchester, England, M4 5JW</span><a href="#cookie-settings" onclick="if(window.openCookieSettings){window.openCookieSettings();}return false;">Cookie settings</a></div></div></div>
+<a class="uh-sticky" href="/panel-check">Check the panel</a>
 </body>
 </html>
