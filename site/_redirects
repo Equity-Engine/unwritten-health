@@ -16,7 +16,7 @@
 # in Netlify and its DNS record points at Netlify.
 https://dispatches.unwritten.health/*    https://unwritten.health/blog    301!
 
-# BEGIN build_site.py: pages retired in the October 2026 rebuild (edit RETIRED in scripts/build_site.py)
+# BEGIN build_site.py: retired pages (edit RETIRED in scripts/build_site.py)
 /solutions    /who-its-for    301
 /solutions.html    /who-its-for    301
 /solutions-jca    /pharma    301
@@ -35,4 +35,10 @@ https://dispatches.unwritten.health/*    https://unwritten.health/blog    301!
 /regulatory-alignment.html    /patient-involvement-report    301
 /trust-ethics    /trust    301
 /trust-ethics.html    /trust    301
+/pricing    /panel-check    301
+/pricing.html    /panel-check    301
+/scorecard    /panel-check    301
+/scorecard.html    /panel-check    301
+/toolkits    /resources    301
+/toolkits.html    /resources    301
 # END build_site.py

@@ -41,7 +41,6 @@ NAV = [
     ('panel', 'The panel', '/patient-panel'),
     ('report', 'The report', '/patient-involvement-report'),
     ('who', "Who it's for", '/who-its-for'),
-    ('pricing', 'Pricing', '/pricing'),
     ('trust', 'Trust', '/trust'),
     ('about', 'About', '/about'),
 ]
@@ -56,7 +55,7 @@ SECTORS = [
 ]
 FOOTER_LINKS = [
     ('How it works', '/how-it-works'), ('The panel', '/patient-panel'), ('The report', '/patient-involvement-report'),
-    ('Sample report', '/sample-report'), ("Who it's for", '/who-its-for'), ('Pricing', '/pricing'),
+    ('Sample report', '/sample-report'), ("Who it's for", '/who-its-for'), ('Case study', '/case-study-phase-ii-biotech'),
     ('Trust', '/trust'), ('About', '/about'), ('Questions', '/questions'),
     ('Blog', BLOG), ('Privacy', '/privacy'), ('Terms', '/terms'), ('Contact', '/contact'),
 ]
@@ -64,9 +63,8 @@ FOOTER_LINKS = [
 # Older pages kept live but out of the menu. They get the new header and footer.
 KEPT_PAGES = [
     'blog', 'blog-1-inclusion-infrastructure', 'blog-2-lived-experience-data', 'blog-3-portfolio-inclusion',
-    'blog-4-mhra-2026-regulatory-revolution', 'blog-5-frequency-of-exclusion', 'case-studies',
-    'case-study-phase-ii-biotech', 'press', 'press-equity-engine-mvp-2', 'equity-engine-mvp-2-feature-catalog',
-    'exclusion-debt', 'equity-engine', 'scorecard', 'resources', 'toolkits', 'contact', 'privacy', 'terms',
+    'blog-4-mhra-2026-regulatory-revolution', 'blog-5-frequency-of-exclusion', 'press', 'press-equity-engine-mvp-2', 'equity-engine-mvp-2-feature-catalog',
+    'exclusion-debt', 'equity-engine', 'resources', 'contact', 'privacy', 'terms',
     'refund-policy', 'accessibility',
 ]
 # Retired pages: old address -> new address (301). Links on kept pages are repointed too.
@@ -80,6 +78,10 @@ RETIRED = {
     'solutions-nihr-ppi': '/researchers',
     'regulatory-alignment': '/patient-involvement-report',
     'trust-ethics': '/trust',
+    # October 2026: prices taken off the site; Toolkits and Scorecard retired
+    'pricing': '/panel-check',
+    'scorecard': '/panel-check',
+    'toolkits': '/resources',
 }
 
 ORG = {
@@ -169,7 +171,7 @@ def footer_html(sticky=True):
         '<div class="uh-footer-top"><div>'
         '<a class="uh-footer-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="150" height="26"></a>'
         '<p class="uh-footer-tag">Unwritten Health. Patient involvement, matched to the people who have the condition.</p>'
-        '<p class="uh-footer-note">UK company. All prices plus VAT.</p>'
+        '<p class="uh-footer-note">UK company.</p>'
         f'</div><div class="uh-footer-links">{links}</div></div>'
         '<div class="uh-footer-legal"><span>Unwritten Health · Company number 16561594 · First Floor, Swan Buildings, 20 Swan Street, Manchester, England, M4 5JW</span>'
         '<a href="#cookie-settings" onclick="if(window.openCookieSettings){window.openCookieSettings();}return false;">Cookie settings</a></div>'
@@ -324,7 +326,7 @@ def write_sitemap(built):
 def write_redirects():
     path = SITE / '_redirects'
     t = path.read_text(encoding='utf-8')
-    lines = ['# BEGIN build_site.py: pages retired in the October 2026 rebuild (edit RETIRED in scripts/build_site.py)']
+    lines = ['# BEGIN build_site.py: retired pages (edit RETIRED in scripts/build_site.py)']
     for old, new in RETIRED.items():
         lines.append(f'/{old}    {new}    301')
         lines.append(f'/{old}.html    {new}    301')
