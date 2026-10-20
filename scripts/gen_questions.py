@@ -9,7 +9,11 @@ AI_HONEST = ("Our AI is built only on what our members have told us: no syntheti
              "It runs under our own framework that sets what it may and may not do.")
 
 CT = [
-    ("recruitment-across-uk", "Do you do clinical trial recruitment across the UK?", ["Yes. 13,050 people across the UK living with long-term conditions have joined us, profiled to postcode district, so before you start we can tell you how many people with the condition we hold near your sites. We work with sponsors, CROs with UK sites and academic clinical trials units. Members who pass your screening questions and say yes are referred to the site, and we follow every referral through to randomisation."], None),
+    ("recruitment-across-uk", "Do you do clinical trial recruitment across the UK?", ["Yes. 13,050 people across the UK living with long-term conditions have joined us (and growing daily), profiled to postcode district, so before you start we can tell you how many people with the condition we hold near your sites. We work with sponsors, CROs with UK sites and academic clinical trials units. Members who pass your screening questions and say yes are referred to the site, and we follow every referral through to randomisation."], None),
+    ("sponsors-outside-uk", "Can a sponsor based outside the UK work with you?", ["Yes. Our members are in the UK; the sponsor, biotech or CRO can be anywhere. We count who we hold near your UK sites the same working day, test your materials with members before you submit, and refer members who pass your screening questions and say yes. Sponsors never learn who members are. More for sponsors outside the UK."], None),
+    ("recruitment-feasibility", "How do you check patient recruitment feasibility in the UK?", ["With a free panel count, the same working day. Tell us the condition, the people you need and where your UK sites are, and we tell you how many members with the condition we hold near each site, by postcode district, and how they break down by age, sex, ethnicity and deprivation. It's a count of who has joined us, not a forecast of enrolment."], None),
+    ("uk-set-up-time", "How long does it take to set up a clinical trial in the UK?", ["The UK government's target was to get clinical trials up and running within 150 days by March 2026. With data to March 2026, the average set-up time for a commercial interventional clinical trial was 122 days, down from 169 days. Ethics and regulatory approval come through one application, combined review, and 99% of combined review applications received regulatory approval within the 60-day target."], "Source: HRA, UK clinical trials reach 150 day set-up milestone, April 2026."),
+    ("uk-regulations-2026", "What changed in the UK clinical trials regulations in April 2026?", ["The updated regulations came into force on 28 April 2026. Combined review, one application for ethics and regulatory approval, is now law, and there's a streamlined notification scheme for some applications and modifications. Clinical trials involving medicines must be registered in a public registry. Sponsors must publish a results summary within 12 months of the end and offer it to participants in a way they can easily understand. A clinical trial is expected to recruit its first UK participant within two years of approval, or the approval lapses unless an extension is granted."], "Source: HRA, Transforming the UK's clinical trial landscape."),
     ("how-referrals-work", "How does patient recruitment work?", ["For UK clinical trials, members who pass your screening questions and say yes are referred to the site, with the yes recorded and a best time to call. Eligibility stays the site's call: conditions are self-declared, with qualifying questions. We then follow each one from the first invitation to randomisation, across six steps: Referred, Contacted, Booked, Attended, Screened, Randomised, with randomisation checked against your own record. You get one line per patient each week: where the patient says things stand, the site's note beside it, and why anyone stopped. Sponsors never learn who members are: only we, and the site a member says yes to, know their name."], None),
     ("site-doesnt-call", "What happens if the site doesn't call?", ["We tell the site first. Anyone the site hasn't reached by day 7 goes back to the site that week, so the site hears first and can add its own note. If they're still not reached a week later, they go into the sponsor's report with the site's note beside them. It's a record of where each patient is, never a score for the site."], None),
     ("what-members-agree", "What do members agree to before they're referred?", ["Two consents before any detail leaves us: a standing opt-in to hear about clinical trials, then a yes to one named clinical trial. The site's informed consent is a third step, and never ours."], None),
@@ -20,6 +24,7 @@ CT = [
 ]
 PX = [
     ("patient-experience-data", "What is patient experience data?", ["What people tell us about living with a condition, their care and clinical trials, in their own words. The European Medicines Agency describes patient experience data as data that directly reflect the patient experience, without doctors or other parties interpreting them. We collect it from the same people over time, so findings can be compared, and every answer is broken down by who gave it."], None),
+    ("market-research-recruitment", "Can market research agencies recruit UK patients through you?", ["Yes. Tell us the condition and the profile, and we tell you the incidence among our members, condition by condition, the same working day. Every new member goes through sign-up checks against bots and fake accounts, and conditions are self-declared, with qualifying questions. Members are never passed to you by name."], None),
     ("ai", "How does your AI work, and can I check it?", [AI_HONEST + " It works in two steps. Ask our data: an instant answer from what members have already told us, broken down by who said it. Ask members live: one click sends the question to members whose profile fits, and answers come back in hours or days. Names and anything that could identify a member are removed before any text is analysed, and we never license anyone's answers to train AI."], None),
 ]
 INV = [
@@ -42,6 +47,9 @@ LINKS = {
     "our members page says so": '<a href="/patient-panel">our members page</a> says so',
     "You get one line per patient each week": 'You get <a href="/clinical-trial-recruitment#log">one line per patient each week</a>',
     "Ask our data:": '<a href="/ask-our-data">Ask our data</a>:',
+    "More for sponsors outside the UK.": '<a href="/clinical-trials-in-the-uk">More for sponsors outside the UK.</a>',
+    "With a free panel count,": 'With a <a href="/panel-count">free panel count</a>,',
+    "the incidence among our members": '<a href="/market-research-agencies">the incidence among our members</a>',
 }
 GROUPS = [('Clinical trials', CT), ('Patient experience data', PX), ('Patient involvement', INV)]
 
@@ -67,10 +75,10 @@ def toc(qs):
 
 schema = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
     {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": " ".join(a)}} for _, q, a, _ in CT + PX + INV]}
-meta = {"slug": "questions", "title": "Patient recruitment UK and PPI questions, answered | Unwritten Health",
-        "description": "How patient recruitment for UK clinical trials works, what members agree to, what patient experience data is, how our AI works, and the IRAS questions.",
+meta = {"slug": "questions", "title": "Clinical trials in the UK and patient recruitment, answered | Unwritten Health",
+        "description": "Running a clinical trial in the UK: set-up times, the 2026 regulations, feasibility, patient recruitment, what members agree to, and the IRAS questions.",
         "nav": "", "priority": "0.8",
-        "keywords": "clinical trial recruitment UK, patient recruitment UK, patient experience data, IRAS public involvement, PPI questions",
+        "keywords": "clinical trial recruitment UK, patient recruitment UK, clinical trials in the UK, UK clinical trial set-up time, UK clinical trial regulations 2026, clinical trial feasibility UK, patient experience data, IRAS public involvement, PPI questions",
         "schema": [schema]}
 tocs = ''.join('<p class="group-label"' + (' style="margin-top:30px"' if k == 0 else '') + '>' + g + '</p>'
                '<ul class="faq-toc" style="margin-top:0">' + toc(q) + '</ul>' for k, (g, q) in enumerate(GROUPS))

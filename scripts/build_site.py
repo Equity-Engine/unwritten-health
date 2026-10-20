@@ -61,6 +61,7 @@ NAV = [
     ('members', 'Our members', '/patient-panel', None),
     ('who', "Who it's for", '/who-its-for', [
         ('By role', ROLES),
+        ('By location', [('Sponsors outside the UK', '/clinical-trials-in-the-uk')]),
     ]),
     ('trust', 'Trust', '/trust', None),
     ('about', 'About', '/about', None),
@@ -70,7 +71,7 @@ FOOTER_COLUMNS = [
         ('Ask our data', '/ask-our-data'), ('The report', '/patient-involvement-report'), ('Sample report', '/sample-report'),
         ('Free panel count', '/panel-count'), ('Tell us about your clinical trial', '/tell-us-about-your-trial'),
     ]),
-    ("Who it's for", ROLES + [('NHS teams', '/nhs'), ('Suppliers to the NHS', '/suppliers')]),
+    ("Who it's for", ROLES + [('Sponsors outside the UK', '/clinical-trials-in-the-uk'), ('NHS teams', '/nhs'), ('Suppliers to the NHS', '/suppliers')]),
     ('Learn', [
         ('Our members', '/patient-panel'), ('Questions', '/questions'), ('Case study', '/case-study-phase-ii-biotech'),
         ('Exclusion debt', '/exclusion-debt'), ('Equity Engine', '/equity-engine'), ('Resources', '/resources'),
@@ -123,8 +124,8 @@ ORG = {
     'url': BASE + '/',
     'logo': BASE + '/images/logo-mark.png',
     'slogan': DESCRIPTOR + '.',
-    'description': 'Unwritten Health is a UK patient experience data company. 13,050 people across the UK living with long-term conditions have joined us; clients ask them questions and recruit from them.',
-    'knowsAbout': ['Patient experience data', 'Patient recruitment', 'Clinical trial recruitment', 'Patient and public involvement (PPI)'],
+    'description': 'Unwritten Health is a UK patient experience data company. 13,050 people across the UK living with long-term conditions have joined us, and growing daily; clients ask them questions and recruit from them.',
+    'knowsAbout': ['Patient experience data', 'Patient recruitment', 'Clinical trial recruitment', 'Clinical trials in the UK', 'Clinical trial feasibility', 'Patient and public involvement (PPI)', 'Patient advisory boards', 'Healthcare market research recruitment'],
     'identifier': {'@type': 'PropertyValue', 'propertyID': 'Companies House company number', 'value': '16561594'},
     'address': {
         '@type': 'PostalAddress',
@@ -240,6 +241,8 @@ def head_html(m):
 <title>{title}</title>
 <meta name="description" content="{desc}">{kw}
 <link rel="canonical" href="{url}">
+<link rel="alternate" hreflang="en" href="{url}">
+<link rel="alternate" hreflang="x-default" href="{url}">
 <meta property="og:type" content="{m.get('og_type', 'website')}">
 <meta property="og:site_name" content="Unwritten Health">
 <meta property="og:title" content="{title}">
