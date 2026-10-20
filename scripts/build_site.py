@@ -20,6 +20,8 @@ Optional keys: "cta": false (no call-to-action band), "sticky": false,
 "schema": [extra JSON-LD objects], "og_type", "priority", "changefreq".
 In page content, {{icon:NAME}} inlines an icon from src/icons/NAME.svg and
 {{BOOK}} / {{BLOG}} expand to the booking and blog URLs.
+
+Preview cards: run build_site.py, then scripts/gen_og.py, then build_site.py again.
 """
 import datetime
 import html
@@ -122,7 +124,7 @@ ORG = {
     '@id': BASE + '/#organization',
     'name': 'Unwritten Health',
     'url': BASE + '/',
-    'logo': BASE + '/images/logo-mark.png',
+    'logo': BASE + '/images/logo-square.png',
     'slogan': DESCRIPTOR + '.',
     'description': 'Unwritten Health is a UK patient experience data company. 13,050 people across the UK living with long-term conditions have joined us, and growing daily; clients ask them questions and recruit from them.',
     'knowsAbout': ['Patient experience data', 'Patient recruitment', 'Clinical trial recruitment', 'Clinical trials in the UK', 'Clinical trial feasibility', 'Patient and public involvement (PPI)', 'Patient advisory boards', 'Healthcare market research recruitment'],
@@ -137,6 +139,30 @@ ORG = {
     'areaServed': {'@type': 'Country', 'name': 'United Kingdom'},
     'founder': {'@type': 'Person', 'name': 'Ashish Rishi'},
 }
+
+
+# Favicon set (made by scripts/make_icons.py) and link preview cards (made by scripts/gen_og.py)
+ICON_LINKS = (
+    '<link rel="icon" href="/favicon.ico" sizes="48x48">\n'
+    '<link rel="icon" href="/favicon.svg" type="image/svg+xml">\n'
+    '<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n'
+    '<link rel="manifest" href="/site.webmanifest">'
+)
+# Kept pages that use their own preview image instead of a generated card
+KEPT_OG_IMAGE = {'blog-5-frequency-of-exclusion': '/images/frequency-of-exclusion-cover.jpg'}
+
+
+def og_tags(slug, alt):
+    """Preview image tags: the page's own card if gen_og.py has made one, else the site-wide card."""
+    img = KEPT_OG_IMAGE.get(slug) or (f'/images/og/{slug}.jpg' if (SITE / 'images' / 'og' / f'{slug}.jpg').exists() else '/images/og-image.jpg')
+    alt = html.escape(alt, quote=True)
+    return (f'<meta property="og:image" content="{BASE}{img}">\n'
+            '<meta property="og:image:width" content="1200">\n'
+            '<meta property="og:image:height" content="630">\n'
+            f'<meta property="og:image:alt" content="{alt}">\n'
+            '<meta name="twitter:card" content="summary_large_image">\n'
+            f'<meta name="twitter:image" content="{BASE}{img}">\n'
+            f'<meta name="twitter:image:alt" content="{alt}">')
 
 
 def icon(name, cls=''):
@@ -248,16 +274,11 @@ def head_html(m):
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{BASE}/images/og-image.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+{og_tags(slug, m['title'].replace(' | Unwritten Health', ''))}
 <meta property="og:locale" content="en_GB">
-<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{desc}">
-<meta name="twitter:image" content="{BASE}/images/og-image.jpg">
-<link rel="icon" type="image/png" href="/images/logo-mark.png">
-<link rel="apple-touch-icon" href="/images/logo-mark.png">
+{ICON_LINKS}
 <meta name="theme-color" content="#FAF8F5">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -343,6 +364,14 @@ def chrome_kept(name):
         if '/chrome.css' not in t:
             extra = '  <style>body { padding-top: var(--uh-header-h); }</style>\n' if name == 'equity-engine-mvp-2-feature-catalog' else ''
             t = t.replace('</head>', '  <link rel="stylesheet" href="/chrome.css" />\n  <script defer src="/chrome.js"></script>\n' + extra + '</head>', 1)
+
+    # Same favicon set and preview image tags as the generated pages (replaces any older ones)
+    t = re.sub(r'\n?<!-- UH:HEAD -->.*?<!-- /UH:HEAD -->', '', t, flags=re.S)
+    t = re.sub(r'\n?[ \t]*<link[^>]+rel="(?:shortcut icon|icon|apple-touch-icon|manifest)"[^>]*>', '', t)
+    t = re.sub(r'\n?[ \t]*<meta[^>]+(?:property="og:image[^"]*"|name="twitter:(?:image[^"]*|card)")[^>]*>', '', t)
+    tm = re.search(r'<title>(.*?)</title>', t, re.S)
+    alt = html.unescape(tm.group(1)).replace(' | Unwritten Health', '').strip() if tm else 'Unwritten Health'
+    t = t.replace('</head>', '<!-- UH:HEAD -->\n' + ICON_LINKS + '\n' + og_tags(name, alt) + '\n<!-- /UH:HEAD -->\n</head>', 1)
 
     # Repoint links to retired pages
     for old, new in RETIRED.items():
