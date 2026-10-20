@@ -89,7 +89,7 @@ FOOTER_COLUMNS = [
 KEPT_PAGES = [
     'blog', 'blog-1-inclusion-infrastructure', 'blog-2-lived-experience-data', 'blog-3-portfolio-inclusion',
     'blog-4-mhra-2026-regulatory-revolution', 'blog-5-frequency-of-exclusion', 'contact', 'privacy', 'terms',
-    'refund-policy', 'accessibility',
+    'accessibility',
 ]
 # Retired pages: old address -> new address (301). Links on kept pages are repointed too.
 RETIRED = {
@@ -116,6 +116,8 @@ RETIRED = {
     'biotech': '/clinical-development',
     'medtech': '/medtech-digital-health',
     'digital-health': '/medtech-digital-health',
+    # 20 October 2026: toolkits are gone, so their refund policy is too
+    'refund-policy': '/terms',
 }
 
 ORG = {
@@ -390,7 +392,7 @@ def write_sitemap(built):
         loc = BASE + ('/' if m['slug'] == 'index' else '/' + m['slug'])
         urls.append((loc, m.get('priority', '0.8'), m.get('changefreq', 'monthly')))
     for name in KEPT_PAGES:
-        urls.append((f'{BASE}/{name}', '0.4' if name in ('privacy', 'terms', 'refund-policy', 'accessibility') else '0.5', 'monthly'))
+        urls.append((f'{BASE}/{name}', '0.4' if name in ('privacy', 'terms', 'accessibility') else '0.5', 'monthly'))
     body = '\n'.join(
         f'  <url><loc>{loc}</loc><lastmod>{TODAY}</lastmod><changefreq>{cf}</changefreq><priority>{pr}</priority></url>'
         for loc, pr, cf in urls)

@@ -57,4 +57,6 @@ https://dispatches.unwritten.health/*    https://unwritten.health/blog    301!
 /medtech.html    /medtech-digital-health    301
 /digital-health    /medtech-digital-health    301
 /digital-health.html    /medtech-digital-health    301
+/refund-policy    /terms    301
+/refund-policy.html    /terms    301
 # END build_site.py

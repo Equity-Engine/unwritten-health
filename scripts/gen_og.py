@@ -15,8 +15,7 @@ SKIP = {'65f13a4c20d2a636383f5a360a5c3b57', 'admin-report', 'blog-5-frequency-of
 # The home H1 is the descriptor, which the card's footer bar already shows, so it leads with the first promise
 OVERRIDES = {'index': {'kicker': 'UK today, Europe next',
                        'title': "Ask the people with lived experience of the condition, before it's final."}}
-KICKER_FALLBACK = {'blog': 'Blog', 'contact': 'Contact', 'privacy': 'Privacy', 'terms': 'Terms',
-                   'refund-policy': 'Refunds', 'accessibility': 'Accessibility'}
+KICKER_FALLBACK = {'blog': 'Blog', 'contact': 'Contact', 'privacy': 'Privacy', 'terms': 'Terms', 'accessibility': 'Accessibility'}
 
 TEMPLATE = '''<!doctype html><html><head><meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=Bentham&family=Manrope:wght@500;600;700&display=block" rel="stylesheet">
