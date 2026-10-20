@@ -60,7 +60,7 @@ SECTOR_GROUPS = [
 ]
 FOOTER_COLUMNS = [
     ('Services', [
-        ('Patient involvement', '/patient-involvement'), ('Trial recruitment', '/clinical-trial-recruitment'),
+        ('Patient involvement', '/patient-involvement'), ('Clinical trial recruitment', '/clinical-trial-recruitment'),
         ('The panel', '/patient-panel'), ('The report', '/patient-involvement-report'), ('Sample report', '/sample-report'),
         ('Free panel check', '/panel-check'), ('Tell us about your trial', '/tell-us-about-your-trial'),
     ]),
@@ -108,7 +108,8 @@ ORG = {
     'name': 'Unwritten Health',
     'url': BASE + '/',
     'logo': BASE + '/images/logo-mark.png',
-    'description': 'The UK patient panel that stays with the patient.',
+    'description': 'The UK patient panel that stays with the patient: patient involvement before a protocol is final, and clinical trial recruitment in the UK with every referral followed through.',
+    'knowsAbout': ['Clinical trial recruitment', 'Patient recruitment', 'Patient and public involvement (PPI)', 'Clinical trial referrals'],
     'identifier': {'@type': 'PropertyValue', 'propertyID': 'Companies House company number', 'value': '16561594'},
     'address': {
         '@type': 'PostalAddress',
@@ -217,6 +218,7 @@ def head_html(m):
     title = html.escape(m['title'])
     desc = html.escape(m['description'])
     schema = [ORG] + m.get('schema', [])
+    kw = f'\n<meta name="keywords" content="{html.escape(m["keywords"])}">' if m.get('keywords') else ''
     ld = '\n'.join(f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>' for s in schema)
     return f'''<!DOCTYPE html>
 <html lang="en-GB">
@@ -224,7 +226,7 @@ def head_html(m):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
-<meta name="description" content="{desc}">
+<meta name="description" content="{desc}">{kw}
 <link rel="canonical" href="{url}">
 <meta property="og:type" content="{m.get('og_type', 'website')}">
 <meta property="og:site_name" content="Unwritten Health">
