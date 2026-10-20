@@ -8,7 +8,7 @@ October 2026 rebuild (copy v5): most pages are now **generated**. Edit the copy 
 python3 scripts/build_site.py
 ```
 
-and commit the changed files in `site/`. Don't hand-edit the generated pages in `site/` (they are overwritten on the next build). The script also puts the shared header, footer and "Free panel check" band on the older pages that are kept but not in the menu (list: `KEPT_PAGES` in the script), and rewrites `site/sitemap.xml` and the managed block of `site/_redirects` (retired pages: `RETIRED` in the script).
+and commit the changed files in `site/`. The Questions page is generated from `scripts/gen_questions.py` (run it before `build_site.py` after editing questions). Don't hand-edit the generated pages in `site/` (they are overwritten on the next build). The script also puts the shared header, footer and "Free panel check" band on the older pages that are kept but not in the menu (list: `KEPT_PAGES` in the script), and rewrites `site/sitemap.xml` and the managed block of `site/_redirects` (retired pages: `RETIRED` in the script).
 
 ## Repo
 

@@ -36,38 +36,45 @@ TODAY = datetime.date.today().isoformat()
 BOOK = 'https://meetings-eu1.hubspot.com/ashish-rishi?uuid=b7b6b6ed-3b13-4c64-aa8d-d759c67698db'
 BLOG = 'https://substack.com/@exclusiondebt'
 
-NAV = [
-    ('involvement', 'Patient involvement', '/patient-involvement'),
-    ('recruitment', 'Referrals', '/clinical-trial-recruitment'),
-    ('panel', 'The panel', '/patient-panel'),
-    ('who', "Who it's for", '/who-its-for'),
-    ('trust', 'Trust', '/trust'),
-    ('about', 'About', '/about'),
+DESCRIPTOR = 'Patient experience data and patient recruitment, UK'
+
+STAGES = [
+    ('Develop', '/patient-involvement'),
+    ('Clinical trials', '/clinical-trial-recruitment'),
+    ('Launch and access', '/launch-and-access'),
+    ('Everyday care', '/everyday-care'),
 ]
-# "Who it's for", grouped by which services apply
-SECTOR_GROUPS = [
-    ('Clinical trials: involvement and referrals', [
-        ('Pharma', '/pharma'),
-        ('Biotech', '/biotech'),
-        ('Academic research', '/academic-research'),
+ROLES = [
+    ('Clinical development and recruitment', '/clinical-development'),
+    ('Patient insight', '/patient-insight'),
+    ('Medical affairs', '/medical-affairs'),
+    ('Market access and HEOR', '/market-access'),
+    ('Medtech and digital health', '/medtech-digital-health'),
+    ('Market research agencies', '/market-research-agencies'),
+]
+# Menu: (key, label, href, dropdown groups or None)
+NAV = [
+    ('whatwedo', 'What we do', '/#stages', [
+        ('Four stages', STAGES),
+        ('How we work', [('Ask our data, then members live', '/ask-our-data')]),
     ]),
-    ('Products and services: involvement', [
-        ('Medtech', '/medtech'),
-        ('Digital health', '/digital-health'),
-        ('NHS', '/nhs'),
-        ('Suppliers to the NHS', '/suppliers'),
+    ('members', 'Our members', '/patient-panel', None),
+    ('who', "Who it's for", '/who-its-for', [
+        ('By role', ROLES),
     ]),
+    ('trust', 'Trust', '/trust', None),
+    ('about', 'About', '/about', None),
 ]
 FOOTER_COLUMNS = [
-    ('Services', [
-        ('Patient involvement', '/patient-involvement'), ('Referrals', '/clinical-trial-recruitment'),
-        ('The panel', '/patient-panel'), ('The report', '/patient-involvement-report'), ('Sample report', '/sample-report'),
+    ('What we do', STAGES + [
+        ('Ask our data', '/ask-our-data'), ('The report', '/patient-involvement-report'), ('Sample report', '/sample-report'),
         ('Free panel count', '/panel-count'), ('Tell us about your clinical trial', '/tell-us-about-your-trial'),
     ]),
-    ("Who it's for", [(l, h) for _, items in SECTOR_GROUPS for l, h in items]),
+    ("Who it's for", ROLES + [('NHS teams', '/nhs'), ('Suppliers to the NHS', '/suppliers')]),
     ('Learn', [
-        ('Questions', '/questions'), ('Case study', '/case-study-phase-ii-biotech'), ('Exclusion debt', '/exclusion-debt'),
-        ('Equity Engine', '/equity-engine'), ('Resources', '/resources'), ('Press', '/press'), ('Blog', BLOG),
+        ('Our members', '/patient-panel'), ('Questions', '/questions'), ('Case study', '/case-study-phase-ii-biotech'),
+        ('Exclusion debt', '/exclusion-debt'), ('Equity Engine', '/equity-engine'), ('Resources', '/resources'),
+        ('Press', '/press'), ('Blog', BLOG),
     ]),
     ('Company', [
         ('About', '/about'), ('Trust', '/trust'), ('Contact', '/contact'), ('Privacy', '/privacy'),
@@ -84,23 +91,28 @@ KEPT_PAGES = [
 # Retired pages: old address -> new address (301). Links on kept pages are repointed too.
 RETIRED = {
     'solutions': '/who-its-for',
-    'solutions-jca': '/pharma',
-    'solutions-patient-council': '/pharma',
-    'solutions-samd': '/medtech',
-    'solutions-pmcf': '/medtech',
-    'solutions-esf-dtac': '/digital-health',
-    'solutions-nihr-ppi': '/academic-research',
+    'solutions-jca': '/market-access',
+    'solutions-patient-council': '/patient-insight',
+    'solutions-samd': '/medtech-digital-health',
+    'solutions-pmcf': '/medtech-digital-health',
+    'solutions-esf-dtac': '/medtech-digital-health',
+    'solutions-nihr-ppi': '/clinical-development',
     'regulatory-alignment': '/patient-involvement-report',
     'trust-ethics': '/trust',
     # October 2026: prices taken off the site; Toolkits and Scorecard retired
     'pricing': '/panel-count',
     'scorecard': '/panel-count',
     'toolkits': '/resources',
-    # October 2026: involvement + recruitment structure
     'how-it-works': '/patient-involvement',
-    'researchers': '/academic-research',
     # Agreed wording, 19 October 2026: the free same-day count is a "panel count"
     'panel-check': '/panel-count',
+    # Positioning bible, 20 October 2026: audiences by role, not sector
+    'researchers': '/clinical-development',
+    'academic-research': '/clinical-development',
+    'pharma': '/clinical-development',
+    'biotech': '/clinical-development',
+    'medtech': '/medtech-digital-health',
+    'digital-health': '/medtech-digital-health',
 }
 
 ORG = {
@@ -110,8 +122,9 @@ ORG = {
     'name': 'Unwritten Health',
     'url': BASE + '/',
     'logo': BASE + '/images/logo-mark.png',
-    'description': 'The UK patient panel that stays with the patient: patient involvement before a protocol is final, and referrals for clinical trial recruitment in the UK, each one followed through.',
-    'knowsAbout': ['Clinical trial recruitment', 'Patient recruitment', 'Patient and public involvement (PPI)', 'Clinical trial referrals'],
+    'slogan': DESCRIPTOR + '.',
+    'description': 'Unwritten Health is a UK patient experience data company. 13,050 people across the UK living with long-term conditions have joined us; clients ask them questions and recruit from them.',
+    'knowsAbout': ['Patient experience data', 'Patient recruitment', 'Clinical trial recruitment', 'Patient and public involvement (PPI)'],
     'identifier': {'@type': 'PropertyValue', 'propertyID': 'Companies House company number', 'value': '16561594'},
     'address': {
         '@type': 'PostalAddress',
@@ -147,34 +160,31 @@ def link(label, href, cls=''):
 def header_html(active=None):
     chevron = icon('chevron-down')
     arrow = icon('arrow-up-right', 'uh-ext')
-    links = []
-    for key, label, href in NAV:
+    links, mobile = [], []
+    for key, label, href, groups in NAV:
         cur = ' aria-current="page"' if key == active else ''
-        if key == 'who':
-            groups = ''.join(
+        if groups:
+            inner = ''.join(
                 f'<span class="uh-dd-label">{html.escape(g)}</span>' + ''.join(link(l, h) for l, h in items)
-                for g, items in SECTOR_GROUPS)
+                for g, items in groups)
             links.append(
-                f'<div class="uh-dd"><a href="{href}"{cur}>{label}</a>'
-                f'<button class="uh-dd-toggle" type="button" aria-expanded="false" aria-controls="uh-dd-who" aria-label="Show pages for each kind of buyer">{chevron}</button>'
-                f'<div class="uh-dd-menu" id="uh-dd-who">{groups}<a class="uh-dd-all" href="{href}">Who it\'s for: overview</a></div></div>')
+                f'<div class="uh-dd"><a href="{href}"{cur}>{html.escape(label)}</a>'
+                f'<button class="uh-dd-toggle" type="button" aria-expanded="false" aria-controls="uh-dd-{key}" aria-label="Show {html.escape(label)} pages">{chevron}</button>'
+                f'<div class="uh-dd-menu" id="uh-dd-{key}">{inner}</div></div>')
+            mobile.append(f'<span class="uh-mobile-label uh-mobile-top">{html.escape(label)}</span><div class="uh-mobile-sub">'
+                          + ''.join(link(l, h) for _, items in groups for l, h in items) + '</div>')
         else:
-            links.append(f'<a href="{href}"{cur}>{label}</a>')
+            links.append(f'<a href="{href}"{cur}>{html.escape(label)}</a>')
+            mobile.append(f'<a href="{href}">{html.escape(label)}</a>')
     links.append(f'<a href="{BLOG}" target="_blank" rel="noopener">Blog{arrow}{EXT}</a>')
-    mobile = []
-    for key, label, href in NAV:
-        mobile.append(f'<a href="{href}">{label}</a>')
-        if key == 'who':
-            mobile.append('<div class="uh-mobile-sub">' + ''.join(
-                f'<span class="uh-mobile-label">{html.escape(g)}</span>' + ''.join(link(l, h) for l, h in items)
-                for g, items in SECTOR_GROUPS) + '</div>')
     mobile.append(f'<a href="{BLOG}" target="_blank" rel="noopener">Blog{arrow}{EXT}</a>')
     mobile.append('<a class="uh-btn-nav" href="/panel-count">Free panel count</a>')
     mobile.append(f'<a class="uh-mobile-book" href="{BOOK}" target="_blank" rel="noopener">Book 30 minutes with Ashish{EXT}</a>')
     return (
         '<a class="uh-skip" href="#main">Skip to content</a>\n'
         '<header class="uh-header"><div class="uh-header-inner">'
-        '<a class="uh-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="160" height="28"></a>'
+        '<a class="uh-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="160" height="28">'
+        f'<span class="uh-descriptor">{DESCRIPTOR}</span></a>'
         f'<div class="uh-nav" role="navigation" aria-label="Main">{"".join(links)}</div>'
         '<a class="uh-btn-nav" href="/panel-count">Free panel count</a>'
         '<button class="uh-burger" type="button" aria-expanded="false" aria-controls="uh-mobile" aria-label="Open menu"><span></span><span></span><span></span></button>'
@@ -187,7 +197,7 @@ def cta_html():
     return (
         '<section class="uh-cta" aria-labelledby="uh-cta-title"><div class="uh-cta-inner">'
         '<div><h2 id="uh-cta-title">How many patients like yours could you involve?</h2>'
-        "<p>Find out with a free panel count. Tell us who your clinical trial or product is for, and we'll reply the same working day with how many people like that we hold, and how they break down.</p></div>"
+        "<p>Find out with a free panel count. Tell us who your clinical trial or product is for, and we'll reply the same working day with how many people like that have joined us, and how they break down.</p></div>"
         '<div class="uh-cta-actions"><a class="uh-btn-light" href="/panel-count">Free panel count</a>'
         f'<a class="uh-cta-link" href="{BOOK}" target="_blank" rel="noopener">Book 30 minutes with Ashish{EXT}</a></div>'
         '</div></section>'
@@ -202,8 +212,8 @@ def footer_html(sticky=True):
         '<div class="uh-footer" role="contentinfo"><div class="uh-footer-inner">'
         '<div class="uh-footer-top"><div>'
         '<a class="uh-footer-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="150" height="26"></a>'
-        '<p class="uh-footer-tag">The UK patient panel that stays with the patient.</p>'
-        '<p class="uh-footer-note">UK company.</p>'
+        f'<p class="uh-footer-tag">{DESCRIPTOR}.</p>'
+        '<p class="uh-footer-note">UK today, Europe next.</p>'
         f'</div><div class="uh-footer-links">{cols}</div></div>'
         '<div class="uh-footer-legal"><span>Unwritten Health · Company number 16561594 · First Floor, Swan Buildings, 20 Swan Street, Manchester, England, M4 5JW</span>'
         '<a href="#cookie-settings" onclick="if(window.openCookieSettings){window.openCookieSettings();}return false;">Cookie settings</a></div>'
