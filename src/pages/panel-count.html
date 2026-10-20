@@ -1,16 +1,16 @@
-<!--meta {"slug": "panel-check", "title": "Free panel check: how many patients could you involve? | Unwritten Health", "description": "Free panel check for patient involvement or patient recruitment in the UK. Tell us who it's for; the same working day, we'll tell you how many we hold.", "nav": "", "priority": "0.9", "cta": false, "sticky": false, "keywords": "patient recruitment UK, clinical trial recruitment UK, UK patient panel, free panel check"} -->
+<!--meta {"slug": "panel-count", "title": "Free panel count: how many patients could you involve? | Unwritten Health", "description": "Free panel count for patient involvement or patient recruitment in the UK. Tell us who it's for; the same working day, we'll tell you how many we hold.", "nav": "", "priority": "0.9", "cta": false, "sticky": false, "keywords": "patient recruitment UK, clinical trial recruitment UK, UK patient panel, free panel count"} -->
 
 <section class="hero" style="padding-bottom:96px">
   <div class="wrap split split--top">
     <div>
-      <span class="kicker">Free panel check</span>
+      <span class="kicker">Free panel count</span>
       <h1>How many patients like yours could you involve?</h1>
       <p class="lede">Tell us who your clinical trial or product is for. We'll reply the same working day with how many people like that are on our panel, and how they break down. No sales call needed.</p>
-      <p class="hero-meta">See who we hold today on <a href="/patient-panel">the panel page</a>. Recruiting for a clinical trial? <a href="/tell-us-about-your-trial">Tell us about your trial</a> instead, or <a href="{{BOOK}}" target="_blank" rel="noopener">book 30 minutes with Ashish{{EXT}}</a>.</p>
+      <p class="hero-meta">See who we hold today on <a href="/patient-panel">the panel page</a>. Recruiting for a clinical trial? <a href="/tell-us-about-your-trial">Tell us about your clinical trial</a> instead, or <a href="{{BOOK}}" target="_blank" rel="noopener">book 30 minutes with Ashish{{EXT}}</a>.</p>
     </div>
 
     <div class="form-card">
-      <form id="panel-check-form" name="panel-check" method="POST" action="/panel-check?sent=1" data-netlify="true" netlify-honeypot="company_website">
+      <form id="panel-check-form" name="panel-check" method="POST" action="/panel-count?sent=1" data-netlify="true" netlify-honeypot="company_website">
         <input type="hidden" name="form-name" value="panel-check">
         <p class="hp"><label>Leave this empty <input name="company_website" tabindex="-1" autocomplete="off"></label></p>
         <div class="field-row">
@@ -35,7 +35,7 @@
           <select id="pc-need" name="need" required>
             <option value="" selected disabled>Choose one</option>
             <option>Patient involvement: shape it before it's final</option>
-            <option>Trial recruitment: referrals we follow through</option>
+            <option>Referrals: members referred to your clinical trial, followed through</option>
             <option>Both</option>
             <option>Not sure yet</option>
           </select>

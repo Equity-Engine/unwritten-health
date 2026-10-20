@@ -1,213 +1,77 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="images/logo-mark.png" />
-  <link rel="apple-touch-icon" href="images/logo-mark.png" />
-  <link rel="shortcut icon" href="images/logo-mark.png" />
-  <title>Equity Engine MVP 2.0 launches in private beta | Press release | Unwritten Health</title>
-  <meta name="description" content="Unwritten Health announces the production launch of Equity Engine MVP 2.0, a UK health-equity research platform with bank-grade verification, automated reward fulfilment, and plain-English communications. Now in private beta with 3,500+ users." />
-  <meta property="og:title" content="Equity Engine MVP 2.0 launches in private beta, Unwritten Health" />
-  <meta property="og:description" content="A UK health-equity research platform with bank-grade verification, automated rewards, and plain-English everywhere. Live in private beta with 3,500+ users." />
-  <meta property="og:type" content="article" />
-  <meta property="og:image" content="images/og-image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Equity Engine MVP 2.0 launches in private beta, Unwritten Health" />
-  <meta name="twitter:description" content="A UK health-equity research platform with bank-grade verification, automated rewards, and plain-English everywhere. Live in private beta with 3,500+ users." />
-  <link href="https://fonts.googleapis.com/css2?family=Bentham&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="site.css" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --cream: #FAF8F5; --green: #5B8170; --green-dark: #3f6152; --green-darker: #2e4a3c;
-      --green-pale: #e4ece8; --charcoal: #37373B; --charcoal-soft: #5a5a5f;
-      --white: #ffffff; --font-head: 'Bentham', Georgia, serif; --font-body: 'Manrope', sans-serif;
-      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body { background: var(--cream); color: var(--charcoal); font-family: var(--font-body); line-height: 1.7; }
-    a { text-decoration: none; color: inherit; }
-    img { display: block; max-width: 100%; }
-    .logo-wrap svg { height: 28px; width: auto; display: block; }
-
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 48px; height: 72px; display: flex; align-items: center; justify-content: space-between; background: rgba(250,248,245,0.97); backdrop-filter: blur(16px); box-shadow: 0 1px 0 rgba(55,55,59,0.08); }
-    .nav-right { display: flex; align-items: center; gap: 24px; }
-    .nav-back { font-size: 0.83rem; font-weight: 500; color: var(--charcoal-soft); transition: color 0.2s; }
-    .nav-back:hover { color: var(--green-dark); }
-    .btn-nav { display: inline-flex; align-items: center; padding: 10px 22px; border-radius: 100px; font-family: var(--font-body); font-weight: 600; font-size: 0.82rem; background: var(--green-dark); color: var(--white); transition: all 0.3s; }
-    .btn-nav:hover { background: var(--green-darker); transform: translateY(-1px); }
-
-    .pr-hero { padding: 120px 0 40px; border-bottom: 1px solid rgba(55,55,59,0.08); }
-    .pr-hero-inner { max-width: 860px; margin: 0 auto; padding: 0 48px; }
-    .pr-eyebrow { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 1rem; }
-    .pr-hero h1 { font-family: var(--font-head); font-size: clamp(1.9rem, 3.2vw, 2.8rem); font-weight: 400; color: var(--charcoal); margin-bottom: 1.1rem; line-height: 1.18; letter-spacing: -0.005em; }
-    .pr-meta { display: flex; gap: 22px; flex-wrap: wrap; font-size: 0.82rem; color: var(--charcoal-soft); }
-    .pr-meta span { display: flex; align-items: center; gap: 6px; }
-
-    .pr-stats { max-width: 1060px; margin: 0 auto; padding: 36px 48px 0; }
-    .pr-stats-inner { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
-    .pr-stat { background: var(--white); border: 1px solid rgba(91,129,112,0.16); border-radius: 14px; padding: 18px 20px; }
-    .pr-stat-num { font-family: var(--font-head); font-size: 1.7rem; font-weight: 400; color: var(--green-darker); line-height: 1.1; margin-bottom: 4px; }
-    .pr-stat-lab { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--charcoal-soft); }
-
-    .pr-body { max-width: 760px; margin: 0 auto; padding: 56px 48px 32px; }
-    .pr-lede { font-size: 1.08rem; line-height: 1.85; color: var(--charcoal); margin-bottom: 2rem; }
-    .pr-lede strong { font-weight: 700; color: var(--charcoal); }
-    .pr-body h2 { font-family: var(--font-head); font-size: 1.35rem; font-weight: 400; color: var(--charcoal); margin: 2.2rem 0 0.9rem; line-height: 1.3; }
-    .pr-body p { font-size: 0.97rem; color: var(--charcoal-soft); line-height: 1.85; margin-bottom: 1.1rem; }
-    .pr-body a { color: var(--green-dark); text-decoration: underline; text-decoration-color: rgba(63,97,82,0.3); }
-
-    .pr-quote { background: var(--green-pale); border-radius: 18px; padding: 32px 36px; margin: 2.4rem 0; border-left: 4px solid var(--green-dark); }
-    .pr-quote p { font-family: var(--font-head); font-size: 1.18rem; font-weight: 400; color: var(--charcoal); line-height: 1.55; margin: 0 0 14px; font-style: italic; }
-    .pr-quote .pr-quote-attrib { font-size: 0.85rem; font-weight: 600; color: var(--green-darker); font-style: normal; }
-
-    .pr-catalog-link { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; background: var(--charcoal); border-radius: 18px; padding: 26px 32px; margin: 2.4rem 0; }
-    .pr-catalog-link-text { flex: 1 1 260px; }
-    .pr-catalog-link-label { display: block; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #b8d0c6; margin-bottom: 6px; }
-    .pr-catalog-link-title { font-family: var(--font-head); font-size: 1.05rem; font-weight: 400; color: var(--white); line-height: 1.4; margin: 0; }
-    .pr-catalog-link a { display: inline-flex; align-items: center; padding: 12px 24px; border-radius: 100px; background: var(--white); color: var(--green-darker); font-weight: 700; font-size: 0.85rem; text-decoration: none; white-space: nowrap; }
-
-    .pr-boilerplate { margin-top: 2.6rem; padding-top: 1.6rem; border-top: 1px solid rgba(55,55,59,0.12); }
-    .pr-boilerplate h3 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 0.7rem; }
-    .pr-boilerplate p { font-size: 0.9rem; color: var(--charcoal-soft); line-height: 1.75; margin-bottom: 0.9rem; }
-
-    .pr-contact { background: var(--white); border: 1px solid rgba(91,129,112,0.16); border-radius: 14px; padding: 22px 24px; margin-top: 1.4rem; }
-    .pr-contact h3 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 0.6rem; }
-    .pr-contact p { font-size: 0.9rem; color: var(--charcoal); margin: 0.15rem 0; line-height: 1.6; }
-    .pr-contact a { color: var(--green-dark); }
-
-    footer { background: var(--charcoal); padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; }
-    .footer-logo svg { height: 22px; width: auto; display: block; filter: brightness(0) invert(1); opacity: 0.7; }
-    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
-    .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.45); transition: color 0.2s; }
-    .footer-links a:hover { color: rgba(255,255,255,0.9); }
-
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; }
-      .nav-right { gap: 14px; }
-      .pr-hero-inner, .pr-stats, .pr-body { padding-left: 20px; padding-right: 20px; }
-      .pr-body { padding-top: 40px; }
-      .pr-quote { padding: 24px 22px; }
-      .pr-quote p { font-size: 1.05rem; }
-      .pr-catalog-link { padding: 22px 22px; }
-      footer { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
-    }
-    /* MOBILE-NAV-PATCH-V23 */
-
-     (max-width: 640px) {
-
-      nav { padding: 0 14px !important; gap: 10px; }
-
-      .nav-logo img, .nav-logo svg, .logo-wrap svg, .logo-svg-wrap svg { max-width: 110px !important; height: auto !important; }
-
-      .nav-right { gap: 10px !important; }
-
-      .nav-back { font-size: 0.78rem; white-space: nowrap; }
-
-      .nav-right .nav-back ~ .nav-back { display: none; }
-
-      .btn-nav { padding: 8px 14px !important; font-size: 0.76rem !important; white-space: nowrap; }
-
-    }
-
-     (max-width: 400px) {
-
-      .nav-logo img, .nav-logo svg, .logo-wrap svg, .logo-svg-wrap svg { max-width: 90px !important; }
-
-      .nav-right .nav-back { display: none; }
-
-      .btn-nav { padding: 7px 12px !important; font-size: 0.72rem !important; }
-
-    }
-
-  </style>
-  <link rel="canonical" href="https://unwritten.health/press/equity-engine-mvp-2" />
-  <meta name="keywords" content="Equity Engine, Equity Engine MVP 2.0, health equity research platform UK, Unwritten Health press release, community health research, ICO registered" />
-  <meta name="robots" content="index, follow" />
-  <script defer src="analytics.js"></script>
-  <link rel="stylesheet" href="/chrome.css" />
-  <script defer src="/chrome.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Equity Engine MVP 2.0 launches in private beta | Unwritten Health</title>
+<meta name="description" content="Unwritten Health launches Equity Engine MVP 2.0, the member platform behind its UK panel, in private beta: sign-up checks, e-voucher payouts and plain English.">
+<link rel="canonical" href="https://unwritten.health/press-equity-engine-mvp-2">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Unwritten Health">
+<meta property="og:title" content="Equity Engine MVP 2.0 launches in private beta | Unwritten Health">
+<meta property="og:description" content="Unwritten Health launches Equity Engine MVP 2.0, the member platform behind its UK panel, in private beta: sign-up checks, e-voucher payouts and plain English.">
+<meta property="og:url" content="https://unwritten.health/press-equity-engine-mvp-2">
+<meta property="og:image" content="https://unwritten.health/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Equity Engine MVP 2.0 launches in private beta | Unwritten Health">
+<meta name="twitter:description" content="Unwritten Health launches Equity Engine MVP 2.0, the member platform behind its UK panel, in private beta: sign-up checks, e-voucher payouts and plain English.">
+<meta name="twitter:image" content="https://unwritten.health/images/og-image.jpg">
+<link rel="icon" type="image/png" href="/images/logo-mark.png">
+<link rel="apple-touch-icon" href="/images/logo-mark.png">
+<meta name="theme-color" content="#FAF8F5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bentham&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/chrome.css">
+<link rel="stylesheet" href="/styles.css">
+<script defer src="/analytics.js"></script>
+<script defer src="/chrome.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://unwritten.health/#organization", "name": "Unwritten Health", "url": "https://unwritten.health/", "logo": "https://unwritten.health/images/logo-mark.png", "description": "The UK patient panel that stays with the patient: patient involvement before a protocol is final, and referrals for clinical trial recruitment in the UK, each one followed through.", "knowsAbout": ["Clinical trial recruitment", "Patient recruitment", "Patient and public involvement (PPI)", "Clinical trial referrals"], "identifier": {"@type": "PropertyValue", "propertyID": "Companies House company number", "value": "16561594"}, "address": {"@type": "PostalAddress", "streetAddress": "First Floor, Swan Buildings, 20 Swan Street", "addressLocality": "Manchester", "postalCode": "M4 5JW", "addressCountry": "GB"}, "areaServed": {"@type": "Country", "name": "United Kingdom"}, "founder": {"@type": "Person", "name": "Ashish Rishi"}}</script>
 </head>
 <body>
-
-  <!-- UH:HEADER -->
 <a class="uh-skip" href="#main">Skip to content</a>
-<header class="uh-header"><div class="uh-header-inner"><a class="uh-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="160" height="28"></a><div class="uh-nav" role="navigation" aria-label="Main"><a href="/patient-involvement">Patient involvement</a><a href="/clinical-trial-recruitment">Trial recruitment</a><a href="/patient-panel">The panel</a><div class="uh-dd"><a href="/who-its-for">Who it's for</a><button class="uh-dd-toggle" type="button" aria-expanded="false" aria-controls="uh-dd-who" aria-label="Show pages for each kind of buyer"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="m6 9 6 6 6-6" /></svg></button><div class="uh-dd-menu" id="uh-dd-who"><span class="uh-dd-label">Clinical trials: involvement and recruitment</span><a href="/pharma">Pharma</a><a href="/biotech">Biotech</a><a href="/academic-research">Academic research</a><span class="uh-dd-label">Products and services: involvement</span><a href="/medtech">Medtech</a><a href="/digital-health">Digital health</a><a href="/nhs">NHS</a><a href="/suppliers">Suppliers to the NHS</a><a class="uh-dd-all" href="/who-its-for">Who it's for: overview</a></div></div><a href="/trust">Trust</a><a href="/about">About</a><a href="https://substack.com/@exclusiondebt" target="_blank" rel="noopener">Blog<svg aria-hidden="true" focusable="false" class="uh-ext" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg><span class="uh-sr"> (opens in a new tab)</span></a></div><a class="uh-btn-nav" href="/panel-check">Free panel check</a><button class="uh-burger" type="button" aria-expanded="false" aria-controls="uh-mobile" aria-label="Open menu"><span></span><span></span><span></span></button></div></header>
-<div class="uh-mobile" id="uh-mobile" role="navigation" aria-label="Mobile"><a href="/patient-involvement">Patient involvement</a><a href="/clinical-trial-recruitment">Trial recruitment</a><a href="/patient-panel">The panel</a><a href="/who-its-for">Who it's for</a><div class="uh-mobile-sub"><span class="uh-mobile-label">Clinical trials: involvement and recruitment</span><a href="/pharma">Pharma</a><a href="/biotech">Biotech</a><a href="/academic-research">Academic research</a><span class="uh-mobile-label">Products and services: involvement</span><a href="/medtech">Medtech</a><a href="/digital-health">Digital health</a><a href="/nhs">NHS</a><a href="/suppliers">Suppliers to the NHS</a></div><a href="/trust">Trust</a><a href="/about">About</a><a href="https://substack.com/@exclusiondebt" target="_blank" rel="noopener">Blog<svg aria-hidden="true" focusable="false" class="uh-ext" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg><span class="uh-sr"> (opens in a new tab)</span></a><a class="uh-btn-nav" href="/panel-check">Free panel check</a><a class="uh-mobile-book" href="https://meetings-eu1.hubspot.com/ashish-rishi?uuid=b7b6b6ed-3b13-4c64-aa8d-d759c67698db" target="_blank" rel="noopener">Book 30 minutes with Ashish<span class="uh-sr"> (opens in a new tab)</span></a></div>
-<!-- /UH:HEADER -->
-<div class="pr-hero">
-    <div class="pr-hero-inner">
-      <span class="pr-eyebrow">Press release · Manchester, UK</span>
-      <h1>Unwritten Health launches Equity Engine MVP 2.0, a UK health-equity research platform now in private beta with 3,500+ users</h1>
-      <div class="pr-meta">
-        <span>For immediate release</span>
-        <span>Manchester, UK</span>
-        <span>Unwritten Health · Company No. 16561594</span>
-      </div>
+<header class="uh-header"><div class="uh-header-inner"><a class="uh-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="160" height="28"></a><div class="uh-nav" role="navigation" aria-label="Main"><a href="/patient-involvement">Patient involvement</a><a href="/clinical-trial-recruitment">Referrals</a><a href="/patient-panel">The panel</a><div class="uh-dd"><a href="/who-its-for">Who it's for</a><button class="uh-dd-toggle" type="button" aria-expanded="false" aria-controls="uh-dd-who" aria-label="Show pages for each kind of buyer"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="m6 9 6 6 6-6" /></svg></button><div class="uh-dd-menu" id="uh-dd-who"><span class="uh-dd-label">Clinical trials: involvement and referrals</span><a href="/pharma">Pharma</a><a href="/biotech">Biotech</a><a href="/academic-research">Academic research</a><span class="uh-dd-label">Products and services: involvement</span><a href="/medtech">Medtech</a><a href="/digital-health">Digital health</a><a href="/nhs">NHS</a><a href="/suppliers">Suppliers to the NHS</a><a class="uh-dd-all" href="/who-its-for">Who it's for: overview</a></div></div><a href="/trust">Trust</a><a href="/about">About</a><a href="https://substack.com/@exclusiondebt" target="_blank" rel="noopener">Blog<svg aria-hidden="true" focusable="false" class="uh-ext" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg><span class="uh-sr"> (opens in a new tab)</span></a></div><a class="uh-btn-nav" href="/panel-count">Free panel count</a><button class="uh-burger" type="button" aria-expanded="false" aria-controls="uh-mobile" aria-label="Open menu"><span></span><span></span><span></span></button></div></header>
+<div class="uh-mobile" id="uh-mobile" role="navigation" aria-label="Mobile"><a href="/patient-involvement">Patient involvement</a><a href="/clinical-trial-recruitment">Referrals</a><a href="/patient-panel">The panel</a><a href="/who-its-for">Who it's for</a><div class="uh-mobile-sub"><span class="uh-mobile-label">Clinical trials: involvement and referrals</span><a href="/pharma">Pharma</a><a href="/biotech">Biotech</a><a href="/academic-research">Academic research</a><span class="uh-mobile-label">Products and services: involvement</span><a href="/medtech">Medtech</a><a href="/digital-health">Digital health</a><a href="/nhs">NHS</a><a href="/suppliers">Suppliers to the NHS</a></div><a href="/trust">Trust</a><a href="/about">About</a><a href="https://substack.com/@exclusiondebt" target="_blank" rel="noopener">Blog<svg aria-hidden="true" focusable="false" class="uh-ext" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg><span class="uh-sr"> (opens in a new tab)</span></a><a class="uh-btn-nav" href="/panel-count">Free panel count</a><a class="uh-mobile-book" href="https://meetings-eu1.hubspot.com/ashish-rishi?uuid=b7b6b6ed-3b13-4c64-aa8d-d759c67698db" target="_blank" rel="noopener">Book 30 minutes with Ashish<span class="uh-sr"> (opens in a new tab)</span></a></div>
+<main id="main">
+<section class="hero">
+  <div class="wrap">
+    <span class="kicker">Press release · Manchester, UK · June 2026</span>
+    <h1>Unwritten Health launches Equity Engine MVP 2.0, the member platform behind its UK panel.</h1>
+    <div class="tiles" style="margin-top:34px">
+      <div class="tile"><div class="tile-fig">3,500+</div><div class="tile-cap">Members on the platform at launch, June 2026.</div></div>
+      <div class="tile"><div class="tile-fig">130+</div><div class="tile-cap">Features shipped.</div></div>
+      <div class="tile"><div class="tile-fig">14</div><div class="tile-cap">Languages.</div></div>
     </div>
   </div>
+</section>
 
-  <div class="pr-stats">
-    <div class="pr-stats-inner">
-      <div class="pr-stat"><div class="pr-stat-num">3,500+</div><div class="pr-stat-lab">Users on the platform</div></div>
-      <div class="pr-stat"><div class="pr-stat-num">14</div><div class="pr-stat-lab">UI languages</div></div>
-      <div class="pr-stat"><div class="pr-stat-num">10</div><div class="pr-stat-lab">Verification layers</div></div>
-      <div class="pr-stat"><div class="pr-stat-num">130+</div><div class="pr-stat-lab">Features shipped</div></div>
-    </div>
+<section class="section section--paper">
+  <div class="wrap prose">
+    <p class="lede">Unwritten Health today announced the production launch of Equity Engine MVP 2.0, the member platform where people living with long-term conditions tell us about their health, their care and clinical research. The platform launched in private beta with more than 3,500 members, and brings sign-up checks against fake accounts, e-voucher payouts in seconds, and plain English throughout.</p>
+    <h2>Built for the communities clinical trials usually miss</h2>
+    <p>Equity Engine is designed to be a safe, simple place for people living with long-term conditions to be heard and properly counted. MVP 2.0 moves the platform from working prototype to production: live in private beta, on its own domain, with encrypted connections throughout.</p>
+    <h2>Checks at the front door</h2>
+    <p>Every new account now goes through a set of sign-up checks to keep out bots and fake accounts: bot defence, network risk checks, two-stage email checks, privacy-respecting device checks, an optional phone check (numbers are kept only as one-way hashes), and checks for university researchers. Extra steps appear only when something looks wrong, so honest members aren't held up, and flagged sign-ups go to a person for review.</p>
+    <h2>Paid for their time, in seconds</h2>
+    <p>Members earn points for answering surveys and can swap them for e-vouchers, which arrive within seconds. Voucher stock is encrypted, with safeguards against reward farming.</p>
+    <h2>Plain English everywhere</h2>
+    <p>The privacy policy, the terms, every email and every page have been rewritten to a reading age of 12 to 13, with UK GDPR explained in plain words.</p>
+    <h2>Registered with the ICO</h2>
+    <p>Unwritten Health is registered with the UK Information Commissioner's Office (ZC109542).</p>
+    <blockquote class="quote">"Health research has too often spoken about communities, not with them. Equity Engine MVP 2.0 is built to change that, with the security and clarity people should expect from anything that holds their health information. We're proud to be at the point where NHS bodies, charities and academic partners can rely on what comes out of the platform."<cite>Ashish Rishi, Founder, Unwritten Health</cite></blockquote>
+    <p><a class="more" href="/equity-engine-mvp-2-feature-catalog">What's in Equity Engine MVP 2.0</a></p>
+    <h3>About Unwritten Health</h3>
+    <p>Unwritten Health is the UK patient panel that stays with the patient. Its 13,050 members live with long-term conditions (self-declared, counted September 2026). It offers patient involvement before a protocol is final, and referrals once a clinical trial is recruiting, with each one followed through. Equity Engine is its member platform. Registered in England and Wales (Company No. 16561594); ICO registration ZC109542. Based at Swan Buildings, 20 Swan Street, Manchester, M4 5JW.</p>
+    <h3>Press contact</h3>
+    <p>Ashish Rishi, Founder, Unwritten Health<br><a href="mailto:chat@unwritten.health">chat@unwritten.health</a> · +44 (0) 161 524 8800<br><a href="https://equityengine.health/" target="_blank" rel="noopener">equityengine.health<span class="uh-sr"> (opens in a new tab)</span></a> · <a href="/">unwritten.health</a></p>
   </div>
-
-  <div class="pr-body">
-
-    <p class="pr-lede">Unwritten Health today announced the production launch of <strong>Equity Engine MVP 2.0</strong>, a UK health-equity research platform that turns community-reported health experiences into evidence that health organisations can act on. The platform is in private beta with more than 3,500 users already on board, and brings bank-grade verification, automated reward fulfilment, and plain-English communications to community-led health research.</p>
-
-    <h2>Built for the communities health research usually misses</h2>
-    <p>Equity Engine is designed to be the safest, simplest place for under-represented voices in the UK to be heard and properly counted in the evidence that shapes health policy. MVP 2.0 moves the platform from working prototype to production-ready: live in private beta, EU-resident hosting, custom domain, full TLS.</p>
-
-    <h2>A ten-layer verification stack at the front door</h2>
-    <p>Every new account is now screened by an industry-grade fraud-defence stack. Bot defence, IP-based fraud-risk intelligence, two-stage email deliverability checks, privacy-respecting device fingerprinting, optional step-up phone verification (where numbers are stored only as one-way hashes), and academic credential checks for university researchers all run at signup. The platform applies the right level of friction based on signal, not by default, protecting partners and participants without making honest users jump hoops.</p>
-
-    <h2>Automated reward fulfilment, in seconds</h2>
-    <p>Participants who earn points by contributing to surveys can redeem for e-gift vouchers and receive them within seconds. The voucher inventory is encrypted at rest, with built-in safeguards against reward farming and step-up gates on first redemptions from higher-risk acquisition sources.</p>
-
-    <h2>Plain-English everywhere</h2>
-    <p>The Privacy Policy, the Terms of use, every transactional email and every page have been rewritten to a reading age of 12–13, with UK GDPR concepts explained in plain words. This matters most for the communities Equity Engine exists to serve.</p>
-
-    <h2>ICO-registered and legally ready</h2>
-    <p>Unwritten Health is registered with the UK Information Commissioner's Office (ZC109542). The Privacy Policy and Terms reflect the platform and the company as they are today.</p>
-
-    <div class="pr-quote">
-      <p>"Health research has too often spoken <em>about</em> communities, not <em>with</em> them. Equity Engine MVP 2.0 is built to change that, with the same level of verification, security and clarity you'd expect from a banking app, because the communities we serve deserve nothing less. We're proud to be at the point where NHS bodies, charities, and academic partners can rely on what comes out of the platform."</p>
-      <span class="pr-quote-attrib">,  Ashish Rishi, Founder, Unwritten Health</span>
-    </div>
-
-    <div class="pr-catalog-link">
-      <div class="pr-catalog-link-text">
-        <span class="pr-catalog-link-label">Supporting material</span>
-        <p class="pr-catalog-link-title">A full inventory of the 130+ shipped features, participant, partner, admin, AI, email, security, is available as the complete feature catalog.</p>
-      </div>
-      <a href="equity-engine-mvp-2-feature-catalog.html">Read the feature catalog →</a>
-    </div>
-
-    <div class="pr-boilerplate">
-      <h3>About Unwritten Health</h3>
-      <p>Unwritten Health is a UK-based health-equity technology company building Equity Engine, a research platform that closes the equity data gap by amplifying the voices of populations regulators ask about. Registered in England and Wales (Company No. 16561594); ICO registration ZC109542. Based at Swan Buildings, 20 Swan Street, Manchester, M4 5JW.</p>
-    </div>
-
-    <div class="pr-contact">
-      <h3>Press contact</h3>
-      <p><strong>Ashish Rishi</strong>, Founder, Unwritten Health</p>
-      <p><a href="mailto:chat@unwritten.health">chat@unwritten.health</a> · <a href="tel:+441615248800">+44 (0) 161 524 8800</a></p>
-      <p><a href="https://equityengine.health" target="_blank" rel="noopener">equityengine.health</a> · <a href="/">unwritten.health</a></p>
-    </div>
-
-  </div>
-
-  <!-- UH:FOOTER -->
-<section class="uh-cta" aria-labelledby="uh-cta-title"><div class="uh-cta-inner"><div><h2 id="uh-cta-title">How many patients like yours could you involve?</h2><p>Find out with a free panel check. Tell us who your clinical trial or product is for, and we'll reply the same working day with how many people like that we hold, and how they break down.</p></div><div class="uh-cta-actions"><a class="uh-btn-light" href="/panel-check">Free panel check</a><a class="uh-cta-link" href="https://meetings-eu1.hubspot.com/ashish-rishi?uuid=b7b6b6ed-3b13-4c64-aa8d-d759c67698db" target="_blank" rel="noopener">Book 30 minutes with Ashish<span class="uh-sr"> (opens in a new tab)</span></a></div></div></section>
-<div class="uh-footer" role="contentinfo"><div class="uh-footer-inner"><div class="uh-footer-top"><div><a class="uh-footer-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="150" height="26"></a><p class="uh-footer-tag">The UK patient panel that stays with the patient.</p><p class="uh-footer-note">UK company.</p></div><div class="uh-footer-links"><div class="uh-footer-col"><p class="uh-footer-h">Services</p><a href="/patient-involvement">Patient involvement</a><a href="/clinical-trial-recruitment">Clinical trial recruitment</a><a href="/patient-panel">The panel</a><a href="/patient-involvement-report">The report</a><a href="/sample-report">Sample report</a><a href="/panel-check">Free panel check</a><a href="/tell-us-about-your-trial">Tell us about your trial</a></div><div class="uh-footer-col"><p class="uh-footer-h">Who it&#x27;s for</p><a href="/pharma">Pharma</a><a href="/biotech">Biotech</a><a href="/academic-research">Academic research</a><a href="/medtech">Medtech</a><a href="/digital-health">Digital health</a><a href="/nhs">NHS</a><a href="/suppliers">Suppliers to the NHS</a></div><div class="uh-footer-col"><p class="uh-footer-h">Learn</p><a href="/questions">Questions</a><a href="/case-study-phase-ii-biotech">Case study</a><a href="/exclusion-debt">Exclusion debt</a><a href="/equity-engine">Equity Engine</a><a href="/resources">Resources</a><a href="https://substack.com/@exclusiondebt" target="_blank" rel="noopener">Blog<span class="uh-sr"> (opens in a new tab)</span></a></div><div class="uh-footer-col"><p class="uh-footer-h">Company</p><a href="/about">About</a><a href="/trust">Trust</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/accessibility">Accessibility</a></div></div></div><div class="uh-footer-legal"><span>Unwritten Health · Company number 16561594 · First Floor, Swan Buildings, 20 Swan Street, Manchester, England, M4 5JW</span><a href="#cookie-settings" onclick="if(window.openCookieSettings){window.openCookieSettings();}return false;">Cookie settings</a></div></div></div>
-<a class="uh-sticky" href="/panel-check">Free panel check</a>
-<!-- /UH:FOOTER -->
-
+</section>
+</main>
+<section class="uh-cta" aria-labelledby="uh-cta-title"><div class="uh-cta-inner"><div><h2 id="uh-cta-title">How many patients like yours could you involve?</h2><p>Find out with a free panel count. Tell us who your clinical trial or product is for, and we'll reply the same working day with how many people like that we hold, and how they break down.</p></div><div class="uh-cta-actions"><a class="uh-btn-light" href="/panel-count">Free panel count</a><a class="uh-cta-link" href="https://meetings-eu1.hubspot.com/ashish-rishi?uuid=b7b6b6ed-3b13-4c64-aa8d-d759c67698db" target="_blank" rel="noopener">Book 30 minutes with Ashish<span class="uh-sr"> (opens in a new tab)</span></a></div></div></section>
+<div class="uh-footer" role="contentinfo"><div class="uh-footer-inner"><div class="uh-footer-top"><div><a class="uh-footer-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="150" height="26"></a><p class="uh-footer-tag">The UK patient panel that stays with the patient.</p><p class="uh-footer-note">UK company.</p></div><div class="uh-footer-links"><div class="uh-footer-col"><p class="uh-footer-h">Services</p><a href="/patient-involvement">Patient involvement</a><a href="/clinical-trial-recruitment">Referrals</a><a href="/patient-panel">The panel</a><a href="/patient-involvement-report">The report</a><a href="/sample-report">Sample report</a><a href="/panel-count">Free panel count</a><a href="/tell-us-about-your-trial">Tell us about your clinical trial</a></div><div class="uh-footer-col"><p class="uh-footer-h">Who it&#x27;s for</p><a href="/pharma">Pharma</a><a href="/biotech">Biotech</a><a href="/academic-research">Academic research</a><a href="/medtech">Medtech</a><a href="/digital-health">Digital health</a><a href="/nhs">NHS</a><a href="/suppliers">Suppliers to the NHS</a></div><div class="uh-footer-col"><p class="uh-footer-h">Learn</p><a href="/questions">Questions</a><a href="/case-study-phase-ii-biotech">Case study</a><a href="/exclusion-debt">Exclusion debt</a><a href="/equity-engine">Equity Engine</a><a href="/resources">Resources</a><a href="/press">Press</a><a href="https://substack.com/@exclusiondebt" target="_blank" rel="noopener">Blog<span class="uh-sr"> (opens in a new tab)</span></a></div><div class="uh-footer-col"><p class="uh-footer-h">Company</p><a href="/about">About</a><a href="/trust">Trust</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/accessibility">Accessibility</a></div></div></div><div class="uh-footer-legal"><span>Unwritten Health · Company number 16561594 · First Floor, Swan Buildings, 20 Swan Street, Manchester, England, M4 5JW</span><a href="#cookie-settings" onclick="if(window.openCookieSettings){window.openCookieSettings();}return false;">Cookie settings</a></div></div></div>
+<a class="uh-sticky" href="/panel-count">Free panel count</a>
 </body>
 </html>

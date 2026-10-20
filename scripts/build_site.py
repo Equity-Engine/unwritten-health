@@ -38,7 +38,7 @@ BLOG = 'https://substack.com/@exclusiondebt'
 
 NAV = [
     ('involvement', 'Patient involvement', '/patient-involvement'),
-    ('recruitment', 'Trial recruitment', '/clinical-trial-recruitment'),
+    ('recruitment', 'Referrals', '/clinical-trial-recruitment'),
     ('panel', 'The panel', '/patient-panel'),
     ('who', "Who it's for", '/who-its-for'),
     ('trust', 'Trust', '/trust'),
@@ -46,7 +46,7 @@ NAV = [
 ]
 # "Who it's for", grouped by which services apply
 SECTOR_GROUPS = [
-    ('Clinical trials: involvement and recruitment', [
+    ('Clinical trials: involvement and referrals', [
         ('Pharma', '/pharma'),
         ('Biotech', '/biotech'),
         ('Academic research', '/academic-research'),
@@ -60,14 +60,14 @@ SECTOR_GROUPS = [
 ]
 FOOTER_COLUMNS = [
     ('Services', [
-        ('Patient involvement', '/patient-involvement'), ('Clinical trial recruitment', '/clinical-trial-recruitment'),
+        ('Patient involvement', '/patient-involvement'), ('Referrals', '/clinical-trial-recruitment'),
         ('The panel', '/patient-panel'), ('The report', '/patient-involvement-report'), ('Sample report', '/sample-report'),
-        ('Free panel check', '/panel-check'), ('Tell us about your trial', '/tell-us-about-your-trial'),
+        ('Free panel count', '/panel-count'), ('Tell us about your clinical trial', '/tell-us-about-your-trial'),
     ]),
     ("Who it's for", [(l, h) for _, items in SECTOR_GROUPS for l, h in items]),
     ('Learn', [
         ('Questions', '/questions'), ('Case study', '/case-study-phase-ii-biotech'), ('Exclusion debt', '/exclusion-debt'),
-        ('Equity Engine', '/equity-engine'), ('Resources', '/resources'), ('Blog', BLOG),
+        ('Equity Engine', '/equity-engine'), ('Resources', '/resources'), ('Press', '/press'), ('Blog', BLOG),
     ]),
     ('Company', [
         ('About', '/about'), ('Trust', '/trust'), ('Contact', '/contact'), ('Privacy', '/privacy'),
@@ -78,8 +78,8 @@ FOOTER_COLUMNS = [
 # Older pages kept live but out of the menu. They get the new header and footer.
 KEPT_PAGES = [
     'blog', 'blog-1-inclusion-infrastructure', 'blog-2-lived-experience-data', 'blog-3-portfolio-inclusion',
-    'blog-4-mhra-2026-regulatory-revolution', 'blog-5-frequency-of-exclusion', 'press', 'press-equity-engine-mvp-2',
-    'equity-engine-mvp-2-feature-catalog', 'contact', 'privacy', 'terms', 'refund-policy', 'accessibility',
+    'blog-4-mhra-2026-regulatory-revolution', 'blog-5-frequency-of-exclusion', 'contact', 'privacy', 'terms',
+    'refund-policy', 'accessibility',
 ]
 # Retired pages: old address -> new address (301). Links on kept pages are repointed too.
 RETIRED = {
@@ -93,12 +93,14 @@ RETIRED = {
     'regulatory-alignment': '/patient-involvement-report',
     'trust-ethics': '/trust',
     # October 2026: prices taken off the site; Toolkits and Scorecard retired
-    'pricing': '/panel-check',
-    'scorecard': '/panel-check',
+    'pricing': '/panel-count',
+    'scorecard': '/panel-count',
     'toolkits': '/resources',
     # October 2026: involvement + recruitment structure
     'how-it-works': '/patient-involvement',
     'researchers': '/academic-research',
+    # Agreed wording, 19 October 2026: the free same-day count is a "panel count"
+    'panel-check': '/panel-count',
 }
 
 ORG = {
@@ -108,7 +110,7 @@ ORG = {
     'name': 'Unwritten Health',
     'url': BASE + '/',
     'logo': BASE + '/images/logo-mark.png',
-    'description': 'The UK patient panel that stays with the patient: patient involvement before a protocol is final, and clinical trial recruitment in the UK with every referral followed through.',
+    'description': 'The UK patient panel that stays with the patient: patient involvement before a protocol is final, and referrals for clinical trial recruitment in the UK, each one followed through.',
     'knowsAbout': ['Clinical trial recruitment', 'Patient recruitment', 'Patient and public involvement (PPI)', 'Clinical trial referrals'],
     'identifier': {'@type': 'PropertyValue', 'propertyID': 'Companies House company number', 'value': '16561594'},
     'address': {
@@ -167,14 +169,14 @@ def header_html(active=None):
                 f'<span class="uh-mobile-label">{html.escape(g)}</span>' + ''.join(link(l, h) for l, h in items)
                 for g, items in SECTOR_GROUPS) + '</div>')
     mobile.append(f'<a href="{BLOG}" target="_blank" rel="noopener">Blog{arrow}{EXT}</a>')
-    mobile.append('<a class="uh-btn-nav" href="/panel-check">Free panel check</a>')
+    mobile.append('<a class="uh-btn-nav" href="/panel-count">Free panel count</a>')
     mobile.append(f'<a class="uh-mobile-book" href="{BOOK}" target="_blank" rel="noopener">Book 30 minutes with Ashish{EXT}</a>')
     return (
         '<a class="uh-skip" href="#main">Skip to content</a>\n'
         '<header class="uh-header"><div class="uh-header-inner">'
         '<a class="uh-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="160" height="28"></a>'
         f'<div class="uh-nav" role="navigation" aria-label="Main">{"".join(links)}</div>'
-        '<a class="uh-btn-nav" href="/panel-check">Free panel check</a>'
+        '<a class="uh-btn-nav" href="/panel-count">Free panel count</a>'
         '<button class="uh-burger" type="button" aria-expanded="false" aria-controls="uh-mobile" aria-label="Open menu"><span></span><span></span><span></span></button>'
         '</div></header>\n'
         f'<div class="uh-mobile" id="uh-mobile" role="navigation" aria-label="Mobile">{"".join(mobile)}</div>'
@@ -185,8 +187,8 @@ def cta_html():
     return (
         '<section class="uh-cta" aria-labelledby="uh-cta-title"><div class="uh-cta-inner">'
         '<div><h2 id="uh-cta-title">How many patients like yours could you involve?</h2>'
-        "<p>Find out with a free panel check. Tell us who your clinical trial or product is for, and we'll reply the same working day with how many people like that we hold, and how they break down.</p></div>"
-        '<div class="uh-cta-actions"><a class="uh-btn-light" href="/panel-check">Free panel check</a>'
+        "<p>Find out with a free panel count. Tell us who your clinical trial or product is for, and we'll reply the same working day with how many people like that we hold, and how they break down.</p></div>"
+        '<div class="uh-cta-actions"><a class="uh-btn-light" href="/panel-count">Free panel count</a>'
         f'<a class="uh-cta-link" href="{BOOK}" target="_blank" rel="noopener">Book 30 minutes with Ashish{EXT}</a></div>'
         '</div></section>'
     )
@@ -208,7 +210,7 @@ def footer_html(sticky=True):
         '</div></div>'
     )
     if sticky:
-        out += '\n<a class="uh-sticky" href="/panel-check">Free panel check</a>'
+        out += '\n<a class="uh-sticky" href="/panel-count">Free panel count</a>'
     return out
 
 
