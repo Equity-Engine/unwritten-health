@@ -29,8 +29,8 @@ https://dispatches.unwritten.health/*    https://unwritten.health/blog    301!
 /solutions-pmcf.html    /medtech    301
 /solutions-esf-dtac    /digital-health    301
 /solutions-esf-dtac.html    /digital-health    301
-/solutions-nihr-ppi    /researchers    301
-/solutions-nihr-ppi.html    /researchers    301
+/solutions-nihr-ppi    /academic-research    301
+/solutions-nihr-ppi.html    /academic-research    301
 /regulatory-alignment    /patient-involvement-report    301
 /regulatory-alignment.html    /patient-involvement-report    301
 /trust-ethics    /trust    301
@@ -41,4 +41,8 @@ https://dispatches.unwritten.health/*    https://unwritten.health/blog    301!
 /scorecard.html    /panel-check    301
 /toolkits    /resources    301
 /toolkits.html    /resources    301
+/how-it-works    /patient-involvement    301
+/how-it-works.html    /patient-involvement    301
+/researchers    /academic-research    301
+/researchers.html    /academic-research    301
 # END build_site.py

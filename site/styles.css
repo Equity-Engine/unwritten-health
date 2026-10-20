@@ -328,3 +328,76 @@ table.prices td:last-child { white-space: nowrap; font-weight: 700; }
 }
 @media (max-width: 380px) { .wrap { padding: 0 16px; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }
+
+/* ---------- October 2026: involvement + recruitment structure ---------- */
+.hero-kicker { display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: var(--uh-sage-deep); background: var(--uh-sage-pale); border-radius: 100px; padding: 6px 14px; margin-bottom: 22px; }
+.hero-kicker::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--uh-sage); }
+h1.display { margin: 0; }
+
+/* Two doors */
+.doors { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 40px; }
+.door { display: flex; flex-direction: column; background: var(--uh-paper); border: 1px solid var(--uh-line); border-radius: 22px; padding: 30px; box-shadow: 0 14px 34px rgba(43,43,47,0.05); }
+.door--rec { background: var(--uh-sage-deep); color: #fff; border-color: transparent; }
+.door h2 { font-size: clamp(1.45rem, 2.4vw, 1.85rem); margin: 12px 0 10px; }
+.door--rec h2, .door--rec strong { color: #fff; }
+.door p { color: var(--uh-charcoal); font-size: 0.98rem; }
+.door--rec p { color: rgba(255,255,255,0.82); }
+.door .for { font-size: 0.85rem; color: var(--uh-soft); margin-bottom: 20px; }
+.door--rec .for { color: rgba(255,255,255,0.66); }
+.door-actions { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
+.door--rec .btn--primary { background: #fff; color: var(--uh-sage-deep); }
+.door--rec .btn--primary:hover { background: var(--uh-cream); color: var(--uh-sage-deep); }
+.door .more { margin-top: 0; }
+.door--rec .more { color: #fff; }
+@media (max-width: 860px) { .doors { grid-template-columns: 1fr; } }
+
+/* Service tags */
+.svc { display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; background: var(--uh-sage-pale); color: var(--uh-sage-deep); white-space: nowrap; }
+.svc--rec { background: #2e4a3c; color: #fff; }
+.door--rec .svc--rec { background: rgba(255,255,255,0.16); }
+.svcs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+
+/* Before / Through / After */
+.stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 30px; counter-reset: stage; }
+.stage { background: var(--uh-paper); border: 1px solid var(--uh-line); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; }
+.section--paper .stage { background: var(--uh-cream); }
+.stage h3 { font-size: 1.5rem; margin: 10px 0 8px; }
+.stage .what { font-size: 0.95rem; color: var(--uh-charcoal); margin-bottom: 14px; }
+.stage .gets { margin-top: auto; border-top: 1px solid var(--uh-line); padding-top: 12px; font-size: 0.9rem; color: var(--uh-ink); }
+.stage .gets b { display: block; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--uh-sage-dark); margin-bottom: 4px; }
+@media (max-width: 860px) { .stages { grid-template-columns: 1fr; } }
+
+/* Evidence cards */
+.evidence { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 28px; }
+.ev { background: var(--uh-paper); border: 1px solid var(--uh-line); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; }
+.section--paper .ev { background: var(--uh-cream); }
+.ev-fig { font-family: var(--uh-head); font-size: clamp(2rem, 3.2vw, 2.6rem); line-height: 1; color: var(--uh-sage-deep); margin-bottom: 12px; }
+.ev p { font-size: 0.94rem; color: var(--uh-charcoal); margin-bottom: 12px; }
+.ev .source { margin-top: auto; font-size: 0.78rem; }
+
+/* Audience cards with service tags */
+.audiences { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+.aud { display: flex; flex-direction: column; background: var(--uh-paper); border: 1px solid var(--uh-line); border-radius: 16px; padding: 20px 22px; text-decoration: none; color: var(--uh-ink); transition: border-color .15s, transform .15s, box-shadow .15s; }
+.section--paper .aud { background: var(--uh-cream); }
+.aud:hover { border-color: var(--uh-sage); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(43,43,47,0.07); color: var(--uh-ink); }
+.aud h3 { font-family: var(--uh-body); font-size: 1.05rem; font-weight: 800; margin: 0 0 6px; letter-spacing: 0; }
+.aud p { font-size: 0.9rem; color: var(--uh-soft); margin: 0 0 12px; }
+.aud .svcs { margin: auto 0 0; }
+.group-label { font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--uh-sage-dark); margin: 34px 0 14px; }
+.group-label:first-child { margin-top: 0; }
+
+/* Service cards on audience pages */
+.svc-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; margin-bottom: 40px; }
+.svc-card { background: var(--uh-paper); border: 1px solid var(--uh-line); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; }
+.svc-card--rec { border-color: rgba(46,74,60,0.35); box-shadow: inset 0 3px 0 var(--uh-sage-deep); }
+.svc-card h2 { font-size: clamp(1.35rem, 2.2vw, 1.65rem); margin: 10px 0 10px; }
+.svc-card p { font-size: 0.97rem; color: var(--uh-charcoal); }
+.svc-card .actions { margin-top: auto; padding-top: 8px; }
+
+/* Referral log (illustrative) */
+table.log td:nth-child(2) { font-style: italic; }
+.status { display: inline-block; font-size: 0.74rem; font-weight: 800; padding: 3px 9px; border-radius: 100px; background: var(--uh-sage-pale); color: var(--uh-sage-deep); white-space: nowrap; }
+.status--wait { background: #F6E7D8; color: #8a5a2b; }
+.status--stop { background: #ECE7DF; color: var(--uh-soft); }
+
+.door > .svc, .svc-card > .svc { align-self: flex-start; }

@@ -1,0 +1,98 @@
+<!--meta {"slug": "tell-us-about-your-trial", "title": "Tell us about your clinical trial | Unwritten Health", "description": "Recruiting for a clinical trial in the UK? Tell us the condition, who you need, where your sites are and when you're recruiting.", "nav": "recruitment", "priority": "0.7", "cta": false, "sticky": false} -->
+
+<section class="hero" style="padding-bottom:96px">
+  <div class="wrap split split--top">
+    <div>
+      <span class="kicker">Trial recruitment</span>
+      <h1>Tell us about your trial.</h1>
+      <p class="lede">The condition, the people you need, where your UK sites are and when you're recruiting. Ashish will reply personally with how many members we hold who could be put to your screening questions, and how they break down.</p>
+      <ul class="list-plain" style="margin-top:22px">
+        <li>Members who pass your screening questions and say yes are referred with a best time to call.</li>
+        <li>We follow every referral through, and tell you which ones went nowhere and why.</li>
+        <li>Eligibility stays the site's call.</li>
+      </ul>
+      <p class="hero-meta">Not recruiting yet? Start with a <a href="/panel-check">free panel check</a>, or <a href="{{BOOK}}" target="_blank" rel="noopener">book 30 minutes with Ashish{{EXT}}</a>.</p>
+    </div>
+
+    <div class="form-card">
+      <form id="trial-form" name="trial-enquiry" method="POST" action="/tell-us-about-your-trial?sent=1" data-netlify="true" netlify-honeypot="company_website">
+        <input type="hidden" name="form-name" value="trial-enquiry">
+        <p class="hp"><label>Leave this empty <input name="company_website" tabindex="-1" autocomplete="off"></label></p>
+        <div class="field-row">
+          <div class="field"><label for="tr-name">Your name</label><input id="tr-name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="tr-email">Work email</label><input id="tr-email" name="email" type="email" autocomplete="email" required></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="tr-org">Organisation</label><input id="tr-org" name="organisation" autocomplete="organization" required></div>
+          <div class="field"><label for="tr-role">You are</label>
+            <select id="tr-role" name="role" required>
+              <option value="" selected disabled>Choose one</option>
+              <option>Pharma sponsor</option>
+              <option>Biotech sponsor</option>
+              <option>Academic clinical trials unit</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="tr-who">Condition and who you need <span class="opt">Age range, and anything else that matters</span></label><textarea id="tr-who" name="condition_and_population" required></textarea></div>
+        <div class="field-row">
+          <div class="field"><label for="tr-phase">Phase</label>
+            <select id="tr-phase" name="phase">
+              <option value="" selected>Choose one</option>
+              <option>Phase I</option><option>Phase II</option><option>Phase III</option><option>Phase IV</option><option>Not a drug trial</option><option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field"><label for="tr-target">How many participants? <span class="opt">(optional)</span></label><input id="tr-target" name="target_number"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="tr-where">Where are your UK sites? <span class="opt">(optional)</span></label><input id="tr-where" name="uk_sites"></div>
+          <div class="field"><label for="tr-when">When are you recruiting? <span class="opt">(optional)</span></label><input id="tr-when" name="recruitment_window"></div>
+        </div>
+        <div class="field"><label for="tr-want">What would help?</label>
+          <select id="tr-want" name="wants" required>
+            <option value="" selected disabled>Choose one</option>
+            <option>Before: members review the protocol, invitation and visit plan</option>
+            <option>Through and after: referrals we follow through</option>
+            <option>All three</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="field"><label for="tr-more">Anything else? <span class="opt">(optional)</span></label><textarea id="tr-more" name="anything_else" style="min-height:90px"></textarea></div>
+        <button class="btn btn--primary" type="submit" style="width:100%;margin-top:6px">Tell us about your trial</button>
+        <p class="form-error" id="tr-error" role="alert">Sorry, that didn't send. Please try again, or email <a href="mailto:chat@unwritten.health">chat@unwritten.health</a>.</p>
+      </form>
+      <div class="form-done" id="tr-done" tabindex="-1">
+        <h2>Thanks.</h2>
+        <p>Ashish will reply personally. If you'd rather talk it through, <a href="{{BOOK}}" target="_blank" rel="noopener">book 30 minutes here{{EXT}}</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var form = document.getElementById('trial-form');
+  var done = document.getElementById('tr-done');
+  var err = document.getElementById('tr-error');
+  function showDone() { form.style.display = 'none'; done.style.display = 'block'; done.focus(); }
+  if (/[?&]sent=1/.test(location.search)) showDone();
+  form.addEventListener('submit', function (e) {
+    if (!window.fetch) return;
+    e.preventDefault();
+    err.style.display = 'none';
+    var btn = form.querySelector('button[type=submit]');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      showDone();
+      if (window.gtag) window.gtag('event', 'generate_lead', { form_name: 'trial-enquiry' });
+    }).catch(function () {
+      err.style.display = 'block'; btn.disabled = false; btn.textContent = 'Tell us about your trial';
+    });
+  });
+})();
+</script>

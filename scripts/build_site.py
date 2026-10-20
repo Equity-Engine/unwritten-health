@@ -37,35 +37,49 @@ BOOK = 'https://meetings-eu1.hubspot.com/ashish-rishi?uuid=b7b6b6ed-3b13-4c64-aa
 BLOG = 'https://substack.com/@exclusiondebt'
 
 NAV = [
-    ('how-it-works', 'How it works', '/how-it-works'),
+    ('involvement', 'Patient involvement', '/patient-involvement'),
+    ('recruitment', 'Trial recruitment', '/clinical-trial-recruitment'),
     ('panel', 'The panel', '/patient-panel'),
-    ('report', 'The report', '/patient-involvement-report'),
     ('who', "Who it's for", '/who-its-for'),
     ('trust', 'Trust', '/trust'),
     ('about', 'About', '/about'),
 ]
-SECTORS = [
-    ('Pharma', '/pharma'),
-    ('Biotech', '/biotech'),
-    ('Medtech', '/medtech'),
-    ('Digital health', '/digital-health'),
-    ('NHS', '/nhs'),
-    ('Suppliers to the NHS', '/suppliers'),
-    ('Researchers', '/researchers'),
+# "Who it's for", grouped by which services apply
+SECTOR_GROUPS = [
+    ('Clinical trials: involvement and recruitment', [
+        ('Pharma', '/pharma'),
+        ('Biotech', '/biotech'),
+        ('Academic research', '/academic-research'),
+    ]),
+    ('Products and services: involvement', [
+        ('Medtech', '/medtech'),
+        ('Digital health', '/digital-health'),
+        ('NHS', '/nhs'),
+        ('Suppliers to the NHS', '/suppliers'),
+    ]),
 ]
-FOOTER_LINKS = [
-    ('How it works', '/how-it-works'), ('The panel', '/patient-panel'), ('The report', '/patient-involvement-report'),
-    ('Sample report', '/sample-report'), ("Who it's for", '/who-its-for'), ('Case study', '/case-study-phase-ii-biotech'),
-    ('Trust', '/trust'), ('About', '/about'), ('Questions', '/questions'),
-    ('Blog', BLOG), ('Privacy', '/privacy'), ('Terms', '/terms'), ('Contact', '/contact'),
+FOOTER_COLUMNS = [
+    ('Services', [
+        ('Patient involvement', '/patient-involvement'), ('Trial recruitment', '/clinical-trial-recruitment'),
+        ('The panel', '/patient-panel'), ('The report', '/patient-involvement-report'), ('Sample report', '/sample-report'),
+        ('Free panel check', '/panel-check'), ('Tell us about your trial', '/tell-us-about-your-trial'),
+    ]),
+    ("Who it's for", [(l, h) for _, items in SECTOR_GROUPS for l, h in items]),
+    ('Learn', [
+        ('Questions', '/questions'), ('Case study', '/case-study-phase-ii-biotech'), ('Exclusion debt', '/exclusion-debt'),
+        ('Equity Engine', '/equity-engine'), ('Resources', '/resources'), ('Blog', BLOG),
+    ]),
+    ('Company', [
+        ('About', '/about'), ('Trust', '/trust'), ('Contact', '/contact'), ('Privacy', '/privacy'),
+        ('Terms', '/terms'), ('Accessibility', '/accessibility'),
+    ]),
 ]
 
 # Older pages kept live but out of the menu. They get the new header and footer.
 KEPT_PAGES = [
     'blog', 'blog-1-inclusion-infrastructure', 'blog-2-lived-experience-data', 'blog-3-portfolio-inclusion',
-    'blog-4-mhra-2026-regulatory-revolution', 'blog-5-frequency-of-exclusion', 'press', 'press-equity-engine-mvp-2', 'equity-engine-mvp-2-feature-catalog',
-    'exclusion-debt', 'equity-engine', 'resources', 'contact', 'privacy', 'terms',
-    'refund-policy', 'accessibility',
+    'blog-4-mhra-2026-regulatory-revolution', 'blog-5-frequency-of-exclusion', 'press', 'press-equity-engine-mvp-2',
+    'equity-engine-mvp-2-feature-catalog', 'contact', 'privacy', 'terms', 'refund-policy', 'accessibility',
 ]
 # Retired pages: old address -> new address (301). Links on kept pages are repointed too.
 RETIRED = {
@@ -75,13 +89,16 @@ RETIRED = {
     'solutions-samd': '/medtech',
     'solutions-pmcf': '/medtech',
     'solutions-esf-dtac': '/digital-health',
-    'solutions-nihr-ppi': '/researchers',
+    'solutions-nihr-ppi': '/academic-research',
     'regulatory-alignment': '/patient-involvement-report',
     'trust-ethics': '/trust',
     # October 2026: prices taken off the site; Toolkits and Scorecard retired
     'pricing': '/panel-check',
     'scorecard': '/panel-check',
     'toolkits': '/resources',
+    # October 2026: involvement + recruitment structure
+    'how-it-works': '/patient-involvement',
+    'researchers': '/academic-research',
 }
 
 ORG = {
@@ -91,7 +108,7 @@ ORG = {
     'name': 'Unwritten Health',
     'url': BASE + '/',
     'logo': BASE + '/images/logo-mark.png',
-    'description': 'Patient involvement, matched to the people who have the condition.',
+    'description': 'The UK patient panel that stays with the patient.',
     'identifier': {'@type': 'PropertyValue', 'propertyID': 'Companies House company number', 'value': '16561594'},
     'address': {
         '@type': 'PostalAddress',
@@ -100,6 +117,7 @@ ORG = {
         'postalCode': 'M4 5JW',
         'addressCountry': 'GB',
     },
+    'areaServed': {'@type': 'Country', 'name': 'United Kingdom'},
     'founder': {'@type': 'Person', 'name': 'Ashish Rishi'},
 }
 
@@ -116,6 +134,13 @@ def icon(name, cls=''):
 EXT = '<span class="uh-sr"> (opens in a new tab)</span>'
 
 
+def link(label, href, cls=''):
+    c = f' class="{cls}"' if cls else ''
+    if href.startswith('http'):
+        return f'<a{c} href="{href}" target="_blank" rel="noopener">{html.escape(label)}{EXT}</a>'
+    return f'<a{c} href="{href}">{html.escape(label)}</a>'
+
+
 def header_html(active=None):
     chevron = icon('chevron-down')
     arrow = icon('arrow-up-right', 'uh-ext')
@@ -123,11 +148,13 @@ def header_html(active=None):
     for key, label, href in NAV:
         cur = ' aria-current="page"' if key == active else ''
         if key == 'who':
-            items = ''.join(f'<a href="{h}">{html.escape(l)}</a>' for l, h in SECTORS)
+            groups = ''.join(
+                f'<span class="uh-dd-label">{html.escape(g)}</span>' + ''.join(link(l, h) for l, h in items)
+                for g, items in SECTOR_GROUPS)
             links.append(
                 f'<div class="uh-dd"><a href="{href}"{cur}>{label}</a>'
-                f'<button class="uh-dd-toggle" type="button" aria-expanded="false" aria-controls="uh-dd-who" aria-label="Show pages for each kind of work">{chevron}</button>'
-                f'<div class="uh-dd-menu" id="uh-dd-who">{items}<a class="uh-dd-all" href="{href}">All seven kinds of work</a></div></div>')
+                f'<button class="uh-dd-toggle" type="button" aria-expanded="false" aria-controls="uh-dd-who" aria-label="Show pages for each kind of buyer">{chevron}</button>'
+                f'<div class="uh-dd-menu" id="uh-dd-who">{groups}<a class="uh-dd-all" href="{href}">Who it\'s for: overview</a></div></div>')
         else:
             links.append(f'<a href="{href}"{cur}>{label}</a>')
     links.append(f'<a href="{BLOG}" target="_blank" rel="noopener">Blog{arrow}{EXT}</a>')
@@ -135,7 +162,9 @@ def header_html(active=None):
     for key, label, href in NAV:
         mobile.append(f'<a href="{href}">{label}</a>')
         if key == 'who':
-            mobile.append('<div class="uh-mobile-sub">' + ''.join(f'<a href="{h}">{html.escape(l)}</a>' for l, h in SECTORS) + '</div>')
+            mobile.append('<div class="uh-mobile-sub">' + ''.join(
+                f'<span class="uh-mobile-label">{html.escape(g)}</span>' + ''.join(link(l, h) for l, h in items)
+                for g, items in SECTOR_GROUPS) + '</div>')
     mobile.append(f'<a href="{BLOG}" target="_blank" rel="noopener">Blog{arrow}{EXT}</a>')
     mobile.append('<a class="uh-btn-nav" href="/panel-check">Free panel check</a>')
     mobile.append(f'<a class="uh-mobile-book" href="{BOOK}" target="_blank" rel="noopener">Book 30 minutes with Ashish{EXT}</a>')
@@ -154,31 +183,31 @@ def header_html(active=None):
 def cta_html():
     return (
         '<section class="uh-cta" aria-labelledby="uh-cta-title"><div class="uh-cta-inner">'
-        '<div><h2 id="uh-cta-title">Free panel check.</h2>'
-        "<p>Tell us who your clinical trial or product is for. We'll tell you, the same day, how many people like that we hold and how they break down.</p></div>"
-        '<div class="uh-cta-actions"><a class="uh-btn-light" href="/panel-check">Check the panel</a>'
+        '<div><h2 id="uh-cta-title">How many patients like yours could you involve?</h2>'
+        "<p>Find out with a free panel check. Tell us who your clinical trial or product is for, and we'll reply the same working day with how many people like that we hold, and how they break down.</p></div>"
+        '<div class="uh-cta-actions"><a class="uh-btn-light" href="/panel-check">Free panel check</a>'
         f'<a class="uh-cta-link" href="{BOOK}" target="_blank" rel="noopener">Book 30 minutes with Ashish{EXT}</a></div>'
         '</div></section>'
     )
 
 
 def footer_html(sticky=True):
-    links = ''.join(
-        f'<a href="{h}" target="_blank" rel="noopener">{l}{EXT}</a>' if h.startswith('http') else f'<a href="{h}">{l}</a>'
-        for l, h in FOOTER_LINKS)
+    cols = ''.join(
+        f'<div class="uh-footer-col"><p class="uh-footer-h">{html.escape(t)}</p>' + ''.join(link(l, h) for l, h in items) + '</div>'
+        for t, items in FOOTER_COLUMNS)
     out = (
         '<div class="uh-footer" role="contentinfo"><div class="uh-footer-inner">'
         '<div class="uh-footer-top"><div>'
         '<a class="uh-footer-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="150" height="26"></a>'
-        '<p class="uh-footer-tag">Unwritten Health. Patient involvement, matched to the people who have the condition.</p>'
+        '<p class="uh-footer-tag">The UK patient panel that stays with the patient.</p>'
         '<p class="uh-footer-note">UK company.</p>'
-        f'</div><div class="uh-footer-links">{links}</div></div>'
+        f'</div><div class="uh-footer-links">{cols}</div></div>'
         '<div class="uh-footer-legal"><span>Unwritten Health · Company number 16561594 · First Floor, Swan Buildings, 20 Swan Street, Manchester, England, M4 5JW</span>'
         '<a href="#cookie-settings" onclick="if(window.openCookieSettings){window.openCookieSettings();}return false;">Cookie settings</a></div>'
         '</div></div>'
     )
     if sticky:
-        out += '\n<a class="uh-sticky" href="/panel-check">Check the panel</a>'
+        out += '\n<a class="uh-sticky" href="/panel-check">Free panel check</a>'
     return out
 
 
@@ -226,6 +255,8 @@ def head_html(m):
 
 def expand(content):
     content = re.sub(r'\{\{icon:([a-z0-9-]+)\}\}', lambda mm: icon(mm.group(1)), content)
+    grid100 = ''.join('<span class="off"></span>' if i < 26 else '<span></span>' for i in range(100))
+    content = content.replace('{{grid100}}', grid100)
     return content.replace('{{BOOK}}', BOOK).replace('{{BLOG}}', BLOG).replace('{{EXT}}', EXT)
 
 

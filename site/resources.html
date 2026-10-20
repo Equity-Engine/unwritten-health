@@ -1,191 +1,70 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="images/logo-mark.png" />
-  <link rel="apple-touch-icon" href="images/logo-mark.png" />
-  <link rel="shortcut icon" href="images/logo-mark.png" />
-  <title>Resources | White Papers, Guides &amp; Research on JCA, NICE ESF, DTAC, MHRA IDP | Unwritten Health</title>
-  <meta name="description" content="White papers and evidence-based guides from Unwritten Health for pharma medical affairs, medical-device and SaMD manufacturers, digital-health developers, and NIHR-funded academic teams. Practical resources on JCA, NICE ESF Standard 4, NHS DTAC, MHRA IDP, EU MDR PMCF, UK PMS 2025, and NIHR INCLUDE." />
-  <meta name="keywords" content="patient experience data white papers, JCA guides, NICE ESF resources, NHS DTAC guides, MHRA IDP resources, clinical trial inclusion white paper, health equity research downloads" />
-  <meta property="og:title" content="Resources | White Papers &amp; Guides | Unwritten Health" />
-  <meta property="og:description" content="Practical guides for pharma medical affairs, medtech, SaMD, digital health and NIHR-funded teams on JCA, NICE ESF, NHS DTAC, MHRA IDP and NIHR INCLUDE." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="images/og-image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Resources & White Papers | Unwritten Health" />
-  <meta name="twitter:description" content="White papers and research from Unwritten Health, evidence-based tools for clinical development leaders." />
-  <link href="https://fonts.googleapis.com/css2?family=Bentham&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="site.css" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --cream: #FAF8F5; --green: #5B8170; --green-dark: #3f6152; --green-darker: #2e4a3c;
-      --green-pale: #e4ece8; --charcoal: #37373B; --charcoal-soft: #5a5a5f;
-      --white: #ffffff; --font-head: 'Bentham', Georgia, serif; --font-body: 'Manrope', sans-serif;
-      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body { background: var(--cream); color: var(--charcoal); font-family: var(--font-body); line-height: 1.7; }
-    a { text-decoration: none; color: inherit; }
-    img { display: block; max-width: 100%; }
-    .logo-wrap svg { height: 28px; width: auto; display: block; }
-
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 48px; height: 72px; display: flex; align-items: center; justify-content: space-between; background: rgba(250,248,245,0.97); backdrop-filter: blur(16px); box-shadow: 0 1px 0 rgba(55,55,59,0.08); }
-    .nav-right { display: flex; align-items: center; gap: 24px; }
-    .nav-back { font-size: 0.83rem; font-weight: 500; color: var(--charcoal-soft); transition: color 0.2s; }
-    .nav-back:hover { color: var(--green-dark); }
-    .btn-nav { display: inline-flex; align-items: center; padding: 10px 22px; border-radius: 100px; font-family: var(--font-body); font-weight: 600; font-size: 0.82rem; background: var(--green-dark); color: var(--white); transition: all 0.3s; }
-    .btn-nav:hover { background: var(--green-darker); transform: translateY(-1px); }
-
-    .doc-hero { padding: 120px 0 50px; border-bottom: 1px solid rgba(55,55,59,0.08); }
-    .doc-hero-inner { max-width: 860px; margin: 0 auto; padding: 0 48px; }
-    .doc-label { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 1rem; }
-    .doc-hero h1 { font-family: var(--font-head); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 400; color: var(--charcoal); margin-bottom: 1rem; line-height: 1.2; }
-    .doc-hero p { font-size: 1rem; color: var(--charcoal-soft); line-height: 1.8; max-width: 640px; }
-
-    .res-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 28px; max-width: 1060px; margin: 0 auto; padding: 56px 48px 100px; align-items: stretch; }
-
-    .res-card { display: flex; flex-direction: column; border-radius: 24px; padding: 40px; transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease); position: relative; overflow: hidden; }
-    .res-card:hover { transform: translateY(-4px); }
-
-    /* Featured (dark) card */
-    .res-card.featured { background: var(--charcoal); grid-column: 1 / -1; }
-    .res-card.featured::before { content: ''; position: absolute; bottom: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(91,129,112,0.32) 0%, transparent 70%); pointer-events: none; }
-    .res-card.featured:hover { box-shadow: 0 24px 60px rgba(46,74,60,0.28); }
-    .res-card.featured .res-tag { color: #b8d0c6; }
-    .res-card.featured h2 { color: var(--white); }
-    .res-card.featured p { color: rgba(255,255,255,0.7); }
-    .res-card.featured .res-meta { color: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.14); }
-
-    /* Standard (light) card */
-    .res-card.standard { background: var(--white); border: 1px solid rgba(91,129,112,0.14); }
-    .res-card.standard:hover { box-shadow: 0 16px 44px rgba(91,129,112,0.14); }
-    .res-card.standard .res-tag { color: var(--green-dark); }
-    .res-card.standard h2 { color: var(--charcoal); }
-    .res-card.standard p { color: var(--charcoal-soft); }
-    .res-card.standard .res-meta { color: var(--charcoal-soft); border-color: rgba(55,55,59,0.1); }
-
-    .res-tag { display: block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 16px; position: relative; z-index: 1; }
-    .res-card h2 { font-family: var(--font-head); font-size: 1.5rem; font-weight: 400; line-height: 1.3; margin-bottom: 14px; position: relative; z-index: 1; }
-    .res-card.featured h2 { font-size: 1.85rem; }
-    .res-card p { font-size: 0.95rem; line-height: 1.8; margin-bottom: 22px; position: relative; z-index: 1; }
-    .res-meta { display: flex; gap: 18px; flex-wrap: wrap; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.02em; padding-top: 18px; margin-bottom: 26px; border-top: 1px solid; position: relative; z-index: 1; }
-    .res-actions { margin-top: auto; display: flex; gap: 12px; flex-wrap: wrap; position: relative; z-index: 1; }
-    .res-btn-primary { display: inline-flex; align-items: center; padding: 13px 26px; border-radius: 100px; background: var(--white); color: var(--green-darker); font-family: var(--font-body); font-weight: 700; font-size: 0.88rem; transition: all 0.3s; }
-    .res-btn-primary:hover { background: var(--cream); transform: translateY(-1px); }
-    .res-card.standard .res-btn-primary { background: var(--green-dark); color: var(--white); }
-    .res-card.standard .res-btn-primary:hover { background: var(--green-darker); }
-
-    .res-empty { max-width: 1060px; margin: 0 auto 90px; padding: 0 48px; }
-    .res-empty-inner { background: var(--green-pale); border-radius: 18px; padding: 28px 32px; font-size: 0.92rem; color: var(--charcoal); }
-    .res-empty-inner a { color: var(--green-dark); font-weight: 600; }
-
-    footer { background: var(--charcoal); padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; }
-    .footer-logo svg { height: 22px; width: auto; display: block; filter: brightness(0) invert(1); opacity: 0.7; }
-    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
-    .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.45); transition: color 0.2s; }
-    .footer-links a:hover { color: rgba(255,255,255,0.9); }
-
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; }
-      .nav-right { gap: 14px; }
-      .doc-hero-inner { padding: 0 20px; }
-      .res-grid { padding: 40px 20px 80px; gap: 20px; }
-      .res-card { padding: 32px 26px; }
-      .res-card.featured h2 { font-size: 1.5rem; }
-      .res-empty { padding: 0 20px; }
-      footer { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
-    }
-  </style>
-  <link rel="canonical" href="https://unwritten.health/resources" />
-  <meta name="keywords" content="clinical trial white paper, patient recruitment failure, health equity risk, clinical research inclusion, clinical trial diversity, lived-experience data, Unwritten Health" />
-  <meta name="robots" content="index, follow" />
-  <script defer src="analytics.js"></script>
-  <link rel="stylesheet" href="/chrome.css" />
-  <script defer src="/chrome.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free UK guides and research on clinical trials | Unwritten Health</title>
+<meta name="description" content="Free guides and research for anyone recruiting or running clinical trials in the UK, plus the Exclusion Debt newsletter and a sample patient involvement report.">
+<link rel="canonical" href="https://unwritten.health/resources">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Unwritten Health">
+<meta property="og:title" content="Free UK guides and research on clinical trials | Unwritten Health">
+<meta property="og:description" content="Free guides and research for anyone recruiting or running clinical trials in the UK, plus the Exclusion Debt newsletter and a sample patient involvement report.">
+<meta property="og:url" content="https://unwritten.health/resources">
+<meta property="og:image" content="https://unwritten.health/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free UK guides and research on clinical trials | Unwritten Health">
+<meta name="twitter:description" content="Free guides and research for anyone recruiting or running clinical trials in the UK, plus the Exclusion Debt newsletter and a sample patient involvement report.">
+<meta name="twitter:image" content="https://unwritten.health/images/og-image.jpg">
+<link rel="icon" type="image/png" href="/images/logo-mark.png">
+<link rel="apple-touch-icon" href="/images/logo-mark.png">
+<meta name="theme-color" content="#FAF8F5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bentham&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/chrome.css">
+<link rel="stylesheet" href="/styles.css">
+<script defer src="/analytics.js"></script>
+<script defer src="/chrome.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://unwritten.health/#organization", "name": "Unwritten Health", "url": "https://unwritten.health/", "logo": "https://unwritten.health/images/logo-mark.png", "description": "The UK patient panel that stays with the patient.", "identifier": {"@type": "PropertyValue", "propertyID": "Companies House company number", "value": "16561594"}, "address": {"@type": "PostalAddress", "streetAddress": "First Floor, Swan Buildings, 20 Swan Street", "addressLocality": "Manchester", "postalCode": "M4 5JW", "addressCountry": "GB"}, "areaServed": {"@type": "Country", "name": "United Kingdom"}, "founder": {"@type": "Person", "name": "Ashish Rishi"}}</script>
 </head>
 <body>
-
-  <!-- UH:HEADER -->
 <a class="uh-skip" href="#main">Skip to content</a>
-<header class="uh-header"><div class="uh-header-inner"><a class="uh-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="160" height="28"></a><div class="uh-nav" role="navigation" aria-label="Main"><a href="/how-it-works">How it works</a><a href="/patient-panel">The panel</a><a href="/patient-involvement-report">The report</a><div class="uh-dd"><a href="/who-its-for">Who it's for</a><button class="uh-dd-toggle" type="button" aria-expanded="false" aria-controls="uh-dd-who" aria-label="Show pages for each kind of work"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="m6 9 6 6 6-6" /></svg></button><div class="uh-dd-menu" id="uh-dd-who"><a href="/pharma">Pharma</a><a href="/biotech">Biotech</a><a href="/medtech">Medtech</a><a href="/digital-health">Digital health</a><a href="/nhs">NHS</a><a href="/suppliers">Suppliers to the NHS</a><a href="/researchers">Researchers</a><a class="uh-dd-all" href="/who-its-for">All seven kinds of work</a></div></div><a href="/trust">Trust</a><a href="/about">About</a><a href="https://substack.com/@exclusiondebt" target="_blank" rel="noopener">Blog<svg aria-hidden="true" focusable="false" class="uh-ext" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg><span class="uh-sr"> (opens in a new tab)</span></a></div><a class="uh-btn-nav" href="/panel-check">Free panel check</a><button class="uh-burger" type="button" aria-expanded="false" aria-controls="uh-mobile" aria-label="Open menu"><span></span><span></span><span></span></button></div></header>
-<div class="uh-mobile" id="uh-mobile" role="navigation" aria-label="Mobile"><a href="/how-it-works">How it works</a><a href="/patient-panel">The panel</a><a href="/patient-involvement-report">The report</a><a href="/who-its-for">Who it's for</a><div class="uh-mobile-sub"><a href="/pharma">Pharma</a><a href="/biotech">Biotech</a><a href="/medtech">Medtech</a><a href="/digital-health">Digital health</a><a href="/nhs">NHS</a><a href="/suppliers">Suppliers to the NHS</a><a href="/researchers">Researchers</a></div><a href="/trust">Trust</a><a href="/about">About</a><a href="https://substack.com/@exclusiondebt" target="_blank" rel="noopener">Blog<svg aria-hidden="true" focusable="false" class="uh-ext" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg><span class="uh-sr"> (opens in a new tab)</span></a><a class="uh-btn-nav" href="/panel-check">Free panel check</a><a class="uh-mobile-book" href="https://meetings-eu1.hubspot.com/ashish-rishi?uuid=b7b6b6ed-3b13-4c64-aa8d-d759c67698db" target="_blank" rel="noopener">Book 30 minutes with Ashish<span class="uh-sr"> (opens in a new tab)</span></a></div>
-<!-- /UH:HEADER -->
-<div class="doc-hero">
-    <div class="doc-hero-inner">
-      <span class="doc-label">Resources · White papers</span>
-      <h1>White papers &amp; research</h1>
-      <p>Evidence-based tools for clinical development leaders, on inclusion, health equity, and what it actually takes to design trials that recruit. Free to download, free to share.</p>
+<header class="uh-header"><div class="uh-header-inner"><a class="uh-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="160" height="28"></a><div class="uh-nav" role="navigation" aria-label="Main"><a href="/patient-involvement">Patient involvement</a><a href="/clinical-trial-recruitment">Trial recruitment</a><a href="/patient-panel">The panel</a><div class="uh-dd"><a href="/who-its-for">Who it's for</a><button class="uh-dd-toggle" type="button" aria-expanded="false" aria-controls="uh-dd-who" aria-label="Show pages for each kind of buyer"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="m6 9 6 6 6-6" /></svg></button><div class="uh-dd-menu" id="uh-dd-who"><span class="uh-dd-label">Clinical trials: involvement and recruitment</span><a href="/pharma">Pharma</a><a href="/biotech">Biotech</a><a href="/academic-research">Academic research</a><span class="uh-dd-label">Products and services: involvement</span><a href="/medtech">Medtech</a><a href="/digital-health">Digital health</a><a href="/nhs">NHS</a><a href="/suppliers">Suppliers to the NHS</a><a class="uh-dd-all" href="/who-its-for">Who it's for: overview</a></div></div><a href="/trust">Trust</a><a href="/about">About</a><a href="https://substack.com/@exclusiondebt" target="_blank" rel="noopener">Blog<svg aria-hidden="true" focusable="false" class="uh-ext" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg><span class="uh-sr"> (opens in a new tab)</span></a></div><a class="uh-btn-nav" href="/panel-check">Free panel check</a><button class="uh-burger" type="button" aria-expanded="false" aria-controls="uh-mobile" aria-label="Open menu"><span></span><span></span><span></span></button></div></header>
+<div class="uh-mobile" id="uh-mobile" role="navigation" aria-label="Mobile"><a href="/patient-involvement">Patient involvement</a><a href="/clinical-trial-recruitment">Trial recruitment</a><a href="/patient-panel">The panel</a><a href="/who-its-for">Who it's for</a><div class="uh-mobile-sub"><span class="uh-mobile-label">Clinical trials: involvement and recruitment</span><a href="/pharma">Pharma</a><a href="/biotech">Biotech</a><a href="/academic-research">Academic research</a><span class="uh-mobile-label">Products and services: involvement</span><a href="/medtech">Medtech</a><a href="/digital-health">Digital health</a><a href="/nhs">NHS</a><a href="/suppliers">Suppliers to the NHS</a></div><a href="/trust">Trust</a><a href="/about">About</a><a href="https://substack.com/@exclusiondebt" target="_blank" rel="noopener">Blog<svg aria-hidden="true" focusable="false" class="uh-ext" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg><span class="uh-sr"> (opens in a new tab)</span></a><a class="uh-btn-nav" href="/panel-check">Free panel check</a><a class="uh-mobile-book" href="https://meetings-eu1.hubspot.com/ashish-rishi?uuid=b7b6b6ed-3b13-4c64-aa8d-d759c67698db" target="_blank" rel="noopener">Book 30 minutes with Ashish<span class="uh-sr"> (opens in a new tab)</span></a></div>
+<main id="main">
+<section class="hero">
+  <div class="wrap">
+    <span class="kicker">Resources</span>
+    <h1>Free guides and research.</h1>
+    <p class="lede">For anyone recruiting or running clinical trials in the UK. Free to download, free to share.</p>
+  </div>
+</section>
+
+<section class="section section--paper" style="padding-top:64px !important">
+  <div class="wrap">
+    <p class="group-label">Downloads</p>
+    <div class="cards">
+      <a class="card" href="https://download.unwritten.health/en-gb/clinical-trial-recruitment-failure" target="_blank" rel="noopener"><span class="kicker">White paper · PDF</span><h2>Health equity risk in clinical research: how to see patient recruitment failure before it happens</h2><p class="muted">A framework for using what patients tell you to spot recruitment problems before the protocol is final, with a checklist for your next protocol review. For clinical operations, medical affairs and patient engagement.</p><span class="more">Download the white paper<span class="uh-sr"> (opens in a new tab)</span></span></a>
+      <a class="card" href="https://download.unwritten.health/uk-inclusion-diversity-plan-guide" target="_blank" rel="noopener"><span class="kicker">Guide · UK · PDF</span><h2>UK Inclusion &amp; Diversity Plan Guide</h2><p class="muted">What the UK guidance on inclusion and diversity plans asks for, section by section, with worked examples. It's guidance, not a legal requirement. For regulatory affairs, clinical operations and medical affairs.</p><span class="more">Download the guide<span class="uh-sr"> (opens in a new tab)</span></span></a>
+      <a class="card" href="https://frequencyofexclusion.com" target="_blank" rel="noopener"><span class="kicker">Report · UK panel</span><h2>The Frequency of Exclusion</h2><p class="muted">What 1,204 people from underrepresented UK communities told us about clinical research, healthcare avoidance, and what would change their minds about taking part.</p><span class="more">Explore the report<span class="uh-sr"> (opens in a new tab)</span></span></a>
     </div>
+    <p class="group-label">On this site</p>
+    <div class="cards">
+      <a class="card" href="/sample-report"><span class="kicker">Worked example</span><h3>Sample patient involvement report</h3><p class="muted">An invented eczema clinical trial: who took part, what they raised, and what changed.</p><span class="more">See the sample</span></a>
+      <a class="card" href="/clinical-trial-recruitment#log"><span class="kicker">Illustrative example</span><h3>The weekly referral report</h3><p class="muted">What a week of follow-up looks like: the patient's account, the site's note, and why anyone stopped.</p><span class="more">See the example</span></a>
+      <a class="card" href="/questions"><span class="kicker">Questions</span><h3>Involvement and recruitment, answered</h3><p class="muted">From the IRAS public involvement questions to what happens if the site doesn't call.</p><span class="more">Read the answers</span></a>
+      <a class="card" href="/exclusion-debt"><span class="kicker">Idea</span><h3>Exclusion debt</h3><p class="muted">What it costs to leave people out of clinical research.</p><span class="more">Read more</span></a>
+    </div>
+    <div class="callout" style="margin-top:36px"><p>Want new guides when they land? <a href="https://exclusiondebt.substack.com/subscribe" target="_blank" rel="noopener">Subscribe to Exclusion Debt<span class="uh-sr"> (opens in a new tab)</span></a>, our founder's newsletter.</p></div>
   </div>
-
-  <div class="res-grid">
-
-    <article class="res-card featured">
-      <span class="res-tag">White paper</span>
-      <h2>Health equity risk in clinical research: How to see patient recruitment failure before it happens</h2>
-      <p>A structured framework for using lived-experience data to de-risk protocols, spotting the recruitment failures that derail timelines and budgets before they happen, and the tools to apply it to your next protocol review.</p>
-      <div class="res-meta">
-        <span>PDF · Free download</span>
-        <span>For clinical operations, medical affairs &amp; patient engagement</span>
-      </div>
-      <div class="res-actions">
-        <a href="https://download.unwritten.health/en-gb/clinical-trial-recruitment-failure" class="res-btn-primary">Download the Playbook</a>
-      </div>
-    </article>
-
-    <article class="res-card standard">
-      <span class="res-tag">Guide · UK</span>
-      <h2>UK Inclusion &amp; Diversity Plan Guide</h2>
-      <p>What the MHRA Inclusion and Diversity Plan asks for in practice, section by section, with worked examples for how to answer each requirement.</p>
-      <div class="res-meta">
-        <span>PDF · Free download</span>
-        <span>For regulatory affairs, clinical operations &amp; medical affairs</span>
-      </div>
-      <div class="res-actions">
-        <a href="https://download.unwritten.health/uk-inclusion-diversity-plan-guide" class="res-btn-primary" target="_blank" rel="noopener">Download the guide</a>
-      </div>
-    </article>
-
-    <article class="res-card standard">
-      <span class="res-tag">Guide · Germany</span>
-      <h2>Germany Patient Evidence Guide</h2>
-      <p>Patient-evidence expectations for G-BA reappraisals and the German JCA pathway, with the specific PICO patient-input dimensions German assessors ask about.</p>
-      <div class="res-meta">
-        <span>PDF · Free download</span>
-        <span>For market access, HEOR &amp; medical affairs</span>
-      </div>
-      <div class="res-actions">
-        <a href="https://download.unwritten.health/germany-patient-evidence-guide-unwritten-health" class="res-btn-primary" target="_blank" rel="noopener">Download the guide</a>
-      </div>
-    </article>
-
-    <article class="res-card standard">
-      <span class="res-tag">Report · Panel insights</span>
-      <h2>The Frequency of Exclusion</h2>
-      <p>Insights direct from our UK panel on where healthcare exclusion actually shows up, and how often. An interactive report built from Equity Engine data.</p>
-      <div class="res-meta">
-        <span>Web · Free access</span>
-        <span>For everyone thinking about who is not in the data</span>
-      </div>
-      <div class="res-actions">
-        <a href="https://thefrequencyofexclusion.netlify.app/" class="res-btn-primary" target="_blank" rel="noopener">Explore the report</a>
-      </div>
-    </article>
-
-  </div>
-
-  <div class="res-empty">
-    <div class="res-empty-inner">More white papers and research are on the way. Want to be notified when the next one lands? <a href="https://exclusiondebt.substack.com/subscribe" target="_blank" rel="noopener">Subscribe to Exclusion Debt →</a></div>
-  </div>
-
-  <!-- UH:FOOTER -->
-<section class="uh-cta" aria-labelledby="uh-cta-title"><div class="uh-cta-inner"><div><h2 id="uh-cta-title">Free panel check.</h2><p>Tell us who your clinical trial or product is for. We'll tell you, the same day, how many people like that we hold and how they break down.</p></div><div class="uh-cta-actions"><a class="uh-btn-light" href="/panel-check">Check the panel</a><a class="uh-cta-link" href="https://meetings-eu1.hubspot.com/ashish-rishi?uuid=b7b6b6ed-3b13-4c64-aa8d-d759c67698db" target="_blank" rel="noopener">Book 30 minutes with Ashish<span class="uh-sr"> (opens in a new tab)</span></a></div></div></section>
-<div class="uh-footer" role="contentinfo"><div class="uh-footer-inner"><div class="uh-footer-top"><div><a class="uh-footer-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="150" height="26"></a><p class="uh-footer-tag">Unwritten Health. Patient involvement, matched to the people who have the condition.</p><p class="uh-footer-note">UK company.</p></div><div class="uh-footer-links"><a href="/how-it-works">How it works</a><a href="/patient-panel">The panel</a><a href="/patient-involvement-report">The report</a><a href="/sample-report">Sample report</a><a href="/who-its-for">Who it's for</a><a href="/case-study-phase-ii-biotech">Case study</a><a href="/trust">Trust</a><a href="/about">About</a><a href="/questions">Questions</a><a href="https://substack.com/@exclusiondebt" target="_blank" rel="noopener">Blog<span class="uh-sr"> (opens in a new tab)</span></a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/contact">Contact</a></div></div><div class="uh-footer-legal"><span>Unwritten Health · Company number 16561594 · First Floor, Swan Buildings, 20 Swan Street, Manchester, England, M4 5JW</span><a href="#cookie-settings" onclick="if(window.openCookieSettings){window.openCookieSettings();}return false;">Cookie settings</a></div></div></div>
-<a class="uh-sticky" href="/panel-check">Check the panel</a>
-<!-- /UH:FOOTER -->
-
+</section>
+</main>
+<section class="uh-cta" aria-labelledby="uh-cta-title"><div class="uh-cta-inner"><div><h2 id="uh-cta-title">How many patients like yours could you involve?</h2><p>Find out with a free panel check. Tell us who your clinical trial or product is for, and we'll reply the same working day with how many people like that we hold, and how they break down.</p></div><div class="uh-cta-actions"><a class="uh-btn-light" href="/panel-check">Free panel check</a><a class="uh-cta-link" href="https://meetings-eu1.hubspot.com/ashish-rishi?uuid=b7b6b6ed-3b13-4c64-aa8d-d759c67698db" target="_blank" rel="noopener">Book 30 minutes with Ashish<span class="uh-sr"> (opens in a new tab)</span></a></div></div></section>
+<div class="uh-footer" role="contentinfo"><div class="uh-footer-inner"><div class="uh-footer-top"><div><a class="uh-footer-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="150" height="26"></a><p class="uh-footer-tag">The UK patient panel that stays with the patient.</p><p class="uh-footer-note">UK company.</p></div><div class="uh-footer-links"><div class="uh-footer-col"><p class="uh-footer-h">Services</p><a href="/patient-involvement">Patient involvement</a><a href="/clinical-trial-recruitment">Trial recruitment</a><a href="/patient-panel">The panel</a><a href="/patient-involvement-report">The report</a><a href="/sample-report">Sample report</a><a href="/panel-check">Free panel check</a><a href="/tell-us-about-your-trial">Tell us about your trial</a></div><div class="uh-footer-col"><p class="uh-footer-h">Who it&#x27;s for</p><a href="/pharma">Pharma</a><a href="/biotech">Biotech</a><a href="/academic-research">Academic research</a><a href="/medtech">Medtech</a><a href="/digital-health">Digital health</a><a href="/nhs">NHS</a><a href="/suppliers">Suppliers to the NHS</a></div><div class="uh-footer-col"><p class="uh-footer-h">Learn</p><a href="/questions">Questions</a><a href="/case-study-phase-ii-biotech">Case study</a><a href="/exclusion-debt">Exclusion debt</a><a href="/equity-engine">Equity Engine</a><a href="/resources">Resources</a><a href="https://substack.com/@exclusiondebt" target="_blank" rel="noopener">Blog<span class="uh-sr"> (opens in a new tab)</span></a></div><div class="uh-footer-col"><p class="uh-footer-h">Company</p><a href="/about">About</a><a href="/trust">Trust</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/accessibility">Accessibility</a></div></div></div><div class="uh-footer-legal"><span>Unwritten Health · Company number 16561594 · First Floor, Swan Buildings, 20 Swan Street, Manchester, England, M4 5JW</span><a href="#cookie-settings" onclick="if(window.openCookieSettings){window.openCookieSettings();}return false;">Cookie settings</a></div></div></div>
+<a class="uh-sticky" href="/panel-check">Free panel check</a>
 </body>
 </html>
