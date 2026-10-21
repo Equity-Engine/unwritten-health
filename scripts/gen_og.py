@@ -74,12 +74,13 @@ def main():
     tver = hashlib.sha1(template.encode()).hexdigest()[:10]
     old = json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {}
     cards = {}
-    for path in sorted(SITE.glob('*.html')):
-        if path.stem in SKIP:
+    for path in sorted(SITE.rglob('*.html')):
+        slug = path.relative_to(SITE).with_suffix('').as_posix()
+        if slug in SKIP or slug.startswith('images/'):
             continue
-        c = OVERRIDES.get(path.stem) or page_card(path)
+        c = OVERRIDES.get(slug) or page_card(path)
         if c:
-            cards[path.stem] = c
+            cards[slug] = c
     cards['_default'] = dict(cards['index'])  # site-wide fallback, also written to images/og-image.jpg
     tmp = Path(tempfile.mkdtemp())
     (tmp / 'card.html').write_text(template, encoding='utf-8')
@@ -100,8 +101,8 @@ def main():
                 i = json.loads(info.read_text()); info.unlink()
                 if i.get('overflow'):
                     print('WARNING: title too long for its card:', Path(j['out']).name)
-    for stale in OUT.glob('*.jpg'):
-        if stale.stem not in cards:
+    for stale in OUT.rglob('*.jpg'):
+        if stale.relative_to(OUT).with_suffix('').as_posix() not in cards:
             stale.unlink()
     MANIFEST.write_text(json.dumps(new, indent=1, sort_keys=True) + '\n')
     print(f'{len(cards) - 1} page cards, {len(jobs)} rendered')

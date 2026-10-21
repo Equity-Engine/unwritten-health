@@ -75,7 +75,7 @@ FOOTER_COLUMNS = [
     ]),
     ("Who it's for", ROLES + [('Sponsors outside the UK', '/clinical-trials-in-the-uk'), ('NHS teams', '/nhs'), ('Suppliers to the NHS', '/suppliers')]),
     ('Learn', [
-        ('Our members', '/patient-panel'), ('Questions', '/questions'), ('Case study', '/case-study-phase-ii-biotech'),
+        ('Our members', '/patient-panel'), ('Conditions', '/conditions/'), ('Guides', '/guides/'), ('Questions', '/questions'), ('Case study', '/case-study-phase-ii-biotech'),
         ('Exclusion debt', '/exclusion-debt'), ('Equity Engine', '/equity-engine'), ('Resources', '/resources'),
         ('Press', '/press'), ('Blog', BLOG),
     ]),
@@ -152,6 +152,15 @@ ICON_LINKS = (
 )
 # Kept pages that use their own preview image instead of a generated card
 KEPT_OG_IMAGE = {'blog-5-frequency-of-exclusion': '/images/frequency-of-exclusion-cover.jpg'}
+
+
+def page_url(slug):
+    """Public URL for a page slug: 'index' is the home page, 'conditions/index' is /conditions/."""
+    if slug == 'index':
+        return BASE + '/'
+    if slug.endswith('/index'):
+        return BASE + '/' + slug[:-len('index')]
+    return BASE + '/' + slug
 
 
 def og_tags(slug, alt):
@@ -255,7 +264,7 @@ def footer_html(sticky=True):
 
 def head_html(m):
     slug = m['slug']
-    url = BASE + ('/' if slug == 'index' else '/' + slug)
+    url = page_url(slug)
     title = html.escape(m['title'])
     desc = html.escape(m['description'])
     schema = [ORG] + m.get('schema', [])
@@ -315,7 +324,9 @@ def build_pages():
             + (cta_html() + '\n' if meta.get('cta', True) else '')
             + footer_html(meta.get('sticky', True)) + '\n</body>\n</html>\n'
         )
-        (SITE / f"{meta['slug']}.html").write_text(page, encoding='utf-8')
+        out = SITE / f"{meta['slug']}.html"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(page, encoding='utf-8')
         built.append(meta)
     return built
 
@@ -389,7 +400,7 @@ def write_sitemap(built):
     for m in built:
         if m.get('sitemap', True) is False:
             continue
-        loc = BASE + ('/' if m['slug'] == 'index' else '/' + m['slug'])
+        loc = page_url(m['slug'])
         urls.append((loc, m.get('priority', '0.8'), m.get('changefreq', 'monthly')))
     for name in KEPT_PAGES:
         urls.append((f'{BASE}/{name}', '0.4' if name in ('privacy', 'terms', 'accessibility') else '0.5', 'monthly'))
