@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 AI_HONEST = ("Our AI is built only on what our members have told us: no synthetic patients and no outside data filling the gaps. "
              "Every answer links to the members' own answers it came from, and shows who gave them, so you can check it rather than trust it. "
-             "It runs under our own framework that sets what it may and may not do.")
+             "It runs under Footnote, our own framework that sets what it may and may not do.")
 
 CT = [
     ("recruitment-across-uk", "Do you do clinical trial recruitment across the UK?", ["Yes. 13,050 people across the UK living with long-term conditions have joined us (and growing daily), profiled to postcode district, so before you start we can tell you how many people with the condition we hold near your sites. We work with sponsors, CROs with UK sites and academic clinical trials units. Members who pass your screening questions and say yes are referred to the site, and we follow every referral through to randomisation."], None),
@@ -47,6 +47,7 @@ LINKS = {
     "our members page says so": '<a href="/patient-panel">our members page</a> says so',
     "You get one line per patient each week": 'You get <a href="/clinical-trial-recruitment#log">one line per patient each week</a>',
     "Ask our data:": '<a href="/ask-our-data">Ask our data</a>:',
+    "It runs under Footnote,": 'It runs under <a href="/ask-our-data#footnote">Footnote</a>,',
     "More for sponsors outside the UK.": '<a href="/clinical-trials-in-the-uk">More for sponsors outside the UK.</a>',
     "With a free panel count,": 'With a <a href="/panel-count">free panel count</a>,',
     "the incidence among our members": '<a href="/market-research-agencies">the incidence among our members</a>',
