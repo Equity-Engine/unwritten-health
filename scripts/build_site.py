@@ -382,6 +382,10 @@ def chrome_kept(name):
     t = re.sub(r'\n?<!-- UH:HEAD -->.*?<!-- /UH:HEAD -->', '', t, flags=re.S)
     t = re.sub(r'\n?[ \t]*<link[^>]+rel="(?:shortcut icon|icon|apple-touch-icon|manifest)"[^>]*>', '', t)
     t = re.sub(r'\n?[ \t]*<meta[^>]+(?:property="og:image[^"]*"|name="twitter:(?:image[^"]*|card)")[^>]*>', '', t)
+    # Canonical always points at the page's own address (three old posts pointed at addresses that never existed)
+    t, nc = re.subn(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{page_url(name)}"', t, count=1)
+    if not nc:
+        t = t.replace('</head>', f'<link rel="canonical" href="{page_url(name)}">\n</head>', 1)
     tm = re.search(r'<title>(.*?)</title>', t, re.S)
     alt = html.unescape(tm.group(1)).replace(' | Unwritten Health', '').strip() if tm else 'Unwritten Health'
     t = t.replace('</head>', '<!-- UH:HEAD -->\n' + ICON_LINKS + '\n' + og_tags(name, alt) + '\n<!-- /UH:HEAD -->\n</head>', 1)
