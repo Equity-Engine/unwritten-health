@@ -1,2 +1,12 @@
 /site.webmanifest
   Content-Type: application/manifest+json
+
+# Verification file and internal tool: reachable, but never in search results
+/65f13a4c20d2a636383f5a360a5c3b57
+  X-Robots-Tag: noindex
+/65f13a4c20d2a636383f5a360a5c3b57.html
+  X-Robots-Tag: noindex
+/admin-report
+  X-Robots-Tag: noindex
+/admin-report.html
+  X-Robots-Tag: noindex
