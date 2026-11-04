@@ -69,7 +69,7 @@ NAV = [
     ('about', 'About', '/about', None),
     ('insights', 'Insights', '/exclusion-debt-report/', [
         ('Research', [('The Exclusion Debt Report', '/exclusion-debt-report/')]),
-        ('Read', [('Guides', '/guides/'), ('Questions', '/questions'), ('Resources', '/resources')]),
+        ('Read', [('Blog', '/blog'), ('Guides', '/guides/'), ('Questions', '/questions'), ('Resources', '/resources')]),
     ]),
 ]
 FOOTER_COLUMNS = [
@@ -81,7 +81,7 @@ FOOTER_COLUMNS = [
     ('Learn', [
         ('Our members', '/patient-panel'), ('Conditions', '/conditions/'), ('Guides', '/guides/'), ('Exclusion Debt Report', '/exclusion-debt-report/'), ('Questions', '/questions'), ('Case study', '/case-study-phase-ii-biotech'),
         ('Exclusion debt', '/exclusion-debt'), ('Equity Engine', '/equity-engine'), ('Resources', '/resources'),
-        ('Press', '/press'), ('Blog', BLOG),
+        ('Press', '/press'), ('Blog', '/blog'),
     ]),
     ('Company', [
         ('About', '/about'), ('Trust', '/trust'), ('Contact', '/contact'), ('Privacy', '/privacy'),
