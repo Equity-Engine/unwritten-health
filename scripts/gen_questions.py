@@ -79,7 +79,7 @@ schema = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
     {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": " ".join(a)}} for _, q, a, _ in CT + PX + INV]}
 meta = {"slug": "questions", "title": "Clinical trials in the UK and patient recruitment, answered | Unwritten Health",
         "description": "Running a clinical trial in the UK: set-up times, the 2026 regulations, feasibility, patient recruitment, what members agree to, and the IRAS questions.",
-        "nav": "", "priority": "0.8",
+        "nav": "insights", "priority": "0.8",
         "keywords": "clinical trial recruitment UK, patient recruitment UK, clinical trials in the UK, UK clinical trial set-up time, UK clinical trial regulations 2026, clinical trial feasibility UK, patient experience data, IRAS public involvement, PPI questions",
         "schema": [schema]}
 tocs = ''.join('<p class="group-label"' + (' style="margin-top:30px"' if k == 0 else '') + '>' + g + '</p>'

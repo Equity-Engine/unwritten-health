@@ -67,6 +67,10 @@ NAV = [
     ]),
     ('trust', 'Trust', '/trust', None),
     ('about', 'About', '/about', None),
+    ('insights', 'Insights', '/exclusion-debt-report/', [
+        ('Research', [('The Exclusion Debt Report', '/exclusion-debt-report/')]),
+        ('Read', [('Guides', '/guides/'), ('Questions', '/questions'), ('Resources', '/resources')]),
+    ]),
 ]
 FOOTER_COLUMNS = [
     ('What we do', STAGES + [
@@ -197,7 +201,6 @@ def link(label, href, cls=''):
 
 def header_html(active=None):
     chevron = icon('chevron-down')
-    arrow = icon('arrow-up-right', 'uh-ext')
     links, mobile = [], []
     for key, label, href, groups in NAV:
         cur = ' aria-current="page"' if key == active else ''
@@ -214,8 +217,6 @@ def header_html(active=None):
         else:
             links.append(f'<a href="{href}"{cur}>{html.escape(label)}</a>')
             mobile.append(f'<a href="{href}">{html.escape(label)}</a>')
-    links.append(f'<a href="{BLOG}" target="_blank" rel="noopener">Blog{arrow}{EXT}</a>')
-    mobile.append(f'<a href="{BLOG}" target="_blank" rel="noopener">Blog{arrow}{EXT}</a>')
     mobile.append('<a class="uh-btn-nav" href="/panel-count">Free panel count</a>')
     mobile.append(f'<a class="uh-mobile-book" href="{BOOK}" target="_blank" rel="noopener">Book 30 minutes with Ashish{EXT}</a>')
     return (
