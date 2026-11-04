@@ -75,7 +75,7 @@ FOOTER_COLUMNS = [
     ]),
     ("Who it's for", ROLES + [('Sponsors outside the UK', '/clinical-trials-in-the-uk'), ('NHS teams', '/nhs'), ('Suppliers to the NHS', '/suppliers')]),
     ('Learn', [
-        ('Our members', '/patient-panel'), ('Conditions', '/conditions/'), ('Guides', '/guides/'), ('Questions', '/questions'), ('Case study', '/case-study-phase-ii-biotech'),
+        ('Our members', '/patient-panel'), ('Conditions', '/conditions/'), ('Guides', '/guides/'), ('Exclusion Debt Report', '/exclusion-debt-report/'), ('Questions', '/questions'), ('Case study', '/case-study-phase-ii-biotech'),
         ('Exclusion debt', '/exclusion-debt'), ('Equity Engine', '/equity-engine'), ('Resources', '/resources'),
         ('Press', '/press'), ('Blog', BLOG),
     ]),

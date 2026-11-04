@@ -14,7 +14,10 @@ DESCRIPTOR = 'Patient experience data and patient recruitment, UK'
 SKIP = {'65f13a4c20d2a636383f5a360a5c3b57', 'admin-report', 'blog-5-frequency-of-exclusion'}
 # The home H1 is the descriptor, which the card's footer bar already shows, so it leads with the first promise
 OVERRIDES = {'index': {'kicker': 'UK today, Europe next',
-                       'title': "Ask the people with lived experience of the condition, before it's final."}}
+                       'title': "Ask the people with lived experience of the condition, before it's final."},
+             # Report issues: the H1 is just the disease, so the card carries the issue's line
+             'exclusion-debt-report/issue-1-lung-cancer': {'kicker': 'The Exclusion Debt Report · Issue 1 · Lung cancer',
+                       'title': 'The deadliest cancer in Europe is fought with evidence built around the patients it is least likely to kill.'}}
 KICKER_FALLBACK = {'blog': 'Blog', 'contact': 'Contact', 'privacy': 'Privacy', 'terms': 'Terms', 'accessibility': 'Accessibility'}
 
 TEMPLATE = '''<!doctype html><html><head><meta charset="utf-8">

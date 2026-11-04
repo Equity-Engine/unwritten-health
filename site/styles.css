@@ -435,3 +435,17 @@ table.log td:nth-child(2) { font-style: italic; }
 .tiles--5 .tile { padding: 22px 18px; }
 @media (max-width: 1000px) { .tiles--5 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 760px) { .tiles--5 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* The Exclusion Debt Report: issue hero and issue list */
+.report-dek { font-family: var(--uh-head); font-style: italic; font-size: clamp(1.3rem, 2.3vw, 1.75rem); line-height: 1.32; color: var(--uh-ink); max-width: 640px; margin: 4px 0 20px; }
+.report-cover { display: block; justify-self: center; width: min(360px, 100%); }
+.report-cover img { display: block; width: 100%; height: auto; border-radius: 6px; box-shadow: 0 22px 48px rgba(43,43,47,0.18); transition: transform .2s; }
+.report-cover:hover img { transform: translateY(-4px); }
+.issues { display: grid; gap: 22px; margin-top: 24px; }
+.issue { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 28px; align-items: start; background: var(--uh-paper); border: 1px solid var(--uh-line); border-radius: 18px; padding: 24px; }
+.issue-cover img { display: block; width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 24px rgba(43,43,47,0.14); }
+.issue h3 { font-size: 1.6rem; margin: 6px 0 10px; }
+.issue h3 a { color: var(--uh-ink); text-decoration: none; }
+.issue-links { margin-bottom: 0; font-weight: 600; }
+@media (max-width: 920px) { .report-cover { width: min(240px, 66%); justify-self: start; } }
+@media (max-width: 600px) { .issue { grid-template-columns: 96px minmax(0, 1fr); gap: 18px; padding: 18px; } .issue h3 { font-size: 1.3rem; } }

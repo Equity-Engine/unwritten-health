@@ -115,6 +115,12 @@ FACTS = {
     ],
 }
 
+# Our Exclusion Debt Report issues, by condition: (title, url, one line)
+REPORTS = {
+    'lung-cancer': ('The Exclusion Debt Report, Issue 1: Lung cancer', '/exclusion-debt-report/issue-1-lung-cancer',
+                    'Seven ways lung cancer evidence across Europe leaves patients out, and the standard that would close the gap.'),
+}
+
 # An example question per condition, and the kind of answer it gets
 ASK = 'ask'      # ask our data, then members live
 REVIEW = 'review'  # members review a document on screen
@@ -174,6 +180,17 @@ def page(c):
   <div class="wrap">
     <h2 id="uk">{name} in the UK</h2>
     <div class="evidence">{cards}</div>
+  </div>
+</section>
+'''
+    rep = REPORTS.get(slug)
+    if rep:
+        uk += f'''
+<section class="section section--sand" aria-labelledby="report">
+  <div class="wrap prose">
+    <span class="kicker">Our report</span>
+    <h2 id="report"><a href="{rep[1]}">{html.escape(rep[0])}</a></h2>
+    <p>{html.escape(rep[2])} <a href="{rep[1]}">Read the report</a></p>
   </div>
 </section>
 '''
