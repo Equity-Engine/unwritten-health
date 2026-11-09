@@ -16,6 +16,12 @@
 # in Netlify and its DNS record points at Netlify.
 https://dispatches.unwritten.health/*    https://unwritten.health/blog    301!
 
+# The cookie banner linked to a relative "privacy.html", which broke on pages in
+# folders (e.g. /conditions/privacy.html). Fixed in analytics.js (9 Nov 2026);
+# these catch the addresses Google already found.
+/:folder/privacy.html    /privacy    301
+/:folder/privacy         /privacy    301
+
 # BEGIN build_site.py: retired pages (edit RETIRED in scripts/build_site.py)
 /solutions    /who-its-for    301
 /solutions.html    /who-its-for    301

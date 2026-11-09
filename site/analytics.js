@@ -101,7 +101,7 @@
 
     var text = document.createElement('span');
     text.style.cssText = 'margin:0;font-size:0.82rem;color:rgba(255,255,255,0.85);flex:1 1 auto;min-width:0;';
-    text.innerHTML = 'Analytics cookies? <a href="privacy.html" style="color:#b8d0c6;text-decoration:underline;">Privacy</a>';
+    text.innerHTML = 'Analytics cookies? <a href="/privacy" style="color:#b8d0c6;text-decoration:underline;">Privacy</a>';
 
     var btns = document.createElement('div');
     btns.style.cssText = 'display:flex;gap:6px;flex:0 0 auto;';
