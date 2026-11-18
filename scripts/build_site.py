@@ -68,7 +68,7 @@ NAV = [
     ('trust', 'Trust', '/trust', None),
     ('about', 'About', '/about', None),
     ('insights', 'Insights', '/exclusion-debt-report/', [
-        ('Research', [('The Exclusion Debt Report', '/exclusion-debt-report/')]),
+        ('Research', [('The Exclusion Debt Report', '/exclusion-debt-report/'), ('Case studies', '/case-studies')]),
         ('Read', [('Blog', '/blog'), ('Guides', '/guides/'), ('Questions', '/questions'), ('Resources', '/resources')]),
     ]),
 ]
@@ -79,7 +79,7 @@ FOOTER_COLUMNS = [
     ]),
     ("Who it's for", ROLES + [('Sponsors outside the UK', '/clinical-trials-in-the-uk'), ('NHS teams', '/nhs'), ('Suppliers to the NHS', '/suppliers')]),
     ('Learn', [
-        ('Our members', '/patient-panel'), ('Conditions', '/conditions/'), ('Guides', '/guides/'), ('Exclusion Debt Report', '/exclusion-debt-report/'), ('Questions', '/questions'), ('Case study', '/case-study-phase-ii-biotech'),
+        ('Our members', '/patient-panel'), ('Conditions', '/conditions/'), ('Guides', '/guides/'), ('Exclusion Debt Report', '/exclusion-debt-report/'), ('Questions', '/questions'), ('Case studies', '/case-studies'),
         ('Exclusion debt', '/exclusion-debt'), ('Equity Engine', '/equity-engine'), ('Resources', '/resources'),
         ('Press', '/press'), ('Blog', '/blog'),
     ]),

@@ -121,6 +121,12 @@ REPORTS = {
                     'Seven ways lung cancer evidence across Europe leaves patients out, and the standard that would close the gap.'),
 }
 
+# Worked scenarios: slug -> (title, url, line)
+SCENARIOS = {
+    'asthma': ('Worked scenario: a phase 2 asthma clinical trial', '/asthma-recruitment-worked-scenario',
+               'Six UK sites, 40 participants and five months, worked through from the count to the last referral, with every assumption stated.'),
+}
+
 # An example question per condition, and the kind of answer it gets
 ASK = 'ask'      # ask our data, then members live
 REVIEW = 'review'  # members review a document on screen
@@ -191,6 +197,17 @@ def page(c):
     <span class="kicker">Our report</span>
     <h2 id="report"><a href="{rep[1]}">{html.escape(rep[0])}</a></h2>
     <p>{html.escape(rep[2])} <a href="{rep[1]}">Read the report</a></p>
+  </div>
+</section>
+'''
+    sc = SCENARIOS.get(slug)
+    if sc:
+        uk += f'''
+<section class="section section--sand" aria-labelledby="scenario">
+  <div class="wrap prose">
+    <span class="kicker">Worked scenario</span>
+    <h2 id="scenario"><a href="{sc[1]}">{html.escape(sc[0])}</a></h2>
+    <p>{html.escape(sc[2])} <a href="{sc[1]}">Read the worked scenario</a></p>
   </div>
 </section>
 '''
