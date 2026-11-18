@@ -450,7 +450,7 @@ table.log td:nth-child(2) { font-style: italic; }
 @media (max-width: 920px) { .report-cover { width: min(240px, 66%); justify-self: start; } }
 @media (max-width: 600px) { .issue { grid-template-columns: 96px minmax(0, 1fr); gap: 18px; padding: 18px; } .issue h3 { font-size: 1.3rem; } }
 
-/* Worked scenarios: the "put your own rate in" field inside a model table */
+/* Case studies: the "put your own rate in" field inside a model table */
 .rate-input { width: 5.2em; font: 700 0.93rem/1.2 var(--uh-body); color: var(--uh-ink); background: #fff; border: 1.5px solid rgba(43,43,47,0.25); border-radius: 8px; padding: 4px 6px; margin: 0 2px; }
 .rate-input:focus { outline: none; border-color: var(--uh-sage-dark); box-shadow: 0 0 0 3px rgba(91,129,112,0.18); }
 table.data output { font: inherit; }

@@ -121,10 +121,10 @@ REPORTS = {
                     'Seven ways lung cancer evidence across Europe leaves patients out, and the standard that would close the gap.'),
 }
 
-# Worked scenarios: slug -> (title, url, line)
-SCENARIOS = {
-    'asthma': ('Worked scenario: a phase 2 asthma clinical trial', '/asthma-recruitment-worked-scenario',
-               'Six UK sites, 40 participants and five months, worked through from the count to the last referral, with every assumption stated.'),
+# Case studies: slug -> (title, url, line)
+CASES = {
+    'asthma': ('Our pilot: a phase 2 asthma clinical trial', '/case-study-asthma-recruitment',
+               'Six UK sites, 40 participants and five months: UK recruitment finished on time, with every referral accounted for.'),
 }
 
 # An example question per condition, and the kind of answer it gets
@@ -200,14 +200,14 @@ def page(c):
   </div>
 </section>
 '''
-    sc = SCENARIOS.get(slug)
+    sc = CASES.get(slug)
     if sc:
         uk += f'''
-<section class="section section--sand" aria-labelledby="scenario">
+<section class="section section--sand" aria-labelledby="case-study">
   <div class="wrap prose">
-    <span class="kicker">Worked scenario</span>
-    <h2 id="scenario"><a href="{sc[1]}">{html.escape(sc[0])}</a></h2>
-    <p>{html.escape(sc[2])} <a href="{sc[1]}">Read the worked scenario</a></p>
+    <span class="kicker">Case study</span>
+    <h2 id="case-study"><a href="{sc[1]}">{html.escape(sc[0])}</a></h2>
+    <p>{html.escape(sc[2])} <a href="{sc[1]}">Read the case study</a></p>
   </div>
 </section>
 '''
