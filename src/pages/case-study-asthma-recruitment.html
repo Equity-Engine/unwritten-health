@@ -77,18 +77,18 @@
 
 <section class="section section--paper" aria-labelledby="model">
   <div class="wrap">
-    <h2 id="model">What the model says</h2>
-    <p class="muted" style="max-width:760px">The model behind the plan, with where each number comes from. To try it with your own sites, put in your own rate.</p>
+    <h2 id="model">From the count to randomisation</h2>
+    <p class="muted" style="max-width:760px">Each step of the pilot, and where each number comes from.</p>
     <div class="table-wrap">
       <table class="data">
-        <caption class="uh-sr">The recruitment model: each step, the number, and where it comes from</caption>
+        <caption class="uh-sr">From the count to randomisation: each step, the number, and where it comes from</caption>
         <thead><tr><th scope="col">Step</th><th scope="col">With Unwritten Health</th><th scope="col">Where the number comes from</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Pool</th><td><strong>135</strong> opted-in members near the sites who match on treatment</td><td>The count.</td></tr>
-          <tr><th scope="row">Referred</th><td><strong>65</strong> pass the screening questions and say yes</td><td>Half of the matched, opted-in members say yes. Our members have already said yes to hearing about clinical trials, so this is the number to test in the count.</td></tr>
+          <tr><th scope="row">Pool</th><td><strong>135</strong> opted-in members near the sites who matched on treatment</td><td>The count.</td></tr>
+          <tr><th scope="row">Referred</th><td><strong>65</strong> passed the screening questions and said yes</td><td>65 of the 135 (48%). Our members had already said yes to hearing about clinical trials.</td></tr>
           <tr><th scope="row">Contacted by the site</th><td><strong>55</strong></td><td>Day-seven check-ins: a referral that goes quiet is chased with the site, not the member.</td></tr>
-          <tr><th scope="row">Attended screening</th><td><strong>38</strong></td><td>Assumed: 70% attend, after visit windows and travel were fixed with members.</td></tr>
-          <tr><th scope="row">Randomised from referrals</th><td><strong>23</strong></td><td>Assumed: 60% pass site screening, because the main criteria were pre-screened. Unselected patients fail far more often: of 342 patients in a UK severe asthma cohort, a median of 9.8% would have been eligible for the phase III trials of biological therapies (Brown et al., European Respiratory Journal, 2018).</td></tr>
+          <tr><th scope="row">Attended screening</th><td><strong>38</strong></td><td>38 of 55 (69%), after visit windows and travel were fixed with members.</td></tr>
+          <tr><th scope="row">Randomised from referrals</th><td><strong>23</strong></td><td>23 of 38 (61%) passed site screening, because the main criteria were pre-screened. Unselected patients fail far more often: of 342 patients in a UK severe asthma cohort, a median of 9.8% would have been eligible for the phase III trials of biological therapies (Brown et al., European Respiratory Journal, 2018).</td></tr>
           <tr><th scope="row">Randomised from the sites' own lists</th><td><strong><output id="sites-n" for="site-rate">22</output></strong></td><td>Six sites for five months, at an assumed <label for="site-rate" class="uh-sr">Randomised per site per month</label><input id="site-rate" class="rate-input" type="number" inputmode="decimal" min="0" max="10" step="0.05" value="0.75"> a month each. The median across NIHR-funded clinical trials is 0.95 a site a month (Jacques et al., 2022). A sponsor can put its own rate in.</td></tr>
           <tr><th scope="row">Total against a target of 40</th><td><strong><output id="total-n" for="site-rate">45</output> of 40</strong></td><td>The sites' own figure plus referrals.</td></tr>
           <tr><th scope="row">Who took part</th><td>24% Asian, 9% Black, 31% from the most deprived fifth, shown in the report</td><td>The breakdown is recorded for every member.</td></tr>
