@@ -40,6 +40,8 @@ BLOG = 'https://substack.com/@exclusiondebt'
 
 # The descriptor (positioning bible, 19 November 2026). It sits under the name everywhere.
 DESCRIPTOR = 'A clinical trial recruitment and patient engagement company, building longitudinal data sets from under-represented communities'
+# Under the logo (header, footer, preview cards): the short form, Ashish 19 November 2026
+TAGLINE = 'Clinical trial recruitment and patient engagement'
 COUNTRIES = 'Germany, France, Spain, the Netherlands, Portugal, Ireland and Poland'
 FEASIBILITY = ('Free patient feasibility', '/patient-feasibility')
 
@@ -238,7 +240,7 @@ def header_html(active=None):
         '<a class="uh-skip" href="#main">Skip to content</a>\n'
         '<header class="uh-header"><div class="uh-header-inner">'
         '<a class="uh-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="160" height="28">'
-        f'<span class="uh-descriptor">{DESCRIPTOR}</span></a>'
+        f'<span class="uh-descriptor">{TAGLINE}</span></a>'
         f'<div class="uh-nav" role="navigation" aria-label="Main">{"".join(links)}</div>'
         f'<a class="uh-btn-nav" href="{FEASIBILITY[1]}">{FEASIBILITY[0]}</a>'
         '<button class="uh-burger" type="button" aria-expanded="false" aria-controls="uh-mobile" aria-label="Open menu"><span></span><span></span><span></span></button>'
@@ -266,7 +268,7 @@ def footer_html(sticky=True):
         '<div class="uh-footer" role="contentinfo"><div class="uh-footer-inner">'
         '<div class="uh-footer-top"><div>'
         '<a class="uh-footer-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="150" height="26"></a>'
-        f'<p class="uh-footer-tag">{DESCRIPTOR}.</p>'
+        f'<p class="uh-footer-tag">{TAGLINE}.</p>'
         f'<p class="uh-footer-note">15,000 people in the UK, and growing daily. Expanding into {COUNTRIES}.</p>'
         f'</div><div class="uh-footer-links">{cols}</div></div>'
         '<div class="uh-footer-legal"><span>Unwritten Health · Company number 16561594 · First Floor, Swan Buildings, 20 Swan Street, Manchester, England, M4 5JW</span>'
