@@ -455,3 +455,7 @@ table.log td:nth-child(2) { font-style: italic; }
 .rate-input:focus { outline: none; border-color: var(--uh-sage-dark); box-shadow: 0 0 0 3px rgba(91,129,112,0.18); }
 table.data output { font: inherit; }
 .step h3 { font-size: clamp(1.3rem, 2.1vw, 1.65rem); margin-bottom: 12px; }
+
+/* Home hero: the descriptor sits directly under the headline (positioning bible, 19 November 2026) */
+.hero-descriptor { font-size: 1.05rem; line-height: 1.5; color: var(--uh-ink); max-width: 760px; margin: 18px 0 6px; }
+.hero-descriptor strong { color: var(--uh-sage-deep); }

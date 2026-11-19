@@ -44,7 +44,7 @@ FACTS = {
          'Diabetes UK, How many people in the UK have diabetes? (2024-25 data).'),
         ('2 to 4 times', 'People of Asian (including Indian, Pakistani and Bangladeshi), Chinese, Black African and Black Caribbean ethnicity have been found to be two to four times more likely to have diabetes than White people.',
          'Diabetes UK, How many people in the UK have diabetes?'),
-        ('From 25', 'The NHS counts people from a South Asian, Chinese, Black African or Black Caribbean background as at higher risk of type 2 diabetes from age 25, and White people from age 40.',
+        ('From 25', 'The NHS treats people from a South Asian, Chinese, Black African or Black Caribbean background as at higher risk of type 2 diabetes from age 25, and White people from age 40.',
          'NHS, Symptoms of type 2 diabetes and how it is diagnosed, reviewed February 2025.'),
     ],
     'depression': [
@@ -166,9 +166,9 @@ def page(c):
     meta = {
         'slug': f'conditions/{slug}',
         'title': f'{name} patients for UK clinical trials and research | Unwritten Health',
-        'description': f'{n:,} people living with {low} across the UK have joined us. Free same-day panel count, patient involvement and referrals followed through.',
+        'description': f'{n:,} people living with {low} across the UK have joined us. Free same-day patient feasibility, patient engagement and referrals followed through.',
         'nav': 'members', 'priority': '0.8',
-        'keywords': f'{low} patient recruitment UK, {low} clinical trials UK, {low} patients for research, {low} patient involvement, {low} patient experience data',
+        'keywords': f'{low} patient recruitment UK, {low} clinical trials UK, {low} patients for research, {low} patient engagement, {low} patient experience data',
         'schema': [{'@context': 'https://schema.org', '@type': 'WebPage', 'url': url, 'name': f'{name}: UK members for clinical trials and research',
                     'about': {'@type': 'MedicalCondition', 'name': name}, 'publisher': {'@id': 'https://unwritten.health/#organization'}}],
     }
@@ -176,7 +176,7 @@ def page(c):
     if fem == 0:  # a condition only men have: a 0% female tile says nothing
         stats = stats[1:]
     tiles = ''.join(f'<div class="tile"><div class="tile-fig">{v}%</div><div class="tile-cap">{cap}</div></div>' for v, cap in stats)
-    short = f'<div class="callout" style="margin-top:24px"><p><strong>Where we\'re short.</strong> {SHORT[slug]} The <a href="/panel-count">free panel count</a> tells you exactly who we hold today.</p></div>' if slug in SHORT else ''
+    short = ''  # Positioning bible, 19 November 2026: shortfalls are internal; a buyer sees their condition's breakdown in patient feasibility
     facts = FACTS.get(slug, [])
     uk = ''
     if facts:
@@ -217,8 +217,8 @@ def page(c):
   <div class="wrap">
     <span class="kicker">Our members · {html.escape(name)}</span>
     <h1>{n:,} people living with {html.escape(low)} have joined us.</h1>
-    <p class="lede">Across the UK, and growing daily. For clinical trials and research in {html.escape(low)}, we count who we hold near your sites the same day, put your protocol and materials in front of them before they're final, and refer the ones who pass your screening questions and say yes, following every referral through to randomisation.</p>
-    <div class="actions"><a class="btn btn--primary" href="/panel-count">Free panel count</a><a class="btn btn--ghost" href="/tell-us-about-your-trial">Tell us about your clinical trial</a></div>
+    <p class="lede">In the UK, and growing daily, built from the communities clinical trials miss. For clinical trials in {html.escape(low)}, we tell you the same day how many members near your sites match and have already said yes, put your protocol and materials in front of them before the ethics submission, and refer the ones who pass your screening questions and say yes, following every referral through to randomisation.</p>
+    <div class="actions"><a class="btn btn--primary" href="/patient-feasibility">Free patient feasibility</a><a class="btn btn--ghost" href="/tell-us-about-your-trial">Tell us about your clinical trial</a></div>
   </div>
 </section>
 
@@ -226,7 +226,7 @@ def page(c):
   <div class="wrap">
     <h2 id="who">Who our {html.escape(low)} members are</h2>
     <div class="tiles tiles--5" style="margin-top:24px;--n:{len(stats)}">{tiles}</div>
-    <p class="source" style="margin-top:18px">Counted {COUNTED}. Each member is counted once, under the main condition they told us about. Deprivation is worked out from members' postcodes using the Index of Multiple Deprivation; an even spread would put about 20% in the most deprived fifth of areas. Every member has finished onboarding and passed our sign-up checks, and conditions are self-declared, with qualifying questions.</p>
+    <p class="source" style="margin-top:18px">Figures from {COUNTED}. Each member appears once, under the main condition they told us about. Deprivation is worked out from members' postcodes using the Index of Multiple Deprivation; an even spread would put about 20% in the most deprived fifth of areas. Every member has finished onboarding and passed our sign-up checks, and conditions are self-reported, with qualifying questions.</p>
     {short}
   </div>
 </section>
@@ -235,10 +235,10 @@ def page(c):
   <div class="wrap">
     <h2 id="ask">What you can ask for</h2>
     <ol class="olist">
-      <li><strong>A free panel count, the same working day.</strong> How many members with {html.escape(low)} we hold near your UK sites, by postcode district, and how they break down. <a href="/panel-count">Free panel count</a></li>
-      <li><strong>Patient involvement, before it's final.</strong> Members with {html.escape(low)} review your protocol, participant information sheet, consent form or product, and you get a report of what changed. <a href="/patient-involvement">Patient involvement</a></li>
-      <li><strong>Referrals, followed through.</strong> Members who pass your screening questions and say yes are referred to the site, and we follow each one to randomisation. <a href="/clinical-trial-recruitment">Clinical trial recruitment in the UK</a></li>
-      <li><strong>Ask our data, then members live.</strong> An answer straight away from what members have already told us, linked to the members who gave it. <a href="/ask-our-data">Ask our data</a></li>
+      <li><strong>Free patient feasibility, the same working day.</strong> How many members with {html.escape(low)} near your UK sites match and have already said yes, by postcode district, and how they break down. Pre-screened, never eligible. <a href="/patient-feasibility">Free patient feasibility</a></li>
+      <li><strong>Patient engagement, before the ethics submission.</strong> Members with {html.escape(low)} review your protocol, participant information sheet, consent form or product, and you get a report of what changed. <a href="/patient-engagement">Patient engagement</a></li>
+      <li><strong>Referrals, followed through.</strong> Members who pass your screening questions and say yes are referred through the site's own referral link, and we follow each one to randomisation. <a href="/clinical-trial-recruitment">Clinical trial recruitment in the UK</a></li>
+      <li><strong>Ask our data, then ask members live.</strong> An answer straight away from what members have already told us, linked to the members who gave it. <a href="/ask-our-data">Ask our data</a></li>
     </ol>
   </div>
 </section>
@@ -256,7 +256,7 @@ def page(c):
   <div class="wrap">
     <h2 id="more">Other conditions our members live with</h2>
     <p>{others}</p>
-    <p class="muted">Not listed? Tell us the condition and where your UK sites are, and we'll recruit people who live with it near them, and show you the first count within a month. <a href="/conditions/">All conditions</a></p>
+    <p class="muted">Not listed? Tell us the condition and where your UK sites are, and we'll recruit people who live with it near them, through the groups they already trust, and show you the first numbers within a month. <a href="/conditions/">All conditions</a></p>
   </div>
 </section>
 '''
@@ -266,9 +266,9 @@ def page(c):
 
 def hub():
     meta = {'slug': 'conditions/index', 'title': 'Patients by condition for UK clinical trials and research | Unwritten Health',
-            'description': '13,050 people across the UK living with long-term conditions, from depression and type 2 diabetes to COPD and cancer. See who we hold, condition by condition.',
+            'description': '15,000 people in the UK living with long-term conditions, built from the communities clinical trials miss, from depression to cancer. Who we hold, by condition.',
             'nav': 'members', 'priority': '0.9',
-            'keywords': 'patient recruitment UK by condition, UK patients for clinical trials, patient involvement UK, long-term conditions research UK'}
+            'keywords': 'patient recruitment by condition, UK patients for clinical trials, patient engagement UK, under-represented communities in research, long-term conditions research UK'}
     cards = ''.join(f'<a class="card" href="/conditions/{s}"><span class="kicker">{n:,} members</span><h2>{html.escape(nm)}</h2><span class="more">{html.escape(nm)} members</span></a>'
                     for nm, s, n, *_ in CONDITIONS)
     body = f'''
@@ -276,15 +276,15 @@ def hub():
   <div class="wrap">
     <span class="kicker">Our members · Conditions</span>
     <h1>Patients by condition, across the UK.</h1>
-    <p class="lede">13,050 people across the UK living with long-term conditions have joined us (as of October 2026, and growing daily). These are the 11 conditions we hold in the largest numbers, each with who our members are and what you can ask for.</p>
-    <div class="actions"><a class="btn btn--primary" href="/panel-count">Free panel count</a><a class="btn btn--ghost" href="/patient-panel">Our members</a></div>
+    <p class="lede">15,000 people in the UK living with long-term conditions have joined us (November 2026, and growing daily), built from the communities clinical trials miss. These are the 11 conditions we hold in the largest numbers, each with who our members are and what you can ask for.</p>
+    <div class="actions"><a class="btn btn--primary" href="/patient-feasibility">Free patient feasibility</a><a class="btn btn--ghost" href="/our-members">Our members</a></div>
   </div>
 </section>
 
 <section class="section section--paper" style="padding-top:64px !important">
   <div class="wrap">
     <div class="cards">{cards}</div>
-    <p class="muted" style="margin-top:28px">Counted {COUNTED}. Other conditions are held in smaller numbers or built to order. If your condition isn't listed, tell us the condition and where your UK sites are, and we'll recruit people who live with it near them, and show you the first count within a month.</p>
+    <p class="muted" style="margin-top:28px">Figures from {COUNTED}, being updated on our platform. Other conditions are held in smaller numbers or built to order. If your condition isn't listed, tell us the condition and where your UK sites are, and we'll recruit people who live with it near them, through the groups they already trust, and show you the first numbers within a month.</p>
   </div>
 </section>
 '''

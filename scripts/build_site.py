@@ -38,29 +38,31 @@ TODAY = datetime.date.today().isoformat()
 BOOK = 'https://meetings-eu1.hubspot.com/ashish-rishi?uuid=b7b6b6ed-3b13-4c64-aa8d-d759c67698db'
 BLOG = 'https://substack.com/@exclusiondebt'
 
-DESCRIPTOR = 'Patient experience data and patient recruitment, UK'
+# The descriptor (positioning bible, 19 November 2026). It sits under the name everywhere.
+DESCRIPTOR = 'A clinical trial recruitment and patient engagement company, building longitudinal data sets from under-represented communities'
+COUNTRIES = 'Germany, France, Spain, the Netherlands, Portugal, Ireland and Poland'
+FEASIBILITY = ('Free patient feasibility', '/patient-feasibility')
 
-STAGES = [
-    ('Develop', '/patient-involvement'),
-    ('Clinical trials', '/clinical-trial-recruitment'),
-    ('Launch and access', '/launch-and-access'),
-    ('Everyday care', '/everyday-care'),
+WHAT_WE_DO = [
+    ('Patient feasibility', '/patient-feasibility'),
+    ('Patient engagement', '/patient-engagement'),
+    ('Clinical trial recruitment', '/clinical-trial-recruitment'),
 ]
 ROLES = [
     ('Clinical development and recruitment', '/clinical-development'),
     ('Patient insight', '/patient-insight'),
     ('Medical affairs', '/medical-affairs'),
     ('Market access and HEOR', '/market-access'),
-    ('Medtech and digital health', '/medtech-digital-health'),
-    ('Market research agencies', '/market-research-agencies'),
 ]
 # Menu: (key, label, href, dropdown groups or None)
 NAV = [
-    ('whatwedo', 'What we do', '/#stages', [
-        ('Four stages', STAGES),
-        ('How we work', [('Ask our data, then members live', '/ask-our-data')]),
+    ('whatwedo', 'What we do', '/#what-we-do', [
+        ('Plan', [('Patient feasibility', '/patient-feasibility')]),
+        ('Design, before the ethics submission', [('Patient engagement', '/patient-engagement'), ('The report', '/patient-engagement-report')]),
+        ('Recruit', [('Clinical trial recruitment', '/clinical-trial-recruitment')]),
+        ('How we work', [('Ask our data, then ask members live', '/ask-our-data')]),
     ]),
-    ('members', 'Our members', '/patient-panel', None),
+    ('members', 'Our members', '/our-members', None),
     ('who', "Who it's for", '/who-its-for', [
         ('By role', ROLES),
         ('By location', [('Sponsors outside the UK', '/clinical-trials-in-the-uk')]),
@@ -73,13 +75,14 @@ NAV = [
     ]),
 ]
 FOOTER_COLUMNS = [
-    ('What we do', STAGES + [
-        ('Ask our data', '/ask-our-data'), ('The report', '/patient-involvement-report'), ('Sample report', '/sample-report'),
-        ('Free panel count', '/panel-count'), ('Tell us about your clinical trial', '/tell-us-about-your-trial'),
+    ('What we do', WHAT_WE_DO + [
+        ('Ask our data', '/ask-our-data'), ('The report', '/patient-engagement-report'), ('Sample report', '/sample-report'),
+        ('Tell us about your clinical trial', '/tell-us-about-your-trial'),
     ]),
-    ("Who it's for", ROLES + [('Sponsors outside the UK', '/clinical-trials-in-the-uk'), ('NHS teams', '/nhs'), ('Suppliers to the NHS', '/suppliers')]),
+    ("Who it's for", ROLES + [('Sponsors outside the UK', '/clinical-trials-in-the-uk')]),
     ('Learn', [
-        ('Our members', '/patient-panel'), ('Conditions', '/conditions/'), ('Guides', '/guides/'), ('Exclusion Debt Report', '/exclusion-debt-report/'), ('Questions', '/questions'), ('Case studies', '/case-studies'),
+        ('Our members', '/our-members'), ('Conditions', '/conditions/'), ('Case studies', '/case-studies'), ('Guides', '/guides/'),
+        ('Exclusion Debt Report', '/exclusion-debt-report/'), ('Questions', '/questions'),
         ('Exclusion debt', '/exclusion-debt'), ('Equity Engine', '/equity-engine'), ('Resources', '/resources'),
         ('Press', '/press'), ('Blog', '/blog'),
     ]),
@@ -100,28 +103,40 @@ RETIRED = {
     'solutions': '/who-its-for',
     'solutions-jca': '/market-access',
     'solutions-patient-council': '/patient-insight',
-    'solutions-samd': '/medtech-digital-health',
-    'solutions-pmcf': '/medtech-digital-health',
-    'solutions-esf-dtac': '/medtech-digital-health',
+    'solutions-samd': '/patient-engagement',
+    'solutions-pmcf': '/patient-engagement',
+    'solutions-esf-dtac': '/patient-engagement',
     'solutions-nihr-ppi': '/clinical-development',
-    'regulatory-alignment': '/patient-involvement-report',
+    'regulatory-alignment': '/patient-engagement-report',
     'trust-ethics': '/trust',
     # October 2026: prices taken off the site; Toolkits and Scorecard retired
-    'pricing': '/panel-count',
-    'scorecard': '/panel-count',
+    'pricing': '/patient-feasibility',
+    'scorecard': '/patient-feasibility',
     'toolkits': '/resources',
-    'how-it-works': '/patient-involvement',
-    # Agreed wording, 19 October 2026: the free same-day count is a "panel count"
-    'panel-check': '/panel-count',
+    'how-it-works': '/patient-engagement',
+    'panel-check': '/patient-feasibility',
     # Positioning bible, 20 October 2026: audiences by role, not sector
     'researchers': '/clinical-development',
     'academic-research': '/clinical-development',
     'pharma': '/clinical-development',
     'biotech': '/clinical-development',
-    'medtech': '/medtech-digital-health',
-    'digital-health': '/medtech-digital-health',
+    'medtech': '/patient-engagement',
+    'digital-health': '/patient-engagement',
     # 20 October 2026: toolkits are gone, so their refund policy is too
     'refund-policy': '/terms',
+    # Positioning bible, 19 November 2026: never "panel" or "count" on the website, and
+    # "patient engagement" throughout; renamed pages keep their old addresses as redirects
+    'panel-count': '/patient-feasibility',
+    'patient-panel': '/our-members',
+    'patient-involvement': '/patient-engagement',
+    'patient-involvement-report': '/patient-engagement-report',
+    # 19 November 2026: not buyers, so their pages come down; launch and access is one line
+    'everyday-care': '/patient-insight',
+    'launch-and-access': '/market-access',
+    'medtech-digital-health': '/patient-engagement',
+    'market-research-agencies': '/who-its-for',
+    'nhs': '/clinical-trial-recruitment',
+    'suppliers': '/who-its-for',
 }
 
 ORG = {
@@ -132,8 +147,8 @@ ORG = {
     'url': BASE + '/',
     'logo': BASE + '/images/logo-square.png',
     'slogan': DESCRIPTOR + '.',
-    'description': 'Unwritten Health is a UK patient experience data company. 13,050 people across the UK living with long-term conditions have joined us, and growing daily; clients ask them questions and recruit from them.',
-    'knowsAbout': ['Patient experience data', 'Patient recruitment', 'Clinical trial recruitment', 'Clinical trials in the UK', 'Clinical trial feasibility', 'Patient and public involvement (PPI)', 'Patient advisory boards', 'Healthcare market research recruitment'],
+    'description': 'Unwritten Health is a clinical trial recruitment and patient engagement company, building longitudinal data sets from under-represented communities. 15,000 people living with long-term conditions have joined us in the UK (November 2026, and growing daily), and we are expanding into ' + COUNTRIES + '.',
+    'knowsAbout': ['Clinical trial patient recruitment', 'Patient feasibility', 'Patient engagement', 'Patient and public involvement (PPI)', 'Inclusive clinical trials', 'Health equity in clinical research', 'HRA Inclusion and Diversity Plan', 'Patient experience data', 'Clinical trials in the UK'],
     'identifier': {'@type': 'PropertyValue', 'propertyID': 'Companies House company number', 'value': '16561594'},
     'address': {
         '@type': 'PostalAddress',
@@ -217,7 +232,7 @@ def header_html(active=None):
         else:
             links.append(f'<a href="{href}"{cur}>{html.escape(label)}</a>')
             mobile.append(f'<a href="{href}">{html.escape(label)}</a>')
-    mobile.append('<a class="uh-btn-nav" href="/panel-count">Free panel count</a>')
+    mobile.append(f'<a class="uh-btn-nav" href="{FEASIBILITY[1]}">{FEASIBILITY[0]}</a>')
     mobile.append(f'<a class="uh-mobile-book" href="{BOOK}" target="_blank" rel="noopener">Book 30 minutes with Ashish{EXT}</a>')
     return (
         '<a class="uh-skip" href="#main">Skip to content</a>\n'
@@ -225,7 +240,7 @@ def header_html(active=None):
         '<a class="uh-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="160" height="28">'
         f'<span class="uh-descriptor">{DESCRIPTOR}</span></a>'
         f'<div class="uh-nav" role="navigation" aria-label="Main">{"".join(links)}</div>'
-        '<a class="uh-btn-nav" href="/panel-count">Free panel count</a>'
+        f'<a class="uh-btn-nav" href="{FEASIBILITY[1]}">{FEASIBILITY[0]}</a>'
         '<button class="uh-burger" type="button" aria-expanded="false" aria-controls="uh-mobile" aria-label="Open menu"><span></span><span></span><span></span></button>'
         '</div></header>\n'
         f'<div class="uh-mobile" id="uh-mobile" role="navigation" aria-label="Mobile">{"".join(mobile)}</div>'
@@ -235,9 +250,9 @@ def header_html(active=None):
 def cta_html():
     return (
         '<section class="uh-cta" aria-labelledby="uh-cta-title"><div class="uh-cta-inner">'
-        '<div><h2 id="uh-cta-title">How many patients like yours could you involve?</h2>'
-        "<p>Find out with a free panel count. Tell us who your clinical trial or product is for, and we'll reply the same working day with how many people like that have joined us, and how they break down.</p></div>"
-        '<div class="uh-cta-actions"><a class="uh-btn-light" href="/panel-count">Free panel count</a>'
+        '<div><h2 id="uh-cta-title">How many patients like yours have already said yes?</h2>'
+        "<p>Find out with free patient feasibility. Tell us the condition and where your sites are, and we'll reply the same working day with how many members near them match and have opted in to hear about clinical trials, and how they break down.</p></div>"
+        f'<div class="uh-cta-actions"><a class="uh-btn-light" href="{FEASIBILITY[1]}">{FEASIBILITY[0]}</a>'
         f'<a class="uh-cta-link" href="{BOOK}" target="_blank" rel="noopener">Book 30 minutes with Ashish{EXT}</a></div>'
         '</div></section>'
     )
@@ -252,14 +267,14 @@ def footer_html(sticky=True):
         '<div class="uh-footer-top"><div>'
         '<a class="uh-footer-logo" href="/" aria-label="Unwritten Health home"><img src="/images/logo-horizontal.svg" alt="Unwritten Health" width="150" height="26"></a>'
         f'<p class="uh-footer-tag">{DESCRIPTOR}.</p>'
-        '<p class="uh-footer-note">UK today, Europe next.</p>'
+        f'<p class="uh-footer-note">15,000 people in the UK, and growing daily. Expanding into {COUNTRIES}.</p>'
         f'</div><div class="uh-footer-links">{cols}</div></div>'
         '<div class="uh-footer-legal"><span>Unwritten Health · Company number 16561594 · First Floor, Swan Buildings, 20 Swan Street, Manchester, England, M4 5JW</span>'
         '<a href="#cookie-settings" onclick="if(window.openCookieSettings){window.openCookieSettings();}return false;">Cookie settings</a></div>'
         '</div></div>'
     )
     if sticky:
-        out += '\n<a class="uh-sticky" href="/panel-count">Free panel count</a>'
+        out += f'\n<a class="uh-sticky" href="{FEASIBILITY[1]}">{FEASIBILITY[0]}</a>'
     return out
 
 

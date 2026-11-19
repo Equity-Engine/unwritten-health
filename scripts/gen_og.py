@@ -9,12 +9,12 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / 'site'
 OUT = SITE / 'images' / 'og'
 MANIFEST = ROOT / 'scripts' / 'og-manifest.json'
-DESCRIPTOR = 'Patient experience data and patient recruitment, UK'
+DESCRIPTOR = 'A clinical trial recruitment and patient engagement company, building longitudinal data sets from under-represented communities'
 # Pages with no card of their own: verification files, internal tools, and pages that keep a custom image
 SKIP = {'65f13a4c20d2a636383f5a360a5c3b57', 'admin-report', 'blog-5-frequency-of-exclusion'}
 # The home H1 is the descriptor, which the card's footer bar already shows, so it leads with the first promise
-OVERRIDES = {'index': {'kicker': 'UK today, Europe next',
-                       'title': "Ask the people with lived experience of the condition, before it's final."},
+OVERRIDES = {'index': {'kicker': 'Unwritten Health',
+                       'title': "The patients you can't find have already said yes, to us."},
              # Report issues: the H1 is just the disease, so the card carries the issue's line
              'exclusion-debt-report/issue-1-lung-cancer': {'kicker': 'The Exclusion Debt Report · Issue 1 · Lung cancer',
                        'title': 'The deadliest cancer in Europe is fought with evidence built around the patients it is least likely to kill.'}}
@@ -31,7 +31,8 @@ body{position:relative;font-family:Manrope,system-ui,sans-serif;color:#2B2B2F}
 .kicker{font-weight:700;font-size:18px;letter-spacing:.14em;text-transform:uppercase;color:#3f6152;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0 0 20px}
 h1{font-family:Bentham,Georgia,serif;font-weight:400;font-size:66px;line-height:1.1;margin:0;color:#2B2B2F;letter-spacing:-.005em}
 .bar{position:absolute;left:0;right:0;bottom:0;height:84px;background:#2e4a3c;color:#FAF8F5;display:flex;align-items:center;justify-content:space-between;padding:0 80px;font-weight:600;font-size:21px}
-.bar .url{color:#e4ece8;font-weight:500}
+.bar span:first-child{max-width:820px;font-size:17px;line-height:1.35}
+.bar .url{color:#e4ece8;font-weight:500;white-space:nowrap;margin-left:40px}
 </style></head><body>
 <img class="mark" src="{MARK}" alt="">
 <img class="logo" src="{LOGO}" alt="">
